@@ -2,7 +2,7 @@ angular.module('Auth').controller('AuthController', function() {
 
 });
 
-angular.module('Auth').controller('AuthLoginController', function($scope, $dialogs, UserService, NotificationService, AUTH_EVENTS) {
+angular.module('Auth').controller('AuthLoginController', function($scope, dialogs, UserService, NotificationService, AUTH_EVENTS) {
 
 	$scope.creds = {
 		username: '',
@@ -16,7 +16,7 @@ angular.module('Auth').controller('AuthLoginController', function($scope, $dialo
 			$scope.$root.$broadcast(AUTH_EVENTS.loginSuccess, { message: 'Login Successul!' });				
 		}, function() {
 
-			dlg = $dialogs.error('Invalid User Credentials');
+			dlg = dialogs.error('Invalid User Credentials');
 			console.log(dlg);
 
 			//$scope.$root.$broadcast(AUTH_EVENTS.loginFailure, { message: 'Invalid Credentials' });

@@ -45,10 +45,15 @@
   <%js('dependencies/angular-translate.js')%>
 
   <!-- Angular Add Ons -->
+  <%js('extras/dialogs.js')%>
+
+  <%js('extras/angular-translate/service/default-interpolation.js')%>
+  <%js('extras/angular-translate/service/storage-key.js')%>
   <%js('extras/angular-translate/service/translate.js')%>
+  <%js('extras/angular-translate/filter/translate.js')%>
+  
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
-  <%js('extras/dialogs.js')%>
 
   <!-- Angular App -->
   <%js('angularjs/modules/application/Application.js')%>

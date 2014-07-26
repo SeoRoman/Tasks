@@ -1,4 +1,4 @@
-/**
+ /**
  * @ngdoc object
  * @name pascalprecht.translate.$translateDefaultInterpolation
  * @requires $interpolate
