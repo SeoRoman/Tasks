@@ -58,21 +58,26 @@
   <!-- Angular App -->
   <%js('angularjs/modules/application/Application.js')%>
 
-  <!-- Routes -->
+  <!-- Configs -->
   <%js('angularjs/modules/application/config.js')%>
   <%js('angularjs/modules/auth/config.js')%> 
+  <%js('angularjs/modules/dashboard/config.js')%> 
+  <%js('angularjs/modules/tasks/config.js')%> 
 
   <!-- Controllers -->
   <%js('angularjs/modules/application/controllers.js')%> 
   <%js('angularjs/modules/auth/controllers.js')%>
+  <%js('angularjs/modules/dashboard/controllers.js')%>
+  <%js('angularjs/modules/tasks/controllers.js')%>
 
   <!-- Factories -->
 
   <!-- Services -->
   <%js('angularjs/modules/auth/services.js')%>
-  <%js('angularjs/modules/notifications/services.js')%>
+  <%js('angularjs/modules/application/services.js')%>
 
   <!-- Constants -->
+  <%js('angularjs/modules/application/constants.js')%>
   <%js('angularjs/modules/auth/constants.js')%>
 
  <base href="/#/">

@@ -11,7 +11,7 @@ angular.module('Auth').service('UserService', function($http) {
 	}
 
 	this.logout = function() {
-		_loggedIn = false;
+		return $http.get('auth/logout').then(function(response) { });
 	}
 
 	this.save = function() {

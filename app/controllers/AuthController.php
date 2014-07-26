@@ -17,6 +17,14 @@
 			return Response::json(array(), 401);
 		}
 
+		public function getLogout()
+		{
+			if (Auth::guest()) return Response::json(array(), 401);
+
+			Auth::logout();
+			return Response::json(array(), 200);
+		}
+
 	}
 
 ?>

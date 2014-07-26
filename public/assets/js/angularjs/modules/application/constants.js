@@ -1,5 +1,8 @@
-angular.module('Auth').constant('SERVER_EVENTS', {
+angular.module('Application').constant('ROUTE', {
 
-	attempt: 'auth-login-attempt',
+	home: '/#/',
+	login: '/#/',
+	logout: '/#/auth/logout',
+	dashboard: '/#/dashboard'
 
 });
