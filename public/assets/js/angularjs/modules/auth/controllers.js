@@ -10,16 +10,10 @@ angular.module('Auth').controller('AuthLoginController', function($scope, dialog
 	};
 
 	$scope.submit = function() {
-		$scope.$root.$broadcast(AUTH_EVENTS.attempt);		
-
 		UserService.login($scope.creds).then(function(user) {
 			$scope.$root.$broadcast(AUTH_EVENTS.loginSuccess, { message: 'Login Successul!' });				
 		}, function() {
-
-			dlg = dialogs.error('Invalid User Credentials');
-			console.log(dlg);
-
-			//$scope.$root.$broadcast(AUTH_EVENTS.loginFailure, { message: 'Invalid Credentials' });
+			dlg = dialogs.error('Login Error', 'Invalid User Credentials');
 		});
 	};
 

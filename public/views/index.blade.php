@@ -17,10 +17,10 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
   <% css('dependencies/bootstrap.css') %>
   <% css('dependencies/font-awesome.css') %>
-  <% css('site_default.css') %>
   <% css('badges.css') %>
   <% css('animate.css') %>
   <% css('dialogs.css')%>
+  <% css('site_default.css') %>
 
   <!-- JAVASCRIPT -->
   <!--<script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
