@@ -27,8 +27,8 @@
 			<div class="columnOne" ng-repeat="task in data.columnOne">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><input type="checkbox" ng-click="togglePanel(task)"></div>
-	              <div class="panel-body" ng-show="task.show">
+	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
+	              <div class="panel-body" ng-show="task.show" ng-animate="customClass">
 	                Panel content
 	              </div>
 	            </div>
@@ -56,7 +56,7 @@
 			<div class="columnTwo" ng-repeat="task in data.columnTwo">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><input type="checkbox" ng-click="togglePanel(task)"></div>
+	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
 	              <div class="panel-body" ng-show="task.show">
 	                Panel content
 	              </div>
@@ -85,7 +85,7 @@
 			<div class="columnThree" ng-repeat="task in data.columnThree">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><input type="checkbox" ng-click="togglePanel(task)"></div>
+	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
 	              <div class="panel-body" ng-show="task.show">
 	                Panel content
 	              </div>
@@ -114,7 +114,7 @@
 			<div class="columnFour" ng-repeat="task in data.columnFour">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><input type="checkbox" ng-click="togglePanel(task)"></div>
+	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
 	              <div class="panel-body" ng-show="task.show">
 	                Panel content
 	              </div>
