@@ -1,5 +1,30 @@
 @charset "UTF-8";
 
+/*
+.panel-body {
+  line-height: 1.5;
+  opacity:1;
+}
+*/
+
+.panel-body {
+    -webkit-transition:all linear 0.25s;
+    transition:all linear 0.25s;
+  }
+
+.panel-body.ng-hide {
+    line-height:0;
+    opacity:0;
+    padding:0 10px;
+  }
+
+.panel-body {
+    line-height:1.5;
+    opacity:1;
+    padding: 10px;
+  }
+
+
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
