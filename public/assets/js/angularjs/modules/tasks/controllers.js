@@ -75,9 +75,13 @@ angular.module('Tasks').controller('TasksController', function($scope, dialogs) 
 		dlg = dialogs.create('/dialogs/tasks/create.html', 'CreateTaskController', {}, {});
 	}
 
+	$scope.$on('tasks-create', function(event, args) {
+		$scope.data.columnOne.push(args.task);
+	});
+
 });
 
-angular.module('Tasks').controller('CreateTaskController', function($scope, $modalInstance, data) {
+angular.module('Tasks').controller('CreateTaskController', function($rootScope, $scope, $modalInstance, data) {
 
 	$scope.data = data;
 
@@ -94,6 +98,12 @@ angular.module('Tasks').controller('CreateTaskController', function($scope, $mod
 
 	$scope.done = function()
 	{
+		var task = { 
+			title: data.val
+		}
+
+		$rootScope.$broadcast('tasks-create', { task: task } );
+
 		$modalInstance.close($scope.data);
 	}
 
