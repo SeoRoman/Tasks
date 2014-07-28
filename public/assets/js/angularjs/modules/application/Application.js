@@ -2,6 +2,11 @@ angular.module('Application', ['ngRoute', 'ngAnimate', 'ngResource', 'ngSanitize
 
 angular.module('Auth', []);
 
+angular.module('Users', []);
+
+angular.module('Offices', []);
+
 angular.module('Dashboard', ['Tasks']);
 
 angular.module('Tasks', ['ui.bootstrap']);
+

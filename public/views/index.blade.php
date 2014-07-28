@@ -54,30 +54,34 @@
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
 
-  <!-- Angular App -->
+  <!-- Module: Application -->
   <%js('angularjs/modules/application/Application.js')%>
-
-  <!-- Configs -->
   <%js('angularjs/modules/application/config.js')%>
-  <%js('angularjs/modules/auth/config.js')%> 
-  <%js('angularjs/modules/dashboard/config.js')%> 
-  <%js('angularjs/modules/tasks/config.js')%> 
-
-  <!-- Controllers -->
   <%js('angularjs/modules/application/controllers.js')%> 
+  <%js('angularjs/modules/application/services.js')%>
+  <%js('angularjs/modules/application/constants.js')%>
+
+  <!-- Module: Auth -->
+  <%js('angularjs/modules/auth/config.js')%> 
   <%js('angularjs/modules/auth/controllers.js')%>
+  <%js('angularjs/modules/auth/services.js')%>
+  <%js('angularjs/modules/auth/constants.js')%>
+
+  <!-- Module: Dashboard -->
+  <%js('angularjs/modules/dashboard/config.js')%> 
   <%js('angularjs/modules/dashboard/controllers.js')%>
+
+  <!-- Module: Tasks -->
+  <%js('angularjs/modules/tasks/config.js')%> 
   <%js('angularjs/modules/tasks/controllers.js')%>
 
-  <!-- Factories -->
+  <!-- Module: Offices -->
+  <%js('angularjs/modules/offices/config.js')%>
+  <%js('angularjs/modules/offices/controllers.js')%>
 
-  <!-- Services -->
-  <%js('angularjs/modules/auth/services.js')%>
-  <%js('angularjs/modules/application/services.js')%>
-
-  <!-- Constants -->
-  <%js('angularjs/modules/application/constants.js')%>
-  <%js('angularjs/modules/auth/constants.js')%>
+  <!-- Module: Users -->
+  <%js('angularjs/modules/tasks/config.js')%>
+  <%js('angularjs/modules/tasks/controllers.js')%>
 
  <base href="/#/">
 </head>
