@@ -88,11 +88,4 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Ro
 		);
 	};
 
-	// Process a Registration Request
-	$scope.register = function() {
-
-	}	
-
-
-
 });
