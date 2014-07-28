@@ -1,3 +1,12 @@
+/*
+ * Module: Auth
+ *
+ * Controller: AuthController
+ *
+ * Handles: login, logout
+ * Directives: $scope, dialogs, Router, UserService
+ */
+
 angular.module('Auth').controller('AuthController', function($scope, dialogs, Router, UserService) {
 
 
@@ -48,6 +57,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Ro
 			// Yes Option Selected
 			function(button) {
 
+				// Processing Logout Request Dialog
 				dlg = dialogs.wait('Processing Request', 'Logging you out...');
 
 				// Attempt to Log User Out
