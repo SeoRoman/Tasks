@@ -71,7 +71,7 @@ angular.module('Tasks').controller('TasksController', function($scope, dialogs) 
 
 	$scope.create = function()
 	{
-		dlg = dialogs.create('/dialogs/tasks/CreateTaskController.html', 'CreateTaskController', {}, {});
+		dlg = dialogs.create('/dialogs/tasks/create.html', 'CreateTaskController', {}, {});
 	}
 
 	$scope.$on('tasks-create', function(event, args) {
