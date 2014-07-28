@@ -17,11 +17,25 @@ class CreateTasksTable extends Migration {
 
 			$table->increments('id');
 
+			$table->integer('tasks_lists_id');
+
 			$table->integer('user_id');
+
+			$table->integer('assigned_to');
+
+			$table->dateTime('due_date');
+
+			$table->text('description');
 
 			$table->integer('office_id');
 
 			$table->integer('body');
+
+			$table->boolean('completed');
+
+			$table->timestamps();
+
+			$table->softDeletes();
 
 		});
 	}

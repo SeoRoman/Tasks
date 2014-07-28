@@ -10,7 +10,7 @@
 
 		<div class="col-lg-3">
 			<h3>
-			<select class="form-control">
+			<!--<select class="form-control">
 				<option>Empty</option>
 				<option>Unassigned Tasks</option>
 				<optgroup label="My Tasks">
@@ -21,13 +21,15 @@
 					<option>Open Tasks</option>
 					<option>Closed Tasks</option>
 				</optgroup>
-			</select>
+			</select>-->
+			My Tasks
+			<span class="pull-right">nav</span>
 			</h3>
 
 			<div class="columnOne" ng-repeat="task in data.columnOne">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading"><a href="javascript:void();" ng-click="togglePanel(task)">{{ task.title }} <span class="pull-right"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></span></a></div>
+	              <div class="panel-heading"><a href="javascript:void(0);" ng-click="togglePanel(task)">{{ task.title }} <span class="pull-right"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></span></a></div>
 	              <div class="panel-body" ng-show="task.show" ng-animate="customClass">
 	                Panel content
 	              </div>

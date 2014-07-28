@@ -65,7 +65,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'forum',
+			'database'  => 'tasks',
 			'username'  => 'root',
 			'password'  => 'root',
 			'charset'   => 'utf8',

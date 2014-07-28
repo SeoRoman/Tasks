@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfficesTable extends Migration {
+class CreateTasksCommentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,21 +13,15 @@ class CreateOfficesTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('offices', function($table) {
+		Schema::create('tasks_comments', function($table) {
 
 			$table->increments('id');
 
-			$table->integer('user_id');
+			$table->morphs('commentable');
 
-			$table->string('name');
+			$table->integer('creator');
 
-			$table->string('address');
-
-			$table->string('city');
-
-			$table->string('state');
-
-			$table->string('zip');
+			$table->text('body');
 
 			$table->timestamps();
 
@@ -44,7 +38,7 @@ class CreateOfficesTable extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('offices');
+		Schema::drop('tasks_comments');
 	}
 
 }

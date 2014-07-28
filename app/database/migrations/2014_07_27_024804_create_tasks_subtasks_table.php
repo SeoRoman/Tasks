@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTasksStatusesTable extends Migration {
+class CreateTasksSubtasksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,11 +13,21 @@ class CreateTasksStatusesTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('tasks_statues', function($table) {
+		Schema::create('tasks_subtasks', function($table) {
 
 			$table->increments('id');
 
+			$table->integer('user_id');
+
+			$table->integer('tasks_id');
+
 			$table->string('name');
+
+			$table->boolean('status');
+
+			$table->timestamps();
+
+			$table->softDeletes();
 
 		});
 	}
@@ -30,7 +40,7 @@ class CreateTasksStatusesTable extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('tasks_statues');
+		Schema::drop('tasks_subtasks');
 	}
 
 }

@@ -66,13 +66,12 @@ angular.module('Tasks').controller('TasksController', function($scope, dialogs) 
 
 	$scope.togglePanel = function(task)
 	{
-		if (task.show) { task.show = false; }
-		else { task.show = true; }
+		task.show = !task.show;
 	}
 
 	$scope.create = function()
 	{
-		dlg = dialogs.create('/dialogs/tasks/create.html', 'CreateTaskController', {}, {});
+		dlg = dialogs.create('/dialogs/tasks/CreateTaskController.html', 'CreateTaskController', {}, {});
 	}
 
 	$scope.$on('tasks-create', function(event, args) {

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfficesTable extends Migration {
+class CreateTasksProjectsConversationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,21 +13,19 @@ class CreateOfficesTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('offices', function($table) {
+		Schema::create('tasks_projects_conversations', function($table) {
 
 			$table->increments('id');
 
-			$table->integer('user_id');
+			$table->integer('tasks_projects_id');
 
-			$table->string('name');
+			$table->integer('creator');
 
-			$table->string('address');
+			$table->string('title');
 
-			$table->string('city');
+			$table->text('body');
 
-			$table->string('state');
-
-			$table->string('zip');
+			$table->boolean('public');
 
 			$table->timestamps();
 
@@ -44,7 +42,7 @@ class CreateOfficesTable extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('offices');
+		Schema::drop('tasks_projects_conversations');
 	}
 
 }

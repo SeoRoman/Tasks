@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTasksCommentsTable extends Migration {
+class CreateTasksNotifiersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,15 +13,13 @@ class CreateTasksCommentsTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('tasks_comments', function($table) {
+		Schema::create('tasks_notifiers', function($table) {
 
 			$table->increments('id');
 
+			$table->morphs('notifiable');
+
 			$table->integer('user_id');
-
-			$table->integer('office_id');
-
-			$table->text('body');
 
 			$table->timestamps();
 
@@ -38,7 +36,7 @@ class CreateTasksCommentsTable extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('tasks_comments');
+		Schema::drop('tasks_notifiers');
 	}
 
 }
