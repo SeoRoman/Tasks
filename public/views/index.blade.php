@@ -84,39 +84,6 @@
  <base href="/#/">
 </head>
 <body ng-controller="ApplicationController">
-  <!-- HEADER -->
-    <header id="header" class="animated fadeInDown">
-      <div id="logo-group">
-        <!-- PLACE LOGO HERE -->
-        <span id="logo"> Worth Tasks </span>
-        <!-- END LOGO PLACEHOLDER -->
-      </div>
-
-      <!-- pulled right: nav area -->
-      <div class="pull-right">
-
-        <!-- fullscreen button -->
-        <div id="fullscreen" class="btn-header transparent pull-right">
-          <span> <a href="javascript:void(0);" action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
-        </div>
-        <!-- end fullscreen button -->
-        
-        <!-- logout button -->
-        <div id="logout" class="btn-header transparent pull-right" ng-controller="AuthLogoutController">
-          <span> <a title="Sign Out" ng-click="logout()"><i class="fa fa-sign-out"></i></a> </span>
-        </div>
-        <!-- end logout button -->
-
-      </div>
-      <!-- end pulled right: nav area -->
-    </header>
-    <div class="container-fluid">
-      <div class="row" ng-show="message">
-        <div class="col-lg-6 col-lg-offset-3">
-          <div id="message" class="alert alert-{{ alert }}">{{ message }}</div>
-        </div>
-      </div>
-      <div class="spacer-10"></div>
       <div ng-view></div>
 </body>
 </html>
