@@ -7,6 +7,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Ro
 		// Display Processing Dialog
 		var dlg = dialogs.wait('Processing Request', 'Please wait while we authenticate your credentials');
 
+		// Attempt to Log the User In
 		UserService.login($scope.creds).then(
 
 			// Success Function
@@ -69,6 +70,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Ro
 					// Failed (User Not Logged In)
 					function() {
 
+						// Close Previous Dialog
 						dlg.close();
 
 						// Dialog with Error
