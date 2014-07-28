@@ -51,18 +51,18 @@ return array(
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
-		'live-mysql' => array(
+		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'tasks',
-			'username'  => 'root',
-			'password'  => 'root',
+			'host'      => 'just21.justhost.com',
+			'database'  => 'systemse_wfctasks',
+			'username'  => 'systemse_tasker',
+			'password'  => 'x[@Aa]3o]Lq=',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
 
-		'mysql' => array(
+		'local-mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'tasks',
