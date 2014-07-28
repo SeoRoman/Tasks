@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'live-mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,10 +53,10 @@ return array(
 		),
 		'live-mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'tasks',
-			'username'  => 'root',
-			'password'  => 'root',
+			'host'      => 'just21.justhost.com',
+			'database'  => 'systemse_testforum',
+			'username'  => 'systemse_testfrm',
+			'password'  => 'KOTt$}mWLuBq',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

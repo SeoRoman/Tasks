@@ -62,7 +62,7 @@ angular.module('Tasks').controller('TasksController', function($scope, dialogs) 
 
 		]
 
-	}
+	};
 
 	$scope.togglePanel = function(task)
 	{
