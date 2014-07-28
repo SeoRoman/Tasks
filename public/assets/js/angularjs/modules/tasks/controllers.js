@@ -71,11 +71,7 @@ angular.module('Tasks').controller('TasksController', function($scope, dialogs) 
 
 	$scope.create = function()
 	{
-<<<<<<< HEAD
-		dlg = dialogs.create('/dialogs/tasks/create.html', 'CreateTaskController', {}, {});
-=======
 		dlg = dialogs.create('/views/dialogs/tasks/create.html', 'CreateTaskController', {}, {});
->>>>>>> origin/master
 	}
 
 	$scope.$on('tasks-create', function(event, args) {
