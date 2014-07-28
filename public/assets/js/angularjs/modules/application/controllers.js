@@ -6,4 +6,8 @@ angular.module('Application').controller('ApplicationController', function($scop
 		$scope.currentUser = user;
 	}
 
+	$scope.clearCurrentUser = function() {
+		$scope.currentUser = null;
+	}
+
 });

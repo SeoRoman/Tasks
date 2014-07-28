@@ -2,16 +2,16 @@ angular.module('Auth').config(function($routeProvider) {
 
 	$routeProvider.when('/', {
 		templateUrl: 'views/auth/login.blade.php',
-		controller: 'AuthLoginController'
+		controller: 'AuthController'
 	});
 
 	$routeProvider.when('/auth/logout', {
-		controller: 'AuthLogoutController',
+		controller: 'AuthController',
 	});
 
 	$routeProvider.when('/auth/register', {
 		templateUrl: 'views/auth/register.blade.php',
-		controller: 'AuthRegisterController'
+		controller: 'AuthController'
 	});
 
 });
