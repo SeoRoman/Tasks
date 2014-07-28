@@ -33,7 +33,6 @@
   <%js('dependencies/jquery-2.1.1.min.js')%>
   <%js('dependencies/jquery-ui.min.js')%>
   <%js('dependencies/bootstrap.js')%>
-  <%js('notification/Notification.js')%>
 
   <!-- Angular Core -->
   <%js('dependencies/angular.js')%>
@@ -46,12 +45,10 @@
 
   <!-- Angular Add Ons -->
   <%js('extras/dialogs.js')%>
-
   <%js('extras/angular-translate/service/default-interpolation.js')%>
   <%js('extras/angular-translate/service/storage-key.js')%>
   <%js('extras/angular-translate/service/translate.js')%>
   <%js('extras/angular-translate/filter/translate.js')%>
-  
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
 
