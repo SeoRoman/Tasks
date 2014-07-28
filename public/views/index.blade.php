@@ -76,6 +76,14 @@
   <%js('angularjs/modules/tasks/config.js')%> 
   <%js('angularjs/modules/tasks/controllers.js')%>
 
+  <!-- Module: Offices -->
+  <%js('angularjs/modules/offices/config.js')%>
+  <%js('angularjs/modules/offices/controllers.js')%>
+
+  <!-- Module: Users -->
+  <%js('angularjs/modules/tasks/config.js')%>
+  <%js('angularjs/modules/tasks/controllers.js')%>
+
  <base href="/#/">
 </head>
 <body ng-controller="ApplicationController">
