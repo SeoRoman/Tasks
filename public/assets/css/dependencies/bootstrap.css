@@ -3802,7 +3802,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
             box-shadow: none;
   }
   .navbar-collapse.collapse {
-    display: block !important;
     height: auto !important;
     padding-bottom: 0;
     overflow: visible !important;
@@ -3919,9 +3918,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: 4px;
 }
 @media (min-width: 768px) {
-  .navbar-toggle {
-    display: none;
-  }
+  
 }
 .navbar-nav {
   margin: 7.5px -15px;
@@ -4133,7 +4130,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-toggle:focus {
   background-color: #ddd;
 }
-.navbar-default .navbar-toggle .icon-bar {
+.tmenu .navbar-toggle .icon-bar {
   background-color: #888;
 }
 .navbar-default .navbar-collapse,

@@ -23,7 +23,7 @@
 				</optgroup>
 			</select>-->
 			My Tasks
-			<span class="pull-right">nav</span>
+			<div class="clearfix"></div>
 			</h3>
 
 			<div class="columnOne" ng-repeat="task in data.columnOne">
