@@ -7,7 +7,7 @@
  * Directives: $scope, dialogs, Router, UserService
  */
 
-angular.module('Auth').controller('AuthController', function($scope, dialogs, Router, UserService) {
+angular.module('Auth').controller('AuthController', function($scope, dialogs, RedirectTo, UserService) {
 
 
 	// Process a Login Request
@@ -29,7 +29,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Ro
 				dlg.close();
 
 				// Redirect to Dashboard
-				Router.dashboard();
+				RedirectTo.dashboard();
 
 			}, 
 
@@ -73,7 +73,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Ro
 						dlg.close();
 
 						// Redirect to Login Page
-						Router.login();
+						RedirectTo.login();
 
 					}, 
 					

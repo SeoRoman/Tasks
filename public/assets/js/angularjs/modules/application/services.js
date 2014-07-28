@@ -1,4 +1,4 @@
-angular.module('Application').service('Router', function($http, $location) {
+angular.module('Application').service('RedirectTo', function($http, $location) {
 
 	this.home = function() {
 		return $location.path('/').absUrl();
