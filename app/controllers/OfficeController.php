@@ -112,7 +112,7 @@ class OfficeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$this->office->destroy($id);
 	}
 
 

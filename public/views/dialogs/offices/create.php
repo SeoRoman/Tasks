@@ -24,7 +24,7 @@
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
-			<button type="button" class="btn btn-default" ng-click="store()">Create Office</button>
+			<button type="button" class="btn btn-default" ng-click="save()">Create Office</button>
 		</div>
 	</div>
 </div>

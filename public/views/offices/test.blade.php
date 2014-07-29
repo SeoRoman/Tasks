@@ -3,35 +3,55 @@
 <table class="table">
 
 	<tr>
-		<td>Office ID</td>
+		<td style="width:5%">ID</td>
+		<td style="width:20%">Name</td>
+		<td style="width:25%">Address</td>
+		<td style="width:20%">City</td>
+		<td style="width:10%">State</td>
+		<td style="width:10%">Zip</td>
+		<td style="width:10%">Options</td>
 	</tr>
 
 	<tr ng-repeat="office in offices">
-		<td>{{ office.id || '0' }}</td>
 		<td>
-			<a href="javascript:void(0)" editable-text="office.name" onaftersave="update(office, office.id)">
+			<span editable-text="office.id" e-form="officeRow" e-name="id" onbeforesave="validateId($data, office.id, $index)">
+				{{ office.id }}
+			</span>
+		</td>
+		<td>
+			<span editable-text="office.name" e-form="officeRow" e-name="name" onbeforesave="validateName($data, office.id)">
 				{{ office.name }}
-			</a>
+			</span>
 		</td>
 		<td>
-			<a href="javascript:void(0)" editable-text="office.address" onaftersave="update(office, office.id)">
+			<span editable-text="office.address" e-form="officeRow" e-name="address">
 				{{ office.address }}
-			</a>
+			</span>
 		</td>
 		<td>
-			<a href="javascript:void(0)" editable-text="office.city" onaftersave="update(office, office.id)">
+			<span editable-text="office.city" e-form="officeRow" e-name="city">
 				{{ office.city }}
-			</a>
+			</span>
 		</td>
 		<td>
-			<a href="javascript:void(0)" editable-text="office.state" onaftersave="update(office, office.id)">
+			<span editable-text="office.state" e-form="officeRow" e-name="state">
 				{{ office.state }}
-			</a>
+			</span>
 		</td>
 		<td>
-			<a href="javascript:void(0)" editable-text="office.zip" onaftersave="update(office, office.id)">
+			<span editable-text="office.zip" e-form="officeRow" e-nam="zip"	>
 				{{ office.zip }}
-			</a>
+			</span>
+		</td>
+		<td>
+			<form editable-form name="officeRow" onaftersave="update($data, office.id)" ng-show="officeRow.$visible" class="form-button form-inline" shown="inserted == office">
+				<button type="submit" ng-disabled="officeRow.$waiting" class="btn btn-xs btn-primary">Save</button>
+				<button type="submit" ng-disabled="officeRow.$waiting" class="btn btn-xs btn-danger" ng-click="officeForm.$cancel()">Cancel</button>
+			</form>
+			<div class="buttons" ng-show="!officeRow.$visible">
+          		<button class="btn btn-xs btn-primary" ng-click="officeRow.$show()">Edit</button>
+          		<button class="btn btn-xs btn-danger" ng-click="delete(office.id, $index)">Delete</button>
+        </div>  
 		</td>
 	</tr>
 
