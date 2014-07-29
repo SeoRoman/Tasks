@@ -4,7 +4,7 @@ angular.module('Offices').controller('CreateOfficeController', function($scope, 
 	// Init an Empty Scope Property
 	$scope.office = {};
 
-	// Attempt to Save the Model
+	// save() function bound to a click method from view
 	$scope.save = function()
 	{	
 		// Launch Confirmation Dialog

@@ -60,7 +60,7 @@ angular.module('Application').service('Dialog', function(dialogs) {
 
 		_dialogs[name] = dialogs.confirm(title, message);
 
-		return _dialogs[name];
+		return _dialogs[name];	
 	}
 
 	this.close = function(name) {
