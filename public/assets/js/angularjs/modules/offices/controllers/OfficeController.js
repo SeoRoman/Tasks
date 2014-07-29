@@ -11,12 +11,12 @@ angular.module('Offices').controller('OfficeController', function($scope, Dialog
 		Dialog.create('create-office-form', '/views/dialogs/offices/create.php', 'CreateOfficeController');
 	}
 
-	// Listeners
+	// Listener 'offices-create' from a Broadcast or Emit
 	$scope.$on('offices-create', function(event, args) {
 
 		// Push New Office into the Table Data
 		$scope.offices.push(args.office);
-		
+
 	});
 
 });
