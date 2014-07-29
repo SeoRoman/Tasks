@@ -21,8 +21,8 @@ angular.module('Offices').controller('OfficeController', function($scope, $resou
 	$scope.store = function()
 	{	
 		console.log('Saving Office...');
-		console.log($scope.new);
-		Office.save($scope.new);
+		console.log($scope.newOffice.id);
+		Office.save($scope.newOffice);
 		dlg.close();	
 	}
 
