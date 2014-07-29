@@ -13,7 +13,7 @@ angular.module('Offices').controller('OfficeController', function($scope, $resou
 
 	$scope.update = function(office, id)
 	{
-		Office.update({ id: id }, office);
+		Office.update({ Id: id }, office);
 	}
 
 	// Watchers
