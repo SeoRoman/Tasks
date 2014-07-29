@@ -1,29 +1,33 @@
-angular.module('Offices').controller('OfficeController', function($scope) {
+angular.module('Offices').controller('OfficeController', function($scope, $resource, dialogs, Office) {
 
-	// Standard API CRUD
-		$scope.create = function()
-		{
+	$scope.data = {};
 
-		}
+	$scope.data.offices = null;
 
-		$scope.read = function()
-		{
+	Office.query(function(res) {
+		$scope.data.offices = res;
+	});
 
-		}
+	$scope.create = function()
+	{
+		dlg = dialogs.create('/views/dialogs/offices/create.html', 'OfficeController', {}, {});
+	}
 
-		$scope.all = function()
-		{
+	$scope.cancel = function()
+	{
+		dlg.close();
+	}
 
-		}
+	$scope.store = function()
+	{	
+		console.log($scope.office);
+		Office.save($scope.office);
+		dlg.close();	
+	}
 
-		$scope.update = function()
-		{
-
-		}
-
-		$scope.delete = function ()
-		{
-
-		}
+	$scope.update = function(office, id)
+	{
+		Office.update({ id: id }, office);
+	}
 
 });

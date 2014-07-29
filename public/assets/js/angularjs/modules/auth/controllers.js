@@ -7,7 +7,7 @@
  * Directives: $scope, dialogs, Router, UserService
  */
 
-angular.module('Auth').controller('AuthController', function($scope, dialogs, RedirectTo, UserService) {
+angular.module('Auth').controller('AuthController', function($scope, dialogs, RedirectTo, AuthService) {
 
 
 	// Process a Login Request
@@ -17,7 +17,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Re
 		var dlg = dialogs.wait('Processing Request', 'Please wait while we authenticate your credentials');
 
 		// Attempt to Log the User In
-		UserService.login($scope.creds).then(
+		AuthService.login($scope.creds).then(
 
 			// Success Function
 			function(user) {
@@ -61,7 +61,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Re
 				dlg = dialogs.wait('Processing Request', 'Logging you out...');
 
 				// Attempt to Log User Out
-				UserService.logout().then(
+				AuthService.logout().then(
 
 					// Successful
 					function() {

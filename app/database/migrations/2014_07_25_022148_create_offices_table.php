@@ -15,7 +15,7 @@ class CreateOfficesTable extends Migration {
 		//
 		Schema::create('offices', function($table) {
 
-			$table->increments('id');
+			$table->integer('id');
 
 			$table->integer('user_id');
 

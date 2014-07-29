@@ -20,6 +20,12 @@ Route::model('users','User');
 
 Route::controller('auth', 'AuthController');
 
+// API v1 Resources
+Route::group(array('prefix'=>'api/v1'), function() {
+	Route::resource('offices','OfficeController');	
+});
+
+
 Route::get('/', function()
 {
 	return View::make('index');

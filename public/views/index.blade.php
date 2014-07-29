@@ -22,6 +22,8 @@
   <% css('dialogs.css')%>
   <% css('site_default.css') %>
 
+  <% css('dependencies/xeditable.css') %>
+
   <!-- JAVASCRIPT -->
   <!--<script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
   <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
@@ -42,6 +44,7 @@
   <%js('dependencies/angular-resource.js')%> 
   <%js('dependencies/angular-sanitize.js')%> 
   <%js('dependencies/angular-translate.js')%>
+  <%js('dependencies/xeditable.js')%>
 
   <!-- Angular Add Ons -->
   <%js('extras/dialogs.js')%>
@@ -76,6 +79,7 @@
   <!-- Module: Offices -->
   <%js('angularjs/modules/offices/config.js')%>
   <%js('angularjs/modules/offices/controllers.js')%>
+  <%js('angularjs/modules/offices/services.js')%>
 
   <!-- Module: Users -->
   <%js('angularjs/modules/tasks/config.js')%>
