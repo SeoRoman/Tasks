@@ -64,6 +64,10 @@ angular.module('Offices').controller('OfficeController', function($rootScope, $s
 	}	
 
 	$scope.$on('offices-create', function(event, args) {
+		if (!$scope.validateId(args.office.id, args.office.id))
+		{
+			
+		}
 		$scope.offices.push(args.office);
 	});
 });
