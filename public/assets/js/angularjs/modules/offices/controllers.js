@@ -1,7 +1,9 @@
-angular.module('Offices').controller('OfficeController', function($rootScope, $scope, $resource, dialogs, Office) {
+
+
+angular.module('Offices').controller('OfficeController2', function($rootScope, $scope, $resource, dialogs, Office) {
 
 	$scope.offices = [];
-	$scope.error = false;
+	$scope.office = {};	
 	
 	Office.query(function(res) {
 		$scope.offices = res;
@@ -21,13 +23,13 @@ angular.module('Offices').controller('OfficeController', function($rootScope, $s
 		});
 	}
 
-	$scope.delete = function(officeId, index)
+	$scope.delete = function(id, index)
 	{
 		dlg = dialogs.wait('Delete Office', 'Please wait...');
 
 		$scope.offices.splice(index, 1);
 
-		Office.delete({ Id: officeId }, function() {
+		Office.delete({ Id: id }, function() {
 			dlg.close();
 		});
 	}
@@ -62,39 +64,5 @@ angular.module('Offices').controller('OfficeController', function($rootScope, $s
 
 		return false;
 	}	
-
-	$scope.$on('offices-create', function(event, args) {
-		if (!$scope.validateId(args.office.id, args.office.id))
-		{
-			
-		}
-		$scope.offices.push(args.office);
-	});
-});
-
-angular.module('Offices').controller('CreateOfficeController', function($rootScope, $scope, $modalInstance, dialogs, Office) {
-	
-	$scope.office = {};
-
-	$scope.save = function()
-	{	
-		$modalInstance.close();
-		loader = dialogs.wait('Creating Office', 'Please wait...');
-
-		Office.save($scope.office, function(office) {
-			
-			$rootScope.$broadcast('offices-create', { office: $scope.office });
-			loader.close();
-
-		}, function() {
-			loader.close();
-			error = dialogs.error('Error', 'There was a problem with your request');
-		});
-	}	
-
-	$scope.cancel = function()
-	{
-		$modalInstance.close();
-	}
 
 });

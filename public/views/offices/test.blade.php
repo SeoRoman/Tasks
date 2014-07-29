@@ -1,6 +1,6 @@
 <button class="btn btn-primary" ng-click="create()">Add New Office</button>
 
-<table class="table">
+<table class="table" ng-controller="EditOfficeController">
 
 	<tr>
 		<td style="width:5%">ID</td>
@@ -14,12 +14,12 @@
 
 	<tr ng-repeat="office in offices">
 		<td>
-			<span editable-text="office.id" e-form="officeRow" e-name="id" onbeforesave="validateId($data, office.id, $index)">
+			<span editable-text="office.id" e-form="officeRow" e-name="id">
 				{{ office.id }}
 			</span>
 		</td>
 		<td>
-			<span editable-text="office.name" e-form="officeRow" e-name="name" onbeforesave="validateName($data, office.id)">
+			<span editable-text="office.name" e-form="officeRow" e-name="name">
 				{{ office.name }}
 			</span>
 		</td>
@@ -39,12 +39,12 @@
 			</span>
 		</td>
 		<td>
-			<span editable-text="office.zip" e-form="officeRow" e-nam="zip"	>
+			<span editable-text="office.zip" e-form="officeRow" e-name="zip">
 				{{ office.zip }}
 			</span>
 		</td>
 		<td>
-			<form editable-form name="officeRow" onaftersave="update($data, office.id)" ng-show="officeRow.$visible" class="form-button form-inline" shown="inserted == office">
+			<form editable-form name="officeRow" onaftersave="update($data, $index)" ng-show="officeRow.$visible" class="form-button form-inline" shown="inserted == office">
 				<button type="submit" ng-disabled="officeRow.$waiting" class="btn btn-xs btn-primary">Save</button>
 				<button type="submit" ng-disabled="officeRow.$waiting" class="btn btn-xs btn-danger" ng-click="officeForm.$cancel()">Cancel</button>
 			</form>

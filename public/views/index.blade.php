@@ -55,12 +55,7 @@
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
 
-  <!-- Module: Application -->
-  <%js('angularjs/modules/application/Application.js')%>
-  <%js('angularjs/modules/application/config.js')%>
-  <%js('angularjs/modules/application/controllers.js')%> 
-  <%js('angularjs/modules/application/services.js')%>
-  <%js('angularjs/modules/application/constants.js')%>
+  @include('includes/modules/application')
 
   <!-- Module: Auth -->
   <%js('angularjs/modules/auth/config.js')%> 
@@ -76,10 +71,7 @@
   <%js('angularjs/modules/tasks/config.js')%> 
   <%js('angularjs/modules/tasks/controllers.js')%>
 
-  <!-- Module: Offices -->
-  <%js('angularjs/modules/offices/config.js')%>
-  <%js('angularjs/modules/offices/controllers.js')%>
-  <%js('angularjs/modules/offices/services.js')%>
+  @include('includes/modules/office')
 
   <!-- Module: Users -->
   <%js('angularjs/modules/tasks/config.js')%>

@@ -39,17 +39,37 @@ class OfficeController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-		$data = array(
+		// Create the Data Array
+		$data = [
 			'id' => Input::get('id'),
 			'name' => Input::get('name'),
 			'address' => Input::get('address'),
 			'city' => Input::get('city'),
 			'state' => Input::get('state'),
 			'zip' => Input::get('zip')
-		);
+		];
 
-		return $this->office->create($data);
+		$rules = array('id'=>'required');
+		$validator = Validator::make($data, $rules);
+
+		// Validation Request
+		if ($validator->fails())
+		{
+			$messages = $validator->messages();
+			return Response::json([ 'status' => 0, 'message' => $messages->first() ], 400);
+		}
+
+		// Server Request
+		try {
+			$office = new Office();
+			$office->fill($data);
+			$office->save();
+			return Response::json([ 'data' => $office ], 200);
+		}
+		catch(\Exception $e) {
+			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage() ], 500);
+		}
+
 	}
 
 
@@ -86,6 +106,16 @@ class OfficeController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$office = $this->office->withTrashed()->where('id', $id)->first();
+
+		if (!$office) {
+			return Response::json(array('message' => 'Office Not Found'), 400);
+		}
+		if ($office->deleted_at)
+		{
+			return Response::json(array('message' => 'Deleted Item: Only Administrator Access'), 400);
+		}
+
 		//
 		$data = array(
 			'id' => Input::get('id'),
