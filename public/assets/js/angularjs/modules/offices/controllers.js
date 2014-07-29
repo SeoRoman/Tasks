@@ -33,15 +33,13 @@ angular.module('Offices').controller('CreateOfficeController', function($rootSco
 		$modalInstance.close();
 	}
 
-	$scope.store = function()
-	{	
-		console.log($scope.office);
+		$scope.store = function()
+		{	
+			var resource = Office.save($scope.office);
 
-		var resource = Office.save($scope.office);
+			$rootScope.$broadcast('offices-create', { office: resource } );
 
-		$rootScope.$broadcast('offices-create', { office: resource } );
-
-		$modalInstance.close();	
-	}
+			$modalInstance.close();	
+		}
 
 });
