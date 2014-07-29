@@ -39,8 +39,6 @@ class OfficeController extends \BaseController {
 	 */
 	public function store()
 	{
-		dd(Input::all());
-
 		//
 		$data = array(
 			'id' => Input::get('id'),

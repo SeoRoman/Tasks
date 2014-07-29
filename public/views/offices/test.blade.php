@@ -6,7 +6,7 @@
 		<td>Office ID</td>
 	</tr>
 
-	<tr ng-repeat="office in data.offices">
+	<tr ng-repeat="office in offices">
 		<td>{{ office.id || '0' }}</td>
 		<td>
 			<a href="javascript:void(0)" editable-text="office.name" onaftersave="update(office, office.id)">

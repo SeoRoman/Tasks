@@ -1,6 +1,6 @@
 angular.module('Offices').service('Office', function($http, $resource) {
 
-	return $resource('api/v1/offices/:id', {id: '@id'},  
+	return $resource('api/v1/offices/:Id', {Id: '@Id'},  
 		{
 			'get':    {method:'GET'},
 	    	'save':   {method:'POST'},
