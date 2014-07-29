@@ -20,8 +20,9 @@ angular.module('Offices').controller('OfficeController', function($scope, $resou
 
 	$scope.store = function()
 	{	
-		console.log($scope.office);
-		Office.save($scope.office);
+		console.log('Saving Office...');
+		console.log($scope.new);
+		Office.save($scope.new);
 		dlg.close();	
 	}
 
