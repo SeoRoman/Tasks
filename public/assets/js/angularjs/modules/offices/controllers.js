@@ -9,31 +9,6 @@ angular.module('Offices').controller('OfficeController2', function($rootScope, $
 		$scope.offices = res;
 	});		
 
-	$scope.create = function()
-	{
-		createDialog = dialogs.create('/views/dialogs/offices/create.php', 'CreateOfficeController', {}, {});
-	}	
-
-	$scope.update = function(data, id)
-	{
-		dlg = dialogs.wait('Updating Office', 'Please wait...');
-
-		Office.update({ Id: id }, data, function() {
-			dlg.close();
-		});
-	}
-
-	$scope.delete = function(id, index)
-	{
-		dlg = dialogs.wait('Delete Office', 'Please wait...');
-
-		$scope.offices.splice(index, 1);
-
-		Office.delete({ Id: id }, function() {
-			dlg.close();
-		});
-	}
-
 	// Validators
 	$scope.validateId = function(id, officeId)
 	{

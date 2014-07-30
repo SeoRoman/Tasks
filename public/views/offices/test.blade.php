@@ -46,7 +46,7 @@
 		<td>
 			<form editable-form name="officeRow" onbeforesave="update(office, office.id)" ng-show="officeRow.$visible" class="form-button form-inline" shown="inserted == office">
 				<button type="submit" ng-disabled="officeRow.$waiting" class="btn btn-xs btn-primary">Save</button>
-				<button type="submit" ng-disabled="officeRow.$waiting" class="btn btn-xs btn-danger" ng-click="officeForm.$cancel()">Cancel</button>
+				<button ng-disabled="officeRow.$waiting" class="btn btn-xs btn-danger" ng-click="officeRow.$cancel()">Cancel</button>
 			</form>
 			<div class="buttons" ng-show="!officeRow.$visible">
           		<button class="btn btn-xs btn-primary" ng-click="officeRow.$show()">Edit</button>

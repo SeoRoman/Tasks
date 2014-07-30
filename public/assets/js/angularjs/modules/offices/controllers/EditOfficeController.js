@@ -1,5 +1,5 @@
 // Edit Office Controller
-angular.module('Offices').controller('EditOfficeController', function($scope, Dialog, Broadcast, Office) {
+angular.module('Offices').controller('EditOfficeController', function($scope, $q, Dialog, Broadcast, Office) {
 	
 	$scope.delete = function(id, index)
 	{
@@ -19,23 +19,19 @@ angular.module('Offices').controller('EditOfficeController', function($scope, Di
 	// actually trigger a return TRUE / FALSE....
 	$scope.update = function(office, id)
 	{
-		_status = true;
-
 		Dialog.loading('loader');
 
-		return Office.update({ Id: id }, office, function() {
-			Dialog.close('loader');
+		console.log(office, id);
 
-			// See here, I should return true / false
+		var officeTest = Office.update({ Id: id }, office, function() {
+			Dialog.close('loader');
 		}, function(response) {
 			Dialog.close('loader');
 			Dialog.error('error', response);
-
-			_status = false;
 			// See here, I should return true / false
 		});
 
-		console.log(_status);
-		return _status;
+		return officeTest.$promise;
+
 	}
 });
