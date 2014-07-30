@@ -109,11 +109,11 @@ class OfficeController extends \BaseController {
 		$office = $this->office->withTrashed()->where('id', $id)->first();
 
 		if (!$office) {
-			return Response::json(array('message' => 'Office Not Found'), 400);
+			return Response::json(array('status'=> 0, 'message' => 'Office Not Found'), 400);
 		}
 		if ($office->deleted_at)
 		{
-			return Response::json(array('message' => 'Deleted Item: Only Administrator Access'), 400);
+			return Response::json(array('status' => 0, 'message' => 'Deleted Item: Only Administrator Access'), 400);
 		}
 
 		//
@@ -126,11 +126,17 @@ class OfficeController extends \BaseController {
 			'zip' => Input::get('zip')
 		);
 
-		$office = $this->office->find($id);
+		try {
+			$office = $this->office->find($id);
+			$office->fill($data);
+			$office->save();
+			return Response::json([ 'data' => $office ], 200);
+		}
+		catch(\Exception $e)
+		{
+			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage() ], 500);
+		}
 
-		$office->fill($data);
-
-		$office->save();
 	}
 
 

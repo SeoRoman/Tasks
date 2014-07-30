@@ -47,6 +47,8 @@ angular.module('Application').service('Dialog', function(dialogs) {
 	}
 
 	this.error = function(name, response) {
+		console.log(response);
+
 		_status = response.status ? ' (' + response.status + ') ' : '';
 		_data_status = response.data.status ? ' (' + response.data.status + ') ' : '';
 
