@@ -7,14 +7,14 @@
  * Directives: $scope, dialogs, Router, UserService
  */
 
-angular.module('Auth').controller('AuthController', function($scope, dialogs, RedirectTo, Auth) {
+angular.module('Auth').controller('AuthController', function($scope, Dialog, RedirectTo, Auth) {
 
 
 	// Process a Login Request
 	$scope.login = function() {
 
 		// Display Processing Dialog
-		var dlg = dialogs.wait('Processing Request', 'Please wait while we authenticate your credentials');
+		Dialog.loading('loader');
 
 		// Attempt to Log the User In
 		Auth.login($scope.creds).then(
@@ -26,7 +26,7 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Re
 				$scope.setCurrentUser(user);
 
 				// Close Dialog Box
-				dlg.close();
+				Dialog.close('loader');
 
 				// Redirect to Dashboard
 				RedirectTo.dashboard();
@@ -34,13 +34,13 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Re
 			}, 
 
 			// Failed Function
-			function() {
+			function(response) {
 
 				// Close Previous Dialog
-				dlg.close();
+				Dialog.close('loader');
 
 				// Dialog with Error
-				dlg = dialogs.error('Login Error', 'Invalid User Credentials');
+				Dialog.error(response);
 			}
 		);
 	};
@@ -48,56 +48,57 @@ angular.module('Auth').controller('AuthController', function($scope, dialogs, Re
 	// Process a Logout Request
 	$scope.logout = function() {
 
-		// Display Confirmation Dialog
-		dlg = dialogs.confirm('Logout', 'Are you sure you want to logout?', { dialogFade: true, backdropFade: true});
+		if ($scope.currentUser) {
+				// Display Confirmation Dialog
+				dlg = Dialog.confirm('Logout', 'Are you sure you want to logout?', { dialogFade: true, backdropFade: true});
 
-		// Check Result of Option Selected
-		dlg.result.then(
+				// Check Result of Option Selected
+				dlg.result.then(
 
-			// Yes Option Selected
-			function(button) {
+					// Yes Option Selected
+					function(button) {
 
-				// Processing Logout Request Dialog
-				dlg = dialogs.wait('Processing Request', 'Logging you out...');
+						// Processing Logout Request Dialog
+						Dialog.loading('loader');
 
-				// Attempt to Log User Out
-				Auth.logout().then(
+						// Attempt to Log User Out
+						Auth.logout().then(
 
-					// Successful
-					function() {
+							// Successful
+							function() {
 
-						// Clear Current User
-						$scope.clearCurrentUser();
+								// Clear Current User
+								$scope.clearCurrentUser();
 
-						// Close Previous Dialog
-						dlg.close();
+								// Close Previous Dialog
+								Dialog.close('loader');
 
-						// Redirect to Login Page
-						RedirectTo.login();
+								// Redirect to Login Page
+								RedirectTo.login();
 
-					}, 
+							}, 
+							
+							// Failed (User Not Logged In)
+							function(response) {
+
+								// Close Previous Dialog
+								Dialog.close('loader');
+
+								// Dialog with Error
+								Dialog.error(response);
+							}
+						);
 					
-					// Failed (User Not Logged In)
-					function() {
+					
+				}, 
+				// No Option Selected
+				function(button) {
 
-						// Close Previous Dialog
-						dlg.close();
-
-						// Dialog with Error
-						dlg = dialogs.error('Logout Error', 'You are not logged in...');
-					}
-				);
-			
-			
-		}, 
-
-			// No Option Selected
-			function(button) {
-
-				// Close Dialog Box
-				dlg.close();
-			}
-		);
-	};
+					// Close Dialog Box
+					dlg.close();
+				}
+			);
+		};			
+	}	
 
 });
