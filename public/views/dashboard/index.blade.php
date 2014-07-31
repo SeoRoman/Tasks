@@ -1,3 +1,5 @@
+<div ng-controller="DashboardController">
+
 <div class="container-fluid" ng-controller="TaskController">
 
 	<div class="row">
@@ -28,10 +30,10 @@
 			<div class="clearfix"></div>
 			</h3>
 
-			<div class="columnOne" ng-repeat="task in data.columnOne">
+			<div class="columnOne" ng-repeat="task in tasks">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading"><a href="javascript:void(0);" ng-click="togglePanel(task)">{{ task.title }} <span class="pull-right"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></span></a></div>
+	              <div class="panel-heading"><a href="javascript:void(0);" ng-click="togglePanel(task)">{{ task.subject }} <span class="pull-right"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></span></a></div>
 	              <div class="panel-body" ng-show="task.show" ng-animate="customClass">
 	                Panel content
 	              </div>
@@ -57,10 +59,10 @@
 			</select>
 			</h3>
 
-			<div class="columnTwo" ng-repeat="task in data.columnTwo">
+			<div class="columnTwo" ng-repeat="task in tasks">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
+	              <div class="panel-heading">{{ task.subject }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
 	              <div class="panel-body" ng-show="task.show">
 	                Panel content
 	              </div>
@@ -86,10 +88,10 @@
 			</select>
 			</h3>
 
-			<div class="columnThree" ng-repeat="task in data.columnThree">
+			<div class="columnThree" ng-repeat="task in tasks">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
+	              <div class="panel-heading">{{ task.subject }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
 	              <div class="panel-body" ng-show="task.show">
 	                Panel content
 	              </div>
@@ -115,10 +117,10 @@
 			</select>
 			</h3>
 
-			<div class="columnFour" ng-repeat="task in data.columnFour">
+			<div class="columnFour" ng-repeat="task in tasks">
 
 	            <div class="panel panel-info">
-	              <div class="panel-heading">{{ task.title }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
+	              <div class="panel-heading">{{ task.subject }} <span class="pull-right"><a href="javascript:void();" ng-click="togglePanel(task)"><i ng-hide="task.show" class="fa fa-plus"></i><i ng-show="task.show" class="fa fa-minus"></i></a></span></div>
 	              <div class="panel-body" ng-show="task.show">
 	                Panel content
 	              </div>
@@ -129,4 +131,5 @@
 
 	</div>
 
+</div>
 </div>

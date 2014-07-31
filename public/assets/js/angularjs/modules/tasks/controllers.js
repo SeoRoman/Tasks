@@ -45,4 +45,6 @@ angular.module('Tasks').controller('TaskController', function($scope, Dialog, Ta
 
 	});
 
+	/* Specitifcs */
+
 });

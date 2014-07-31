@@ -1,14 +1,9 @@
 angular.module('Auth').config(function($routeProvider) {
 
 	$routeProvider.when('/', {
-		templateUrl: 'views/demo/index.blade.php'
-	});
-	/*
-	$routeProvider.when('/', {
-		templateUrl: 'views/auth/login.blade.php',
+		templateUrl: 'views/auth/index.blade.php',
 		controller: 'AuthController'
 	});
-*/
 
 	$routeProvider.when('/auth/logout', {
 		controller: 'AuthController',

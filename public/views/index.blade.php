@@ -92,6 +92,7 @@
 
   <!-- DEMO MODE -->
   <%js('DemoController.js')%>
+  <%js('DemoConfig.js')%>
 
  <base href="/#/">
 </head>
@@ -147,9 +148,7 @@
           </div>
         </div>
         <div class="spacer-10"></div>
-        <!--<div ng-view></div>-->
-
-        @include('demo/index')
+        <div ng-view></div>
       </div>
     </div>
 </body>

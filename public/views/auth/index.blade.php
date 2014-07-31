@@ -5,7 +5,7 @@
       </div>
     </div>
   </div>
-  <div class="container animated flipInY">
+  <div class="container animated flipInY" ng-controller="AuthController">
     <div class="row">
       <div class="col-lg-6 col-lg-offset-3">
 
