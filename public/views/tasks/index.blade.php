@@ -1,5 +1,3 @@
-<div ng-controller="TaskController">
-
 <button class="btn btn-primary" ng-click="create()">Add New Task</button>
 
 <table class="table">
@@ -34,4 +32,3 @@
 	</tr>
 
 </table>
-</div>

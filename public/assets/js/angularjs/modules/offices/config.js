@@ -1,7 +1,7 @@
 angular.module('Offices').config(function($routeProvider) {
 
-	$routeProvider.when('/office/test', {
-		templateUrl: 'views/offices/test.blade.php',
+	$routeProvider.when('/offices', {
+		templateUrl: 'views/offices/index.blade.php',
 		controller: 'OfficeController'
 	});
 

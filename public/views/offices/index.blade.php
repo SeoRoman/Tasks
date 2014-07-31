@@ -1,4 +1,3 @@
-<div ng-controller="OfficeController">
 <button class="btn btn-primary" ng-click="create()">Add New Office</button>
 
 <table class="table">
@@ -57,4 +56,3 @@
 	</tr>
 
 </table>
-</div>

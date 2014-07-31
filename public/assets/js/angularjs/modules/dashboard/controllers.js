@@ -1,5 +1,5 @@
-angular.module('Dashboard').controller('DashboardController', function($scope, RedirectTo) {
+angular.module('Dashboard').controller('DashboardController', function($scope, User, Dialog, RedirectTo) {
 
-	if (!$scope.currentUser) { RedirectTo.login(); }
+	User.requireAuth($scope.currentUser);
 
 });

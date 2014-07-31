@@ -141,6 +141,7 @@
       </navigation>
     </aside>
     <div id="main">
+      @include('demo')
       <div class="container-fluid">
         <div class="row" ng-show="message">
           <div class="col-lg-6 col-lg-offset-3">

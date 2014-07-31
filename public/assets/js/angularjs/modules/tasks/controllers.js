@@ -1,4 +1,6 @@
-angular.module('Tasks').controller('TaskController', function($scope, Dialog, Task, CRUD) {
+angular.module('Tasks').controller('TaskController', function($scope, User, Dialog, Task, CRUD) {
+
+	User.requireAuth($scope.currentUser);
 
  	CRUD.setModel(Task.resource());
 

@@ -10,6 +10,16 @@ angular.module('Application').service('Dialog', function(dialogs) {
 		_dialogs[name] = dialogs.wait(title, message);
 	}
 
+	this.authRequired = function()
+	{		
+		var dialog = _dialogs['authRequired'];
+
+		if (typeof _dialogs['authRequired'] !== undefined || typeof dialog.opened !== undefined || !dialog.opened)
+		{
+			_dialogs['authRequired'] = dialogs.error('Authentication Required', 'You must be authenticated');
+		}
+	}
+
 	this.create = function(template, controller, data, options)
 	{
 		_template = template;
@@ -33,6 +43,14 @@ angular.module('Application').service('Dialog', function(dialogs) {
 		_data_status = response.data.status ? ' (' + response.data.status + ') ' : '';
 
 		dialogs.error(response.statusText + _status, response.data.message + _data_status);
+	}
+
+	this.errorMessage = function(title, message)
+	{
+		_title = title ? title : 'Default Title';
+		_message = message ? message : 'Default Message';
+
+		dialogs.error(_title, _message);
 	}
 
 	this.confirm = function(title, message)

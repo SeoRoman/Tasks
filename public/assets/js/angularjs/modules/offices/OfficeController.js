@@ -11,7 +11,9 @@
  *
  **********************************************************************************/
 
- angular.module('Offices').controller('OfficeController', function($scope, Dialog, Office, CRUD) {
+ angular.module('Offices').controller('OfficeController', function($scope, User, Dialog, Office, CRUD) {
+
+	User.requireAuth($scope.currentUser);
 
  	CRUD.setModel(Office.resource());
 
