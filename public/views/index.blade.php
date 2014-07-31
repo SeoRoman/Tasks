@@ -35,7 +35,6 @@
   <%js('dependencies/jquery-2.1.1.min.js')%>
   <%js('dependencies/jquery-ui.min.js')%>
   <%js('dependencies/bootstrap.js')%>
-  <%js('menu.js')%>
 
   <!-- Angular Core -->
   <%js('dependencies/angular.js')%>
@@ -56,10 +55,6 @@
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
 
-<<<<<<< HEAD
-  @include('includes/modules/application')
-  <%js('angularjs/modules/application/directives.js')%>
-=======
   <!-- Module: Application -->
   <%js('angularjs/modules/application/Application.js')%>
   <%js('angularjs/modules/application/config.js')%>
@@ -67,8 +62,7 @@
   <%js('angularjs/modules/application/services/Dialog.js')%>
   <%js('angularjs/modules/application/services/RedirectTo.js')%>
   <%js('angularjs/modules/application/services/CRUD.js')%>
-  <%js('angularjs/modules/application/controllers/ApplicationController.js')%>
->>>>>>> origin/master
+  <%js('angularjs/modules/application/ApplicationController.js')%>
 
   <!-- Module: Auth -->
   <%js('angularjs/modules/auth/config.js')%> 
@@ -86,9 +80,7 @@
 
   <!-- Module: Offices -->
   <%js('angularjs/modules/offices/config.js')%>
-  <%js('angularjs/modules/offices/controllers/OfficeController.js')%>
-  <%js('angularjs/modules/offices/controllers/EditOfficeController.js')%>
-  <%js('angularjs/modules/offices/controllers/CreateOfficeController.js')%>
+  <%js('angularjs/modules/offices/OfficeController.js')%>
   <%js('angularjs/modules/offices/services/Office.js')%>
 
   <!-- Module: Users -->
@@ -98,26 +90,27 @@
  <base href="/#/">
 </head>
 <body ng-controller="ApplicationController">
-  <!-- HEADER 
+  <!-- HEADER -->
     <header id="header" class="animated fadeInDown">
       <div id="logo-group">
-        <!-- PLACE LOGO HERE 
-        <span id="logo"> Worth Tasks </span>-->
-        <!-- END LOGO PLACEHOLDER 
-      </div>-->
+        <!-- PLACE LOGO HERE -->
+        <span id="logo"> Worth Tasks </span>
+        <!-- END LOGO PLACEHOLDER -->
+      </div>
 
-      <!-- pulled right: nav area 
-      <div class="pull-right">-->
+      <!-- pulled right: nav area -->
+      <div class="pull-right">
 
-        <!-- fullscreen button 
+        <!-- fullscreen button -->
         <div id="fullscreen" class="btn-header transparent pull-right">
           <span> <a href="javascript:void(0);" action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
-        </div>-->
+        </div>
         <!-- end fullscreen button -->
         
-        <!-- logout button 
+        <!-- logout button -->
         <div id="logout" class="btn-header transparent pull-right" ng-controller="AuthController">
           <span> <a title="Sign Out" ng-click="logout()"><i class="fa fa-sign-out"></i></a> </span>
+<<<<<<< HEAD
         </div>-->
         <!-- end logout button 
 
@@ -128,25 +121,21 @@
     <aside id="left-panel">
       <div class="header">
         <span>Worth Finance</span>
-      </div>
-      <navigation>
-        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
-        <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs" >
-          <nav:item data-view="/guide" title="Developer Guide" />
-          <nav:item data-view="/api" title="API Reference" />
-        </nav:group>
-      </navigation>
-    </aside>
-    <div id="main">
-      <div class="container-fluid">
-        <div class="row" ng-show="message">
-          <div class="col-lg-6 col-lg-offset-3">
-            <div id="message" class="alert alert-{{ alert }}">{{ message }}</div>
-          </div>
+=======
         </div>
-        <div class="spacer-10"></div>
-        <div ng-view></div>
+        <!-- end logout button -->
+
+>>>>>>> origin/master
       </div>
-    </div>
+      <!-- end pulled right: nav area -->
+    </header>
+    <div class="container-fluid">
+      <div class="row" ng-show="message">
+        <div class="col-lg-6 col-lg-offset-3">
+          <div id="message" class="alert alert-{{ alert }}">{{ message }}</div>
+        </div>
+      </div>
+      <div class="spacer-10"></div>
+      <div ng-view></div>
 </body>
 </html>

@@ -2,9 +2,12 @@ angular.module('Application').service('Dialog', function(dialogs) {
 
 	var _dialogs = Object();
 
-	this.loading = function(name) 
+	this.loading = function(name, title, message) 
 	{
-		_dialogs[name] = dialogs.wait('Processing Request', 'Please wait while your request is processed');
+		_title = (title !== undefined ? title : 'Processing Request');
+		_message = (message != undefined ? message : 'Please wait while your request is processed');
+
+		_dialogs[name] = dialogs.wait(title, message);
 	}
 
 	this.create = function(template, controller, data, options)

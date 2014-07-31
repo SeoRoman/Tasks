@@ -1,4 +1,4 @@
-angular.module('Auth').service('AuthService', function($http) {
+angular.module('Auth').service('Auth', function($http) {
 
 	this.login = function(credentials) {
 		return $http.post('auth/login', credentials).then(function(response) {
@@ -12,7 +12,7 @@ angular.module('Auth').service('AuthService', function($http) {
 
 });
 
-angular.module('Auth').service('UserService', function($http) {
+angular.module('Auth').service('User', function($http) {
 
 	this.register = function() {
 

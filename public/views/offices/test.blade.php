@@ -1,6 +1,6 @@
 <button class="btn btn-primary" ng-click="create()">Add New Office</button>
 
-<table class="table" ng-controller="EditOfficeController">
+<table class="table">
 
 	<tr>
 		<td style="width:5%">ID</td>
