@@ -13,7 +13,7 @@
 
  angular.module('Offices').controller('OfficeController', function($scope, User, Dialog, Office, CRUD) {
 
-	User.requireAuth($scope.currentUser);
+	//User.requireAuth($scope.currentUser);
 
  	CRUD.setModel(Office.resource());
 
