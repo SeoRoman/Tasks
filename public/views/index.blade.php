@@ -58,6 +58,7 @@
   <!-- Module: Application -->
   <%js('angularjs/modules/application/Application.js')%>
   <%js('angularjs/modules/application/config.js')%>
+  <%js('angularjs/modules/application/directives.js')%>
   <%js('angularjs/modules/application/services/Broadcast.js')%>
   <%js('angularjs/modules/application/services/Dialog.js')%>
   <%js('angularjs/modules/application/services/RedirectTo.js')%>
@@ -90,27 +91,26 @@
  <base href="/#/">
 </head>
 <body ng-controller="ApplicationController">
-  <!-- HEADER -->
+  <!-- HEADER 
     <header id="header" class="animated fadeInDown">
-      <div id="logo-group">
-        <!-- PLACE LOGO HERE -->
-        <span id="logo"> Worth Tasks </span>
-        <!-- END LOGO PLACEHOLDER -->
-      </div>
+      <div id="logo-group">-->
+        <!-- PLACE LOGO HERE 
+        <span id="logo"> Worth Tasks </span>-->
+        <!-- END LOGO PLACEHOLDER 
+      </div>-->
 
-      <!-- pulled right: nav area -->
-      <div class="pull-right">
+      <!-- pulled right: nav area 
+      <div class="pull-right">-->
 
-        <!-- fullscreen button -->
+        <!-- fullscreen button 
         <div id="fullscreen" class="btn-header transparent pull-right">
           <span> <a href="javascript:void(0);" action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
-        </div>
+        </div>-->
         <!-- end fullscreen button -->
         
-        <!-- logout button -->
+        <!-- logout button
         <div id="logout" class="btn-header transparent pull-right" ng-controller="AuthController">
           <span> <a title="Sign Out" ng-click="logout()"><i class="fa fa-sign-out"></i></a> </span>
-<<<<<<< HEAD
         </div>-->
         <!-- end logout button 
 
@@ -121,21 +121,25 @@
     <aside id="left-panel">
       <div class="header">
         <span>Worth Finance</span>
-=======
-        </div>
-        <!-- end logout button -->
-
->>>>>>> origin/master
       </div>
-      <!-- end pulled right: nav area -->
-    </header>
-    <div class="container-fluid">
-      <div class="row" ng-show="message">
-        <div class="col-lg-6 col-lg-offset-3">
-          <div id="message" class="alert alert-{{ alert }}">{{ message }}</div>
+      <navigation>
+        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
+        <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs" >
+          <nav:item data-view="/guide" title="Developer Guide" />
+          <nav:item data-view="/api" title="API Reference" />
+        </nav:group>
+      </navigation>
+    </aside>
+    <div id="main">
+      <div class="container-fluid">
+        <div class="row" ng-show="message">
+          <div class="col-lg-6 col-lg-offset-3">
+            <div id="message" class="alert alert-{{ alert }}">{{ message }}</div>
+          </div>
         </div>
+        <div class="spacer-10"></div>
+        <div ng-view></div>
       </div>
-      <div class="spacer-10"></div>
-      <div ng-view></div>
+    </div>
 </body>
 </html>
