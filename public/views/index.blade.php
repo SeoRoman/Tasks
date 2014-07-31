@@ -71,7 +71,10 @@
   <%js('angularjs/modules/tasks/config.js')%> 
   <%js('angularjs/modules/tasks/controllers.js')%>
 
-  @include('includes/modules/office')
+  <!-- Module: Offices -->
+  <%js('angularjs/modules/offices/config.js')%>
+  <%js('angularjs/modules/offices/controllers.js')%>
+  <%js('angularjs/modules/offices/services.js')%>
 
   <!-- Module: Users -->
   <%js('angularjs/modules/tasks/config.js')%>

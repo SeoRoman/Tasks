@@ -50,7 +50,7 @@
 			</form>
 			<div class="buttons" ng-show="!officeRow.$visible">
           		<button class="btn btn-xs btn-primary" ng-click="officeRow.$show()">Edit</button>
-          		<button class="btn btn-xs btn-danger" ng-click="delete(office.id, $index)">Delete</button>
+          		<button class="btn btn-xs btn-danger" ng-click="delete($index, office.id)">Delete</button>
         	</div>  
 		</td>
 	</tr>

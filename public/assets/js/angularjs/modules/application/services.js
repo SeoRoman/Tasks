@@ -36,33 +36,39 @@ angular.module('Application').service('Dialog', function(dialogs) {
 		_dialogs[name] = dialogs.wait('Processing Request', 'Please wait while your request is processed');
 	}
 
-	this.create = function(name, template, controller, data, options)
+	this.create = function(template, controller, data, options)
 	{
 		_template = template;
 		_controller = controller;
 		_data = (data !== undefined ? data : {});
 		_options = (options !== undefined ? options : {});
 
-		_dialogs[name] = dialogs.create(_template, _controller, _data, _options);
+		dialogs.create(_template, _controller, _data, _options);
 	}
 
-	this.error = function(name, response) {
-		console.log(response);
+	this.notify = function(title, message)
+	{
+		_title = (title !== undefined ? title : 'Notification');
+		_message = (message !== undefined ? message : 'You have been notified');
 
+		dialogs.notify(title, message);
+	}
+
+	this.error = function(response) {
 		_status = response.status ? ' (' + response.status + ') ' : '';
 		_data_status = response.data.status ? ' (' + response.data.status + ') ' : '';
 
-		_dialogs[name] = dialogs.error(response.statusText + _status, response.data.message + _data_status);
+		dialogs.error(response.statusText + _status, response.data.message + _data_status);
 	}
 
-	this.confirm = function(name, title, message)
+	this.confirm = function(title, message)
 	{
 		_title = (title ? title : '');
 		_message = (message ? message : '');
 
-		_dialogs[name] = dialogs.confirm(title, message);
+		var dialog = dialogs.confirm(title, message);
 
-		return _dialogs[name];	
+		return dialog;	
 	}
 
 	this.close = function(name) {
