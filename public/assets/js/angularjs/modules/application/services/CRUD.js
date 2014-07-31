@@ -1,4 +1,4 @@
-angular.module('Application').service('CRUD', function($rootScope, Dialog) {
+angular.module('Application').service('CRUD', function($rootScope, Dialog, Broadcast) {
 
 	var _model = null;
 	var _createForm = null;
@@ -10,13 +10,12 @@ angular.module('Application').service('CRUD', function($rootScope, Dialog) {
 
 	this.query = function()
 	{
-		console.log('get all');
 		return _model.query();
 	}
 
-	this.create = function()
+	this.create = function(templateUrl, controller)
 	{
-		_createForm = Dialog.create('/views/dialogs/offices/create.php', 'CreateOfficeController');
+		_createForm = Dialog.create(templateUrl, controller);
 	}
 
 	this.save = function(resource, broadcast)
@@ -34,7 +33,7 @@ angular.module('Application').service('CRUD', function($rootScope, Dialog) {
 			Dialog.close('loader');
 
 			// Send out the Notice
-			Broadcast.send(broadcast, { data: resource });	
+			Broadcast.send(broadcast, { resource: resource });	
 
 		}, function(response) {
 
@@ -49,6 +48,45 @@ angular.module('Application').service('CRUD', function($rootScope, Dialog) {
 	this.createCancel = function()
 	{
 		_createForm.close();
+	}
+
+	this.update = function(resource, id)
+	{
+		// Show Loading Dialog
+		Dialog.loading('loader');
+
+		// Resource Update Request - Returns Resource Object with HttpPromise
+		// ( parameters, data, success(), failure() )
+		var resourceResponse = _model.update({ Id: id }, resource, function() {
+
+			// Close Loading Dialog
+			Dialog.close('loader');
+
+		}, function(response) {
+			
+			// Close Loading Dialogs
+			Dialog.close('loader');
+
+			// Show Error Dialog 
+			Dialog.error(response);
+			
+		});
+
+		// Return HttpPromise 
+		return resourceResponse.$promise;		
+	}
+
+	this.delete = function()
+	{
+		// Show Loading Dialog
+		Dialog.loading('loader');
+
+		// Resource Delete Request ( data, success(), failure() )
+		_model.delete({ Id: id }, function() {
+
+			// CLose the Loading Dialog	
+			Dialog.close('loader');
+		});		
 	}
 
 });

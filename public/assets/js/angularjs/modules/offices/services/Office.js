@@ -1,6 +1,12 @@
 angular.module('Offices').service('Office', function($http, $resource) {
 
-	return $resource('api/v1/offices/:Id', {Id: '@Id'},  
+	this.test = function()
+	{
+		alert('woot');
+	}
+
+	this.resource = function() {
+		return $resource('api/v1/offices/:Id', {Id: '@Id'},  
 		{
 			'get':    {method:'GET'},
 	    	'save':   {method:'POST'},
@@ -8,8 +14,8 @@ angular.module('Offices').service('Office', function($http, $resource) {
 		    'query':  {method:'GET', isArray:true},
 		    'remove': {method:'DELETE'},
 		    'delete': {method:'DELETE'} 
-		}
-     );
+		});
+	}
 
 });
 

@@ -16,4 +16,8 @@ angular.module('Application').service('RedirectTo', function($http, $location) {
 		return $location.path('/dashboard').absUrl();
 	}
 
+	this.offices = function() {
+		return $location.path('/dashboard/offices');
+	}
+
 });

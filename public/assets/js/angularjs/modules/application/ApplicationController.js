@@ -1,4 +1,4 @@
-angular.module('Application').controller('ApplicationController', function($scope, UserService) {
+angular.module('Application').controller('ApplicationController', function($scope, User) {
 
 	$scope.currentUser = null;
 
