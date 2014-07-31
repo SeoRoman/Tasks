@@ -1,36 +1,59 @@
-// Edit Office Controller
-angular.module('Offices').controller('EditOfficeController', function($scope, $q, Dialog, Broadcast, Office) {
-	
-	$scope.delete = function(id, index)
-	{
-		dlg = Dialog.loading('loader');
+/*
+ * Module   : Offices
+ * Contains : 
+ *   - EditOfficeController( $scope, Dialog, Office )
+ * Services :
+ *   - $scope    : Localized Scope of EditOfficeController
+ *   - Dialog    : /modules/application/services/Dialog.js
+ *   - Office    : /modules/offices/services/Office.js
+ * Author   : Roman Lopez
+ * Version  : 1.0
+ *
+ **********************************************************************************/
 
+ angular.module('Offices').controller('EditOfficeController', function($scope, Dialog, Office) {
+	
+	// delete() function bound to a ng-click method from view
+	$scope.delete = function(index, id)
+	{
+		// Show Loading Dialog
+		Dialog.loading('loader');
+
+		// Remove Office from Specified Index
 		$scope.offices.splice(index, 1);
 
+		// Resource Delete Request ( data, success(), failure() )
 		Office.delete({ Id: id }, function() {
+
+			// CLose the Loading Dialog	
 			Dialog.close('loader');
 		});
 	}
 
-
-	// But the actual update() function should return TRUE or FALSE...
-	// Problem is, Office.update() returns a Resource object and not BOOLEAN...
-	// and if I return TRUE/FALSE within the update callback function it doesn't
-	// actually trigger a return TRUE / FALSE....
+	// update(office, id) function bound to ng-click method form view
 	$scope.update = function(office, id)
 	{
+		// Show Loading Dialog
 		Dialog.loading('loader');
 
-		console.log(office, id);
-
+		// Resource Update Request - Returns Resource Object with HttpPromise
+		// ( parameters, data, success(), failure() )
 		var officeTest = Office.update({ Id: id }, office, function() {
+
+			// Close Loading Dialog
 			Dialog.close('loader');
+
 		}, function(response) {
+			
+			// Close Loading Dialogs
 			Dialog.close('loader');
-			Dialog.error('error', response);
-			// See here, I should return true / false
+
+			// Show Error Dialog 
+			Dialog.error(response);
+			
 		});
 
+		// Return HttpPromise 
 		return officeTest.$promise;
 
 	}

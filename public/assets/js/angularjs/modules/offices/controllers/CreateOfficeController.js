@@ -1,56 +1,34 @@
-// Create Office Dialog Controller
-angular.module('Offices').controller('CreateOfficeController', function($scope, $modalInstance, Dialog, Office, Broadcast) {
+/*
+ * Module   : Offices
+ * Contains : 
+ *   - EditOfficeController( $scope, Dialog, Office )
+ * Services :
+ *   - $scope         : Localized Scope of EditOfficeController
+ *   - $modalInstance : Instance of Opened Create Form Dialog
+ *   - Dialog         : /modules/application/services/Dialog.js
+ *   - Office         : /modules/offices/services/Office.js
+ *   - Broadcast      : /modules/application/services/Broadcast.js
+ * Author   : Roman Lopez
+ * Version  : 1.0
+ *
+ **********************************************************************************/
+
+ angular.module('Offices').controller('CreateOfficeController', function($scope, Dialog, Office, Broadcast, CRUD) {
 
 	// Init an Empty Scope Property
 	$scope.office = {};
 
-	// save() function bound to a click method from view
+	CRUD.setModel(Office);
+
 	$scope.save = function()
-	{	
-		// Launch Confirmation Dialog
-		var confirm = Dialog.confirm('create-office-confirm', 'Confirmation Required', 'Are you sure you wish to use the ID: ' + $scope.office.id + '. This action cannot be changed.');
-
-		// Get Confirmation Response (Yes(), No())
-		confirm.result.then(function() {
-		
-			// Show the Loader Dialog
-			Dialog.loading('loader');
-
-			// Attempt to Create New Office
-			Office.save($scope.office, function(office) {
-
-				// Close the Original Create Form
-				$modalInstance.close();
-
-				// Close the Loader Dialog
-				Dialog.close('loader');
-
-				// Send out the Notice
-				Broadcast.send('offices-create', { office: $scope.office });	
-
-			}, function(response) {
-
-				// Close the Loader Dialog
-				Dialog.close('loader');
-
-				// Show the Error Dialog
-				Dialog.error('error', response);
-			});
-			
-		}, function() {
-
-			// Close the Confirmation
-			Dialog.close('create-office-confirm');
-
-		});
-
-	}	
+	{
+		CRUD.save($scope.office, 'offices-create');
+	}
 
 	// Form was Cancelled
 	$scope.cancel = function()
 	{
-		// Close the Original Create Form
-		$modalInstance.close();
+		CRUD.createCancel();
 	}
 
 });
