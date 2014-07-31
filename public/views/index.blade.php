@@ -68,8 +68,8 @@
   <!-- Module: Auth -->
   <%js('angularjs/modules/auth/config.js')%> 
   <%js('angularjs/modules/auth/controllers.js')%>
-  <%js('angularjs/modules/auth/services.js')%>
-  <%js('angularjs/modules/auth/constants.js')%>
+  <%js('angularjs/modules/auth/services/Auth.js')%>
+  <%js('angularjs/modules/auth/services/User.js')%> 
 
   <!-- Module: Dashboard -->
   <%js('angularjs/modules/dashboard/config.js')%> 
@@ -78,6 +78,7 @@
   <!-- Module: Tasks -->
   <%js('angularjs/modules/tasks/config.js')%> 
   <%js('angularjs/modules/tasks/controllers.js')%>
+  <%js('angularjs/modules/tasks/Task.js')%>
 
   <!-- Module: Offices -->
   <%js('angularjs/modules/offices/config.js')%>
@@ -88,6 +89,9 @@
   <%js('angularjs/modules/tasks/config.js')%>
   <%js('angularjs/modules/tasks/controllers.js')%>
   <%js('menu.js')%>
+
+  <!-- DEMO MODE -->
+  <%js('DemoController.js')%>
 
  <base href="/#/">
 </head>
@@ -124,8 +128,12 @@
         <span>Worth Finance</span>
       </div>
       <navigation>
+      <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Text">
         <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
-        <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs" >
+        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
+        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
+      </nav:group>
+        <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs" />
           <nav:item data-view="/guide" title="Developer Guide" />
           <nav:item data-view="/api" title="API Reference" />
         </nav:group>
@@ -139,7 +147,9 @@
           </div>
         </div>
         <div class="spacer-10"></div>
-        <div ng-view></div>
+        <!--<div ng-view></div>-->
+
+        @include('demo/index')
       </div>
     </div>
 </body>

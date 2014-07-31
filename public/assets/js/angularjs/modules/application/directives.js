@@ -125,12 +125,11 @@ angular.module('Application')
       replace: true,
       template: '\
       <li ng-class="{active: isActive(view)}">\
-      <a href="{{ getItemUrl(view) }}" target="{{ getItemTarget() }}" title="{{ title}}">\
+      <a href="{{ getItemUrl(view) }}" target="{{ getItemTarget() }}" title="{{ title }}">\
       <i ng-if="hasIcon" class="{{ icon }}"><em ng-if="hasIconCaption">{{ iconCaption }}</em></i>\
       <span ng-class="{\'menu-item-parent\': !isChild}">{{ title }}</span>\
       <span ng-transclude=""></span>\
-      </a>\
-      </li>'
+      </a></li>'
     };
   })
 ;

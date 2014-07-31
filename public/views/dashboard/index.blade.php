@@ -1,4 +1,4 @@
-<div class="container-fluid" ng-controller="TasksController">
+<div class="container-fluid" ng-controller="TaskController">
 
 	<div class="row">
 

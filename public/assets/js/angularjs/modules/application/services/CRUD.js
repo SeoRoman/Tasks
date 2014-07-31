@@ -5,7 +5,14 @@ angular.module('Application').service('CRUD', function($rootScope, Dialog, Broad
 
 	this.setModel = function(model)
 	{
+		console.log('Setting Model: ');
+		console.log(model);
 		_model = model;
+	}
+
+	this.getModel = function()
+	{
+		return _model;
 	}
 
 	this.query = function()
