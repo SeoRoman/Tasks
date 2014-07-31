@@ -87,6 +87,7 @@
   <!-- Module: Users -->
   <%js('angularjs/modules/tasks/config.js')%>
   <%js('angularjs/modules/tasks/controllers.js')%>
+  <%js('menu.js')%>
 
  <base href="/#/">
 </head>
