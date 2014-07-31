@@ -55,7 +55,14 @@
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
 
-  @include('includes/modules/application')
+  <!-- Module: Application -->
+  <%js('angularjs/modules/application/Application.js')%>
+  <%js('angularjs/modules/application/config.js')%>
+  <%js('angularjs/modules/application/services/Broadcast.js')%>
+  <%js('angularjs/modules/application/services/Dialog.js')%>
+  <%js('angularjs/modules/application/services/RedirectTo.js')%>
+  <%js('angularjs/modules/application/services/CRUD.js')%>
+  <%js('angularjs/modules/application/controllers/ApplicationController.js')%>
 
   <!-- Module: Auth -->
   <%js('angularjs/modules/auth/config.js')%> 
@@ -73,8 +80,10 @@
 
   <!-- Module: Offices -->
   <%js('angularjs/modules/offices/config.js')%>
-  <%js('angularjs/modules/offices/controllers.js')%>
-  <%js('angularjs/modules/offices/services.js')%>
+  <%js('angularjs/modules/offices/controllers/OfficeController.js')%>
+  <%js('angularjs/modules/offices/controllers/EditOfficeController.js')%>
+  <%js('angularjs/modules/offices/controllers/CreateOfficeController.js')%>
+  <%js('angularjs/modules/offices/services/Office.js')%>
 
   <!-- Module: Users -->
   <%js('angularjs/modules/tasks/config.js')%>

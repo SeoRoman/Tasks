@@ -1,6 +1,13 @@
 /*
  * Module   : Offices
- * Contains : OfficeController, CreateOfficeController, EditOfficeController
+ * Contains : 
+ *   - OfficeController( $scope, Dialog, Office )
+ *   - CreateOfficeController( $scope, $modalInstance, Dialog, Office, Broadcast )
+ *   - EditOfficeController( $scope, Dialog, Office )
+ * Services :
+ *   - Dialog    : /modules/application/services/Dialog.js
+ *   - Broadcast : /modules/application/services/Broadcast.js
+ *   - Office    : /modules/offices/services.js
  * Author   : Roman Lopez
  * Version  : 1.0
  *

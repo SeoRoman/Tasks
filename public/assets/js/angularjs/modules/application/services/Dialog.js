@@ -1,32 +1,3 @@
-angular.module('Application').service('RedirectTo', function($http, $location) {
-
-	this.home = function() {
-		return $location.path('/').absUrl();
-	}
-
-	this.login = function() {
-		return this.home();
-	}
-
-	this.logout = function() {
-		return $location.path('/auth/logout').absUrl();
-	}
-
-	this.dashboard = function() {
-		return $location.path('/dashboard').absUrl();
-	}
-
-});
-
-angular.module('Application').service('Broadcast', function($rootScope) {
-
-	this.send = function(listener, data)
-	{
-		$rootScope.$broadcast(listener, data);
-	}
-
-});
-
 angular.module('Application').service('Dialog', function(dialogs) {
 
 	var _dialogs = Object();
@@ -43,7 +14,7 @@ angular.module('Application').service('Dialog', function(dialogs) {
 		_data = (data !== undefined ? data : {});
 		_options = (options !== undefined ? options : {});
 
-		dialogs.create(_template, _controller, _data, _options);
+		return dialogs.create(_template, _controller, _data, _options);
 	}
 
 	this.notify = function(title, message)
