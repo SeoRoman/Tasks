@@ -1,114 +1,48 @@
-angular.module('Tasks').controller('TasksController', function($scope, dialogs) {
+angular.module('Tasks').controller('TaskController', function($scope, Dialog, Task, CRUD) {
 
-	$scope.data = {
+ 	CRUD.setModel(Task.resource());
 
-		columnOne: [
+ 	$scope.tasks = CRUD.query();
+ 	$scope.task = {};
 
-			{
-				id: 1,
-				title: 'Column One Task #1'
-			},
-			{
-				id: 2,
-				title: 'Column One Task #2'
-			}
+ 	$scope.create = function()
+ 	{
+ 		CRUD.create('/views/dialogs/tasks/create.php', 'TaskController');
+ 	}
 
-		],
-
-		columnTwo: [
-
-			{
-				id: 3,
-				title: 'Column Two Task #1'
-			}
-
-		],
-
-		columnThree: [
-
-			{
-				id: 4,
-				title: 'Column Three Task #1'
-			},
-			{
-				id: 5,
-				title: 'Column Three Task #2'
-			}
-
-		],
-
-		columnFour: [
-
-			{
-				id: 6,
-				title: 'Column Four Task #1'
-			},
-			{
-				id: 7,
-				title: 'Column Four Task #2'
-			},
-			{
-				id: 8,
-				title: 'Column Four Task #3'
-			},
-			{
-				id: 9,
-				title: 'Column Four Task #4'
-			},
-			{
-				id: 10,
-				title: 'Column Four Task #5'
-			}
-
-		]
-
-	};
-
-	$scope.togglePanel = function(task)
+	// update(office, id) function bound to ng-click method form view
+	$scope.update = function(resource, id)
 	{
-		task.show = !task.show;
+		return CRUD.update(resource, id);
 	}
 
-	$scope.create = function()
+	// delete() function bound to a ng-click method from view
+	$scope.delete = function(index, id)
 	{
-		dlg = dialogs.create('/views/dialogs/tasks/create.html', 'CreateTaskController', {}, {});
+		$scope.tasks.splice(index, 1);	
+
+		CRUD.delete(id);
 	}
 
-	$scope.$on('tasks-create', function(event, args) {
-		$scope.data.columnOne.push(args.task);
-	});
-
-});
-
-angular.module('Tasks').controller('CreateTaskController', function($rootScope, $scope, $modalInstance, data) {
-
-	$scope.data = data;
-
-	$scope.hitEnter = function(evt)
+	$scope.store = function()
 	{
-		if(angular.equals(evt.keyCode,13))
-			$scope.done();
+		CRUD.save($scope.task, 'tasks-create');
 	}
 
-	$scope.save = function()
-	{
-		
-	}
-
+	// Form was Cancelled
 	$scope.cancel = function()
 	{
-		$modalInstance.close();
-	}
+		CRUD.createCancel();
+	} 	
 
-	$scope.done = function()
-	{
-		var task = { 
-			title: data.val
-		}
+	// Listener 'offices-create' from a Broadcast or Emit
+	$scope.$on('tasks-create', function(event, args) {
 
-		$rootScope.$broadcast('tasks-create', { task: task } );
+		// Push New Office into the Table Data
+		$scope.tasks.push(args.resource.data);
 
-		$modalInstance.close($scope.data);
-	}
+		Dialog.notify('Task Created', 'Your task was created successfully');
+
+	});
 
 });

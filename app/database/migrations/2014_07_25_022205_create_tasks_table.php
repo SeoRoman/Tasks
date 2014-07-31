@@ -21,15 +21,15 @@ class CreateTasksTable extends Migration {
 
 			$table->integer('user_id');
 
+			$table->integer('office_id');
+
 			$table->integer('assigned_to');
 
 			$table->dateTime('due_date');
 
-			$table->text('description');
+			$table->string('subject');
 
-			$table->integer('office_id');
-
-			$table->integer('body');
+			$table->text('notes');
 
 			$table->boolean('completed');
 

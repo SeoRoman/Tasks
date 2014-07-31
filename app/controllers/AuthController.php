@@ -14,12 +14,12 @@
 				return Response::json(array('user'=>Auth::user()), 200);
 			}
 
-			return Response::json(array(), 401);
+			return Response::json(array('status' => 0, 'message' => 'Invalid Login Credentials'), 401);
 		}
 
 		public function getLogout()
 		{
-			if (Auth::guest()) return Response::json(array(), 401);
+			if (Auth::guest()) return Response::json(array('status' => 0, 'message' => 'You are not logged in'), 401);
 
 			Auth::logout();
 			return Response::json(array(), 200);
