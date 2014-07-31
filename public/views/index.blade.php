@@ -124,6 +124,7 @@
       </div>-->
       <!-- end pulled right: nav area 
     </header>-->
+    
     <aside id="left-panel">
       <div class="header">
         <span>Worth Finance</span>
