@@ -1,11 +1,11 @@
-  <div class="container">
+  <div class="">
     <div class="row">
       <div class="col-lg-6 col-lg-offset-3">
         <h1 class="text-center"> WorthTasks </h1>
       </div>
     </div>
   </div>
-  <div class="container animated flipInY">
+  <div class="animated flipInY">
     <div class="row">
       <div class="col-lg-6 col-lg-offset-3">
 
@@ -51,7 +51,7 @@
       </div>
     </div>
   </div>
-  <div class='container'>
+  <div class=''>
     <div class="row">
       <div class='col-lg-6 col-lg-offset-3 text-center'>
         &nbsp;

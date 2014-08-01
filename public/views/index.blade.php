@@ -85,14 +85,13 @@
         <span>Worth Finance</span>
       </div>
       <navigation>
-      <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Text">
-        <nav:item click="login" icon="fa fa-lg fa-fw fa-home" title="Login"></nav:item>
-        <nav:item click="logout" icon="fa fa-lg fa-fw fa-home" title="Logout"></nav:item>
-        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
+      <nav:item click="login" icon="fa fa-lg fa-fw fa-home" title="Login"></nav:item>
+      <nav:item click="logout" icon="fa fa-lg fa-fw fa-home" title="Logout"></nav:item>
+      <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
       </nav:group>
         <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs">
-          <nav:item data-view="/guide" title="Developer Guide"></nav:item>
-          <nav:item data-view="/api" title="API Reference"></nav:item>
+          <nav:item view="/guide" title="Developer Guide"></nav:item>
+          <nav:item view="/api" title="API Reference"></nav:item>
         </nav:group>
       </navigation>
     </aside>
