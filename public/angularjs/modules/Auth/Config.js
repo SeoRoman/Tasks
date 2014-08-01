@@ -2,12 +2,6 @@ angular.module('Auth').config(function($routeProvider) {
 
 	$routeProvider.when('/', {
 		redirectTo: '/auth/login'
-		/*
-		redirectTo: function(a, b, c) {
-			console.log('here');
-			return 'auth/login';
-		}
-		*/
 	});
 
 	$routeProvider.when('/auth/login', {

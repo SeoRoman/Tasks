@@ -96,7 +96,7 @@ angular.module('Application')
           if (newVal) {
             if (angular.isDefined(navgroupCtrl)) navgroupCtrl.setActive(true);
             $window.document.title = scope.title;
-            scope.setBreadcrumb();
+            //scope.setBreadcrumb();
           } else {
             if (angular.isDefined(navgroupCtrl)) navgroupCtrl.setActive(false);
           }
@@ -104,22 +104,9 @@ angular.module('Application')
 
         scope.openParents = scope.isActive(scope.view);
         scope.isChild = angular.isDefined(navgroupCtrl);
-        scope.setBreadcrumb = function() {
-            var crumbs = [];
-            crumbs.push(scope.title);
-            // get parent menus
-          var test = element.parents('nav li').each(function() {
-            var el = angular.element(this);
-            var parent = el.find('.menu-item-parent:eq(0)');
-            crumbs.push(parent.data('localize').trim());
-            if (scope.openParents) {
-              // open menu on first load
-              parent.trigger('click');
-            }
-          });
+
           // this should be only fired upon first load so let's set this to false now
           scope.openParents = false;
-        };
       },
       transclude: true,
       replace: true,
@@ -128,7 +115,6 @@ angular.module('Application')
       <a href="{{ getItemUrl(view) }}" target="{{ getItemTarget() }}" title="{{ title }}">\
       <i ng-if="hasIcon" class="{{ icon }}"><em ng-if="hasIconCaption">{{ iconCaption }}</em></i>\
       <span ng-class="{\'menu-item-parent\': !isChild}">{{ title }}</span>\
-      <span ng-transclude=""></span>\
       </a></li>'
     };
   })

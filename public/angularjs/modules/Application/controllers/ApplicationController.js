@@ -1,4 +1,4 @@
-angular.module('Application').controller('ApplicationController', function($scope) {
+angular.module('Application').controller('ApplicationController', function($scope, RedirectTo) {
 
 	$scope.currentUser = null;
 

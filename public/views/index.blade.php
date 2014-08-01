@@ -78,32 +78,7 @@
  <base href="/#/">
 </head>
 <body ng-controller="ApplicationController">
-  <!-- HEADER 
-    <header id="header" class="animated fadeInDown">
-      <div id="logo-group">-->
-        <!-- PLACE LOGO HERE 
-        <span id="logo"> Worth Tasks </span>-->
-        <!-- END LOGO PLACEHOLDER 
-      </div>-->
 
-      <!-- pulled right: nav area 
-      <div class="pull-right">-->
-
-        <!-- fullscreen button 
-        <div id="fullscreen" class="btn-header transparent pull-right">
-          <span> <a href="javascript:void(0);" action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
-        </div>-->
-        <!-- end fullscreen button -->
-        
-        <!-- logout button
-        <div id="logout" class="btn-header transparent pull-right" ng-controller="AuthController">
-          <span> <a title="Sign Out" ng-click="logout()"><i class="fa fa-sign-out"></i></a> </span>
-        </div>-->
-        <!-- end logout button 
-
-      </div>-->
-      <!-- end pulled right: nav area 
-    </header>-->
     
     <aside id="left-panel">
       <div class="header">
@@ -111,18 +86,17 @@
       </div>
       <navigation>
       <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Text">
-        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
-        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
-        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office" />
+        <nav:item view="/auth/login" icon="fa fa-lg fa-fw fa-home" title="Login"></nav:item>
+        <nav:item view="/auth/logout" icon="fa fa-lg fa-fw fa-home" title="Logout"></nav:item>
+        <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
       </nav:group>
-        <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs" />
-          <nav:item data-view="/guide" title="Developer Guide" />
-          <nav:item data-view="/api" title="API Reference" />
+        <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs">
+          <nav:item data-view="/guide" title="Developer Guide"></nav:item>
+          <nav:item data-view="/api" title="API Reference"></nav:item>
         </nav:group>
       </navigation>
     </aside>
     <div id="main">
-      @include('demo')
       <div class="container-fluid">
         <div class="row" ng-show="message">
           <div class="col-lg-6 col-lg-offset-3">
