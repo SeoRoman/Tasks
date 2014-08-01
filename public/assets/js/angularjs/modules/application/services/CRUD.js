@@ -5,8 +5,6 @@ angular.module('Application').service('CRUD', function($rootScope, Dialog, Broad
 
 	this.setModel = function(model)
 	{
-		console.log('Setting Model: ');
-		console.log(model);
 		_model = model;
 	}
 

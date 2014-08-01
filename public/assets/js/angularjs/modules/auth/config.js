@@ -5,10 +5,6 @@ angular.module('Auth').config(function($routeProvider) {
 		controller: 'AuthController'
 	});
 
-	$routeProvider.when('/auth/logout', {
-		controller: 'AuthController',
-	});
-
 	$routeProvider.when('/auth/register', {
 		templateUrl: 'views/auth/register.blade.php',
 		controller: 'AuthController'

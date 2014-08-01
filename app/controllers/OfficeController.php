@@ -41,7 +41,7 @@ class OfficeController extends \BaseController {
 	{
 		// Create the Data Array
 		$data = [
-			'id' => Input::get('id'),
+			'id' => (int)Input::get('id'),
 			'name' => Input::get('name'),
 			'address' => Input::get('address'),
 			'city' => Input::get('city'),
@@ -118,7 +118,7 @@ class OfficeController extends \BaseController {
 
 		//
 		$data = array(
-			'id' => Input::get('id'),
+			'id' => (int)Input::get('id'),
 			'name' => Input::get('name'),
 			'address' => Input::get('address'),
 			'city' => Input::get('city'),

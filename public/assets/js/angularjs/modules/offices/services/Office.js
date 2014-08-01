@@ -1,8 +1,10 @@
-angular.module('Offices').service('Office', function($http, $resource) {
+angular.module('Offices').service('Office', function($http, $resource, CRUD) {
 
 	this.test = function()
 	{
-		alert('woot');
+		CRUD.setModel(this);
+
+		CRUD.create('/views/dialogs/offices/create.php', 'OfficeController');
 	}
 
 	this.resource = function() {

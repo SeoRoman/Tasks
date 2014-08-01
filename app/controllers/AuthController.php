@@ -25,6 +25,12 @@
 			return Response::json(array(), 200);
 		}
 
+		public function getUser()
+		{
+			if (Auth::guest()) return Response::json(array(), 401);
+			return Response::json(array('user'=>Auth::User()), 200);
+		}
+
 	}
 
 ?>

@@ -55,44 +55,25 @@
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
 
+  <!-- Main Application -->?
+  <% angularjs('Application.js') %>
+
   <!-- Module: Application -->
-  <%js('angularjs/modules/application/Application.js')%>
-  <%js('angularjs/modules/application/config.js')%>
-  <%js('angularjs/modules/application/directives.js')%>
-  <%js('angularjs/modules/application/services/Broadcast.js')%>
-  <%js('angularjs/modules/application/services/Dialog.js')%>
-  <%js('angularjs/modules/application/services/RedirectTo.js')%>
-  <%js('angularjs/modules/application/services/CRUD.js')%>
-  <%js('angularjs/modules/application/ApplicationController.js')%>
+  <% angularjs('modules/Application/controllers/ApplicationController.js') %>
+  <% angularjs('modules/Application/directives/Navigation.js') %>
+  <% angularjs('modules/Application/services/Broadcast.js') %>
+  <% angularjs('modules/Application/services/Dialog.js') %>
+  <% angularjs('modules/Application/services/RedirectTo.js') %>
+  <% angularjs('modules/Application/Config.js') %>
 
   <!-- Module: Auth -->
-  <%js('angularjs/modules/auth/config.js')%> 
-  <%js('angularjs/modules/auth/controllers.js')%>
-  <%js('angularjs/modules/auth/services/Auth.js')%>
-  <%js('angularjs/modules/auth/services/User.js')%> 
+  <% angularjs('modules/Auth/controllers/AuthLoginController.js') %>
+  <% angularjs('modules/Auth/controllers/AuthLogoutController.js') %>
+  <% angularjs('modules/Auth/services/Auth.js') %>
+  <% angularjs('modules/Auth/services/User.js') %>
+  <% angularjs('modules/Auth/Config.js') %>
 
-  <!-- Module: Dashboard -->
-  <%js('angularjs/modules/dashboard/config.js')%> 
-  <%js('angularjs/modules/dashboard/controllers.js')%>
-
-  <!-- Module: Tasks -->
-  <%js('angularjs/modules/tasks/config.js')%> 
-  <%js('angularjs/modules/tasks/controllers.js')%>
-  <%js('angularjs/modules/tasks/Task.js')%>
-
-  <!-- Module: Offices -->
-  <%js('angularjs/modules/offices/config.js')%>
-  <%js('angularjs/modules/offices/OfficeController.js')%>
-  <%js('angularjs/modules/offices/services/Office.js')%>
-
-  <!-- Module: Users -->
-  <%js('angularjs/modules/tasks/config.js')%>
-  <%js('angularjs/modules/tasks/controllers.js')%>
   <%js('menu.js')%>
-
-  <!-- DEMO MODE -->
-  <%js('DemoController.js')%>
-  <%js('DemoConfig.js')%>
 
  <base href="/#/">
 </head>

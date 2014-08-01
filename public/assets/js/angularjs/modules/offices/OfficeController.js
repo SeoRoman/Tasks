@@ -13,9 +13,9 @@
 
  angular.module('Offices').controller('OfficeController', function($scope, User, Dialog, Office, CRUD) {
 
-	//User.requireAuth($scope.currentUser);
+ 	Office.test();
 
- 	CRUD.setModel(Office.resource());
+// 	CRUD.setModel(Office.resource());
 
  	$scope.offices = CRUD.query();
  	$scope.office = {};
@@ -52,8 +52,6 @@
 
 	// Listener 'offices-create' from a Broadcast or Emit
 	$scope.$on('offices-create', function(event, args) {
-
-		console.log(args);
 
 		// Push New Office into the Table Data
 		$scope.offices.push(args.resource.data);

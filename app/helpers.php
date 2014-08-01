@@ -33,4 +33,9 @@ function spacer($text) {
   return "<div class='clearfix spacer-{$text}'></div>";
 }
 
+function angularjs($file) {
+  $path = URL::to("angularjs/{$file}");
+  return "<script src='{$path}' type='text/javascript'></script>";
+}
+
 ?>

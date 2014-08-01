@@ -9,7 +9,6 @@
 
 angular.module('Auth').controller('AuthController', function($scope, Dialog, RedirectTo, Auth) {
 
-
 	// Process a Login Request
 	$scope.login = function() {
 
