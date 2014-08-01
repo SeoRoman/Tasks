@@ -56,6 +56,7 @@ angular.module('Application')
   .controller('NavItemController', function($rootScope, $scope, $location, RedirectTo) {
     $scope.isChild = false;
     $scope.active = false;
+
     $scope.isActive = function (viewLocation) {
           $scope.active = viewLocation === $location.path();
           return $scope.active;
@@ -64,11 +65,11 @@ angular.module('Application')
       $scope.hasIcon = angular.isDefined($scope.icon);
       $scope.hasIconCaption = angular.isDefined($scope.iconCaption);
 
-      $scope.getItemUrl = function(view) {
+      /*$scope.getItemUrl = function(view) {
         if (angular.isDefined($scope.href)) return $scope.href;
         if (!angular.isDefined(view)) return '';
         return '#' + view;
-      };
+      };*/
 
       $scope.getClick = function(data) {
         if(!angular.isDefined(data)) return '';
@@ -114,7 +115,7 @@ angular.module('Application')
       replace: true,
       template: '\
       <li ng-class="{active: isActive(view)}">\
-      <a href="{{ getItemUrl(view) }}" ng-click="getClick(click)" title="{{ title }}">\
+      <a href="javascript:void(0)" ng-click="getClick(click)" title="{{ title }}">\
       <i ng-if="hasIcon" class="{{ icon }}"><em ng-if="hasIconCaption">{{ iconCaption }}</em></i>\
       <span ng-class="{\'menu-item-parent\': !isChild}">{{ title }}</span>\
       </a></li>'

@@ -1,6 +1,6 @@
 angular.module('Auth').controller('AuthLogoutController', function($scope, Dialog, RedirectTo, Auth) {
 
-	$scope.logout = function () {
+		console.log($scope.currentUser);	
 
 		if ($scope.currentUser) {
 				// Display Confirmation Dialog
@@ -53,5 +53,4 @@ angular.module('Auth').controller('AuthLogoutController', function($scope, Dialo
 				}
 			);
 		};			
-	}
 });

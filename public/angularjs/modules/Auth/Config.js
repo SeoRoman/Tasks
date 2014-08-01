@@ -10,6 +10,7 @@ angular.module('Auth').config(function($routeProvider) {
 	});
 
 	$routeProvider.when('/auth/logout', {
+		templateUrl: '/angularjs/modules/Auth/views/Logout.blade.php',
 		controller: 'AuthLogoutController'
 	});
 
