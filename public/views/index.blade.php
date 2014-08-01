@@ -85,9 +85,9 @@
         <span>Worth Finance</span>
       </div>
       <navigation>
-      <nav:item click="login" icon="fa fa-lg fa-fw fa-home" title="Login"></nav:item>
-      <nav:item click="logout" icon="fa fa-lg fa-fw fa-home" title="Logout"></nav:item>
-      <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
+      <nav:item ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:item>
+      <nav:item ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:item>
+      <nav:item ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
       </nav:group>
         <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs">
           <nav:item href="https://docs.angularjs.org/guide" target="_blank" title="Developer Guide"></nav:item>
