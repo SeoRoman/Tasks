@@ -53,7 +53,7 @@ angular.module('Application')
       </li>',
     };
   })
-  .controller('NavItemController', function($rootScope, $scope, $location) {
+  .controller('NavItemController', function($rootScope, $scope, $location, RedirectTo) {
     $scope.isChild = false;
     $scope.active = false;
     $scope.isActive = function (viewLocation) {
@@ -70,9 +70,10 @@ angular.module('Application')
         return '#' + view;
       };
 
-      $scope.getItemTarget = function() {
-        return angular.isDefined($scope.target) ? $scope.target : '_self';
-      };
+      $scope.getClick = function(data) {
+        if(!angular.isDefined(data)) return '';
+        if(angular.isDefined($scope.click)) RedirectTo[data]();
+      }
 
   })
   .directive('navItem', function($window) {
@@ -83,6 +84,7 @@ angular.module('Application')
       scope: {
         title: '@',
         view: '@',
+        click: '@',
         icon: '@',
         iconCaption: '@',
         href: '@',
@@ -112,7 +114,7 @@ angular.module('Application')
       replace: true,
       template: '\
       <li ng-class="{active: isActive(view)}">\
-      <a href="{{ getItemUrl(view) }}" target="{{ getItemTarget() }}" title="{{ title }}">\
+      <a href="{{ getItemUrl(view) }}" ng-click="getClick(click)" title="{{ title }}">\
       <i ng-if="hasIcon" class="{{ icon }}"><em ng-if="hasIconCaption">{{ iconCaption }}</em></i>\
       <span ng-class="{\'menu-item-parent\': !isChild}">{{ title }}</span>\
       </a></li>'
