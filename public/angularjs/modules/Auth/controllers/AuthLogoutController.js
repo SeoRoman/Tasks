@@ -1,6 +1,4 @@
-angular.module('Auth').controller('AuthLogoutController', function($scope, Dialog, RedirectTo, Auth) {
-
-		console.log($scope.currentUser);	
+angular.module('Auth').controller('AuthLogoutController', function($scope, Dialog, RedirectTo, Auth) {	
 
 		if ($scope.currentUser) {
 				// Display Confirmation Dialog
@@ -52,5 +50,9 @@ angular.module('Auth').controller('AuthLogoutController', function($scope, Dialo
 					confirmDialog.close();
 				}
 			);
-		};			
+		}
+		{
+			Dialog.notify('Not Logged In', 'You have not authenticated to the server');
+			RedirectTo.login();
+		}			
 });
