@@ -101,7 +101,8 @@ nav ul li.active.open>a:before {
   content:"";
 }
 
-nav>ul>li:last-child.open {
+nav>ul>li:last-child.open ul {
+  border-top:1px solid rgba(255,255,255,.15);
   border-bottom:1px solid rgba(255,255,255,.15);
 }
 
