@@ -115,7 +115,7 @@ angular.module('Application')
       replace: true,
       template: '\
       <li ng-class="{active: isActive(view)}">\
-      <a href="javascript:void(0)" ng-click="getClick(click)" title="{{ title }}">\
+      <a href="{{ href }}" ng-click="getClick(click)" target="{{ target }}" title="{{ title }}">\
       <i ng-if="hasIcon" class="{{ icon }}"><em ng-if="hasIconCaption">{{ iconCaption }}</em></i>\
       <span ng-class="{\'menu-item-parent\': !isChild}">{{ title }}</span>\
       </a></li>'

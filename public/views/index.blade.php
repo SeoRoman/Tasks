@@ -90,8 +90,8 @@
       <nav:item view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
       </nav:group>
         <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs">
-          <nav:item view="/guide" title="Developer Guide"></nav:item>
-          <nav:item view="/api" title="API Reference"></nav:item>
+          <nav:item href="https://docs.angularjs.org/guide" target="_blank" title="Developer Guide"></nav:item>
+          <nav:item href="https://docs.angularjs.org/api" target="_blank" title="API Reference"></nav:item>
         </nav:group>
       </navigation>
     </aside>
