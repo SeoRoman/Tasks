@@ -60,11 +60,14 @@
 
   <!-- Module: Application -->
   <% angularjs('modules/Application/controllers/ApplicationController.js') %>
-  <% angularjs('modules/Application/directives/Navigation.js') %>
   <% angularjs('modules/Application/services/Broadcast.js') %>
   <% angularjs('modules/Application/services/Dialog.js') %>
   <% angularjs('modules/Application/services/RedirectTo.js') %>
   <% angularjs('modules/Application/Config.js') %>
+
+  <!-- Module: Navigation -->
+  <% angularjs('modules/Navigation/controllers/NavigationController.js') %>
+  <% angularjs('modules/Navigation/directives/Navigation.js') %>
 
   <!-- Module: Auth -->
   <% angularjs('modules/Auth/controllers/AuthLoginController.js') %>
@@ -84,16 +87,17 @@
       <div class="header">
         <span>Worth Finance</span>
       </div>
-      <navigation>
-      <nav:item ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:item>
-      <nav:item ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:item>
-      <nav:item ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
-      </nav:group>
-        <nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Docs">
-          <nav:item href="https://docs.angularjs.org/guide" target="_blank" title="Developer Guide"></nav:item>
-          <nav:item href="https://docs.angularjs.org/api" target="_blank" title="API Reference"></nav:item>
-        </nav:group>
-      </navigation>
+      <div ng-controller="NavigationController">
+        <navigation>
+          <nav:item ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:item>
+          <nav:item ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:item>
+          <nav:item ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
+          <nav:group icon="fa fa-lg fa-fw fa-code" title="Angular Docs">
+            <nav:item href="https://docs.angularjs.org/guide" target="_blank" title="Developer Guide"></nav:item>
+            <nav:item href="https://docs.angularjs.org/api" target="_blank" title="API Reference"></nav:item>
+          </nav:group>
+        </navigation>
+      </div>
     </aside>
     <div id="main">
       <div class="container-fluid">
