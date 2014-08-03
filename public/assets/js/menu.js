@@ -3,7 +3,7 @@ $.fn.extend({
   //pass the options variable to the function
   menu : function(options) {
 
-    console.log('Menu Ran');
+    console.log('Menu ran"')
 
     var defaults = {
       accordion : 'true',
