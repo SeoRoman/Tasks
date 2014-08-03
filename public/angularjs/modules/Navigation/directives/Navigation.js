@@ -6,6 +6,9 @@ angular.module('Application')
       transclude: true,
       replace: true,
       link: function(scope, element, attrs) {
+
+        console.log(element);
+
         element.first().menu({
           accordion: true,
           speed: 235,
@@ -46,6 +49,16 @@ angular.module('Application')
         target: '@'
       },
       link: function(scope, element, attrs, parentCtrls) {
+
+        var nav = element.parent().parent().parent().parent();
+
+        $(nav).first().menu({
+          accordion: true,
+          speed: 235,
+          closedSign: '<i class="fa fa-plus"></i>',
+          openedSign: '<i class="fa fa-minus"></i>'
+        });
+
         var navCtrl = parentCtrls[0],
             navgroupCtrl = parentCtrls[1];
         scope.$watch('active', function(newVal, oldVal) {

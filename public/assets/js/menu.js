@@ -16,7 +16,10 @@ $.fn.extend({
     var $this = $(this);
 
     //add a mark [+] to a multilevel menu
-    $this.find("li").each(function() {
+    $this.find("li").each(function(a, b) {
+
+      console.log('Number of LI');
+
       if ($(this).find("ul").size() !== 0) {
         //add the multilevel sign next to the link
         $(this).find("a:first").append("<b class='collapse-sign'>" + opts.closedSign + "</b>");
