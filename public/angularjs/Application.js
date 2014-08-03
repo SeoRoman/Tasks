@@ -4,8 +4,6 @@ angular.module('Organization', []);
 
 angular.module('Navigation', ['Organization']);
 
-angular.module('Navigation', []);
-
 angular.module('Auth', []);
 
 angular.module('Session', []);

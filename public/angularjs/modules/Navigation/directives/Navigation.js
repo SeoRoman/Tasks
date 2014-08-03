@@ -27,9 +27,7 @@ angular.module('Application')
       transclude: true,
       replace: true,
       scope: {
-        navicon: '=',
-        orgname: '=',
-        navIconCaption: '=',
+        title: '@',
         active: '=?'
       },
       templateUrl: 'angularjs/modules/Navigation/views/navGroup.html'
@@ -44,8 +42,6 @@ angular.module('Application')
         title: '@',
         view: '@',
         click: '@',
-        icon: '@',
-        iconCaption: '@',
         href: '@',
         target: '@'
       },

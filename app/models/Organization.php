@@ -6,6 +6,11 @@
 
 		protected $guarded = array('id');
 
+		public function Projects()
+		{
+			return $this->hasMany('Project', 'tasks_organizations_id');
+		}
+
 	}
 
 ?>

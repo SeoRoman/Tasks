@@ -1,6 +1,5 @@
-<li ng-class="{active: isActive(proj.view)}">
-    <a href="{{ proj.href }}" ng-click="getClick(proj.click)" target="{{ proj.target }}" title="{{ proj.title }}">
-    <i ng-if="hasIcon" class="{{ proj.icon }}"><em ng-if="hasIconCaption">{{ proj.iconCaption }}</em></i>
-    <span ng-class="{'menu-item-parent': !isChild}">{{ proj.title }}</span>
+<li>
+    <a href="#" title="{{ title }}">
+    <span ng-class="{'menu-item-parent': !isChild}">{{ title }}</span>
   </a>
 </li>

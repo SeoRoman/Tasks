@@ -16,7 +16,7 @@ class OrganizationController extends \BaseController {
 	 */
 	public function index()
 	{
-		$organizations = $this->organization->all();
+		$organizations = $this->organization->with('Projects')->get();
 		return Response::json($organizations, 200);
 	}
 

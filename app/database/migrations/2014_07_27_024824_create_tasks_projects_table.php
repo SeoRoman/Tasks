@@ -21,7 +21,7 @@ class CreateTasksProjectsTable extends Migration {
 
 			$table->integer('tasks_organizations_id');
 
-			$table->string('name');
+			$table->string('title');
 
 			$table->timestamps();
 

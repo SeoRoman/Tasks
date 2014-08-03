@@ -1,6 +1,12 @@
-angular.module('Application')
-  .controller('NavigationController', function($scope) {
-    $scope.orgs = [
+angular.module('Navigation')
+  .controller('NavigationController', function($scope, Organization) {
+
+  	o = Organization.resource();
+  	$scope.orgs = o.query();
+
+  	console.log($scope.orgs);
+
+    /*$scope.orgs = [
       {
         icon: 'fa fa-lg fa-fw fa-code',
         iconCaption: 'SysEdge',
@@ -43,11 +49,10 @@ angular.module('Application')
         ]
       }
     ];
+    */
   })
   .controller('NavGroupController', function($scope) {
     $scope.active = false;
-    $scope.hasIcon = angular.isDefined($scope.icon);
-    $scope.hasIconCaption = angular.isDefined($scope.iconCaption);
     this.setActive = function(active) {
       $scope.active = active;
     }

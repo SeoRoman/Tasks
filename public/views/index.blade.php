@@ -69,6 +69,11 @@
   <% angularjs('modules/Navigation/controllers/NavigationController.js') %>
   <% angularjs('modules/Navigation/directives/Navigation.js') %>
 
+  <!-- Module: Organization -->
+  <% angularjs('modules/Organization/controllers/OrganizationController.js') %>
+  <% angularjs('modules/Organization/services/Organization.js') %>  
+  <% angularjs('modules/Organization/Config.js') %>  
+
   <!-- Module: Auth -->
   <% angularjs('modules/Auth/controllers/AuthLoginController.js') %>
   <% angularjs('modules/Auth/controllers/AuthLogoutController.js') %>
@@ -91,12 +96,9 @@
         <nav:menu ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:menu>
         <nav:menu ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:menu>
         <nav:menu ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:menu>
-        <span ng-show="currentUser" >
-          <nav:group ng-repeat="org in orgs" icon="{navIcon:org.icon}" iconCaption="{org.iconCaption}" title="{{org.orgname}}">
-            <nav:item href="https://docs.angularjs.org/guide" target="_blank" title="Developer Guide"></nav:item>
-            <nav:item href="https://docs.angularjs.org/api" target="_blank" title="API Reference"></nav:item>
-          </nav:group>
-        </span>
+        <nav:group ng-repeat="org in orgs" title="{{org.title}}" ng-show="currentUser">
+          <nav:item ng-repeat="project in org" title="{{ project.title }}"><
+        </nav:group>
       </navigation>
     </aside>
     <div id="main">

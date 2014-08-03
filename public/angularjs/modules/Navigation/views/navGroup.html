@@ -1,7 +1,6 @@
 <li ng-class="{active: active}">
-  <a href="">
-    <i ng-if="hasIcon" class="{{org.icon}}"><em ng-if="hasIconCaption">{{ org.iconCaption }}</em></i>
-    <span class="menu-item-parent">{{org.title}}</span>
-  </a>
-  <ul ng-transclude=""></ul>
+	<a href="#">
+		<span class="menu-item-parent">{{ title }}</span>
+	</a>
+	<ul ng-transclude=""></ul>
 </li>
