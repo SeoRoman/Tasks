@@ -92,11 +92,21 @@
       <div class="header">
         <span>Worth Finance</span>
       </div>
+
+
+      <navigation>
+        <nav:menu></nav:menu>
+        <nav:menu></nav:menu>
+        <nav:menu></nav:menu>
+        <nav:menu></nav:menu>
+        <nav:menu></nav:menu>
+      </navigation>
+
       <navigation>
         <nav:menu ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:menu>
         <nav:menu ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:menu>
         <nav:menu ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:menu>
-        <nav:group ng-repeat="org in orgs" title="{{org.title}}" ng-show="currentUser">
+        <nav:group ng-repeat="org in orgs" title="{{org.title}}">
           <nav:item view="" href="" target="" click="" ng-repeat="project in org.projects" title="{{ project.title }}"></nav:item>
         </nav:group>      
       </navigation>

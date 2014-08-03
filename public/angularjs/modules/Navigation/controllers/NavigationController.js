@@ -52,7 +52,6 @@ angular.module('Navigation')
     */
   })
   .controller('NavGroupController', function($scope) {
-    $scope.active = false;
     this.setActive = function(active) {
       $scope.active = active;
     }
@@ -76,9 +75,9 @@ angular.module('Navigation')
     $scope.active = false;
 
     $scope.isActive = function (viewLocation) {
-          $scope.active = viewLocation === $location.path();
-          return $scope.active;
-      };
+        $scope.active = viewLocation === $location.path();
+        return $scope.active;
+    };
 
       $scope.hasIcon = angular.isDefined($scope.icon);
       $scope.hasIconCaption = angular.isDefined($scope.iconCaption);

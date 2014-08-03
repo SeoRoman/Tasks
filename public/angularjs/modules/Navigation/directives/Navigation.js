@@ -6,8 +6,8 @@ angular.module('Application')
       transclude: true,
       replace: true,
       link: function(scope, element, attrs) {
-
-        console.log(element);
+        
+        
 
         element.first().menu({
           accordion: true,

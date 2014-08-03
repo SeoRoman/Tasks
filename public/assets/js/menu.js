@@ -3,6 +3,8 @@ $.fn.extend({
   //pass the options variable to the function
   menu : function(options) {
 
+    console.log('Menu Ran');
+
     var defaults = {
       accordion : 'true',
       speed : 200,
@@ -17,8 +19,6 @@ $.fn.extend({
 
     //add a mark [+] to a multilevel menu
     $this.find("li").each(function(a, b) {
-
-      console.log('Number of LI');
 
       if ($(this).find("ul").size() !== 0) {
         //add the multilevel sign next to the link
@@ -38,9 +38,13 @@ $.fn.extend({
       $(this).parents("ul").slideDown(opts.speed);
       $(this).parents("ul").parent("li").find("b:first").html(opts.openedSign);
       $(this).parents("ul").parent("li").addClass("open");
+
+      console.log('opened');
     });
 
     $this.find("li a").click(function() {
+
+      console.log('Link Clicked');
 
       if ($(this).parent().find("ul").size() !== 0) {
 
