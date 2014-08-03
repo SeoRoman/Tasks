@@ -87,17 +87,17 @@
       <div class="header">
         <span>Worth Finance</span>
       </div>
-      <div ng-controller="NavigationController">
-        <navigation>
-          <nav:item ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:item>
-          <nav:item ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:item>
-          <nav:item ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:item>
-          <nav:group icon="fa fa-lg fa-fw fa-code" title="Angular Docs">
+      <navigation>
+        <nav:menu ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:menu>
+        <nav:menu ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:menu>
+        <nav:menu ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:menu>
+        <span ng-show="currentUser" >
+          <nav:group ng-repeat="org in orgs" icon="{navIcon:org.icon}" iconCaption="{org.iconCaption}" title="{{org.orgname}}">
             <nav:item href="https://docs.angularjs.org/guide" target="_blank" title="Developer Guide"></nav:item>
             <nav:item href="https://docs.angularjs.org/api" target="_blank" title="API Reference"></nav:item>
           </nav:group>
-        </navigation>
-      </div>
+        </span>
+      </navigation>
     </aside>
     <div id="main">
       <div class="container-fluid">

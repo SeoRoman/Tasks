@@ -1,4 +1,4 @@
-angular.module('Navigation')
+angular.module('Application')
   .directive('navigation', function() {
     return {
       restrict: 'AE',
@@ -18,7 +18,7 @@ angular.module('Navigation')
       },
       template: '<nav><ul ng-transclude=""></ul></nav>'
     };
-  })/*
+  })
   .directive('navGroup', function() {
     return {
       require: ['^navigation'],
@@ -27,12 +27,12 @@ angular.module('Navigation')
       transclude: true,
       replace: true,
       scope: {
-        navicon: '@',
-        orgname: '@',
-        navIconCaption: '@',
+        navicon: '=',
+        orgname: '=',
+        navIconCaption: '=',
         active: '=?'
       },
-      template: 'angularjs/modules/Navigation/views/navGroup.html'
+      templateUrl: 'angularjs/modules/Navigation/views/navGroup.html'
     };
   })
   .directive('navItem', function($window) {
@@ -66,7 +66,51 @@ angular.module('Navigation')
       },
       transclude: true,
       replace: true,
-      template: 'angularjs/modules/Navigation/views/navItem.html'
+      templateUrl: 'angularjs/modules/Navigation/views/navItem.html'
     };
-  })*/
+  })
+  .directive('navMenu', function($window) {
+    return {
+      require: ['^navigation','^?navGroup'],
+      restrict: 'AE',
+      controller: 'NavMenuController',
+      scope: {
+        title: '@',
+        view: '@',
+        click: '@',
+        icon: '@',
+        iconCaption: '@',
+        href: '@',
+        target: '@'
+      },
+      link: function(scope, element, attrs, parentCtrls) {
+        var navCtrl = parentCtrls[0],
+            navgroupCtrl = parentCtrls[1];
+
+        scope.$watch('active', function(newVal, oldVal) {
+          if (newVal) {
+            if (angular.isDefined(navgroupCtrl)) navgroupCtrl.setActive(true);
+            $window.document.title = scope.title;
+            //scope.setBreadcrumb();
+          } else {
+            if (angular.isDefined(navgroupCtrl)) navgroupCtrl.setActive(false);
+          }
+        });
+
+        scope.openParents = scope.isActive(scope.view);
+        scope.isChild = angular.isDefined(navgroupCtrl);
+
+          // this should be only fired upon first load so let's set this to false now
+          scope.openParents = false;
+      },
+      transclude: true,
+      replace: true,
+      template: '\
+      <li ng-class="{active: isActive(view)}">\
+      <a href="{{ href }}" ng-click="getClick(click)" target="{{ target }}" title="{{ title }}">\
+      <i ng-if="hasIcon" class="{{ icon }}"><em ng-if="hasIconCaption">{{ iconCaption }}</em></i>\
+      <span ng-class="{\'menu-item-parent\': !isChild}">{{ title }}</span>\
+      </a></li>'
+    };
+  })
 ;
