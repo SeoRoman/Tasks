@@ -1,4 +1,8 @@
-angular.module('Application', ['ngRoute', 'ngAnimate', 'ngResource', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'xeditable', 'dialogs.main', 'dialogs.default-translations', 'pascalprecht.translate', 'Auth']);
+angular.module('Application', ['ngRoute', 'ngAnimate', 'ngResource', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'xeditable', 'dialogs.main', 'dialogs.default-translations', 'pascalprecht.translate', 'Auth', 'Navigation']);
+
+angular.module('Organization', []);
+
+angular.module('Navigation', ['Organization']);
 
 angular.module('Navigation', []);
 

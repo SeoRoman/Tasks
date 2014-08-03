@@ -1,5 +1,10 @@
 angular.module('Application').service('RedirectTo', function($http, $location) {
 
+	this.default = function()
+	{
+		return this.home();
+	}
+
 	this.home = function() {
 		return $location.path('/').absUrl();
 	}
@@ -10,6 +15,11 @@ angular.module('Application').service('RedirectTo', function($http, $location) {
 
 	this.logout = function() {
 		return $location.path('/auth/logout').absUrl();
+	}
+
+	this.organization = function(args) {
+		args = args.split(',');
+		return $location.path('organization/' + args[0]).absUrl();
 	}
 
 	this.dashboard = function() {
