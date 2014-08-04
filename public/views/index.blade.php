@@ -76,6 +76,17 @@
   <% angularjs('modules/Organization/services/Organization.js') %>  
   <% angularjs('modules/Organization/Config.js') %>  
 
+  <!-- Module: Project -->
+  <% angularjs('modules/Project/controllers/ProjectReadController.js') %>
+  <% angularjs('modules/Project/services/Project.js') %>
+  <% angularjs('modules/Project/Config.js') %>
+
+  <!-- Module: TaskList -->
+  <% angularjs('modules/TaskList/controllers/TaskListController.js') %>
+  <% angularjs('modules/TaskList/services/TaskList.js') %>
+  <% angularjs('modules/TaskList/Config.js') %>
+
+
   <!-- Module: Auth -->
   <% angularjs('modules/Auth/controllers/AuthLoginController.js') %>
   <% angularjs('modules/Auth/controllers/AuthLogoutController.js') %>

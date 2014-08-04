@@ -11,6 +11,11 @@
 			return $this->belongsTo('Organization', 'tasks_organizations_id');
 		}
 
+		public function tasklists()
+		{
+			return $this->hasMany('TaskList', 'tasks_projects_id');
+		}
+
 	}
 
 ?>

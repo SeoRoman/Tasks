@@ -1,5 +1,17 @@
 angular.module('Auth').service('Session', function($http, $sessionStorage) {
 
+	this.data = {};
+
+	this.save = function() {
+
+	}
+
+	this.update = function() {
+		return $http.get('session/retrieve').then(function(response) {
+			return response.data;
+		})
+	}
+
 	this.check = function()
 	{
 		return $http.get('auth/check');

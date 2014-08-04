@@ -6,6 +6,11 @@
 
 		protected $guarded = array();
 
+		public function tasklist()
+		{
+			return $this->belongsTo('TaskList', 'tasks_lists_id');
+		}
+
 	}
 
 ?>

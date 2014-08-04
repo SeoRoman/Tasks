@@ -20,11 +20,14 @@ Route::model('users','User');
 
 Route::controller('auth', 'AuthController');
 
+Route::controller('session','SessionController');
+
 // API v1 Resources
 Route::group(array('prefix'=>'api/v1'), function() {
-	Route::resource('organizations','OrganizationController');	
 	Route::resource('offices','OfficeController');	
-	Route::resource('tasks','TaskController');	
+	Route::resource('organizations','OrganizationController');	
+	Route::resource('projects','ProjectController');	
+	Route::resource('tasks','TaskController');
 });
 
 
