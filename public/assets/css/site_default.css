@@ -240,7 +240,7 @@ nav>ul>li:hover>ul::before,nav>ul>li:hover>ul>li::before {
 
 nav ul ul {
   margin:0;
-  display:none;
+  display:block;
   background:rgba(69,69,69,.6);
   padding:7px 0;
 }
