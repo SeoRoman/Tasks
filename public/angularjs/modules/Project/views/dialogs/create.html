@@ -1,1 +1,14 @@
-create
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"><span class="fa fa-plus"></span> Create New Project</h4>
+    </div>
+    <div class="modal-body">
+      <label class="control-label" for="name">Name:</label>
+      <input type="text" class="form-control" id="name" ng-model="project.title" ng-keyup="hitEnter($event)">
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+      <button type="button" class="btn btn-default" ng-click="store()">Create Project</button>
+    </div>
+  </div>
+</div>
