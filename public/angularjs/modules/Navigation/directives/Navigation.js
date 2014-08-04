@@ -38,14 +38,14 @@ angular.module('Application')
         //set up the watch to toggle the element.
         scope.$watch(attrs.showslide, function(v) {
            
-          console.log(v);
+          console.log('V='+v);
 
-           if(v == 'true') {
+           /*if(v == 'true') {
               element.find('.items').slideDown();
            }
            else {
               element.find('.items').slideUp();
-           }
+           }*/
         });
 
         console.log(attrs);
