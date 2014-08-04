@@ -1,6 +1,6 @@
-angular.module('Auth').controller('AuthLogoutController', function($scope, Dialog, RedirectTo, Auth) {	
+angular.module('Auth').controller('AuthLogoutController', function($scope, Dialog, RedirectTo, Auth, Session) {	
 
-		if ($scope.currentUser) {
+		if (Session.get('authenticated')) {
 				// Display Confirmation Dialog
 				confirmDialog = Dialog.confirm('Logout', 'Are you sure you want to logout?', { dialogFade: true, backdropFade: true});
 
@@ -18,6 +18,9 @@ angular.module('Auth').controller('AuthLogoutController', function($scope, Dialo
 
 							// Successful
 							function() {
+
+								// Clear Session
+								Session.destroy();
 
 								// Clear Current User
 								$scope.clearCurrentUser();
@@ -51,7 +54,7 @@ angular.module('Auth').controller('AuthLogoutController', function($scope, Dialo
 				}
 			);
 		}
-		{
+		else {
 			Dialog.notify('Not Logged In', 'You have not authenticated to the server');
 			RedirectTo.login();
 		}			

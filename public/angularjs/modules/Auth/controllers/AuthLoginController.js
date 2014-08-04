@@ -1,4 +1,4 @@
-angular.module('Auth').controller('AuthLoginController', function($scope, Dialog, RedirectTo, Auth) {
+angular.module('Auth').controller('AuthLoginController', function($scope, Dialog, RedirectTo, Auth, Session) {
 
 	// Process a Login Request
 	$scope.login = function() {
@@ -11,6 +11,9 @@ angular.module('Auth').controller('AuthLoginController', function($scope, Dialog
 
 			// Success Function
 			function(user) {
+
+				// Create Session Variable
+				Session.add('authenticated', true);
 
 				// Store the Current User into Application.scope
 				$scope.setCurrentUser(user);

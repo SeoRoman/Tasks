@@ -25,7 +25,7 @@
 			return Response::json(array(), 200);
 		}
 
-		public function getUser()
+		public function getCheck()
 		{
 			if (Auth::guest()) return Response::json(array(), 401);
 			return Response::json(array('user'=>Auth::User()), 200);

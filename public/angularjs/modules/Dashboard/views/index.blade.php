@@ -1,0 +1,3 @@
+Dashboard
+
+{{ currentUser.username }}

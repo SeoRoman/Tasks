@@ -44,6 +44,7 @@
   <%js('dependencies/angular-resource.js')%> 
   <%js('dependencies/angular-sanitize.js')%> 
   <%js('dependencies/angular-translate.js')%>
+  <%js('dependencies/angular-storage.js')%>
   <%js('dependencies/xeditable.js')%>
 
   <!-- Angular Add Ons -->
@@ -63,6 +64,7 @@
   <% angularjs('modules/Application/services/Broadcast.js') %>
   <% angularjs('modules/Application/services/Dialog.js') %>
   <% angularjs('modules/Application/services/RedirectTo.js') %>
+  <% angularjs('modules/Application/services/Session.js') %>
   <% angularjs('modules/Application/Config.js') %>
 
   <!-- Module: Navigation -->
@@ -80,6 +82,10 @@
   <% angularjs('modules/Auth/services/Auth.js') %>
   <% angularjs('modules/Auth/services/User.js') %>
   <% angularjs('modules/Auth/Config.js') %>
+
+  <!-- Module: Dashboard -->
+  <% angularjs('modules/Dashboard/controllers/DashboardController.js') %>
+  <% angularjs('modules/Dashboard/Config.js') %>
 
   <% js('menu.js') %>
 
