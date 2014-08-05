@@ -45,6 +45,7 @@
   <%js('dependencies/angular-sanitize.js')%> 
   <%js('dependencies/angular-translate.js')%>
   <%js('dependencies/angular-storage.js')%>
+  <%js('dependencies/angular-dragdrop.js')%>
   <%js('dependencies/xeditable.js')%>
 
   <!-- Angular Add Ons -->

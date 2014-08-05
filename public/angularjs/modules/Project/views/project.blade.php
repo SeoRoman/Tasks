@@ -2,12 +2,12 @@
 
 	<h2 class="section-title">{{ project.title }}</h2>
 
-	<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController" ng-model="tasklist">
+	<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id)'}">
 		<div class="panel-heading">
 	    {{ tasklist.title }}
 	  </div>
 		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="task in tasklist.tasks" ng-controller="TaskController" ng-model="task">
+			<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
 				<a ng-click="openTask( project.id, tasklist.id, task.id )">
 					{{ task.subject }}
 				</a>

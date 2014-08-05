@@ -14,9 +14,9 @@ class TaskController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($ProjectID, $TaskListID)
 	{
-		$tasks = $this->task->all();
+		$tasks = $this->task->where('tasks_lists_id', $TaskListID)->get();
 		return Response::json($tasks, 200);
 	}
 
@@ -41,7 +41,6 @@ class TaskController extends \BaseController {
 	{
 		// Create the Data Array
 		$data = [
-			'id' => Input::get('id'),
 			'subject' => Input::get('subject'),
 		];
 
@@ -113,8 +112,7 @@ class TaskController extends \BaseController {
 
 		//
 		$data = array(
-			'id' => Input::get('id'),
-			'subject' => Input::get('subject'),
+			'subject' => Input::get('subject')
 		);
 
 		try {
