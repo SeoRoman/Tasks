@@ -121,7 +121,7 @@
         </nav:orgnanizations>      
       </navigation>
     </aside>
-    <div id="main">
+    <div id="main" class="tasklist">
       <div class="container-fluid">
         <div class="row" ng-show="message">
           <div class="col-lg-6 col-lg-offset-3">

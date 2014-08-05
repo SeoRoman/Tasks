@@ -2,7 +2,7 @@ html {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background: url(../img/mybg.png) #fff;
+  background:#fff;
   position: relative;
 }
 
@@ -12,7 +12,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background: url(../img/mybg.png) #fff;
+  background:#fff;
   direction: ltr;
 }
 
@@ -300,6 +300,39 @@ nav ul ul>li:hover b {
 
 #main {
   margin-left:221px;
-  padding-bottom:52px;
-  min-height:500px;
+  width:320px;
+  background: #dcdcdc;
+  background: url(data:image/svg+xml; base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJ…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  background: -moz-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
+  background: -webkit-gradient(linear,left top,right top,color-stop(93%,#dcdcdc),color-stop(100%,#bfbfbf));
+  background: -webkit-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
+  background: -o-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
+  background: -ms-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
+  background: linear-gradient(to right,#dcdcdc 93%,#bfbfbf 100%);
+  min-height: 100%;
+}
+
+.tasklist {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:905;
+  color: #444;
+}
+
+#tasks {
+  margin-left:321px;
+  min-height:100%;
+  min-width: 100%;
+  background: #fff;
+}
+
+.tasks {
+  position:absolute;
+  min-width: 100%;
+  top:0;
+  left:0;
+  padding-left: 10px;
+  z-index:906;
+  color: #444;
 }

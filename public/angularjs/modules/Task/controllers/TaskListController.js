@@ -1,3 +1,3 @@
-angular.module('Task').controller('TaskController', function($scope, $routeParams, Dialog, RedirectTo, Auth) {
+angular.module('Task').controller('TaskListController', function($scope, $routeParams, Dialog, RedirectTo, Auth) {
 
 });

@@ -22,6 +22,14 @@ class ProjectSeeder extends BaseSeeder {
                 'title' => 'Project #2',
             )
         );
+
+        Project::create(
+            array(
+                'user_id' => 2,
+                'tasks_organizations_id' => 2,
+                'title' => 'Project #1',
+            )
+        );
     }
 
 }
