@@ -77,8 +77,7 @@ class TaskController extends \BaseController {
 	 */
 	public function show($projectId, $tasklistId, $taskId)
 	{
-		//
-		return $this->task->find($taskId);
+		return $this->task->where('id', $taskId)->first();
 	}
 
 

@@ -89,10 +89,9 @@
   <!-- Module: Task -->
   <% angularjs('modules/Task/controllers/TaskController.js') %>
   <% angularjs('modules/Task/controllers/TaskReadController.js') %>
+  <% angularjs('modules/Task/controllers/TaskShowController.js') %>
   <% angularjs('modules/Task/services/Task.js') %>
   <% angularjs('modules/Task/Config.js') %>
-
-
 
   <!-- Module: Auth -->
   <% angularjs('modules/Auth/controllers/AuthLoginController.js') %>

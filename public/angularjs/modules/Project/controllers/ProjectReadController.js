@@ -1,19 +1,16 @@
-angular.module('Project').controller('ProjectReadController', function($window, $rootScope, $scope, $routeParams, Dialog, RedirectTo, Project, $location) {
-
-	console.log('entered');
+angular.module('Project').controller('ProjectReadController', function($window, $rootScope, $scope, $routeParams, Dialog, RedirectTo, Project, Task, $location) {
 
 	var params = $routeParams;
-	$scope.project = Project.get( { Id: params.id });
 
-	$rootScope.$on('open-task', function(event, data) {
+	$scope.project = Project.get( { ProjectID: params.ProjectID });
 
-		console.log(data);
-		console.log(data.task);
-		console.log(data.task.id);
+	$scope.openTask = function(ProjectID, TaskListID, TaskID)
+	{
+		var task = Task.get( { ProjectID: ProjectID, TaskListID: TaskListID, TaskID: TaskID } );
 
-		$location.path('/projects/'+data.projectId+'/tasklists/'+data.taskListId+'/tasks/'+data.taskId, false);
+		$location.path('/projects/' + ProjectID + '/tasklists/' + TaskListID + '/tasks/' + TaskID, false);
 
-		$scope.task = data.task;
-	});
+		$rootScope.$broadcast('open-task', { task: task });
+	}
 
 });
