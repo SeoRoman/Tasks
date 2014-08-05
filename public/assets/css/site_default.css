@@ -299,7 +299,7 @@ nav ul ul>li:hover b {
 }
 
 #main {
-  margin-left:221px;
+  margin-left:220px;
   width:320px;
   background: #dcdcdc;
   background: url(data:image/svg+xml; base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJ…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
@@ -323,13 +323,13 @@ nav ul ul>li:hover b {
 #tasks {
   margin-left:321px;
   min-height:100%;
-  min-width: 100%;
+  min-width: 800px;
   background: #fff;
 }
 
 .tasks {
   position:absolute;
-  min-width: 100%;
+  min-width: 800px;
   top:0;
   left:0;
   padding-left: 10px;
