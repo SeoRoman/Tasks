@@ -4,7 +4,6 @@ angular.module('Navigation')
   	o = Organization.resource();
   	$scope.orgs = o.query();
 
-  	console.log($scope.orgs);
 
     /*$scope.orgs = [
       {

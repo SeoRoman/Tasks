@@ -1,8 +1,7 @@
 angular.module('Project').config(function($routeProvider) {
 
-	$routeProvider.when('/project/:id', {
-		templateUrl: '/angularjs/modules/Project/views/project.blade.php',
-		controller: 'ProjectReadController'
+	$routeProvider.when('/projects/:id', {
+		templateUrl: '/angularjs/modules/Project/views/project.blade.php'
 	});
 
 });

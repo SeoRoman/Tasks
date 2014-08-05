@@ -28,7 +28,7 @@ Route::group(array('prefix'=>'api/v1'), function() {
 	Route::resource('organizations','OrganizationController');	
 	Route::resource('projects','ProjectController');	
 	Route::resource('projects.tasklists', 'TaskListController');
-	Route::resource('tasks','TaskController');
+	Route::resource('projects.tasklists.tasks','TaskController');
 });
 
 

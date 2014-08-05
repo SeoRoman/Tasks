@@ -1,6 +1,6 @@
 angular.module('TaskList').service('TaskList', function($http, $resource) {
 
-		return $resource('api/v1/tasklist/:TaskListId/tasks/:Id', {TaskListId: '@TaskListId', Id: '@Id'},  
+		return $resource('api/v1/projects/:ProjectID/tasklists/:TaskListId', {ProjectID: '@ProjectID', TaskListId: '@TaskListId'},  
 		{
 	    	'update': {method:'PUT'},
 		});

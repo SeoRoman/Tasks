@@ -75,10 +75,10 @@ class TaskController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($projectId, $tasklistId, $taskId)
 	{
 		//
-		return $this->task->find($id);
+		return $this->task->find($taskId);
 	}
 
 

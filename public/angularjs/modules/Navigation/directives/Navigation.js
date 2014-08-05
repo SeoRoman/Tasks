@@ -23,7 +23,6 @@ angular.module('Application')
           var status = status == 'true' ? 'false' : 'true';
 
           $element.attr('showSlide', status);
-          console.log($element);
         }
       },
       link: function(scope, element, attrs) {
@@ -33,12 +32,9 @@ angular.module('Application')
 
         element.find('a').append("<b class='collapse-sign'>" + closedSign + "</b>");
 
-        console.log(attrs.showslide);
-
         //set up the watch to toggle the element.
         scope.$watch(attrs.showslide, function(v) {
            
-          console.log('V='+v);
 
            /*if(v == 'true') {
               element.find('.items').slideDown();
@@ -48,7 +44,6 @@ angular.module('Application')
            }*/
         });
 
-        console.log(attrs);
 
       },
       scope: {
@@ -85,7 +80,6 @@ angular.module('Application')
             element.find('a').append("<b class='collapse-sign'>" + closedSign + "</b>");
         }
 
-        console.log(attrs);
 
       },
       scope: {

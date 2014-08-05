@@ -1,8 +1,14 @@
-angular.module('Task').controller('TaskReadController', function($scope, $routeParams, Dialog, RedirectTo, Project) {
+angular.module('Task').config(function($routeProvider) {
 
-  var params = $routeParams;
-  $scope.task = Task.get( { ProjId: params.ProjId, Id: params.Id }, function(response ){
-    console.log(response);
-  });
+	$routeProvider.when('/projects/:ProjectID/tasklists/:TaskListID/tasks/:id', {
+		templateUrl: '/angularjs/modules/Project/views/project.blade.php',
+		controller: 'TaskReadController',
+		resolve: {
+			project: function(Project, $route) 
+			{
+				return Project.get( { Id: $route.current.params.ProjectID });
+			}
+		}
+	});
 
 });
