@@ -36,13 +36,8 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	}
 
 	// Relationships
-	public function topics()
+	public function history()
 	{
-		return $this->hasMany('Topic');
-	}
-
-	public function posts()
-	{
-		return $this->hasMany('Post');
+		return $this->hasMany('History', 'user_id');
 	}
 }

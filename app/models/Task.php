@@ -11,6 +11,16 @@
 			return $this->belongsTo('TaskList', 'tasks_lists_id');
 		}
 
+		public function subtasks()
+		{
+			return $this->hasMany('SubTask', 'tasks_id');
+		}
+
+		public function comments()
+		{
+			return  $this->morphMany('Comment','commentable');
+		}
+
 	}
 
 ?>
