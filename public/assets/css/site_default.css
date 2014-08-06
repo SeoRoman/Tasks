@@ -298,9 +298,24 @@ nav ul ul>li:hover b {
   color:#D5D9E2;
 }
 
-#main {
+#content {
   margin-left:220px;
+  background: url(../img/mybg.png) #fff;
+  min-height: 100%;
+}
+
+.content {
+  position:absolute;
+  top:0;
+  left:0;
+  right: 0;
+  z-index:905;
+  color: #444;
+}
+
+#main {
   width:320px;
+  padding: 0 25px 0 10px;
   background: #dcdcdc;
   background: url(data:image/svg+xml; base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJ…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
   background: -moz-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
@@ -316,7 +331,7 @@ nav ul ul>li:hover b {
   position:absolute;
   top:0;
   left:0;
-  z-index:905;
+  z-index:906;
   color: #444;
 }
 
@@ -332,7 +347,8 @@ nav ul ul>li:hover b {
   min-width: 800px;
   top:0;
   left:0;
+  right: 0;
   padding-left: 10px;
-  z-index:906;
+  z-index:907;
   color: #444;
 }
