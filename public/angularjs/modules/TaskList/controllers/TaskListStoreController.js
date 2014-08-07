@@ -1,14 +1,14 @@
-angular.module('TaskList').controller('TaskListStoreController', function($scope, $routeParams, $modalInstance, TaskList, RedirectTo, Session) {
+angular.module('TaskList').controller('TaskListStoreController', function($scope, $routeParams, $modalInstance, TaskList, RedirectTo, Session, data) {
 
 	$scope.cancel = function()
 	{
 		$modalInstance.close();
 	}
 
-	$scope.store = function(ProjectID, tasklist)
+	$scope.store = function()
 	{
-		console.log('Adding to Project: #' + ProjectID);
-		console.log(tasklist);
+		console.log('Adding to Project: #' + data.ProjectID);
+		console.log(data);
 	}
 
 });
