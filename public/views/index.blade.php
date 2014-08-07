@@ -84,6 +84,7 @@
 
   <!-- Module: TaskList -->
   <% angularjs('modules/TaskList/controllers/TaskListController.js') %>
+  <% angularjs('modules/TaskList/controllers/TaskListUpdateController.js') %>
   <% angularjs('modules/TaskList/services/TaskList.js') %>
   <% angularjs('modules/TaskList/Config.js') %>
 
