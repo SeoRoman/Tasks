@@ -5,7 +5,7 @@ angular.module('TaskList').controller('TaskListController', function($scope, $ro
 
 	$scope.create = function(ProjectID)
 	{
-		Dialog.create('','TaskListStoreController', { ProjectID: ProjectID }, {});
+		Dialog.create('/angularjs/modules/TaskList/views/dialogs/create.html','TaskListStoreController', { ProjectID: ProjectID }, {});
 	}
 
 	$scope.dropCallBack = function(event, ui, title, $index)
