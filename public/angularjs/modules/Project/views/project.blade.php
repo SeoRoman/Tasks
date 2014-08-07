@@ -15,7 +15,7 @@
 		  </div>
 			<ul class="list-group">
 				<li class="list-group-item addNew">
-					<a href="javascript.void(0)">
+					<a href="">
 						<span class="smbtn"><i class="fa fa-plus"></i></span>
 						<span>Add New Task</span>
 					</a>
@@ -27,6 +27,14 @@
 					<span class="pull-right"><a class="smbtn"><i class="fa fa-arrows"></i></a></span>
 				</li>
 			</ul>
+		</div>
+		<div class="panel panel-primary" ng-controller="TaskListCreateController">
+			<div class="panel-body">
+				<a href="" ng-click="create(project.id)">
+					<span class="smbtn"><i class="fa fa-plus"></i></span>
+					<span>Add New Task List</span>
+				</a>
+			</div>
 		</div>
   </div>
 
