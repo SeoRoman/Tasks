@@ -4,7 +4,7 @@
 
 		<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id)'}">
 			<div class="panel-heading" ng-controller="TaskListUpdateController">
-				<div editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="update(project.id, tasklist, $data)">
+				<div editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="updateTitle(project.id, tasklist, $data)">
 			    {{ tasklist.title || 'empty' }}
 			    
 			  </div>
