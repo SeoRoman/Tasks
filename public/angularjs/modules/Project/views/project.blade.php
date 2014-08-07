@@ -3,9 +3,11 @@
 		<h2 class="section-title">{{ project.title }}</h2>
 
 		<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id)'}">
-			<div class="panel-heading">
-		    {{ tasklist.title }}
-		    <span class="pull-right editTitle"><a class="smbtn"><i class="fa fa-pencil"></i></a></span>
+			<div class="panel-heading" ng-controller="TaskListUpdateController">
+		    <span editable-text="tasklist.title" e-form="'taskListEditForm{{$index}}'" onbeforesave="update(project.id, tasklist.id, $data)">
+			    {{ tasklist.title || 'empty' }}
+			  </span>
+		    <span class="pull-right editTitle"><a class="smbtn" ng-click="'taskListEditForm{{$index}}'.$show()" ng-hide="'taskListEditForm{{$index}}'.$visible"><i class="fa fa-pencil"></i></a></span>
 		  </div>
 			<ul class="list-group">
 				<li class="list-group-item addNew">
@@ -33,8 +35,10 @@
 					</span>
 					<div class="clearfix"></div>
 				</div>
-				<div>
-					<p>{{ task.subject }}</p>
+				<div class="taskHeader">
+					<i class="fa fa-check taskDone"></i>
+					<span class="taskSubject"><a href="javascript:void(0)">{{ task.subject }}</a></span>
+					<span class="pull-right"><select></select></span>
 				</div>
 			</div>
 
