@@ -4,14 +4,23 @@
 
 		<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id)'}">
 			<div class="panel-heading" ng-controller="TaskListUpdateController">
-				<form editable-form name="'taskListEditForm{{$index}}'" onbeforesave="update(project.id, tasklist.id, $data)" ng-show="'taskListEditForm{{$index}}'.$visible" class="form-inline" shown="inserted == tasklist">
-					<span editable-text="tasklist.title" e-form="'taskListEditForm{{$index}}'" e-name="tasklist.title">
+				<form editable-form name="taskListEditForm" onbeforesave="update(project.id, tasklist.id, $data)" class="form-inline" shown="inserted == tasklist">
+					<span editable-text="tasklist.title" e-form="taskListEditForm" e-name="title">
 				    {{ tasklist.title || 'empty' }}
 				  </span>
-					<button type="submit" ng-disabled="'taskListEditForm{{$index}}'.$waiting" class="btn btn-xs btn-primary">Save</button>
-					<button type="button" ng-disabled="'taskListEditForm{{$index}}'.$waiting" class="btn btn-xs btn-danger" ng-click="'taskListEditForm{{$index}}'.$hide()">Cancel</button>
 				</form>
-				<span class="pull-right editTitle"><a class="smbtn" ng-click="'taskListEditForm{{$index}}'.$show()" ng-hide="'taskListEditForm{{$index}}'.$visible"><i class="fa fa-pencil"></i></a></span>
+				<span class="pull-right buttons">
+					<button type="button" class="btn btn-default"  ng-click="taskListEditForm.$show()" ng-show="!taskListEditForm.$visible"><i class="fa fa-pencil"></i></button>
+					<span ng-show="taskListEditForm.$visible">
+	        <button type="submit" class="btn btn-success" ng-disabled="taskListEditForm.$waiting">
+	          Save
+	        </button>
+	        <button type="button" class="btn btn-default" ng-disabled="taskListEditForm.$waiting" ng-click="taskListEditForm.$cancel()">
+	          Cancel
+	        </button>
+	      </span>
+				</span>
+				<span class="clearfix"></span>
 		  </div>
 			<ul class="list-group">
 				<li class="list-group-item addNew">
