@@ -1,4 +1,9 @@
-angular.module('TaskList').controller('TaskListStoreController', function($scope, $routeParams, TaskList, RedirectTo, Session) {
+angular.module('TaskList').controller('TaskListStoreController', function($scope, $routeParams, $modalInstance, TaskList, RedirectTo, Session) {
+
+	$scope.cancel = function()
+	{
+		$modalInstance.close();
+	}
 
 	$scope.store = function(ProjectID, tasklist)
 	{

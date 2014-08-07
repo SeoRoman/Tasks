@@ -4,11 +4,13 @@
       <h4 class="modal-title"><span class="fa fa-plus"></span> Create New Task List</h4>
     </div>
     <div class="modal-body">
+      <p>Project ID: {{ data.pid }}</p>
+
       <label class="control-label" for="name">Title:</label>
       <input type="text" class="form-control" id="name" ng-model="tasklist.title" ng-keyup="hitEnter($event)">
     <div class="modal-footer">
       <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
-      <button type="button" class="btn btn-default" ng-click="store()">Create Task</button>
+      <button type="button" class="btn btn-default" ng-click="store(ProjectID)">Create Task</button>
     </div>
   </div>
 </div>
