@@ -348,7 +348,39 @@ nav ul ul>li:hover b {
   top:0;
   left:0;
   right: 0;
-  padding-left: 10px;
+  padding: 0 10px;
   z-index:907;
   color: #444;
+}
+
+.smbtn {
+  padding: 5px 10px;
+  height: 16px;
+  width: 16px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  color: #2a6496;
+}
+
+span.moveTask>a.smbtn,
+span.newTask>.smbtn {
+  color: #2a6496;
+  background: #fff;
+}
+
+span.editTitle>a.smbtn {
+  color: #2a6496;
+  background: #428bca;
+}
+
+.moveTask {
+  cursor: move;
+}
+
+span.editTitle>.smbtn:hover {
+  color: #428bca;
+  background: #2a6496;
+  cursor: pointer;
 }

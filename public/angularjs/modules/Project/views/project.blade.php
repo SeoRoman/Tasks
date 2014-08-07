@@ -5,12 +5,20 @@
 		<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id)'}">
 			<div class="panel-heading">
 		    {{ tasklist.title }}
+		    <span class="pull-right editTitle"><a class="smbtn"><i class="fa fa-pencil"></i></a></span>
 		  </div>
 			<ul class="list-group">
-				<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
+				<li class="list-group-item addNew">
+					<a href="javascript.void(0)">
+						<span class="smbtn"><i class="fa fa-plus"></i></span>
+						<span>Add New Task</span>
+					</a>
+				</li>
+				<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item moveTask" ng-repeat="task in droppables[tasklist.id]">
 					<a ng-click="openTask( project.id, tasklist.id, task.id )">
 						{{ task.subject }}
 					</a>
+					<span class="pull-right"><a class="smbtn"><i class="fa fa-arrows"></i></a></span>
 				</li>
 			</ul>
 		</div>
@@ -19,12 +27,19 @@
 	<div ng-controller="TaskShowController" id="tasks" class="tasks">
 			
 			<div ng-if="task">
-				<a ng-click="closeTask()">Close the Task</a>
-				<p>{{ task.subject }}</p>
+				<div>
+					<span class="closeTask pull-right">
+						<a ng-click="closeTask()" title="Close the Task"><i class="fa fa-times"></i></a>
+					</span>
+					<div class="clearfix"></div>
+				</div>
+				<div>
+					<p>{{ task.subject }}</p>
+				</div>
 			</div>
 
 			<div ng-if="!task">
-				No Task Loaded
+				<h3>No Task Loaded</h3>
 			</div>
 		</div>
 
