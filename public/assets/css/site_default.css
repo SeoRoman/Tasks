@@ -353,14 +353,7 @@ nav ul ul>li:hover b {
   color: #444;
 }
 
-.panel-heading form {
-  display: inline-block;
-}
 
-.editable-wrap .editable-controls>input, .editable-wrap .editable-controls>select, .editable-wrap .editable-controls>textarea {
-  width: 253px!important;
-  margin-bottom: 5px!important;
-}
 
 .smbtn {
   padding: 5px 10px;
