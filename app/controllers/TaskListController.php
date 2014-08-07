@@ -41,8 +41,9 @@ class TaskListController extends \BaseController {
 	{
 		// Create the Data Array
 		$data = [
-			'id' => Input::get('id'),
-			'subject' => Input::get('subject'),
+			'user_id' => 1,
+			'tasks_projects_id' => 1,
+			'title' => Input::get('title'),
 		];
 
 		$rules = array('id'=>'required');
