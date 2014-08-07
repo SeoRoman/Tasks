@@ -4,10 +4,14 @@
 
 		<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id)'}">
 			<div class="panel-heading" ng-controller="TaskListUpdateController">
-		    <span editable-text="tasklist.title" e-form="'taskListEditForm{{$index}}'" onbeforesave="update(project.id, tasklist.id, $data)">
-			    {{ tasklist.title || 'empty' }}
-			  </span>
-		    <span class="pull-right editTitle"><a class="smbtn" ng-click="'taskListEditForm{{$index}}'.$show()" ng-hide="'taskListEditForm{{$index}}'.$visible"><i class="fa fa-pencil"></i></a></span>
+				<form editable-form name="'taskListEditForm{{$index}}'" onbeforesave="update(project.id, tasklist.id, $data)" ng-show="'taskListEditForm{{$index}}'.$visible" class="form-inline" shown="inserted == tasklist">
+					<span editable-text="tasklist.title" e-form="'taskListEditForm{{$index}}'" e-name="tasklist.title">
+				    {{ tasklist.title || 'empty' }}
+				  </span>
+					<button type="submit" ng-disabled="'taskListEditForm{{$index}}'.$waiting" class="btn btn-xs btn-primary">Save</button>
+					<button type="button" ng-disabled="'taskListEditForm{{$index}}'.$waiting" class="btn btn-xs btn-danger" ng-click="'taskListEditForm{{$index}}'.$hide()">Cancel</button>
+				</form>
+				<span class="pull-right editTitle"><a class="smbtn" ng-click="'taskListEditForm{{$index}}'.$show()" ng-hide="'taskListEditForm{{$index}}'.$visible"><i class="fa fa-pencil"></i></a></span>
 		  </div>
 			<ul class="list-group">
 				<li class="list-group-item addNew">
