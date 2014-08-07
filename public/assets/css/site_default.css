@@ -353,7 +353,14 @@ nav ul ul>li:hover b {
   color: #444;
 }
 
-
+.panel-heading div.editable {
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143em;
+  height: 34px;
+  width: auto;
+  float: left;
+}
 
 .smbtn {
   padding: 5px 10px;

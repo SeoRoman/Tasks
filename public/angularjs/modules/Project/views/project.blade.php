@@ -4,9 +4,10 @@
 
 		<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id)'}">
 			<div class="panel-heading" ng-controller="TaskListUpdateController">
-				<span editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="update(project.id, tasklist.id, $data)">
+				<div editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="update(project.id, tasklist.id, $data)">
 			    {{ tasklist.title || 'empty' }}
-			  </span>
+			    
+			  </div>
 				<span class="pull-right buttons">
 					<button type="button" class="btn btn-default"  ng-click="taskListEditForm.$show()" ng-show="!taskListEditForm.$visible"><i class="fa fa-pencil"></i></button>
 				</span>
