@@ -3,11 +3,6 @@ angular.module('TaskList').controller('TaskListController', function($scope, $ro
 	$scope.droppables = {};
 	$scope.droppables[$scope.tasklist.id] = $scope.tasklist.tasks;
 
-	$scope.create = function(ProjectID)
-	{
-		Dialog.create('/angularjs/modules/TaskList/views/dialogs/create.html','TaskListStoreController', { ProjectID: ProjectID }, {});
-	}
-
 	$scope.dropCallBack = function(event, ui, title, $index)
 	{
 
