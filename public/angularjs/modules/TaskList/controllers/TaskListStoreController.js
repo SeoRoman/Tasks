@@ -1,4 +1,6 @@
-angular.module('TaskList').controller('TaskListStoreController', function($scope, $routeParams, $modalInstance, TaskList, RedirectTo, Session, data) {
+angular.module('TaskList').controller('TaskListStoreController', function($rootScope, $scope, $routeParams, $modalInstance, TaskList, RedirectTo, Session, data) {
+
+	$scope.tasklist = {};
 
 	$scope.cancel = function()
 	{
@@ -7,8 +9,15 @@ angular.module('TaskList').controller('TaskListStoreController', function($scope
 
 	$scope.store = function()
 	{
-		console.log('Adding to Project: #' + data.ProjectID);
-		console.log(data);
+		var tasklist = $scope.tasklist;
+
+		tasklist.tasks_projects_id = data.ProjectID;
+
+		tasklist = TaskList.save(tasklist);
+
+		console.log(tasklist);
+
+		//$rootScope.$broadcast('tasklist-create', { tasklist: tasklist });
 	}
 
 });
