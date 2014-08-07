@@ -114,8 +114,7 @@ class TaskListController extends \BaseController {
 
 		//
 		$data = array(
-			'id' => Input::get('id'),
-			'subject' => Input::get('subject'),
+			'title' => Input::get('title')
 		);
 
 		try {

@@ -1,9 +1,9 @@
-angular.module('TaskList').controller('TaskListUpdateController', function($scope, $routeParams, Task, RedirectTo, Session) {
+angular.module('TaskList').controller('TaskListUpdateController', function($scope, $routeParams, TaskList, RedirectTo, Session) {
 
-	$scope.update = function(ProjectID, TaskListID, data)
+	$scope.updateTitle = function(ProjectID, tasklist, data)
 	{
-		alert('Updating ProjectID: ' + ProjectID + ' TaskListID: ' + TaskListID);
-		console.log(data);
+		tasklist.title = data;
+		TaskList.update( { ProjectID: ProjectID, TaskListID: tasklist.id }, tasklist);
 	}
 
 });
