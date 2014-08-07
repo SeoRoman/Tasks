@@ -85,11 +85,13 @@
   <!-- Module: TaskList -->
   <% angularjs('modules/TaskList/controllers/TaskListController.js') %>
   <% angularjs('modules/TaskList/controllers/TaskListUpdateController.js') %>
+  <% angularjs('modules/TaskList/controllers/TaskListStoreController.js') %>
   <% angularjs('modules/TaskList/services/TaskList.js') %>
   <% angularjs('modules/TaskList/Config.js') %>
 
   <!-- Module: Task -->
   <% angularjs('modules/Task/controllers/TaskController.js') %>
+
   <% angularjs('modules/Task/controllers/TaskReadController.js') %>
   <% angularjs('modules/Task/controllers/TaskShowController.js') %>
   <% angularjs('modules/Task/services/Task.js') %>
