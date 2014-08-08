@@ -3,6 +3,9 @@ angular.module('TaskList').controller('TaskListUpdateController', function($scop
 	$scope.updateTitle = function(ProjectID, tasklist, data)
 	{
 		tasklist.title = data;
+
+		console.log(tasklist);
+
 		TaskList.update( { ProjectID: ProjectID, TaskListID: tasklist.id }, tasklist);
 	}
 
