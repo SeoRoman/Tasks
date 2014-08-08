@@ -61,6 +61,7 @@ class TaskListController extends \BaseController {
 			$tasklist = new TaskList();
 			$tasklist->fill($data);
 			$tasklist->save();
+			$tasklist->load('tasks');
 			return Response::json([ 'data' => $tasklist ], 200);
 		}
 		catch(\Exception $e) {
