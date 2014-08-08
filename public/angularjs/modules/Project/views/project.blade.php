@@ -10,8 +10,8 @@
 				  </div>
 					<span class="pull-right buttons">
 						<button type="button" class="btn btn-default"  ng-click="taskListEditForm.$show()" ng-show="!taskListEditForm.$visible"><i class="fa fa-pencil"></i></button>
-						<a data-toggle="collapse" data-parent=".accordion" href=".collapse{{$index}}">
-		          [+]
+						<a data-toggle="collapse" data-parent=".accordion" href=".collapse{{$index}}" class="expand">
+		          <i class="fa fa-sort"></i>
 		        </a>
 					</span>
 					<span class="clearfix"></span>

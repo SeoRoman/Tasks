@@ -373,6 +373,10 @@ nav ul ul>li:hover b {
   color: #2a6496;
 }
 
+.expand {
+  color: #2a6496;
+}
+
 span.moveTask>a.smbtn,
 span.newTask>.smbtn {
   color: #2a6496;
