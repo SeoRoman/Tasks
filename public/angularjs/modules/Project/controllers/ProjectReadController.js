@@ -5,8 +5,12 @@ angular.module('Project').controller('ProjectReadController', function($window, 
 	$scope.project = Project.get( { ProjectID: params.ProjectID });
 
 	$scope.openTask = function(ProjectID, TaskListID, TaskID)
-	{
-		var task = Task.get( { ProjectID: ProjectID, TaskListID: TaskListID, TaskID: TaskID } );
+	{		
+		Dialog.loading('open-task');
+
+		var task = Task.get( { ProjectID: ProjectID, TaskListID: TaskListID, TaskID: TaskID } , function() {
+			Dialog.close('open-task');
+		});
 
 		$location.path('/projects/' + ProjectID + '/tasklists/' + TaskListID + '/tasks/' + TaskID, false);
 

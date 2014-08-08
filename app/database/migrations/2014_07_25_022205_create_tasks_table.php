@@ -29,7 +29,7 @@ class CreateTasksTable extends Migration {
 
 			$table->string('subject');
 
-			$table->text('notes');
+			$table->text('description');
 
 			$table->boolean('completed');
 

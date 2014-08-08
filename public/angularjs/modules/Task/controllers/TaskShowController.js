@@ -1,6 +1,7 @@
-angular.module('Task').controller('TaskShowController', function($rootScope, $location, $scope, $routeParams, Task) {
+angular.module('Task').controller('TaskShowController', function($rootScope, $location, $scope, $routeParams, Task, Dialog) {
 
 	$rootScope.$on('open-task', function(event, data) {
+
 		$scope.task = data.task;
 	});
 
