@@ -35,6 +35,8 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 
 		var task = data.task.data;
 
+		if (!$scope.tasklist.$visible) $scope.tasklist.$visible = true;
+
 		$scope.tasklist.tasks.push(task);
 
 	});
