@@ -102,25 +102,25 @@ class TaskListController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($ProjectID, $TaskListID)
 	{
-		$tasklist = $this->tasklist->withTrashed()->where('id', $id)->first();
-
-		if (!$tasklist) {
-			return Response::json(array('status'=> 0, 'message' => 'TaskList Not Found'), 400);
-		}
-		if ($tasklist->deleted_at)
-		{
-			return Response::json(array('status' => 0, 'message' => 'Deleted Item: Only Administrator Access'), 400);
-		}
-
+		
 		//
 		$data = array(
 			'title' => Input::get('title')
 		);
 
 		try {
-			$tasklist = $this->tasklist->find($id);
+			$tasklist = $this->tasklist->withTrashed()->where('id', $TaskListID)->first();
+
+			if (!$tasklist) {
+				return Response::json(array('status'=> 0, 'message' => 'TaskList Not Found'), 400);
+			}
+			if ($tasklist->deleted_at)
+			{
+				return Response::json(array('status' => 0, 'message' => 'Deleted Item: Only Administrator Access'), 400);
+			}
+			
 			$tasklist->fill($data);
 			$tasklist->save();
 			return Response::json([ 'data' => $tasklist ], 200);
