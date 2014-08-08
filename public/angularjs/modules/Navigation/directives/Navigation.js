@@ -5,7 +5,7 @@ angular.module('Application')
       controller: 'NavigationController',
       transclude: true,
       replace: true,
-      template: '<nav><ul ng-transclude=""></ul></nav>'
+      template: '<nav class="accordion"><ul ng-transclude=""></ul></nav>'
     };
   })
   .directive('navOrganizations', function() {
@@ -84,7 +84,7 @@ angular.module('Application')
       },
       scope: {
         title: '@',
-        items: '@',
+        href: '@',
         active: '=?'
       },
       templateUrl: 'angularjs/modules/Navigation/views/navGroup.html'

@@ -1,5 +1,5 @@
 <li ng-class="{active: active}" ng-click="click()">
-	<a href=".items{{items}}" data-toggle="collapse" data-parent="">
+	<a data-toggle="collapse" data-parent=".accordion" href="{{href}}">
 		<span class="menu-item-parent">{{ title }}</span>
 	</a>
 	<ul ng-transclude=""></ul>
