@@ -84,6 +84,7 @@ angular.module('Application')
       },
       scope: {
         title: '@',
+        items: '@',
         active: '=?'
       },
       templateUrl: 'angularjs/modules/Navigation/views/navGroup.html'

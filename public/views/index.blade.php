@@ -131,8 +131,8 @@
         <nav:menu ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:menu>
         <nav:menu ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:menu>
         <nav:menu ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:menu>
-        <nav:organizations ng-repeat="org in orgs" title="{{org.title}}" showSlide="false">
-          <span class="items">
+        <nav:organizations ng-repeat="org in orgs" title="{{org.title}}" showSlide="false" items="{{$index}}">
+          <span class="items{{$index}}">
             <nav:item view="" href="" target="" click="" ng-repeat="project in org.projects" title="{{ project.title }}"></nav:item>
           </span>
         </nav:orgnanizations>      
