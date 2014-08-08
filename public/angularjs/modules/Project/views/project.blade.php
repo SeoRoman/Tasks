@@ -17,8 +17,8 @@
 					<span class="clearfix"></span>
 			  </div>
 				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}">
-					<li class="list-group-item addNew">
-						<a href="">
+					<li class="list-group-item addNew" ng-controller="TaskCreateController">
+						<a href="" ng-click="create(project.id, tasklist.id)">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
 							<span>Add New Task</span>
 						</a>

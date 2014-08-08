@@ -41,10 +41,12 @@ class TaskController extends \BaseController {
 	{
 		// Create the Data Array
 		$data = [
+			'user_id' => Input::get('user_id'),
+			'tasks_lists_id' => Input::get('tasks_lists_id'),
 			'subject' => Input::get('subject'),
 		];
 
-		$rules = array('id'=>'required');
+		$rules = array('subject'=>'required');
 		$validator = Validator::make($data, $rules);
 
 		// Validation Request
