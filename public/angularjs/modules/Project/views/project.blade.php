@@ -10,7 +10,7 @@
 				  </div>
 					<span class="pull-right buttons">
 						<button type="button" class="btn btn-default"  ng-click="taskListEditForm.$show()" ng-show="!taskListEditForm.$visible"><i class="fa fa-pencil"></i></button>
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}">
+						<a data-toggle="collapse" data-parent="#accordion" href=".collapse{{$index}}">
 		          [+]
 		        </a>
 					</span>
@@ -21,7 +21,7 @@
 			    $('.collapse').collapse('toggle');
 			  });
 			  </script>
-				<ul id="collapse{{$index}}" class="list-group panel-collapse collapse">
+				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}">
 					<li class="list-group-item addNew">
 						<a href="">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
