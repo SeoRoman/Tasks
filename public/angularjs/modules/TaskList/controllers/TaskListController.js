@@ -6,6 +6,8 @@ angular.module('TaskList').controller('TaskListController', function($scope, $ro
 	$scope.dropCallBack = function(event, ui, title, $index)
 	{
 
+		$scope.droppables[$index] = $scope.tasklist.tasks;
+
 		// Here we will update SQL to assign the task to the TaskList
 		angular.forEach($scope.droppables[$index], function(task, index) {
 
