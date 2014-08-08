@@ -111,11 +111,11 @@
 
   <% js('menu.js') %>
 
-  <!--<script>
+  <script>
   $(document).ready( function() {
     $('.collapse').collapse();
   });
-  </script>-->
+  </script>
 
  <base href="/#/">
 </head>
@@ -133,7 +133,7 @@
         <nav:menu ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:menu>
         <nav:organizations ng-repeat="org in orgs" title="{{org.title}}" showSlide="false" items="{{$index}}">
           <span class="items{{$index}}">
-            <nav:item view="" href="" target="" click="" ng-repeat="project in org.projects" title="{{ project.title }}"></nav:item>
+            <nav:item view="" target="" click="" ng-repeat="project in org.projects" href="projects/{{project.id}}" title="{{ project.title }}"></nav:item>
           </span>
         </nav:orgnanizations>      
       </navigation>
