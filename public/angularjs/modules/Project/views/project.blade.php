@@ -21,7 +21,7 @@
 					</a>
 				</li>
 				<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item moveTask" ng-repeat="task in droppables[tasklist.id]">
-					<a ng-click="openTask( project.id, tasklist.id, task.id )">
+					<a class="openTask" ng-click="openTask( project.id, tasklist.id, task.id )">
 						{{ task.subject }}
 					</a>
 					<span class="pull-right"><a class="smbtn"><i class="fa fa-arrows"></i></a></span>
@@ -51,6 +51,19 @@
 					<i class="fa fa-check taskDone"></i>
 					<span class="taskSubject"><a href="javascript:void(0)">{{ task.subject }}</a></span>
 					<span class="pull-right"><select></select></span>
+				</div>
+				<div class="taskCrumbs">
+					<small>
+						Tasklist Title: {{tasklist.title}} 
+						<i class="fa fa-angle-double-right"></i> 
+						{{task.subject}}
+					</small>
+				</div>
+				<div class="taskDesc">{{task.notes}}</div>
+				<div class="taskByline">
+					<small>
+						Edited by {Nathon Shultz} {8:23 PM}
+					</small>
 				</div>
 			</div>
 

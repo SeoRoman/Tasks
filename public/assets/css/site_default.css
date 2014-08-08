@@ -348,7 +348,7 @@ nav ul ul>li:hover b {
   top:0;
   left:0;
   right: 0;
-  padding: 0 10px;
+  padding: 10px 20px;
   z-index:907;
   color: #444;
 }
@@ -388,8 +388,25 @@ span.editTitle>a.smbtn {
   cursor: move;
 }
 
+a.openTask {
+  cursor: pointer;
+}
+
 span.editTitle>.smbtn:hover {
   color: #428bca;
   background: #2a6496;
   cursor: pointer;
+}
+
+.closeTask {
+  margin: -10px 0 10px;
+}
+
+.taskCrumbs,
+.taskByline {
+  color: #b0b0b0;
+}
+
+.taskDesc {
+  margin: 20px 0 0;
 }
