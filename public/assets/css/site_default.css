@@ -398,6 +398,10 @@ span.editTitle>.smbtn:hover {
   cursor: pointer;
 }
 
+.editable-buttons {
+  display: none!important;
+}
+
 .closeTask {
   margin: -10px 0 10px;
 }
