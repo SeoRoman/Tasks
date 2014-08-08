@@ -1,32 +1,41 @@
 <div ng-controller="ProjectReadController" ng-model="project">
 	<div id="main" class="tasklist">
 		<h2 class="section-title">{{ project.title }}</h2>
-
-		<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
-			<div class="panel-heading" ng-controller="TaskListUpdateController">
-				<div editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="updateTitle(project.id, tasklist, $data)">
-			    {{ tasklist.title || 'empty' }}
-			    
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
+				<div class="panel-heading" ng-controller="TaskListUpdateController">
+					<div editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="updateTitle(project.id, tasklist, $data)">
+				    {{ tasklist.title || 'empty' }}
+				    
+				  </div>
+					<span class="pull-right buttons">
+						<button type="button" class="btn btn-default"  ng-click="taskListEditForm.$show()" ng-show="!taskListEditForm.$visible"><i class="fa fa-pencil"></i></button>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}">
+		          [+]
+		        </a>
+					</span>
+					<span class="clearfix"></span>
 			  </div>
-				<span class="pull-right buttons">
-					<button type="button" class="btn btn-default"  ng-click="taskListEditForm.$show()" ng-show="!taskListEditForm.$visible"><i class="fa fa-pencil"></i></button>
-				</span>
-				<span class="clearfix"></span>
-		  </div>
-			<ul class="list-group">
-				<li class="list-group-item addNew">
-					<a href="">
-						<span class="smbtn"><i class="fa fa-plus"></i></span>
-						<span>Add New Task</span>
-					</a>
-				</li>
-				<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item moveTask" ng-repeat="task in droppables[tasklist.id]">
-					<a class="openTask" ng-click="openTask( project.id, tasklist.id, task.id )">
-						{{ task.subject }}
-					</a>
-					<span class="pull-right"><a class="smbtn"><i class="fa fa-arrows"></i></a></span>
-				</li>
-			</ul>
+			  <script>
+			  $(document).ready( function() {
+			    $('.collapse').collapse('toggle');
+			  });
+			  </script>
+				<ul id="collapse{{$index}}" class="list-group panel-collapse collapse">
+					<li class="list-group-item addNew">
+						<a href="">
+							<span class="smbtn"><i class="fa fa-plus"></i></span>
+							<span>Add New Task</span>
+						</a>
+					</li>
+					<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item moveTask" ng-repeat="task in droppables[tasklist.id]">
+						<a class="openTask" ng-click="openTask( project.id, tasklist.id, task.id )">
+							{{ task.subject }}
+						</a>
+						<span class="pull-right"><a class="smbtn"><i class="fa fa-arrows"></i></a></span>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="panel panel-primary" ng-controller="TaskListCreateController">
 			<div class="panel-body">

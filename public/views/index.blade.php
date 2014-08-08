@@ -57,7 +57,7 @@
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
 
-  <!-- Main Application -->?
+  <!-- Main Application -->
   <% angularjs('Application.js') %>
 
   <!-- Module: Application -->
@@ -110,6 +110,12 @@
   <% angularjs('modules/Dashboard/Config.js') %>
 
   <% js('menu.js') %>
+
+  <!--<script>
+  $(document).ready( function() {
+    $('.collapse').collapse();
+  });
+  </script>-->
 
  <base href="/#/">
 </head>
