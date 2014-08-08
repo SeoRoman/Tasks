@@ -13,11 +13,11 @@ angular.module('TaskList').controller('TaskListStoreController', function($rootS
 
 		tasklist.tasks_projects_id = data.ProjectID;
 
-		tasklist = TaskList.save(tasklist);
+		TaskList.save(tasklist, { ProjectID: data.ProjectID }, function(tasklist) {
+			$modalInstance.close();
+			$rootScope.$broadcast('tasklist-create', { tasklist: tasklist });
+		});
 
-		console.log(tasklist);
-
-		//$rootScope.$broadcast('tasklist-create', { tasklist: tasklist });
 	}
 
 });

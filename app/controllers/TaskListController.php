@@ -46,7 +46,7 @@ class TaskListController extends \BaseController {
 			'title' => Input::get('title'),
 		];
 
-		$rules = array('id'=>'required');
+		$rules = array('title'=>'required');
 		$validator = Validator::make($data, $rules);
 
 		// Validation Request

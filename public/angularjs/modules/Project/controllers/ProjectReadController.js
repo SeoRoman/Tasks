@@ -13,9 +13,9 @@ angular.module('Project').controller('ProjectReadController', function($window, 
 		$rootScope.$broadcast('open-task', { task: task });
 	}
 
-	$rootScope.$on('tasklist-create', function(data) {
+	$rootScope.$on('tasklist-create', function(event, data) {
 
-		$scope.project.tasklists.push(data.tasklist);
+		$scope.project.tasklists.push(data.tasklist.data);
 
 	});
 
