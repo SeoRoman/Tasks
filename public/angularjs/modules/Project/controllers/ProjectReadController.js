@@ -23,4 +23,8 @@ angular.module('Project').controller('ProjectReadController', function($window, 
 
 	});
 
+	$rootScope.$on('tasklist-update', function(event, data) {
+		$scope.project.tasklists.push(data.tasklist.data);
+	});
+
 });

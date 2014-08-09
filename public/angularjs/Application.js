@@ -4,11 +4,11 @@ angular.module('Auth', []);
 
 angular.module('Session', []);
 
+angular.module('Navigation', ['Organization']);
+
 angular.module('Organization', ['Project']);
 
 angular.module('Project', ['TaskList']);
-
-angular.module('Navigation', ['Organization']);
 
 angular.module('TaskList', ['Task']);
 

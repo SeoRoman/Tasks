@@ -11,20 +11,18 @@
 				</div>
 			</div>
 			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
-				<div class="panel-heading" ng-controller="TaskListUpdateController">
-					<div editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="updateTitle(project.id, tasklist, $data)">
-				    {{ tasklist.title || 'empty' }}
-				    <span class="badge">3</span>
-				  </div>
-					<span class="pull-right buttons" ng-show="!taskListEditForm.$visible">
+				<div class="panel-heading">
+					{{ tasklist.title }}
+				  <span class="badge">3</span>
+					<span class="pull-right buttons">
 						<div class="btn-group">
 						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 						    <i class="fa fa-pencil"></i>
 						  </button>
 						  <ul class="editTaskList dropdown-menu dropdown-menu-right" role="menu">
-						    <li><button type="button" class=""  ng-click="taskListEditForm.$show()">Edit</button></li>
-						    <!--Change the above to a modal edit instead of inline edit to do it having to be a button which doesnt look as good in this dropdown menu.-->
-						    <!-- <li><a href="#">Edit</a></li> -->
+						    <!--<li><button type="button" class="" ng-click="taskListEditForm.$show()">Edit</button></li>
+						    Change the above to a modal edit instead of inline edit to do it having to be a button which doesnt look as good in this dropdown menu.-->
+						    <li ng-controller="TaskListUpdateTitleController"><a href="" ng-click="update(project.id, tasklist.id)">Edit</a></li><!--  -->
 						    <li><a href="#"><span class="delete">Delete</span></a></li>
 						  </ul>
 						</div>
