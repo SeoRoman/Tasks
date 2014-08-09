@@ -315,15 +315,8 @@ nav ul ul>li:hover b {
 
 #main {
   width:320px;
-  padding: 0 25px 0 10px;
-  background: #dcdcdc;
-  background: url(data:image/svg+xml; base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJ…BoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
-  background: -moz-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
-  background: -webkit-gradient(linear,left top,right top,color-stop(93%,#dcdcdc),color-stop(100%,#bfbfbf));
-  background: -webkit-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
-  background: -o-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
-  background: -ms-linear-gradient(left,#dcdcdc 93%,#bfbfbf 100%);
-  background: linear-gradient(to right,#dcdcdc 93%,#bfbfbf 100%);
+  padding: 0 10px 0 10px;
+  background: url(../img/mybg.png) #fff;
   min-height: 100%;
 }
 
@@ -332,7 +325,9 @@ nav ul ul>li:hover b {
   top:0;
   left:0;
   z-index:906;
+  height: 100%;
   color: #444;
+  overflow-y: scroll;
 }
 
 #tasks {
@@ -345,12 +340,44 @@ nav ul ul>li:hover b {
 .tasks {
   position:absolute;
   min-width: 800px;
+  height: 100%;
   top:0;
   left:0;
   right: 0;
   padding: 10px 20px;
   z-index:907;
   color: #444;
+  overflow-y: scroll;
+}
+
+.panel,
+.panel-group .panel {
+  border-radius: 0px;
+}
+
+.panel > .list-group {
+  border-top: 1px solid #ddd;
+}
+
+.panel-custom-grey {
+  border-color: #ddd;
+  border-width: 2px;
+}
+.panel-custom-grey > .panel-heading {
+  color: #858585;
+  background-color: #fff;
+  border-color: #ddd;
+  font-weight: bold;
+}
+.panel-custom-grey > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ddd;
+}
+.panel-custom-grey > .panel-heading .badge {
+  color: #b8b8b8;
+  background-color: #f5f5f5;
+}
+.panel-custom-grey > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ddd;
 }
 
 .panel-heading div.editable {
@@ -360,6 +387,11 @@ nav ul ul>li:hover b {
   height: 34px;
   width: auto;
   float: left;
+}
+
+.panel-heading {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .smbtn {
@@ -373,8 +405,58 @@ nav ul ul>li:hover b {
   color: #2a6496;
 }
 
+.editable-input.editable-has-buttons {
+  width: 250px !important;
+}
+
+.editTaskList.dropdown-menu {
+  background-color: #f5f5f5;
+  border: 1px solid #858585;
+  padding: 0;
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, .45);
+          box-shadow: 0 0 12px rgba(0, 0, 0, .45);
+}
+.editTaskList button,
+.editTaskList input,
+.editTaskList optgroup,
+.editTaskList select,
+.editTaskList textarea {
+  font-weight: normal;
+}
+.editTaskList.dropdown-menu > li {
+  border-top: 1px solid #858585;
+}
+.editTaskList.dropdown-menu > li:first-child {
+  border-top: none;
+}
+.editTaskList.dropdown-menu > li > a {
+  color: #333;
+  padding: 8px 20px;
+}
+.editTaskList.dropdown-menu > li > a:hover,
+.editTaskList.dropdown-menu > li > a:focus {
+  color: #222;
+  background-color: #ddd;
+}
+.editTaskList.dropdown-menu > li:first-child > a:hover {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.editTaskList.dropdown-menu > li:last-child > a:hover {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
 .expand {
   color: #2a6496;
+}
+
+.delete {
+  color: #ee6d73;
+}
+
+.addNew {
+  background: #f5f5f5;
 }
 
 span.moveTask>a.smbtn,
@@ -390,6 +472,11 @@ span.editTitle>a.smbtn {
 
 .moveTask {
   cursor: move;
+}
+
+.fa-ellipsis-v {
+  margin: 0 1px 0 0;
+  color: #b0b0b0;
 }
 
 a.openTask {

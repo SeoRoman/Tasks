@@ -2,15 +2,36 @@
 	<div id="main" class="tasklist">
 		<h2 class="section-title">{{ project.title }}</h2>
 		<div class="panel-group accordion">
-			<div class="panel panel-primary" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
+			<div class="panel panel-custom-grey" ng-controller="TaskListCreateController">
+				<div class="panel-body">
+					<a href="" ng-click="create(project.id)">
+						<span class="smbtn"><i class="fa fa-plus"></i></span>
+						<span>Add New Task List</span>
+					</a>
+				</div>
+			</div>
+			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListController as TaskListCtrl"  data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
 				<div class="panel-heading" ng-controller="TaskListUpdateController">
 					<div editable-text="tasklist.title" e-form="taskListEditForm" e-name="title" onbeforesave="updateTitle(project.id, tasklist, $data)">
 				    {{ tasklist.title || 'empty' }}
-				    
+				    <span class="badge">3</span>
 				  </div>
-					<span class="pull-right buttons">
-						<button type="button" class="btn btn-default"  ng-click="taskListEditForm.$show()" ng-show="!taskListEditForm.$visible"><i class="fa fa-pencil"></i></button>
-						<a data-toggle="collapse" data-parent=".accordion" href=".collapse{{$index}}" class="expand">
+					<span class="pull-right buttons" ng-show="!taskListEditForm.$visible">
+						<div class="btn-group">
+						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						    <i class="fa fa-pencil"></i>
+						  </button>
+						  <ul class="editTaskList dropdown-menu dropdown-menu-right" role="menu">
+						    <li><button type="button" class=""  ng-click="taskListEditForm.$show()">Edit</button></li>
+						    <!--Change the above to a modal edit instead of inline edit to do it having to be a button which doesnt look as good in this dropdown menu.-->
+						    <!-- <li><a href="#">Edit</a></li> -->
+						    <li><a href="#"><span class="delete">Delete</span></a></li>
+						  </ul>
+						</div>
+
+
+						
+						<a ng-show="!taskListEditForm.$visible" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
 		          <i class="fa fa-sort"></i>
 		        </a>
 					</span>
@@ -23,21 +44,13 @@
 							<span>Add New Task</span>
 						</a>
 					</li>
-					<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item moveTask" ng-repeat="task in droppables[tasklist.id]">
+					<li data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'TaskListCtrl.stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
+						<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 						<a class="openTask" ng-click="openTask( project.id, tasklist.id, task.id )">
 							{{ task.subject }}
 						</a>
-						<span class="pull-right"><a class="smbtn"><i class="fa fa-arrows"></i></a></span>
 					</li>
 				</ul>
-			</div>
-		</div>
-		<div class="panel panel-primary" ng-controller="TaskListCreateController">
-			<div class="panel-body">
-				<a href="" ng-click="create(project.id)">
-					<span class="smbtn"><i class="fa fa-plus"></i></span>
-					<span>Add New Task List</span>
-				</a>
 			</div>
 		</div>
   </div>
