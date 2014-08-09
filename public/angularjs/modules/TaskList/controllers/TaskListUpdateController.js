@@ -1,16 +1,6 @@
-angular.module('TaskList').controller('TaskListUpdateController', function($rootScope, $scope, $routeParams, $modalInstance, TaskList, RedirectTo, Session, data) {
+angular.module('TaskList').controller('TaskListUpdateController', function($rootScope, $scope, $routeParams, $modalInstance, TaskList, Dialog, data) {
 
-	/*$scope.updateTitle = function(ProjectID, tasklist, data)
-	{
-		tasklist.title = data;
-
-		console.log(tasklist);
-
-		TaskList.update( { ProjectID: ProjectID, TaskListID: tasklist.id }, tasklist);
-	}
-  */
-
-  $scope.tasklist = {};
+  $scope.tasklist = data.tasklist;
 
   $scope.cancel = function()
   {
@@ -21,19 +11,12 @@ angular.module('TaskList').controller('TaskListUpdateController', function($root
   {
     var tasklist = $scope.tasklist;
 
-    tasklist.tasks_projects_id = data.ProjectID;
+    Dialog.loading('update-task');
 
-    tasklist.id = data.TaskListID;
-
-    tasklist.title = data;
-
-    console.log('Tasklist ID: '+tasklist.id);
-    console.log('Tasklist Title: '+tasklist.title);
-    console.log('Tasklist Scope: '+tasklist);
-
-    TaskList.update( { ProjectID: data.ProjectID, TaskListID: data.TaskListID }, function(tasklist) {
+    TaskList.update( { ProjectID: tasklist.tasks_projects_id, TaskListID: tasklist.id }, tasklist, function(response) {
       $modalInstance.close();
-      $rootScope.$broadcast('tasklist-update', { tasklist: tasklist });
+      Dialog.close('update-task');
+      $rootScope.$broadcast('tasklist-update', { newTaskList: response.data, index: data.index });
     });
 
   }

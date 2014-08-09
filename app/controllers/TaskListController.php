@@ -139,9 +139,9 @@ class TaskListController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($ProjectID, $TaskListID)
 	{
-		$this->tasklist->destroy($id);
+		$this->tasklist->destroy($TaskListID);
 	}
 
 

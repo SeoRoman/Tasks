@@ -16,7 +16,7 @@ class ProjectController extends \BaseController {
 	 */
 	public function index()
 	{
-		$projects = $this->project->with('tasklists')->get();
+		$projects = $this->project->get();
 		return Response::json($projects, 200);
 	}
 
