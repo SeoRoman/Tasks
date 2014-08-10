@@ -1,4 +1,4 @@
-angular.module('TaskList').controller('TaskListStoreController', function($rootScope, $scope, $routeParams, $modalInstance, TaskList, RedirectTo, Session, data) {
+angular.module('TaskList').controller('TaskListStoreController', function($rootScope, $scope, $routeParams, $modalInstance, TaskList, Dialog, data) {
 
 	$scope.tasklist = {};
 
