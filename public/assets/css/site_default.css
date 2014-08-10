@@ -380,7 +380,7 @@ nav ul ul>li:hover b {
   border-bottom-color: #ddd;
 }
 
-.panel-heading div.editable {
+.panel-heading {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143em;
