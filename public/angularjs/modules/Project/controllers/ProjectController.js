@@ -1,63 +1,17 @@
-angular.module('Project').controller('ProjectController', function($scope, $routeParams, Project) {
+angular.module('Project').controller('ProjectController', function($scope, $routeParams, Project, TaskList) {
 
+	console.log('Loaded Project Controller');
+
+	// Initialize Scope Variable
 	$scope.project = null;
-	$scope.tasklist = null;
-	$scope.task = null;
-
-	var _projectID = $routeParams.ProjectID;
-
-	var _activeProject = null;
-	var _activeTasklist = null;
-	var _activeTask = null;
 
 	// Check Loaded Params
 	if ($routeParams.ProjectID !== 'undefined')
 	{
-		$scope.project = Project.get( { ProjectID: _projectID });
+		$scope.project = Project.get( { ProjectID: $routeParams.ProjectID }, function() {
+			$scope.project.tasklists = TaskList.query( { ProjectID: $routeParams.ProjectID } );	
+		});
+		
 	}
 
-	$scope.setActiveProject = function(project)
-	{
-		_activeProject = project;
-	}
-
-	$scope.setActiveTasklist = function(tasklist)
-	{
-		_activeTasklist = tasklist;
-	}
-
-	$scope.setActiveTask = function(task)
-	{
-		_activeTask = task;
-	}
-
-	$scope.getProject = function()
-	{
-		return _project;
-	}
-
-	$scope.getTasklist = function()
-	{
-		return _tasklist;
-	}
-
-	$scope.getTask = function()
-	{
-		return _task;
-	}
-
-	$scope.getActiveProject = function()
-	{
-		return _activeProject;
-	}
-
-	$scope.getActiveTasklist = function()
-	{
-		return _activeTasklist;
-	}
-
-	$scope.getActiveTask = function()
-	{
-		return _activeTask;
-	}
 });

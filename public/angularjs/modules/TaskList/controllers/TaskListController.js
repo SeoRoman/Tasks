@@ -1,7 +1,5 @@
 angular.module('TaskList').controller('TaskListController', function($rootScope, $scope, $routeParams, TaskList, Dialog) {
 
-	$scope.project.tasklists = TaskList.query( { ProjectID: $scope.project.id });
-
 	// Listeners
 	$rootScope.$on('tasklist-create', function(event, data) {
 		$scope.project.tasklists.push(data.tasklist.data);
@@ -14,9 +12,13 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 
 	$rootScope.$on('tasklist-update', function(event, data) {
 		$scope.project.tasklists[data.index] = data.newTaskList;
+	});	
+
+	$rootScope.$on('task-create', function(event, data) {
+		$scope.project.tasklists[data.index].tasks.push(data.task.data);	
 	});		
 
-	$scope.getNumberOfTasks = function(tasklists)
+	$scope.getNumberOfTasks = function(tasklist)
 	{
 		return tasklist.tasks.length;
 	}
@@ -60,10 +62,6 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 
 		Dialog.create(view, controller, data, options);
 	}
-
-	$rootScope.$on('task-create', function(event, data) {
-		$scope.project.tasklists[data.index].tasks.push(data.task.data);	
-	});	
 
 });
 

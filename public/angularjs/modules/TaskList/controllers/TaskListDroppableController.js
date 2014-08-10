@@ -3,6 +3,11 @@ angular.module('TaskList').controller('TaskListDroppableController', function($r
 	$scope.droppables = {};
 	$scope.droppables[$scope.tasklist.id] = $scope.tasklist.tasks;
 
+	$scope.loadTasks = function()
+	{	
+		$scope.droppables[$scope.tasklist.id] = Task.query( { ProjectID: $scope.project.id, TaskListID: $scope.tasklist.id } );
+	}	
+
 	$scope.dropCallBack = function(event, ui, title, $index, tasklist)
 	{
 		// Here we will update SQL to assign the task to the TaskList

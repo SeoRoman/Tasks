@@ -66,7 +66,6 @@ class ProjectController extends \BaseController {
 
 	}
 
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -76,7 +75,7 @@ class ProjectController extends \BaseController {
 	public function show($id)
 	{
 		//
-		return $this->project->with('tasklists.tasks')->where('id', $id)->first();
+		return $this->project->where('id', $id)->first();
 	}
 
 

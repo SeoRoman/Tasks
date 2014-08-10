@@ -1,4 +1,4 @@
-<div ng-controller="ProjectReadController" ng-model="project">
+<div ng-controller="ProjectController" ng-model="project">
 	<div id="main" class="tasklist">
 		<h2 class="section-title">{{ project.title }}</h2>
 		<div class="panel-group accordion" ng-controller="TaskListController">
@@ -12,7 +12,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
+			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model2="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
 				<div class="panel-heading">
 					{{ tasklist.title }}
 					<span class="badge">{{ tasklist.tasks.length }}</span>
@@ -26,20 +26,20 @@
 								<li><a href="" ng-click="delete(tasklist)"><span class="delete">Delete</span></a></li>
 							</ul>
 						</div>
-						<a ng-show="!taskListEditForm.$visible" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
+						<a ng-click="loadTasks()" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
 							<i class="fa fa-sort"></i>
 						</a>
 					</span>
 					<span class="clearfix"></span>
 				</div>
-				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller="TaskDroppableController">
+				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller2="TaskDroppableController">
 					<li class="list-group-item addNew">
 						<a href="" ng-click="create($index)">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
 							<span>Add New Task</span>
 						</a>
 					</li>
-					<li ng-controller="TaskDroppableController" data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
+					<li ng-controller2="TaskDroppableController" data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
 						<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 						<a class="openTask" ng-click="open(task)">
 							{{ task.subject }}
@@ -50,7 +50,7 @@
 		</div>
 	</div>
 
-	<div ng-controller="TaskController" id="tasks" class="tasks">
+	<div ng-controller2="TaskController" id="tasks" class="tasks">
 
 		<div ng-if="task">
 			<div>
