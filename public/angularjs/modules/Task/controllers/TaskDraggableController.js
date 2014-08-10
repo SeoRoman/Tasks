@@ -1,4 +1,4 @@
-angular.module('Task').controller('TaskDroppableController', function($rootScope, $scope, $location, Dialog) {
+angular.module('Task').controller('TaskDraggableController', function($rootScope, $scope, $location, Dialog) {
 
 	$scope.create = function(index)
 	{

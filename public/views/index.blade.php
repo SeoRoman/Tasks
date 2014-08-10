@@ -93,7 +93,7 @@
 
   <!-- Module: Task -->
   <% angularjs('modules/Task/controllers/TaskController.js') %>
-  <% angularjs('modules/Task/controllers/TaskDroppableController.js') %>
+  <% angularjs('modules/Task/controllers/TaskDraggableController.js') %>
   <% angularjs('modules/Task/controllers/TaskStoreController.js') %>
   <% angularjs('modules/Task/services/Task.js') %>
   <% angularjs('modules/Task/Config.js') %>

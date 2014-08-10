@@ -32,7 +32,7 @@
 					</span>
 					<span class="clearfix"></span>
 				</div>
-				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller2="TaskDroppableController">
+				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller2="TaskDraggableController">
 					<li class="list-group-item addNew">
 						<a href="" ng-click="create($index)">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
