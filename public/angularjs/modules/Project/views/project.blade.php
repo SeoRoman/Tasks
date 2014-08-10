@@ -17,7 +17,7 @@
 				<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
 					<div class="panel-heading">
 						{{ tasklist.title }}
-						<span class="badge">3</span>
+						<span class="badge">{{ tasklist.tasks.length }}</span>
 						<span class="pull-right buttons">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

@@ -20,6 +20,11 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 		$scope.project.tasklists[data.index] = data.newTaskList;
 	});		
 
+	$scope.getNumberOfTasks = function(tasklists)
+	{
+		return tasklist.tasks.length;
+	}
+
 	// Create Dialog Function
 	$scope.create = function()
 	{
