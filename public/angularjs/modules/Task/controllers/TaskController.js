@@ -4,16 +4,19 @@ angular.module('Task').controller('TaskController', function($rootScope, $locati
 
 	// listen for open task
 	$rootScope.$on('task-open', function(event, data) {
-		console.log(data);
-		$scope.task = data.task;
+		$scope.project = $scope.getProject();
+		$scope.tasklist = $scope.getTasklist();
+		$scope.task = $scope.getTask();
 	});	
 
 	$scope.open = function(task)
 	{		
-		console.log(task);
-
 		var project = $scope.project;
 		var tasklist = $scope.tasklist;
+
+		$scope.setProject(project);
+		$scope.setTasklist(tasklist);
+		$scope.setTask(task);
 
 		$location.path('/projects/' + project.id + '/tasklists/' + tasklist.id + '/tasks/' + task.id, false);
 
