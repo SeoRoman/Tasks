@@ -66,7 +66,7 @@
 			</div>
 			<div class="taskCrumbs">
 				<small>
-					Tasklist Title: {{ tasklist.title }} 
+					{{ tasklist.title }} 
 					<i class="fa fa-angle-double-right"></i> 
 					{{task.subject}}
 				</small>

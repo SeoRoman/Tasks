@@ -1,6 +1,6 @@
 <div class="modal-dialog">
 	<div class="modal-content">
-		<div class="modal-header">
+		<div class="modal-header dialog-header-wait">
 			<h4 class="modal-title"><span class="fa fa-plus"></span> View Office</h4>
 		</div>
 		<div class="modal-body">
@@ -20,7 +20,7 @@
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
-			<button type="button" class="btn btn-default" ng-click="store()">Create Office</button>
+			<button type="button" class="btn btn-success pull-right" ng-click="store()">Create Office</button>
 		</div>
 	</div>
 </div>

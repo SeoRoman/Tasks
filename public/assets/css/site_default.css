@@ -449,6 +449,7 @@ nav ul ul>li:hover b {
 
 .expand {
   color: #2a6496;
+  padding: 0 0 0 10px;
 }
 
 .delete {
@@ -504,4 +505,12 @@ span.editTitle>.smbtn:hover {
 
 .taskDesc {
   margin: 20px 0 0;
+}
+
+.modal-footer {
+  text-align: left !important;
+}
+
+.modal-content {
+  border-radius: 0px;
 }
