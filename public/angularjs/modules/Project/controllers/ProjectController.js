@@ -1,22 +1,34 @@
-angular.module('Project').controller('ProjectController', function($scope, $routeParams, Dialog, RedirectTo, Auth) {
+angular.module('Project').controller('ProjectController', function($scope, $routeParams, Project) {
 
-	var _project = null;
-	var _tasklist = null;
-	var _task = null;
+	$scope.project = null;
+	$scope.tasklist = null;
+	$scope.task = null;
 
-	$scope.setProject = function(project)
+	var _projectID = $routeParams.ProjectID;
+
+	var _activeProject = null;
+	var _activeTasklist = null;
+	var _activeTask = null;
+
+	// Check Loaded Params
+	if ($routeParams.ProjectID !== 'undefined')
 	{
-		_project = project;
+		$scope.project = Project.get( { ProjectID: _projectID });
 	}
 
-	$scope.setTasklist = function(tasklist)
+	$scope.setActiveProject = function(project)
 	{
-		_tasklist = tasklist;
+		_activeProject = project;
 	}
 
-	$scope.setTask = function(task)
+	$scope.setActiveTasklist = function(tasklist)
 	{
-		_task = task;
+		_activeTasklist = tasklist;
+	}
+
+	$scope.setActiveTask = function(task)
+	{
+		_activeTask = task;
 	}
 
 	$scope.getProject = function()
@@ -34,4 +46,18 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 		return _task;
 	}
 
+	$scope.getActiveProject = function()
+	{
+		return _activeProject;
+	}
+
+	$scope.getActiveTasklist = function()
+	{
+		return _activeTasklist;
+	}
+
+	$scope.getActiveTask = function()
+	{
+		return _activeTask;
+	}
 });
