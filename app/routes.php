@@ -25,6 +25,9 @@ Route::controller('session','SessionController');
 // API v1 Resources
 Route::group(array('prefix'=>'api/v1'), function() {
 	Route::resource('offices','OfficeController');	
+
+	Route::get('tasks/count/{TaskListID}', 'TaskListController@getTaskCount');
+
 	Route::resource('organizations','OrganizationController');	
 	Route::resource('projects','ProjectController');	
 	Route::resource('projects.tasklists', 'TaskListController');

@@ -5,8 +5,8 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 		$scope.project.tasklists.push(data.tasklist.data);
 	});
 
-	$rootScope.$on('tasklist-delete', function(event, data) {
-		var index = $scope.project.tasklists.indexOf(data.tasklist.data);
+	$rootScope.$on('tasklist-delete', function(event, data) {	
+		var index = $scope.project.tasklists.indexOf(data.tasklist);
 		$scope.project.tasklists.splice(index, 1);
 	});
 
@@ -15,7 +15,7 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 	});	
 
 	$rootScope.$on('task-create', function(event, data) {
-		$scope.project.tasklists[data.index].tasks.push(data.task.data);	
+		$scope.droppables[data.task.data.tasks_lists_id].push(data.task.data);
 	});		
 
 	$scope.getNumberOfTasks = function(tasklist)

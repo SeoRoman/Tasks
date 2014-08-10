@@ -12,10 +12,10 @@
 				</div>
 			</div>
 
-			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model2="droppables[tasklist.id]" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">
+			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">	
 				<div class="panel-heading">
 					{{ tasklist.title }}
-					<span class="badge">{{ tasklist.tasks.length }}</span>
+					<span class="badge">{{ tasklist.taskCount }}</span>
 					<span class="pull-right buttons">
 						<div class="btn-group">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -39,7 +39,7 @@
 							<span>Add New Task</span>
 						</a>
 					</li>
-					<li ng-controller2="TaskDroppableController" data-drag="true" data-jqyoui-options="{revert: 'invalid', onStop: 'stopCallBack(task.id)'}" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
+					<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
 						<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 						<a class="openTask" ng-click="open(task)">
 							{{ task.subject }}
@@ -50,7 +50,7 @@
 		</div>
 	</div>
 
-	<div ng-controller2="TaskController" id="tasks" class="tasks">
+	<div ng-controller="TaskController" id="tasks" class="tasks">
 
 		<div ng-if="task">
 			<div>

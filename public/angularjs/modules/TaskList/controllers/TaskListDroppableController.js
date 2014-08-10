@@ -1,9 +1,10 @@
-angular.module('TaskList').controller('TaskListDroppableController', function($rootScope, $scope, $routeParams, Task, RedirectTo, Session) {
+angular.module('TaskList').controller('TaskListDroppableController', function($rootScope, $scope, $routeParams, Task, RedirectTo, Dialog) {
+
+	$scope.droppables[$scope.tasklist.id] = $scope.tasklist.tasks;
 
 	$scope.tasklist.opened = false;
 
-	$scope.droppables = {};
-	$scope.droppables[$scope.tasklist.id] = $scope.tasklist.tasks;
+	console.log($scope.tasklist);
 
 	$scope.loadTasks = function()
 	{	
@@ -11,7 +12,28 @@ angular.module('TaskList').controller('TaskListDroppableController', function($r
 
 		if ($scope.tasklist.opened) 
 		{
-			$scope.droppables[$scope.tasklist.id] = Task.query( { ProjectID: $scope.project.id, TaskListID: $scope.tasklist.id } );
+			Dialog.loading('tasks-loader', 'Loading Tasks');
+			$scope.droppables[$scope.tasklist.id] = Task.query( { ProjectID: $scope.project.id, TaskListID: $scope.tasklist.id } , function() {
+				Dialog.close('tasks-loader');
+
+
+				$scope.tasklist.opts = {
+					accept: function(element)
+					{
+						console.log($(element).data('tasklist-id'));
+						console.log($scope.tasklist.id);
+						console.log($(element).data('tasklist-id') != $scope.tasklist.id);
+						if ($(element).data('tasklist-id') !== $scope.tasklist.id) return true;			
+						return false;
+					}
+
+				}		
+
+				console.log($scope.droppables[$scope.tasklist.id]);
+
+				$scope.tasklist.taskCount = $scope.droppables[$scope.tasklist.id].length;	
+			});
+			
 		}
 		
 	}	
@@ -23,6 +45,9 @@ angular.module('TaskList').controller('TaskListDroppableController', function($r
 
 			if (task.tasks_lists_id !== $index)
 			{
+
+				$scope.tasklist.taskCount = $scope.droppables[$scope.tasklist.id].length;	
+				
 				//Update the Task's TaskList ID
 				var task = Task.get( { ProjectID: $routeParams.ProjectID, TaskListID: task.tasks_lists_id, TaskID: task.id }, function() {
 					task.tasks_lists_id = $index;

@@ -2,8 +2,13 @@ angular.module('Task').controller('TaskController', function($rootScope, $locati
 
 	// listen for open task
 	$rootScope.$on('task-open', function(event, data) {
-		$scope.tasklist = $scope.getActiveTasklist();
-		$scope.task = $scope.getActiveTask();
+
+		console.log('Event Fired');
+
+		console.log(data);
+
+		$scope.tasklist = data.tasklist;
+		$scope.task = data.task;
 	});	
 
 	$scope.close = function()

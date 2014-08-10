@@ -17,6 +17,11 @@ class TaskListController extends \BaseController {
 	public function index()
 	{
 		$tasklists = $this->tasklist->all();
+
+		$tasklists = $tasklists->each(function($tasklist) {
+			$tasklist->taskCount = $tasklist->tasks()->count();
+		});
+
 		return Response::json($tasklists, 200);
 	}
 
@@ -30,7 +35,6 @@ class TaskListController extends \BaseController {
 	{
 		//
 	}
-
 
 	/**
 	 * Store a newly created resource in storage.
@@ -131,7 +135,6 @@ class TaskListController extends \BaseController {
 		}
 
 	}
-
 
 	/**
 	 * Remove the specified resource from storage.
