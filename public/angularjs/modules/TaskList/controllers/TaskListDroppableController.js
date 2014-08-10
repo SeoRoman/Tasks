@@ -1,11 +1,19 @@
 angular.module('TaskList').controller('TaskListDroppableController', function($rootScope, $scope, $routeParams, Task, RedirectTo, Session) {
 
+	$scope.tasklist.opened = false;
+
 	$scope.droppables = {};
 	$scope.droppables[$scope.tasklist.id] = $scope.tasklist.tasks;
 
 	$scope.loadTasks = function()
 	{	
-		$scope.droppables[$scope.tasklist.id] = Task.query( { ProjectID: $scope.project.id, TaskListID: $scope.tasklist.id } );
+		$scope.tasklist.opened = !$scope.tasklist.opened;
+
+		if ($scope.tasklist.opened) 
+		{
+			$scope.droppables[$scope.tasklist.id] = Task.query( { ProjectID: $scope.project.id, TaskListID: $scope.tasklist.id } );
+		}
+		
 	}	
 
 	$scope.dropCallBack = function(event, ui, title, $index, tasklist)

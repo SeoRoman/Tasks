@@ -26,13 +26,13 @@
 								<li><a href="" ng-click="delete(tasklist)"><span class="delete">Delete</span></a></li>
 							</ul>
 						</div>
-						<a ng-click="loadTasks()" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
+						<a ng-click="loadTasks()" ng-show="!taskListEditForm.$visible" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
 							<i class="fa fa-sort"></i>
 						</a>
 					</span>
 					<span class="clearfix"></span>
 				</div>
-				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller2="TaskDraggableController">
+				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller="TaskDraggableController">
 					<li class="list-group-item addNew">
 						<a href="" ng-click="create($index)">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
