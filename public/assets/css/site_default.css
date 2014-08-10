@@ -380,14 +380,14 @@ nav ul ul>li:hover b {
   border-bottom-color: #ddd;
 }
 
-.panel-heading {
+/*.panel-heading {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143em;
   height: 34px;
   width: auto;
   float: left;
-}
+}*/
 
 .panel-heading {
   border-top-left-radius: 0px;
