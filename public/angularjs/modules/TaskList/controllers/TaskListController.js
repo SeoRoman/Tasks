@@ -2,8 +2,6 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 
 	$scope.project.tasklists = TaskList.query( { ProjectID: $scope.project.id });
 
-	console.log($scope.project);
-
 	// Listeners
 	$rootScope.$on('tasklist-create', function(event, data) {
 		$scope.project.tasklists.push(data.tasklist.data);
@@ -15,8 +13,6 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 	});
 
 	$rootScope.$on('tasklist-update', function(event, data) {
-		console.log(data);
-
 		$scope.project.tasklists[data.index] = data.newTaskList;
 	});		
 
@@ -66,12 +62,8 @@ angular.module('TaskList').controller('TaskListController', function($rootScope,
 	}
 
 	$rootScope.$on('task-create', function(event, data) {
-
-		var task = data.task.data;
-
-		$scope.droppables[task.tasks_lists_id].push(task);
-
-	});
+		$scope.project.tasklists[data.index].tasks.push(data.task.data);	
+	});	
 
 });
 

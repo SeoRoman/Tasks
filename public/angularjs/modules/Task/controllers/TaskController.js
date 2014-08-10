@@ -21,14 +21,14 @@ angular.module('Task').controller('TaskController', function($rootScope, $locati
 	}
 
 
-	$scope.create = function()
+	$scope.create = function(index)
 	{
 		var project = $scope.project;
 		var tasklist = $scope.tasklist;
 
 		var view = 'angularjs/modules/Task/views/dialogs/create.html';
 		var controller = 'TaskStoreController';
-		var data = { ProjectID: project.id, TaskListID: tasklist.id };
+		var data = { ProjectID: project.id, TaskListID: tasklist.id, index: index };
 		var options = {};
 
 		Dialog.create(view, controller, data, options);

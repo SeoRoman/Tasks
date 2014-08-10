@@ -36,7 +36,7 @@
 					</div>
 					<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller="TaskController">
 						<li class="list-group-item addNew">
-							<a href="" ng-click="create()">
+							<a href="" ng-click="create($index)">
 								<span class="smbtn"><i class="fa fa-plus"></i></span>
 								<span>Add New Task</span>
 							</a>
