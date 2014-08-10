@@ -505,3 +505,11 @@ span.editTitle>.smbtn:hover {
 .taskDesc {
   margin: 20px 0 0;
 }
+
+.modal-footer {
+  text-align: left !important;
+}
+
+.modal-content {
+  border-radius: 0px;
+}
