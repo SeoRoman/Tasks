@@ -314,7 +314,7 @@ nav ul ul>li:hover b {
 }
 
 #main {
-  width:320px;
+  width:420px;
   padding: 0 10px 0 10px;
   background: url(../img/mybg.png) #fff;
   min-height: 100%;
@@ -331,15 +331,15 @@ nav ul ul>li:hover b {
 }
 
 #tasks {
-  margin-left:321px;
+  margin-left:421px;
   min-height:100%;
-  min-width: 800px;
+  min-width: 700px;
   background: #fff;
 }
 
 .tasks {
   position:absolute;
-  min-width: 800px;
+  min-width: 700px;
   height: 100%;
   top:0;
   left:0;
@@ -353,10 +353,6 @@ nav ul ul>li:hover b {
 .panel,
 .panel-group .panel {
   border-radius: 0px;
-}
-
-.panel > .list-group {
-  border-top: 1px solid #ddd;
 }
 
 .panel-custom-grey {
@@ -405,11 +401,17 @@ nav ul ul>li:hover b {
   color: #2a6496;
 }
 
+.tasklistTitle,
+.tasklistBadge {
+  float: left;
+}
+
 .editable-input.editable-has-buttons {
   width: 250px !important;
 }
 
-.editTaskList.dropdown-menu {
+.editTaskList.dropdown-menu,
+.editTask.dropdown-menu {
   background-color: #f5f5f5;
   border: 1px solid #858585;
   padding: 0;
@@ -417,32 +419,44 @@ nav ul ul>li:hover b {
           box-shadow: 0 0 12px rgba(0, 0, 0, .45);
 }
 .editTaskList button,
+.editTask button,
 .editTaskList input,
+.editTask input,
 .editTaskList optgroup,
+.editTask optgroup,
 .editTaskList select,
-.editTaskList textarea {
+.editTask select,
+.editTaskList textarea,
+.editTask textarea {
   font-weight: normal;
 }
-.editTaskList.dropdown-menu > li {
+.editTaskList.dropdown-menu > li,
+.editTask.dropdown-menu > li {
   border-top: 1px solid #858585;
 }
-.editTaskList.dropdown-menu > li:first-child {
+.editTaskList.dropdown-menu > li:first-child,
+.editTask.dropdown-menu > li:first-child {
   border-top: none;
 }
-.editTaskList.dropdown-menu > li > a {
+.editTaskList.dropdown-menu > li > a,
+.editTask.dropdown-menu > li > a {
   color: #333;
   padding: 8px 20px;
 }
 .editTaskList.dropdown-menu > li > a:hover,
-.editTaskList.dropdown-menu > li > a:focus {
+.editTask.dropdown-menu > li > a:hover,
+.editTaskList.dropdown-menu > li > a:focus,
+.editTask.dropdown-menu > li > a:focus {
   color: #222;
   background-color: #ddd;
 }
-.editTaskList.dropdown-menu > li:first-child > a:hover {
+.editTaskList.dropdown-menu > li:first-child > a:hover,
+.editTask.dropdown-menu > li:first-child > a:hover {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
 }
-.editTaskList.dropdown-menu > li:last-child > a:hover {
+.editTaskList.dropdown-menu > li:last-child > a:hover,
+.editTask.dropdown-menu > li:last-child > a:hover {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
@@ -485,8 +499,6 @@ a.openTask {
 }
 
 span.editTitle>.smbtn:hover {
-  color: #428bca;
-  background: #2a6496;
   cursor: pointer;
 }
 
@@ -495,7 +507,7 @@ span.editTitle>.smbtn:hover {
 }
 
 .closeTask {
-  margin: -10px 0 10px;
+  margin: -10px -20px 10px 0;
 }
 
 .taskCrumbs,
@@ -503,8 +515,33 @@ span.editTitle>.smbtn:hover {
   color: #b0b0b0;
 }
 
-.taskDesc {
+.taskDesc,
+.subTasks,
+.addComment,
+.commentList {
   margin: 20px 0 0;
+}
+
+.spacer-5 {
+  height: 5px;
+}
+
+.commentspacer {
+  height: 20px;
+}
+
+.commentList {
+  border-top: 1px solid #ddd;
+  padding: 15px 20px 15px 40px;
+}
+
+.commentFrom {
+  font-weight: bold;
+}
+
+.commentTime {
+  color: #b0b0b0;
+  font-size: 12px;
 }
 
 .modal-footer {
@@ -513,4 +550,19 @@ span.editTitle>.smbtn:hover {
 
 .modal-content {
   border-radius: 0px;
+}
+
+.panelProgress {
+  height: 3px;
+  background: #ddd;
+}
+
+.pProgress {
+  position: absolute;
+}
+
+.sampleprog {
+  height: 3px;
+  background: #509d51;
+  width: 40%;
 }

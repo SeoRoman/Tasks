@@ -14,9 +14,9 @@
 
 			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">	
 				<div class="panel-heading">
-					{{ tasklist.title }}
-					<span class="badge">{{ tasklist.taskCount }}</span>
-					<span class="pull-right buttons">
+					<div class="tasklistTitle">{{ tasklist.title }}</div>
+					<div class="tasklistBadge badge">{{ tasklist.taskCount }}</div>
+					<div class="pull-right buttons">
 						<div class="btn-group">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-pencil"></i>
@@ -29,8 +29,11 @@
 						<a ng-click="loadTasks()" ng-show="!taskListEditForm.$visible" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
 							<i class="fa fa-sort"></i>
 						</a>
-					</span>
+					</div>
 					<span class="clearfix"></span>
+				</div>
+				<div class="panelProgress">
+					<div class="pprogress sampleprog"></div>
 				</div>
 				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller="TaskDraggableController">
 					<li class="list-group-item addNew">
@@ -55,14 +58,23 @@
 		<div ng-if="task">
 			<div>
 				<span class="closeTask pull-right">
-					<a ng-click="close()" title="Close the Task"><i class="fa fa-times"></i></a>
+					<button ng-click="close()" title="Close the Task" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close Task</a>
 				</span>
 				<div class="clearfix"></div>
 			</div>
+			<div class="clearfix"></div>
 			<div class="taskHeader">
 				<i class="fa fa-check taskDone"></i>
 				<span class="taskSubject"><a href="javascript:void(0)">{{ task.subject }}</a></span>
-				<span class="pull-right"><select></select></span>
+				<span class="pull-right btn-group">
+					<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="editTask dropdown-menu dropdown-menu-right" role="menu">
+						<li><a href="" ng-click=""><span class="delete">Delete</span></a></li>
+					</ul>
+				</span>
 			</div>
 			<div class="taskCrumbs">
 				<small>
@@ -71,11 +83,43 @@
 					{{task.subject}}
 				</small>
 			</div>
-			<div class="taskDesc">{{task.notes}}</div>
+			<div class="taskDesc">
+				<a href=""><i class="fa fa-pencil"></i> Add a description</a> (This should display when there is no description.)<br>
+				<div class="spacer-5"></div>
+				{{task.description}}
+			</div>
 			<div class="taskByline">
 				<small>
-					Edited by {Nathon Shultz} {8:23 PM}
+					Edited by {Nathon Shultz} {8:23 PM} (This should display only when there is a description.)
 				</small>
+			</div>
+			<div class="subTasks">
+				<a href=""><i class="fa fa-list"></i> Add subtasks</a>
+			</div>
+			<div class="addComment">
+				<form>
+					<textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
+					<div class="spacer-5"></div>
+					<input type="submit" value="COMMENT" class="btn btn-info pull-right">
+				</form>
+				<div class="clearfix"></div>
+			</div>
+			<div class="commentList">
+				<div class="commentFrom">
+					<span>Nathon Shultz</span>
+				</div>
+				<div class="commentspacer"></div>
+				<div class="commentBody">
+					<span>
+						Are we currently able to add comments to a task?
+					</span>
+				</div>
+				<div class="commentspacer"></div>
+				<div class="commentTime">
+					<span>
+						Yesterday 11:09 pm
+					</span>
+				</div>
 			</div>
 		</div>
 
