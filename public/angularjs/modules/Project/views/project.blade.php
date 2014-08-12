@@ -68,7 +68,7 @@
 			<div class="clearfix"></div>
 			<div class="taskHeader">
 				<i class="fa fa-check taskDone"></i>
-				<span class="taskSubject"><a href="javascript:void(0)">{{ task.title }}</a></span>
+				<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onbeforesave="updateTaskTitle($data, task)">{{ task.title }}</a></span>
 				<span class="pull-right btn-group">
 					<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
@@ -87,13 +87,18 @@
 				</small>
 			</div>
 			<div class="taskDesc">
-				<a href=""><i class="fa fa-pencil"></i> Add a description</a> (This should display when there is no description.)<br>
-				<div class="spacer-5"></div>
-				{{task.description}}
+				<a href="" ng-if="!task.description" editable-textarea="task.description">
+					<i class="fa fa-pencil"></i> Add a description			
+				</a>
+				<div ng-if="task.description">
+					<span editable-textarea="task.description" e-form="editTaskDescBtn" onbeforesave="updateTaskDescription(task)">{{task.description}}</span>
+					<i class="pull-right fa fa-pencil" ng-click="editTaskDescBtn.$show()" ng-hide="editTaskDescBtn.$visible"></i>
+				</div>
+				
 			</div>
-			<div class="taskByline">
+			<div class="taskByline" ng-if="task.description">
 				<small>
-					Edited by {Nathon Shultz} {8:23 PM} (This should display only when there is a description.)
+					Edited by {Nathon Shultz} {{ task.updated_at }} 
 				</small>
 			</div>
 			<div class="subTasks">

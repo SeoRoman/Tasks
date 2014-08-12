@@ -18,4 +18,16 @@ angular.module('Task').controller('TaskController', function($scope, $location, 
 		$scope.task = task;
 	}
 
+	$scope.updateTaskTitle = function(title, task)
+	{		
+		return TaskService.update(data, task.tasks_lists_id, task.id).then(function(task) {
+			console.log(task); 
+		});
+	}
+
+	$scope.updateTaskDescription = function(description)
+	{
+		$scope.task.description
+	}
+
 });

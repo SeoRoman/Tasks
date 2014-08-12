@@ -36,6 +36,17 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		}).$promise;
 	}
 
+	this.update = function(data, TaskListID, TaskID)
+	{
+		Dialog.wait('task-update', 'Updating Task');
+
+		return Task.update(data, { ProjectID: ProjectService.getId(), TaskListID: TaskListID, TaskID: TaskID } , function(response) {
+			console.log(response);
+			Dialog.close('task-update');
+			return response.task;
+		}).$promise;
+	}
+
 	this.loadTasks = function(tasklist)
 	{
 		Dialog.wait('tasks-load', 'Loading Tasks for Tasklist: ' + tasklist.title);

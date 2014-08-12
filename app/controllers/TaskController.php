@@ -44,6 +44,7 @@ class TaskController extends \BaseController {
 			'user_id' => Input::get('user_id'),
 			'tasks_lists_id' => Input::get('tasks_lists_id'),
 			'title' => Input::get('title'),
+			'description' => Input::get('description')
 		];
 
 		$rules = array('title'=>'required');
@@ -105,8 +106,13 @@ class TaskController extends \BaseController {
 		$data = array(
 			'user_id' => Input::get('user_id'),
 			'tasks_lists_id' => Input::get('tasks_lists_id'),
-			'title' => Input::get('title')
+			'title' => Input::get('title'),
+			'description' => Input::get('description')
 		);
+
+		//dd('ProjectID: ' . $ProjectID . ' TaskListID: ' . $TaskListID . ' TaskID: ' . $TaskID);
+
+		//                                                                                                                                                                                                                        dd(Input::all());
 
 		try {
 			$task = $this->task->withTrashed()->where('id', $TaskID)->first();
