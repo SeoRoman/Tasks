@@ -16,10 +16,6 @@ angular.module('Task').controller('TaskController', function($scope, $location, 
 	$scope.openTask = function(task)
 	{
 		$scope.task = task;
-
-		// Get SubTasks
-
-		// Get Comments
 	}
 
 });
