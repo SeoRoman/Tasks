@@ -17,10 +17,11 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
   <% css('dependencies/bootstrap.css') %>
   <% css('dependencies/font-awesome.css') %>
-  <% css('badges.css') %>
+  <%-- css('badges.css') --%>
   <% css('animate.css') %>
-  <% css('dialogs.css')%>
-  <% css('site_default.css') %>
+  <%-- css('dialogs.css') --%>
+  <% css('style.css') %>
+  <% css('blue.css') %>
 
   <% css('dependencies/xeditable.css') %>
 
@@ -120,36 +121,31 @@
  <base href="/#/">
 </head>
 <body ng-controller="ApplicationController">
-
-    
-    <aside id="left-panel">
-      <div class="header">
-        <span>Worth Finance</span>
-      </div>
-
-      <!--
-      <navigation>
-        <nav:menu ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:menu>
-        <nav:menu ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:menu>
-        <nav:menu ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:menu>
-          <nav:group ng-repeat="org in orgs" title="{{org.title}}" showSlide="false" href=".items{{$index}}">
-            <span class="items{{$index}} collapse">
-              <nav:item view="" target="" click="" ng-repeat="project in org.projects" href="projects/{{project.id}}" title="{{ project.title }}"></nav:item>
-            </span>
-          </nav:group>      
-        </navigation>
-        -->
-    </aside>
-    <div id="content" class="content">
-      <div class="container-fluid">
-        <div class="row" ng-show="message">
-          <div class="col-lg-6 col-lg-offset-3">
-            <div id="message" class="alert alert-{{ alert }}">{{ message }}</div>
-          </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="left-panel" class="left-panel col-md-3">
+        <div class="header">
+          <span>Worth Tasks</span>
         </div>
-        <div class="spacer-10"></div>
-        <div ng-view></div>
+        <!--
+        <navigation>
+          <nav:menu ng-hide="currentUser" click="login" icon="fa fa-lg fa-fw fa-sign-in" title="Login"></nav:menu>
+          <nav:menu ng-show="currentUser" click="logout" icon="fa fa-lg fa-fw fa-sign-out" title="Logout"></nav:menu>
+          <nav:menu ng-show="currentUser" view="/office/test" icon="fa fa-lg fa-fw fa-home" title="Office"></nav:menu>
+            <nav:group ng-repeat="org in orgs" title="{{org.title}}" showSlide="false" href=".items{{$index}}">
+              <span class="items{{$index}} collapse">
+                <nav:item view="" target="" click="" ng-repeat="project in org.projects" href="projects/{{project.id}}" title="{{ project.title }}"></nav:item>
+              </span>
+            </nav:group>      
+          </navigation>
+          -->
+      </div>
+      <div id="content" class="content col-md-9">
+        <div class="main-content col-xs-12">
+          <div class="ngview" ng-view></div>
+        </div>
       </div>
     </div>
+  </div>
 </body>
 </html>

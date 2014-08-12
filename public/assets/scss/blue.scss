@@ -1,0 +1,51 @@
+/*!
+ * Worth Tasks CSS v0.0.2 (http://www.systemsedgeonline.com)
+ * @copyright: Copyright 2014 Systems Edge Online, LLC.
+ * @author: Nathon Shultz
+ * @license: Pending...
+ */
+
+/* 
+ * -----------------------
+ * DEFAULT DECLARATIONS
+ * -----------------------
+ */
+html,
+body {
+  background: #ffffff;
+}
+
+/* 
+ * -----------------------
+ * LEFT PANEL STYLES
+ * -----------------------
+ */
+
+#left-panel {
+  background: #3a3633;
+  background: -moz-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+  background: -webkit-gradient(linear,left top,right top,color-stop(93%,#3a3633),color-stop(100%,#2a2725));
+  background: -webkit-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+  background: -o-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+  background: -ms-linear-gradient(left,#3a3633 93%,#2a2725 100%);
+  background: linear-gradient(to right,#3a3633 93%,#2a2725 100%);
+}
+.left-panel {
+  .header {
+    color: #fff;
+  }
+}
+
+/* 
+ * -----------------------
+ * MAIN CONTENT STYLES
+ * -----------------------
+ */
+
+ #content {
+  background: url(../img/mybg.png) #ffffff;
+ }
+
+ .content {
+  color: #444444;
+ }

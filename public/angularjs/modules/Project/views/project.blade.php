@@ -1,5 +1,5 @@
-<div ng-controller="ProjectController" ng-model="project">
-	<div id="main" class="tasklist">
+<div class="pcontroller" ng-controller="ProjectController" ng-model="project">
+	<div id="main" class="tasklist col-md-5">
 		<h2 class="section-title">{{ project.title }}</h2>
 		<div class="panel-group accordion" ng-controller="TaskListController">
 			
@@ -53,7 +53,7 @@
 		</div>
 	</div>
 
-	<div ng-controller="TaskController" id="tasks" class="tasks">
+	<div ng-controller="TaskController" id="tasks" class="tasks col-md-7">
 
 		<div ng-if="task">
 			<div>

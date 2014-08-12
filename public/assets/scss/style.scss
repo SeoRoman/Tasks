@@ -1,0 +1,93 @@
+/*!
+ * Worth Tasks CSS v0.0.2 (http://www.systemsedgeonline.com)
+ * @copyright: Copyright 2014 Systems Edge Online, LLC.
+ * @author: Nathon Shultz
+ * @license: Pending...
+ */
+
+/* 
+ * -----------------------
+ * DEFAULT DECLARATIONS
+ * -----------------------
+ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  position: relative;
+}
+
+body {
+  direction: ltr;
+}
+
+.container-fluid,
+.row {
+  height: 100%;
+}
+
+/* 
+ * -----------------------
+ * LEFT PANEL STYLES
+ * -----------------------
+ */
+
+#left-panel {
+  display: block;
+  overflow-y: auto;
+  @media screen and (min-width: 992px) {
+    min-height: 100%;
+  }
+}
+
+.left-panel {
+  z-index:2;
+  .header {
+    font-size: 30px;
+    padding: 10px;
+  }
+}
+
+/* 
+ * -----------------------
+ * MAIN CONTENT STYLES
+ * -----------------------
+ */
+
+ #content {
+  height: 100%;
+ }
+
+ .content {
+  z-index: 3;
+ }
+ .content.col-md-9,
+ .main-content.col-xs-12 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.main-content,
+.ngview,
+.pcontroller {
+  min-height: 100%;
+}
+
+/* 
+ * -----------------------
+ * MIDDLE CONTENT STYLES
+ * -----------------------
+ */
+
+ #main {
+  height: 100%;
+ }
+
+ .tasklist {
+  z-index: 4;
+  overflow-y: scroll;
+ }
