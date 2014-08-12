@@ -2,7 +2,7 @@ angular.module('Application').service('Dialog', function(dialogs) {
 
 	var _dialogs = Object();
 
-	this.loading = function(name, title, message) 
+	this.wait = function(name, title, message) 
 	{
 		_title = (title !== undefined ? title : 'Processing Request');
 		_message = (message != undefined ? message : 'Please wait while your request is processed');

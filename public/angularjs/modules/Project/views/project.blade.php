@@ -1,7 +1,7 @@
 <div class="pcontroller" ng-controller="ProjectController" ng-model="project">
 	<div id="main" class="tasklist col-md-5">
 		<h2 class="section-title">{{ project.title }}</h2>
-		<div class="panel-group accordion" ng-controller="TaskListController">
+		<div class="panel-group accordion" ng-controller2="TaskListController">
 			
 			<div class="panel panel-custom-grey">
 				<div class="panel-body">
@@ -12,7 +12,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">	
+			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller2="TaskListDroppableController2" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">	
 				<div class="panel-heading">
 					<div class="tasklistTitle">{{ tasklist.title }}</div>
 					<div class="tasklistBadge badge">{{ tasklist.taskCount }}</div>
@@ -35,7 +35,7 @@
 				<div class="panelProgress">
 					<div class="pprogress sampleprog"></div>
 				</div>
-				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller="TaskDraggableController">
+				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller2="TaskDraggableController2">
 					<li class="list-group-item addNew">
 						<a href="" ng-click="create($index)">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
@@ -53,7 +53,7 @@
 		</div>
 	</div>
 
-	<div ng-controller="TaskController" id="tasks" class="tasks col-md-7">
+	<div ng-controller2="TaskController2" id="tasks" class="tasks col-md-7">
 
 		<div ng-if="task">
 			<div>

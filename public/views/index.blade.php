@@ -80,23 +80,14 @@
 
   <!-- Module: Project -->
   <% angularjs('modules/Project/controllers/ProjectController.js') %>
-  <% angularjs('modules/Project/controllers/ProjectReadController.js') %>
   <% angularjs('modules/Project/services/Project.js') %>
   <% angularjs('modules/Project/Config.js') %>
 
   <!-- Module: TaskList -->
-  <% angularjs('modules/TaskList/controllers/TaskListController.js') %>
-  <% angularjs('modules/TaskList/controllers/TaskListDroppableController.js') %>
-  <% angularjs('modules/TaskList/controllers/TaskListUpdateController.js') %>
-  <% angularjs('modules/TaskList/controllers/TaskListStoreController.js') %>
-  <% angularjs('modules/TaskList/services/TaskList.js') %>
   <% angularjs('modules/TaskList/Config.js') %>
+  <% angularjs('modules/TaskList/services/TaskList.js') %>
 
   <!-- Module: Task -->
-  <% angularjs('modules/Task/controllers/TaskController.js') %>
-  <% angularjs('modules/Task/controllers/TaskDraggableController.js') %>
-  <% angularjs('modules/Task/controllers/TaskStoreController.js') %>
-  <% angularjs('modules/Task/services/Task.js') %>
   <% angularjs('modules/Task/Config.js') %>
 
   <!-- Module: Auth -->
