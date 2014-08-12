@@ -1,5 +1,17 @@
 angular.module('Task').service('TaskService', function(ProjectService, TaskListService, Task, Dialog) {
 
+	var _task = null;
+
+	this.setActiveTask = function(task)
+	{
+		_task = task;
+	}
+
+	this.getActiveTask = function()
+	{
+		return _task;
+	}
+
 	this.create = function(tasklistIndex)
 	{
 		Dialog.create('angularjs/modules/Task/views/dialogs/create.html', 'TaskDialogController', { task: {}, index: tasklistIndex }, {} );		

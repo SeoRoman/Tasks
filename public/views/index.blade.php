@@ -95,6 +95,7 @@
 
   <!-- Module: Task -->
   <% angularjs('modules/Task/controllers/TaskController.js') %>
+  <% angularjs('modules/Task/controllers/TaskDisplayController.js') %>
   <% angularjs('modules/Task/controllers/TaskDialogController.js') %>
   <% angularjs('modules/Task/services/Task.js') %>
   <% angularjs('modules/Task/services/TaskService.js') %>

@@ -1,4 +1,5 @@
 <div class="pcontroller" ng-controller="ProjectController" ng-model="project">
+	<div ng-controller="TaskController">
 	<div id="main" class="tasklist col-md-5">
 		<h2 class="section-title">{{ project.title }}</h2>
 
@@ -36,7 +37,7 @@
 				<div class="panelProgress">
 					<div class="pprogress sampleprog"></div>
 				</div>
-				<ul ng-controller="TaskController" class="list-group panel-collapse collapse collapse{{$index}}">
+				<ul class="list-group panel-collapse collapse collapse{{$index}}">
 					<li class="list-group-item addNew">
 						<a href="" ng-click="createTask($index)">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
@@ -55,12 +56,12 @@
 		</div>
 	</div>
 
-	<div ng-controller="TaskController" id="tasks" class="tasks col-md-7">
+	<div id="tasks" class="tasks col-md-7">
 
 		<div ng-if="task">
 			<div>
 				<span class="closeTask pull-right">
-					<button ng-click="closeTaskPane()" title="Close the Task" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close Task</a>
+					<button ng-click="closeTaskPane()" title="Close the Task" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close Task</button>
 				</span>
 				<div class="clearfix"></div>
 			</div>
@@ -128,6 +129,7 @@
 		<div ng-if="!task">
 			<h3>No Task Loaded</h3>
 		</div>
+	</div>
 	</div>
 
 </div>
