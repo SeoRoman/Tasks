@@ -43,10 +43,10 @@ class TaskController extends \BaseController {
 		$data = [
 			'user_id' => Input::get('user_id'),
 			'tasks_lists_id' => Input::get('tasks_lists_id'),
-			'subject' => Input::get('subject'),
+			'title' => Input::get('title'),
 		];
 
-		$rules = array('subject'=>'required');
+		$rules = array('title'=>'required');
 		$validator = Validator::make($data, $rules);
 
 		// Validation Request
@@ -103,7 +103,9 @@ class TaskController extends \BaseController {
 	public function update($ProjectID, $TaskListID, $TaskID)
 	{
 		$data = array(
-			'tasks_lists_id' => $TaskListID
+			'user_id' => Input::get('user_id'),
+			'tasks_lists_id' => Input::get('tasks_lists_id'),
+			'title' => Input::get('title')
 		);
 
 		try {

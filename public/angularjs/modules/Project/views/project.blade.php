@@ -48,7 +48,7 @@
 					<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
 						<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 						<a class="openTask" ng-click="openTask(task)">
-							{{ task.subject }}
+							{{ task.title }}
 						</a>
 					</li>
 				</ul>
@@ -68,7 +68,7 @@
 			<div class="clearfix"></div>
 			<div class="taskHeader">
 				<i class="fa fa-check taskDone"></i>
-				<span class="taskSubject"><a href="javascript:void(0)">{{ task.subject }}</a></span>
+				<span class="taskSubject"><a href="javascript:void(0)">{{ task.title }}</a></span>
 				<span class="pull-right btn-group">
 					<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
@@ -83,7 +83,7 @@
 				<small>
 					{{ tasklist.title }} 
 					<i class="fa fa-angle-double-right"></i> 
-					{{task.subject}}
+					{{task.title}}
 				</small>
 			</div>
 			<div class="taskDesc">

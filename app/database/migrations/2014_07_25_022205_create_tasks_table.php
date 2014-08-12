@@ -27,7 +27,7 @@ class CreateTasksTable extends Migration {
 
 			$table->dateTime('due_date');
 
-			$table->string('subject');
+			$table->string('title');
 
 			$table->text('description')->nullable();
 
