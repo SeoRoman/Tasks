@@ -1,26 +1,19 @@
-angular.module('Project').controller('ProjectController', function($scope, $routeParams, Project, TaskList, Dialog) {
+angular.module('Project').controller('ProjectController', function($scope, $routeParams, Project) {
 
-	console.log('Loaded Project Controller');
+	// Core Variables
+	var params = $routeParams;
 
-	// Initialize Scope Variable
-	$scope.project = null;
-	$scope.droppables = [];
-	$scope.task = null;
+	// Initialize All Variables
+	$scope.project = {};
+	$scope.project.tasklists = {};
 
-	// Check Loaded Params
-	if ($routeParams.ProjectID !== 'undefined')
-	{
-		Dialog.loading('project-loader', 'Loading Project');
-		$scope.project = Project.get( { ProjectID: $routeParams.ProjectID }, function() {
+	// Load the Project
+	var project = Project.get( { ProjectID: params.ProjectID }, function() {
+		$scope.project = project;
+	}, function() {
+		Dialog.errorMessage('Invalid Project', 'Project Not Found');
+	});
 
-			Dialog.close('project-loader');
-			Dialog.loading('tasklist-loader', 'Loading Tasklists');
 
-			$scope.project.tasklists = TaskList.query( { ProjectID: $routeParams.ProjectID } , function() {
-				Dialog.close('tasklist-loader');
-			});	
-		});
-		
-	}
 
 });
