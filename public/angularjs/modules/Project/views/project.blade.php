@@ -1,18 +1,19 @@
 <div class="pcontroller" ng-controller="ProjectController" ng-model="project">
 	<div id="main" class="tasklist col-md-5">
 		<h2 class="section-title">{{ project.title }}</h2>
-		<div class="panel-group accordion" ng-controller2="TaskListController">
+
+		<div class="panel-group accordion" ng-controller="TaskListController">
 			
 			<div class="panel panel-custom-grey">
 				<div class="panel-body">
-					<a href="" ng-click="create()">
+					<a href="" ng-click="createTaskList()">
 						<span class="smbtn"><i class="fa fa-plus"></i></span>
 						<span>Add New Task List</span>
 					</a>
 				</div>
 			</div>
 
-			<div class="panel panel-custom-grey" ng-repeat="tasklist in project.tasklists" ng-controller2="TaskListDroppableController2" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">	
+			<div class="panel panel-custom-grey" ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}">	
 				<div class="panel-heading">
 					<div class="tasklistTitle">{{ tasklist.title }}</div>
 					<div class="tasklistBadge badge">{{ tasklist.taskCount }}</div>
@@ -22,11 +23,11 @@
 								<i class="fa fa-pencil"></i>
 							</button>
 							<ul class="editTaskList dropdown-menu dropdown-menu-right" role="menu">
-								<li><a href="" ng-click="edit(tasklist, $index)">Edit</a></li><!--  -->
-								<li><a href="" ng-click="delete(tasklist)"><span class="delete">Delete</span></a></li>
+								<li><a href="" ng-click="editTaskList(tasklist, $index)">Edit</a></li><!--  -->
+								<li><a href="" ng-click="deleteTaskList(tasklist, $index)"><span class="delete">Delete</span></a></li>
 							</ul>
 						</div>
-						<a ng-click="loadTasks()" ng-show="!taskListEditForm.$visible" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
+						<a ng-click="loadTasks($index)" ng-show="!taskListEditForm.$visible" data-toggle="collapse" data-parent="" href=".collapse{{$index}}" class="expand">
 							<i class="fa fa-sort"></i>
 						</a>
 					</div>
@@ -35,16 +36,17 @@
 				<div class="panelProgress">
 					<div class="pprogress sampleprog"></div>
 				</div>
-				<ul id="" class="list-group panel-collapse collapse collapse{{$index}}" ng-controller2="TaskDraggableController2">
+				<ul ng-controller="TaskController" class="list-group panel-collapse collapse collapse{{$index}}">
 					<li class="list-group-item addNew">
-						<a href="" ng-click="create($index)">
+						<a href="" ng-click="createTask($index)">
 							<span class="smbtn"><i class="fa fa-plus"></i></span>
 							<span>Add New Task</span>
 						</a>
 					</li>
-					<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in droppables[tasklist.id]">
+					<!--<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in tasklist.tasks">-->
+					<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
 						<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
-						<a class="openTask" ng-click="open(task)">
+						<a class="openTask" ng-click="openTask(task)">
 							{{ task.subject }}
 						</a>
 					</li>
@@ -53,12 +55,12 @@
 		</div>
 	</div>
 
-	<div ng-controller2="TaskController2" id="tasks" class="tasks col-md-7">
+	<div ng-controller="TaskController" id="tasks" class="tasks col-md-7">
 
 		<div ng-if="task">
 			<div>
 				<span class="closeTask pull-right">
-					<button ng-click="close()" title="Close the Task" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close Task</a>
+					<button ng-click="closeTaskPane()" title="Close the Task" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close Task</a>
 				</span>
 				<div class="clearfix"></div>
 			</div>
