@@ -1,6 +1,7 @@
 angular.module('Task').controller('TaskDialogController', function($scope, $modalInstance, TaskService, data) {
 
 	$scope.task = data.task;
+	console.log($scope.task);
 
 	$scope.update = function()
 	{
@@ -11,6 +12,9 @@ angular.module('Task').controller('TaskDialogController', function($scope, $moda
 
 	$scope.store = function()
 	{
+		console.log('Store Function');
+		console.log($scope.task);
+
 		TaskService.store($scope.task, data.index).then(function() {
 			$modalInstance.close();
 		});

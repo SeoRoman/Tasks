@@ -26,6 +26,8 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		task.user_id = 1;
 		task.tasks_lists_id = tasklist.id;
 
+		console.log(task);
+
 		// tasklist = the object we are storing...
 		return Task.save( task, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function() {
 
@@ -36,15 +38,23 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		}).$promise;
 	}
 
-	this.update = function(data, TaskListID, TaskID)
+	this.update = function(task, data)
 	{
+		console.log('Task in Update Function');
+		console.log(task);
+
 		Dialog.wait('task-update', 'Updating Task');
 
-		return Task.update(data, { ProjectID: ProjectService.getId(), TaskListID: TaskListID, TaskID: TaskID } , function(response) {
-			console.log(response);
+		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
 			Dialog.close('task-update');
-			return response.task;
-		}).$promise;
+		});
+
+		//return Task.update(task, { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id } , function(response) {
+		//	console.log('Server Response');
+		//	console.log(response);
+		//	Dialog.close('task-update');
+		//	return response.task;
+		//}).$promise;
 	}
 
 	this.loadTasks = function(tasklist)
