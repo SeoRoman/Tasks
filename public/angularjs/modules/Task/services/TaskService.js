@@ -59,6 +59,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 	this.loadTasks = function(tasklist)
 	{
+
 		Dialog.wait('tasks-load', 'Loading Tasks for Tasklist: ' + tasklist.title);
 
 		var data = { ProjectID: ProjectService.getId(), TaskListID: tasklist.id };

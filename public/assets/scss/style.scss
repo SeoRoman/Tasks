@@ -15,6 +15,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  min-height: 100%;
 }
 
 html {
@@ -28,6 +29,12 @@ body {
 .container-fluid,
 .row {
   height: 100%;
+}
+
+.btn,
+.dropdown-menu,
+.form-control {
+  border-radius: 0px;
 }
 
 /* 
@@ -74,7 +81,9 @@ body {
 .main-content,
 .ngview,
 .pcontroller {
-  min-height: 100%;
+  @media screen and (min-width: 992px) {
+    height: 100%;
+  }
 }
 
 /* 
@@ -83,15 +92,75 @@ body {
  * -----------------------
  */
 
- #main {
+#main {
   height: 100%;
- }
+}
 
- .tasklist {
+.tasklist {
   z-index: 4;
-  overflow-y: scroll;
- }
+  @media screen and (min-width: 992px) {
+    overflow-y: scroll;
+  }
+}
 
- .modal { 
+.section-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 10px 0 15px;
+}
+
+.panel {
+  border-radius: 0px;
+  &-group .panel {
+    border-radius: 0px;
+  }
+  &-heading {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+}
+
+.panel-custom-color {
+  > .panel-heading {
+    font: {
+      weight: bold;
+    }
+  }
+}
+
+.tasklistTitle,
+.tasklistBadge {
+  float: left;
+}
+.tasklistBadge {
+  margin-left: 10px;
+}
+
+/* 
+ * -----------------------
+ * RIGHT CONTENT STYLES
+ * -----------------------
+ */
+
+#tasks {
+  @media screen and (min-width: 992px) {
+    height: 100%;
+    overflow-y: scroll;
+  }
+}
+
+/* 
+ * -----------------------
+ * MODAL/DIALOG STYLES
+ * -----------------------
+ */
+
+.modal { 
   display: block;
+  &-content {
+    border-radius: 0px;
+  }
+  &-footer {
+    text-align: left !important;
+  }
 }
