@@ -22,6 +22,6 @@ angular.module('Office', []);
 
 angular.module('Application').constant('angularMomentConfig', {
     preprocess: null, // optional
-    timezone: 'America/Chicago' // optional
+    timezone: '' // optional
 });
 
