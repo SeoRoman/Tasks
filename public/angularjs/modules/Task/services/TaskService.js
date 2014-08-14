@@ -40,27 +40,15 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 	this.update = function(task)
 	{
-		console.log('Task in Update Function');
-		console.log(task);
-
 		Dialog.wait('task-update', 'Updating Task');
 
 		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
 			Dialog.close('task-update');
 		});
-
-		//return Task.update(task, { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id } , function(response) {
-		//	console.log('Server Response');
-		//	console.log(response);
-		//	Dialog.close('task-update');
-		//	return response.task;
-		//}).$promise;
-	}
+		}
 
 	this.loadTasks = function(tasklist)
 	{
-		console.log('---Loading Tasks---');
-		console.log(tasklist);
 		Dialog.wait('tasks-load', 'Loading Tasks for Tasklist: ' + tasklist.title);
 
 		var data = { ProjectID: ProjectService.getId(), TaskListID: tasklist.id };
