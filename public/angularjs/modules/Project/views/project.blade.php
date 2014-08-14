@@ -16,9 +16,9 @@
 				<accordion>
 					<accordion-group index="{{ $index }}" ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="status.open">
 						<accordion-heading>
+							<i class="tasklistToggle fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
 							<div class="tasklistTitle">{{tasklist.title}}</div>
 							<div class="tasklistBadge badge">{{tasklist.taskCount}}</div>
-							<i class="pull-right fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
 							<div class="pull-right buttons">
 								<div class="btn-group">
 									<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
@@ -146,7 +146,7 @@
 						</div>
 						<div class="commentspacer"></div>
 						<div class="commentTime">
-							<span>{{comment.created_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
+							<span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
 							<!--<span>
 								{{ comment.created_at }}
 							</span>-->

@@ -101,9 +101,19 @@ body {
 .panel-custom-color > .panel-heading {
   font-weight: bold; }
 
+.panel-heading .buttons {
+  display: none; }
+
+.panel-heading:hover .buttons {
+  display: inline-block; }
+
 .tasklistTitle,
-.tasklistBadge {
+.tasklistBadge,
+.tasklistToggle {
   float: left; }
+
+.tasklistToggle {
+  margin-right: 10px; }
 
 .tasklistBadge {
   margin-left: 10px; }
