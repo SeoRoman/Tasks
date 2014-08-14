@@ -1,4 +1,4 @@
-angular.module('Task').service('TaskService', function(ProjectService, TaskListService, Task, Dialog) {
+angular.module('Task').service('TaskService', function(ProjectService, TaskListService, Task, TaskComment, Dialog) {
 
 	var _task = null;
 
@@ -17,6 +17,16 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		Dialog.create('angularjs/modules/Task/views/dialogs/create.html', 'TaskDialogController', { task: {}, index: tasklistIndex }, {} );		
 	}
 
+	this.storeComment = function(task, comment)
+	{
+		Dialog.wait('task-comment-create', 'Adding Comment to Task: ' + task.title);
+
+		return TaskComment.save( comment, { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, function(response) {
+			Dialog.close('task-comment-create');
+			task.comments.unshift(response.comment);
+		}).$promise;
+	}
+
 	this.store = function(task, tasklistIndex)
 	{
 		Dialog.wait('task-create', 'Creating Task: ' + task.title);
@@ -31,9 +41,9 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		// tasklist = the object we are storing...
 		return Task.save( task, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function(response) {
 
-			Dialog.close('task-create');
+			task.comments = {};
 
-			tasklist.taskCount += 1;
+			Dialog.close('task-create');		
 
 			TaskListService.addTask(tasklistIndex, response.task);
 
@@ -47,7 +57,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
 			Dialog.close('task-update');
 		});
-		}
+	}
 
 	this.loadTasks = function(tasklist)
 	{
@@ -56,6 +66,16 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		var data = { ProjectID: ProjectService.getId(), TaskListID: tasklist.id };
 		return Task.query( data , function() {
 			Dialog.close('tasks-load');
+		}).$promise;
+	}
+
+	this.loadComments = function(task)
+	{
+		Dialog.wait('task-comments-load', 'Loading Comments for Task: ' + task.title);
+
+		var data = { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id };
+		return TaskComment.query( data, function() {
+			Dialog.close('task-comments-load');
 		}).$promise;
 	}
 

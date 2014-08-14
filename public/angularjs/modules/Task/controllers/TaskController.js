@@ -16,6 +16,12 @@ angular.module('Task').controller('TaskController', function($scope, $location, 
 	$scope.openTask = function(task)
 	{
 		$scope.task = task;
+
+		// Get Task Comments 
+
+		 TaskService.loadComments(task).then(function(comments) {
+		 	task.comments = comments;
+		 });
 	}
 
 	$scope.updateTask = function()

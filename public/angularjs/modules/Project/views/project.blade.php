@@ -113,29 +113,32 @@
 				<div class="subTasks">
 					<a href=""><i class="fa fa-list"></i> Add subtasks</a>
 				</div>
-				<div class="addComment">
-					<form>
-						<textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
-						<div class="spacer-5"></div>
-						<input type="submit" value="COMMENT" class="btn btn-info pull-right">
-					</form>
-					<div class="clearfix"></div>
-				</div>
-				<div class="commentList">
-					<div class="commentFrom">
-						<span>Nathon Shultz</span>
+				<div ng-controller="TaskCommentController"> 				
+					<div class="addComment">
+						<form ng-submit="storeTaskComment(task)" name="TaskCommentForm">
+							<textarea class="form-control" rows="3" placeholder="Write a comment..." ng-model="comment.body"></textarea>
+							<div class="spacer-5"></div>
+							<input type="submit" value="COMMENT" class="btn btn-info pull-right">
+						</form>
+						<div class="clearfix"></div>
 					</div>
-					<div class="commentspacer"></div>
-					<div class="commentBody">
-						<span>
-							Are we currently able to add comments to a task?
-						</span>
-					</div>
-					<div class="commentspacer"></div>
-					<div class="commentTime">
-						<span>
-							Yesterday 11:09 pm
-						</span>
+
+					<div class="commentList" ng-repeat="comment in task.comments">
+						<div class="commentFrom">
+							<span>UserID: {{ comment.creator }}</span>
+						</div>
+						<div class="commentspacer"></div>
+						<div class="commentBody">
+							<span>
+								{{ comment.body }}
+							</span>
+						</div>
+						<div class="commentspacer"></div>
+						<div class="commentTime">
+							<span>
+								{{ comment.created_at }}
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>

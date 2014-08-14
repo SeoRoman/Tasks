@@ -14,7 +14,10 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 	this.addTask = function(index, task)
 	{
-		_tasklists[index].tasks.push(task);
+		var tasklist = _tasklists[index];
+		
+		tasklist.taskCount += 1;
+		tasklist.tasks.push(task);
 	}
 
 	this.getTaskList = function(index) {
