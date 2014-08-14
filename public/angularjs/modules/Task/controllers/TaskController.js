@@ -2,6 +2,11 @@ angular.module('Task').controller('TaskController', function($scope, $location, 
 
 	$scope.task = null;
 
+	$scope.createTask = function(index)
+	{
+		TaskService.create(index);
+	}
+
 	$scope.closeTaskPane = function()
 	{
 		$location.path('/projects/' + $scope.project.id, false);

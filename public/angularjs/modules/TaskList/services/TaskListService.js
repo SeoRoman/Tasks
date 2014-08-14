@@ -74,13 +74,13 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		Dialog.wait('tasklist-create', 'Creating Tasklist: ' + tasklist.title);
 
 		// tasklist = the object we are storing...
-		return TaskList.save( tasklist, { ProjectID: ProjectService.getId() }, function() {
+		return TaskList.save( tasklist, { ProjectID: ProjectService.getId() }, function(response) {
 
 			Dialog.close('tasklist-create');
 
 			tasklist.taskCount = 0;
 
-			addTaskList(tasklist);
+			addTaskList(response.tasklist);
 
 		}).$promise;
 	}
