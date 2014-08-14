@@ -18,9 +18,9 @@ angular.module('Task').controller('TaskController', function($scope, $location, 
 		$scope.task = task;
 	}
 
-	$scope.updateTask = function(task)
+	$scope.updateTask = function()
 	{	
-		return TaskService.update(task);
+		return TaskService.update($scope.task);
 	}
 
 });

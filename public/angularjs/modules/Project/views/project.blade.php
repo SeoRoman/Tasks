@@ -77,7 +77,7 @@
 				<div class="clearfix"></div>
 				<div class="taskHeader">
 					<i class="fa fa-check taskDone"></i>
-					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTask(task)">{{ task.title }}</a></span>
+					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTask()">{{ task.title }}</a></span>
 					<span class="pull-right btn-group">
 						<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
@@ -96,11 +96,11 @@
 					</small>
 				</div>
 				<div class="taskDesc">
-					<a href="" ng-if="!task.description" editable-textarea="task.description">
+					<a href="" ng-if="!task.description" editable-textarea="task.description" onaftersave="updateTask()">
 						<i class="fa fa-pencil"></i> Add a description			
 					</a>
 					<div ng-if="task.description">
-						<span editable-textarea="task.description" e-form="editTaskDescBtn" onaftersave="updateTask(task)">{{task.description}}</span>
+						<span editable-textarea="task.description" e-form="editTaskDescBtn" onaftersave="updateTask()">{{task.description}}</span>
 						<i class="pull-right fa fa-pencil" ng-click="editTaskDescBtn.$show()" ng-hide="editTaskDescBtn.$visible"></i>
 					</div>
 					
