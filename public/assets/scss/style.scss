@@ -149,6 +149,17 @@ body {
   }
 }
 
+.showTaskDescEdit {
+  .taskDescEdit {
+    display: none;
+  }
+  &:hover {
+    .taskDescEdit {
+      display: inline-block;
+    }
+  }
+}
+
 /* 
  * -----------------------
  * MODAL/DIALOG STYLES

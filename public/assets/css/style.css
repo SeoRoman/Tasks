@@ -118,6 +118,11 @@ body {
     height: 100%;
     overflow-y: scroll; } }
 
+.showTaskDescEdit i {
+  display: none; }
+.showTaskDescEdit:hover i {
+  display: inline-block; }
+
 /* 
  * -----------------------
  * MODAL/DIALOG STYLES
