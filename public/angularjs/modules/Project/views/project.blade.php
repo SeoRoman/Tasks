@@ -118,7 +118,7 @@
 				</div>
 				<div class="taskByline" ng-if="task.description">
 					<small>
-						Edited by UserID: {{task.author.username}} on <span>{{task.updated_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> 
+						Edited by {{task.author.username}} on <span>{{task.updated_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> 
 					</small>
 				</div>
 				<div class="subTasks">
@@ -140,7 +140,7 @@
 
 							<div ng-switch-when="comment">
 								<div class="commentFrom">
-									<span>UserID: {{ comment.author.username }}</span>
+									<span>{{ comment.author.username }}</span>
 								</div>
 								<div class="commentspacer"></div>
 								<div class="commentBody">
