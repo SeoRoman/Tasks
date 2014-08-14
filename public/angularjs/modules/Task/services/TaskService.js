@@ -38,7 +38,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		}).$promise;
 	}
 
-	this.update = function(task, data)
+	this.update = function(task)
 	{
 		console.log('Task in Update Function');
 		console.log(task);

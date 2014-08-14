@@ -77,7 +77,7 @@
 				<div class="clearfix"></div>
 				<div class="taskHeader">
 					<i class="fa fa-check taskDone"></i>
-					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onbeforesave="updateTaskTitle($data, task)">{{ task.title }}</a></span>
+					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onbeforesave="updateTaskTitle(task)">{{ task.title }}</a></span>
 					<span class="pull-right btn-group">
 						<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
