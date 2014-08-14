@@ -57,6 +57,8 @@
   <%js('extras/angular-translate/filter/translate.js')%>
   <%js('extras/dialogs-default-translations.js')%>
   <%js('extras/ui-bootstrap-tpls-0.11.0.min.js')%>
+  <%js('extras/moment.js')%>
+  <%js('extras/angular-moment.js')%>
 
   <!-- Main Application -->
   <% angularjs('Application.js') %>

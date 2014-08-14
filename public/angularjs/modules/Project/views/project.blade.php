@@ -21,7 +21,7 @@
 							<i class="pull-right fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
 							<div class="pull-right buttons">
 								<div class="btn-group">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 										<i class="fa fa-pencil"></i>
 									</button>
 									<ul class="editTaskList dropdown-menu dropdown-menu-right" role="menu">
@@ -112,7 +112,7 @@
 					</a>
 					<div class="showTaskDescEdit" ng-if="task.description">
 						<span editable-textarea="task.description" e-form="editTaskDescBtn" onaftersave="updateTask()">{{task.description}}</span>
-						<i class="pull-right fa fa-pencil" ng-click="editTaskDescBtn.$show()" ng-hide="editTaskDescBtn.$visible"></i>
+						<button class="pull-right btn btn-xs btn-default" ng-click="editTaskDescBtn.$show()" ng-hide="editTaskDescBtn.$visible"><i class="fa fa-pencil"></i></button>
 					</div>
 					
 				</div>
@@ -146,9 +146,10 @@
 						</div>
 						<div class="commentspacer"></div>
 						<div class="commentTime">
-							<span>
+							<span>{{comment.created_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
+							<!--<span>
 								{{ comment.created_at }}
-							</span>
+							</span>-->
 						</div>
 					</div>
 				</div>

@@ -136,6 +136,83 @@ body {
   margin-left: 10px;
 }
 
+.editTaskList,
+.editTask {
+  &.dropdown-menu {
+    background-color: #f5f5f5;
+    border: 1px solid #858585;
+    padding: 0;
+    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, .45);
+            box-shadow: 0 0 12px rgba(0, 0, 0, .45);
+    & > li {
+      border-top: 1px solid #858585;
+      &:first-child {
+        border-top: none;
+        & > a:hover {
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+        }
+      }
+      &:last-child > a:hover {
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      & > a {
+        color: #333;
+        padding: 8px 20px;
+        &:hover,
+        &:focus {
+          color: #222;
+          background-color: #ddd;
+        }
+      }
+    }
+  }
+  & button,
+  & input,
+  & optgroup,
+  & select,
+  & textarea {
+    font-weight: normal;
+  }
+}
+
+.delete {
+  color: #ee6d73;
+}
+
+.addNew {
+  background: #f5f5f5;
+}
+
+.moveTask {
+  cursor: move;
+}
+
+.fa-ellipsis-v {
+  margin: 0 1px 0 0;
+  color: #b0b0b0;
+}
+
+a.openTask {
+  cursor: pointer;
+}
+
+.panelProgress {
+  height: 3px;
+  background: #ddd;
+}
+
+.pProgress {
+  position: absolute;
+}
+
+.sampleprog {
+  height: 3px;
+  background: #509d51;
+  width: 40%;
+}
+
 /* 
  * -----------------------
  * RIGHT CONTENT STYLES
@@ -149,15 +226,60 @@ body {
   }
 }
 
+span.editTitle>.smbtn:hover {
+  cursor: pointer;
+}
+
+.closeTask {
+  margin: 0 -15px 10px 0;
+}
+
+.taskCrumbs,
+.taskByline {
+  color: #b0b0b0;
+}
+
+.taskDesc,
+.subTasks,
+.addComment,
+.commentList {
+  margin: 20px 0 0;
+}
+
 .showTaskDescEdit {
-  .taskDescEdit {
+  button {
     display: none;
   }
   &:hover {
-    .taskDescEdit {
+    button {
       display: inline-block;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
+}
+
+.spacer-5 {
+  height: 5px;
+}
+
+.commentspacer {
+  height: 20px;
+}
+
+.commentList {
+  border-top: 1px solid #ddd;
+  padding: 15px 20px 15px 40px;
+}
+
+.commentFrom {
+  font-weight: bold;
+}
+
+.commentTime {
+  color: #b0b0b0;
+  font-size: 12px;
 }
 
 /* 
