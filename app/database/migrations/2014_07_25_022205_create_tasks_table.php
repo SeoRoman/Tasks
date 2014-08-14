@@ -33,6 +33,10 @@ class CreateTasksTable extends Migration {
 
 			$table->boolean('completed')->default(0);
 
+			$table->integer('created_by');
+
+			$table->integer('updated_by');
+
 			$table->timestamps();
 
 			$table->softDeletes();

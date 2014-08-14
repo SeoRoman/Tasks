@@ -118,7 +118,7 @@
 				</div>
 				<div class="taskByline" ng-if="task.description">
 					<small>
-						Edited by {Nathon Shultz} {{ task.updated_at }} 
+						Edited by UserID: {{task.updated_by}} on <span>{{task.updated_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> 
 					</small>
 				</div>
 				<div class="subTasks">
