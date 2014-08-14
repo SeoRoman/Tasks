@@ -29,6 +29,10 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 	this.storeComment = function(task, comment)
 	{
+		comment.commentable_type = 'Task';
+		comment.commentable_id = task.id;
+		comment.created_by = 1;
+
 		return addComment(task, comment);
 	}
 
@@ -74,6 +78,16 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
 			Dialog.close('task-update');
 		});
+	}
+
+	this.loadTask = function(ProjectID, TaskListID, TaskID)
+	{
+		Dialog.wait('task-load', 'Loading Task');
+
+		var data = { ProjectID: ProjectID, TaskListID: TaskListID, TaskID: TaskID };
+		return Task.get(data, function() {
+			Dialog.close('task-load');
+		}).$promise;
 	}
 
 	this.loadTasks = function(tasklist)

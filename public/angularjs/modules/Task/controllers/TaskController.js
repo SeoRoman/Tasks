@@ -1,6 +1,13 @@
-angular.module('Task').controller('TaskController', function($scope, $location, Dialog, TaskService) {
+angular.module('Task').controller('TaskController', function($scope, $routeParams, $location, Dialog, TaskService) {
 
 	$scope.task = null;
+
+	if ($routeParams.TaskID !== 'undefined')
+	{
+		TaskService.loadTask($routeParams.ProjectID, $routeParams.TaskListID, $routeParams.TaskID).then(function(response) {
+			$scope.task = response.task;
+		})
+	}	
 
 	$scope.createTask = function(index)
 	{

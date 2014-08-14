@@ -79,7 +79,16 @@ class TaskController extends \BaseController {
 	 */
 	public function show($projectId, $tasklistId, $taskId)
 	{
-		return $this->task->where('id', $taskId)->first();
+		try {
+			$task = $this->task->with('author')->where('id', $taskId)->first();	
+			return Response::json([ 'task' => $task ], 200);
+		}
+		catch(\Exception $e)
+		{
+			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage()], 500);
+		}
+		
+		
 	}
 
 

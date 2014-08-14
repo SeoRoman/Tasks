@@ -43,7 +43,7 @@ class TaskCommentController extends \BaseController {
 		$data = [
 			'commentable_id' => Input::get('commentable_id'),
 			'commentable_type' => Input::get('commentable_type'),
-			'creator'=>Input::get('creator'),
+			'created_by'=>Input::get('created_by'),
 			'body' => Input::get('body')
 		];
 
