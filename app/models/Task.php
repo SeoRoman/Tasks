@@ -21,6 +21,11 @@
 			return  $this->morphMany('Comment','commentable');
 		}
 
+		public function author()
+		{
+			return $this->belongsTo('User', 'created_by');
+		}
+
 	}
 
 ?>

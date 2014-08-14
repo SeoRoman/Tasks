@@ -11,6 +11,11 @@
 			return $this->morphTo();
 		}
 
+		public function author()
+		{
+			return $this->belongsTo('User', 'created_by');
+		}
+
 	}
 
 ?>

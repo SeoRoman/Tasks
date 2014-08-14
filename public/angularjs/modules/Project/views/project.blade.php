@@ -118,7 +118,7 @@
 				</div>
 				<div class="taskByline" ng-if="task.description">
 					<small>
-						Edited by UserID: {{task.updated_by}} on <span>{{task.updated_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> 
+						Edited by UserID: {{task.author.username}} on <span>{{task.updated_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> 
 					</small>
 				</div>
 				<div class="subTasks">
@@ -140,7 +140,7 @@
 
 							<div ng-switch-when="comment">
 								<div class="commentFrom">
-									<span>UserID: {{ comment.creator }}</span>
+									<span>UserID: {{ comment.author.username }}</span>
 								</div>
 								<div class="commentspacer"></div>
 								<div class="commentBody">
@@ -159,7 +159,7 @@
 
 							<div ng-switch-when="created">
 								<div class="commentTime">
-									<span>{Nathon Shultz} Created this task - {{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
+									<span>{{ comment.author.username }} Created this task - {{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
 								</div>	
 							</div>
 						</div>

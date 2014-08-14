@@ -38,7 +38,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 		var tasklist = TaskListService.getTaskList(tasklistIndex);
 
-		task.user_id = 1;
+		task.created_by = 1;
 		task.tasks_lists_id = tasklist.id;
 
 		console.log(task);
@@ -51,7 +51,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 			console.log(response);
 
 			var comment = {};
-			comment.creator = 1;
+			comment.created_by = 1;
 			comment.commentable_id = response.task.id;
 			comment.commentable_type = 'Task';
 			comment.body = '{Roman Lopez} created this task - ' + response.task.created_at
@@ -68,6 +68,8 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 	this.update = function(task)
 	{
 		Dialog.wait('task-update', 'Updating Task');
+
+		task.updated_by = 1;
 
 		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
 			Dialog.close('task-update');

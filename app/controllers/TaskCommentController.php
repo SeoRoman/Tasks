@@ -16,7 +16,7 @@ class TaskCommentController extends \BaseController {
 	 */
 	public function index($ProjectID, $TaskListID, $TaskID)
 	{
-		$comments = $this->comment->where('commentable_type', 'Task')->where('commentable_id', $TaskID)->orderBy('created_at','desc')->get();
+		$comments = $this->comment->with('author')->where('commentable_type', 'Task')->where('commentable_id', $TaskID)->orderBy('created_at','desc')->get();
 		return Response::json($comments, 200);
 	}
 

@@ -16,7 +16,7 @@ class TaskController extends \BaseController {
 	 */
 	public function index($ProjectID, $TaskListID)
 	{
-		$tasks = $this->task->where('tasks_lists_id', $TaskListID)->get();
+		$tasks = $this->task->with('author')->where('tasks_lists_id', $TaskListID)->get();
 		return Response::json($tasks, 200);
 	}
 
@@ -41,7 +41,7 @@ class TaskController extends \BaseController {
 	{
 		// Create the Data Array
 		$data = [
-			'user_id' => Input::get('user_id'),
+			'created_by' => Input::get('created_by'),
 			'tasks_lists_id' => Input::get('tasks_lists_id'),
 			'title' => Input::get('title'),
 			'description' => Input::get('description')
