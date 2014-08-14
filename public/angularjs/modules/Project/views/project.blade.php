@@ -19,6 +19,17 @@
 							<div class="tasklistTitle">{{tasklist.title}}</div>
 							<div class="tasklistBadge badge">{{tasklist.taskCount}}</div>
 							<i class="pull-right fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
+							<div class="pull-right buttons">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-pencil"></i>
+									</button>
+									<ul class="editTaskList dropdown-menu dropdown-menu-right" role="menu">
+										<li><a href="" ng-click="editTaskList(tasklist, $index)">Edit</a></li>
+										<li><a href="" ng-click="deleteTaskList(tasklist, $index)"><span class="delete">Delete</span></a></li>
+									</ul>
+								</div>
+							</div>
 							<div class="clearfix"></div>
 						</accordion-heading>
 						<li class="list-group-item addNew">
