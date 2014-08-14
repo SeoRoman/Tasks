@@ -14,9 +14,9 @@
 					</div>
 				</div>
 				<accordion>
-					<accordion-group index="{{ $index }}" ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="status.open">
+					<accordion-group index="{{ $index }}" ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="tasklist.open">
 						<accordion-heading>
-							<i class="tasklistToggle fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
+							<i class="tasklistToggle fa"  ng-class="{'fa-chevron-down': tasklist.open, 'fa-chevron-right': !tasklist.open}"></i>
 							<div class="tasklistTitle">{{tasklist.title}}</div>
 							<div class="tasklistBadge badge">{{tasklist.taskCount}}</div>
 							<div class="pull-right buttons">
