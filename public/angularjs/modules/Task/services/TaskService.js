@@ -29,11 +29,13 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		console.log(task);
 
 		// tasklist = the object we are storing...
-		return Task.save( task, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function() {
+		return Task.save( task, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function(response) {
 
 			Dialog.close('task-create');
 
-			TaskListService.addTask(tasklistIndex, task);
+			tasklist.taskCount += 1;
+
+			TaskListService.addTask(tasklistIndex, response.task);
 
 		}).$promise;
 	}
