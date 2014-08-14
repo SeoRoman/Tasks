@@ -14,33 +14,28 @@
 					</div>
 				</div>
 				<accordion>
-					<accordion-group is-open="status.open">
+					<accordion-group ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="status.open">
 						<accordion-heading>
-							<div class="tasklistTitle">tasklist.title</div>
-							<div class="tasklistBadge badge">tasklist.taskCount</div>
+							<div class="tasklistTitle">{{tasklist.title}}</div>
+							<div class="tasklistBadge badge">{{tasklist.taskCount}}</div>
 							<i class="pull-right fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
 							<div class="clearfix"></div>
 						</accordion-heading>
-						<div class="panelProgress">
-							<div class="pprogress sampleprog"></div>
-						</div>
-						<ul class="list-group">
-							<li class="list-group-item addNew">
-								<a href="" ng-click="createTask($index)">
-									<span class="smbtn"><i class="fa fa-plus"></i></span>
-									<span>Add New Task</span>
-								</a>
-							</li>
-							<!--<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in tasklist.tasks">-->
-							<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
-								<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
-								<a class="openTask" ng-click="openTask(task)">
-									{{ task.title }}
-								</a>
-							</li>
-						</ul>
+						<li class="list-group-item addNew">
+							<a href="" ng-click="createTask($index)">
+								<span class="smbtn"><i class="fa fa-plus"></i></span>
+								<span>Add New Task</span>
+							</a>
+						</li>
+						<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
+							<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
+							<a class="openTask" ng-click="openTask(task)">
+								{{ task.title }}
+							</a>
+						</li>
 					</accordion-group>
 				</accordion>
+						<!--<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in tasklist.tasks">-->
 				<!-- <accordion>
 					<accordion-group ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="status.open">
 						<accordion-heading>
@@ -64,19 +59,7 @@
 							<div class="pprogress sampleprog"></div>
 						</div>
 						<ul class="list-group panel-collapse collapse collapse{{$index}}">
-							<li class="list-group-item addNew">
-								<a href="" ng-click="createTask($index)">
-									<span class="smbtn"><i class="fa fa-plus"></i></span>
-									<span>Add New Task</span>
-								</a>
-							</li>
-							<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in tasklist.tasks">
-							<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
-								<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
-								<a class="openTask" ng-click="openTask(task)">
-									{{ task.title }}
-								</a>
-							</li>
+							
 						</ul>
 					</accordion-group>
 				</accordion> -->	
