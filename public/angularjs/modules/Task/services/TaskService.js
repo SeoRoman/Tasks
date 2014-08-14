@@ -2,6 +2,16 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 	var _task = null;
 
+	var addComment = function(task, comment)
+	{
+		Dialog.wait('task-comment-create', 'Adding Comment to Task: ' + task.title);
+
+		return TaskComment.save( comment, { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, function(response) {
+			Dialog.close('task-comment-create');
+			task.comments.unshift(response.comment);
+		}).$promise;
+	}
+
 	this.setActiveTask = function(task)
 	{
 		_task = task;
@@ -19,12 +29,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 	this.storeComment = function(task, comment)
 	{
-		Dialog.wait('task-comment-create', 'Adding Comment to Task: ' + task.title);
-
-		return TaskComment.save( comment, { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, function(response) {
-			Dialog.close('task-comment-create');
-			task.comments.unshift(response.comment);
-		}).$promise;
+		return addComment(task, comment);
 	}
 
 	this.store = function(task, tasklistIndex)
@@ -42,6 +47,16 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		return Task.save( task, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function(response) {
 
 			task.comments = {};
+
+			console.log(response);
+
+			var comment = {};
+			comment.creator = 1;
+			comment.commentable_id = response.task.id;
+			comment.commentable_type = 'Task';
+			comment.body = '{Roman Lopez} created this task - ' + response.task.created_at
+
+			addComment(response.task, comment);
 
 			Dialog.close('task-create');		
 
