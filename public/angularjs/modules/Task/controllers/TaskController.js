@@ -33,7 +33,9 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 
 	$scope.updateTask = function()
 	{	
-		return TaskService.update($scope.task);
+		return TaskService.update($scope.task).then(function(response) {
+			$scope.task = response.task;
+		});
 	}
 
 });

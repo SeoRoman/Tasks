@@ -113,7 +113,7 @@ class TaskController extends \BaseController {
 	public function update($ProjectID, $TaskListID, $TaskID)
 	{
 		$data = array(
-			'user_id' => Input::get('user_id'),
+			'created_by' => Input::get('created_by'),
 			'tasks_lists_id' => Input::get('tasks_lists_id'),
 			'title' => Input::get('title'),
 			'description' => Input::get('description')
@@ -136,7 +136,7 @@ class TaskController extends \BaseController {
 
 			$task->fill($data);
 			$task->save();
-			return Response::json([ 'data' => $task ], 200);
+			return Response::json([ 'task' => $task ], 200);
 		}
 		catch(\Exception $e)
 		{
