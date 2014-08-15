@@ -5,8 +5,8 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 	if ($routeParams.TaskID !== 'undefined')
 	{
 		TaskService.loadTask($routeParams.ProjectID, $routeParams.TaskListID, $routeParams.TaskID).then(function(response) {
-			$scope.task = response.task;
-		})
+			$scope.openTask(response.task);
+		});
 	}	
 
 	$scope.createTask = function(index)

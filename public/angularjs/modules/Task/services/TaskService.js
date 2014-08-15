@@ -8,6 +8,13 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 		return TaskComment.save( comment, { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, function(response) {
 			Dialog.close('task-comment-create');
+
+			user = {};
+			user.id = "1";
+			user.username = "roman";
+			response.comment.author = user;
+
+
 			task.comments.unshift(response.comment);
 		}).$promise;
 	}
@@ -29,6 +36,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 	this.storeComment = function(task, comment)
 	{
+		comment.class_type = "comment";
 		comment.commentable_type = 'Task';
 		comment.commentable_id = task.id;
 		comment.created_by = 1;
@@ -45,18 +53,16 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		task.created_by = 1;
 		task.tasks_lists_id = tasklist.id;
 
-		console.log(task);
 
 		// tasklist = the object we are storing...
 		return Task.save( task, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function(response) {
 
-			task.comments = {};
-
-			console.log(response);
+			task.comments = [];
 
 			var comment = {};
 			comment.created_by = 1;
 			comment.commentable_id = response.task.id;
+			comment.class_type = 'system';
 			comment.commentable_type = 'Task';
 			comment.body = '{Roman Lopez} created this task - ' + response.task.created_at
 

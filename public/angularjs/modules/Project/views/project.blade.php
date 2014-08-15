@@ -102,7 +102,7 @@
 				<div class="taskCrumbs">
 					<small>
 						{{ tasklist.title }} 
-						<i class="fa fa-angle-double-right"></i> 
+							<i class="fa fa-angle-double-right"></i> 
 						{{task.title}}
 					</small>
 				</div>
@@ -157,9 +157,9 @@
 								</div>
 							</div>
 
-							<div ng-switch-when="created">
+							<div ng-switch-when="system">
 								<div class="commentTime">
-									<span>{{ comment.author.username }} Created this task - {{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
+									<span>{{ comment.author.username }} {{ comment.body }} - {{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
 								</div>	
 							</div>
 						</div>
