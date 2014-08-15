@@ -38,42 +38,14 @@
 								<span>Add New Task</span>
 							</a>
 						</li>
-						<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
+						<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item task-item" ng-repeat="task in tasklist.tasks" ng-click="openTask(task)">
 							<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
-							<a class="openTask" ng-click="openTask(task)">
-								{{ task.title }}
-							</a>
+							{{ task.title }}
 						</li>
 					</accordion-group>
 				</accordion>
 						<!--<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in tasklist.tasks">-->
-				<!-- <accordion>
-					<accordion-group ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="status.open">
-						<accordion-heading>
-							<div class="tasklistTitle">{{ tasklist.title }}</div>
-							<div class="tasklistBadge badge">{{ tasklist.taskCount }}</div>
-							<i class="pull-right fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
-							<div class="pull-right buttons">
-								<div class="btn-group">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-										<i class="fa fa-pencil"></i>
-									</button>
-									<ul class="editTaskList dropdown-menu dropdown-menu-right" role="menu">
-										<li><a href="" ng-click="editTaskList(tasklist, $index)">Edit</a></li>
-										<li><a href="" ng-click="deleteTaskList(tasklist, $index)"><span class="delete">Delete</span></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-						</accordion-heading>
-						<div class="panelProgress">
-							<div class="pprogress sampleprog"></div>
-						</div>
-						<ul class="list-group panel-collapse collapse collapse{{$index}}">
-							
-						</ul>
-					</accordion-group>
-				</accordion> -->	
+				
 			</div>
 		</div>
 
@@ -134,7 +106,7 @@
 						<div class="clearfix"></div>
 					</div>
 
-					<div class="commentList" ng-repeat="comment in task.comments">
+					<div class="commentsList" ng-repeat="comment in task.comments">
 
 						<div ng-switch="comment.class_type">
 
@@ -151,15 +123,20 @@
 								<div class="commentspacer"></div>
 								<div class="commentTime">
 									<span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
-									<!--<span>
-										{{ comment.created_at }}
-									</span>-->
 								</div>
 							</div>
 
 							<div ng-switch-when="system">
-								<div class="commentTime">
-									<span>{{ comment.author.username }} {{ comment.body }} - {{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
+							<div class="systemFrom">
+									<span>{{ comment.author.username }}</span>
+								</div>
+								<div class="systemBody">
+									<span>
+										{{ comment.body }}
+									</span> &#8226; 
+								</div>
+								<div class="systemTime">
+									<span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> <!--(<span am-time-ago="comment.created_at"></span>)-->
 								</div>	
 							</div>
 						</div>

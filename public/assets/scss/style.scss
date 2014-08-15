@@ -118,7 +118,13 @@ body {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
   }
+  & > .list-group:last-child .list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
 }
+
+.panel > .list-group:last-child .list-group-item:last-child
 
 .panel-custom-color {
   > .panel-heading {
@@ -226,6 +232,11 @@ a.openTask {
   width: 40%;
 }
 
+li.task-item:hover {
+  background: #dddddd;
+  cursor: pointer;
+}
+
 /* 
  * -----------------------
  * RIGHT CONTENT STYLES
@@ -236,6 +247,7 @@ a.openTask {
   @media screen and (min-width: 992px) {
     height: 100%;
     overflow-y: scroll;
+    border-left: 1px solid #222222;
   }
 }
 
@@ -281,18 +293,27 @@ span.editTitle>.smbtn:hover {
   height: 20px;
 }
 
-.commentList {
+.commentsList {
   border-top: 1px solid #ddd;
   padding: 15px 20px 15px 40px;
 }
 
-.commentFrom {
+.commentFrom,
+.systemFrom {
   font-weight: bold;
 }
 
-.commentTime {
+.commentTime,
+.systemTime {
   color: #b0b0b0;
   font-size: 12px;
+}
+
+.systemFrom,
+.systemBody,
+.systemTime {
+  display: inline-block;
+  color: #b0b0b0;
 }
 
 /* 
