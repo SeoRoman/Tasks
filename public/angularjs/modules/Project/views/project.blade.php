@@ -1,6 +1,6 @@
 <div class="pcontroller" ng-controller="ProjectController" ng-model="project">
 	<div class="pcontroller" ng-controller="TaskController">
-		<div id="main" class="tasklist col-md-5">
+		<div id="main" class="tasklist col-md-4">
 			<h2 class="section-title">{{ project.title }}</h2>
 
 			<div ng-controller="TaskListController">
@@ -38,9 +38,13 @@
 								<span>Add New Task</span>
 							</a>
 						</li>
-						<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item task-item" ng-repeat="task in tasklist.tasks" ng-click="openTask(task)">
+						<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
 							<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
-							{{ task.title }}
+							<div class="squaredOne-{{task.id}}">
+								<input type="checkbox" value="None" id="squaredOne-{{task.id}}" ng-model="task.id" name="check" />
+								<label for="squaredOne-{{task.id}}"></label>
+							</div>
+							<a class="task-item" ng-click="openTask(task)">{{ task.title }}</a>
 						</li>
 					</accordion-group>
 				</accordion>
@@ -49,7 +53,7 @@
 			</div>
 		</div>
 
-		<div id="tasks" class="tasks col-md-7">
+		<div id="tasks" class="tasks col-md-8">
 			<div ng-if="task">
 				<div>
 					<span class="closeTask pull-right">
@@ -59,7 +63,10 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="taskHeader">
-					<i class="fa fa-check taskDone"></i>
+					<div class="squaredOne-{{task.id}}">
+						<input type="checkbox" value="None" id="squaredOne-{{task.id}}" ng-model="task.id" name="check" />
+						<label for="squaredOne-{{task.id}}"></label>
+					</div>
 					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTask()">{{ task.title }}</a></span>
 					<span class="pull-right btn-group">
 						<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
