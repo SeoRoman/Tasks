@@ -83,7 +83,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 
 		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
 			Dialog.close('task-update');
-		});
+		}).$promise;
 	}
 
 	this.loadTask = function(ProjectID, TaskListID, TaskID)
