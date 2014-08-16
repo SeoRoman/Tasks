@@ -153,9 +153,9 @@ class TaskController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($ProjectID, $TaskListID, $TaskID)
 	{
-		$this->task->destroy($id);
+		$this->task->destroy($TaskID);
 	}
 
 

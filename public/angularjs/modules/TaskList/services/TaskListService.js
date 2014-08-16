@@ -56,6 +56,12 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		tasklist.tasks.push(task);
 	}
 
+	this.removeTask = function(tasklist, task)
+	{
+		var index = tasklist.tasks.indexOf(task);
+		tasklist.tasks.splice(index, 1);
+	}
+
 	this.showTasks = function(tasks, index)
 	{	
 

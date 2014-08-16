@@ -1,4 +1,4 @@
-angular.module('Task').service('TaskService', function(ProjectService, TaskListService, TaskCommentService, Task, TaskComment, Dialog) {
+angular.module('Task').service('TaskService', function($location, ProjectService, TaskListService, TaskCommentService, Task, TaskComment, Dialog) {
 
 	var _task =null;
 	var _tasks = {};
@@ -146,7 +146,35 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		comment.created_by = 1;
 
 		return addComment(task, comment);
-	}		
+	}	
+
+	this.delete = function(tasklist, task)
+	{
+		var project = ProjectService.getProject();
+
+		var data = { ProjectID: project.id, TaskListID: tasklist.id, TaskID: task.id };
+
+		var confirm = Dialog.confirm('Delete Task?', 'Are you sure you want to delete task: ' + task.title);
+
+		return confirm.result.then(function() {
+			// Yep
+			Dialog.wait('task-delete', 'Deleting Task: ' + task.title);
+
+			return Task.delete( data, function() {
+				confirm.close();
+				Dialog.close('task-delete');
+
+				$location.path('/projects/' + project.id, false);
+
+				TaskListService.removeTask(tasklist, task);
+			});
+			
+		}, function() {
+			// Nope...
+			confirm.close();
+		});
+
+	}	
 
 });
 

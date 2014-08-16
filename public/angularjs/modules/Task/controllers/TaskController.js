@@ -18,10 +18,11 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 
 	$scope.openTask = function(task, tasklist)
 	{
+		var project = ProjectService.getProject();
 		$scope.task = task;
 		$scope.tasklist = tasklist;
 
-		$location.path('/projects/' + ProjectService.getId() + '/tasklists/' + task.tasks_lists_id + '/tasks/' + task.id, false);
+		$location.path('/projects/' + project.id + '/tasklists/' + task.tasks_lists_id + '/tasks/' + task.id, false);
 
 		 TaskCommentService.fetchComments(task).then(function(comments) {
 		 	task.comments = comments;
@@ -36,6 +37,13 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 	$scope.updateTaskDescription = function()
 	{
 		return TaskService.updateDescription($scope.task);
+	}
+
+	$scope.deleteTask = function()
+	{
+		return TaskService.delete($scope.tasklist, $scope.task).then(function() {
+			$scope.task = null;
+		});
 	}
 
 });

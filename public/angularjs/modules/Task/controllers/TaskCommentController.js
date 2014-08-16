@@ -2,9 +2,8 @@ angular.module('Task').controller('TaskCommentController', function($scope, Task
 
 	$scope.comment = {};
 
-	$scope.storeTaskComment = function(task)
+	$scope.store = function()
 	{
-
 		TaskCommentService.storeComment($scope.task, $scope.comment).$promise.then(function() {
 			$scope.comment = {};
 		});
