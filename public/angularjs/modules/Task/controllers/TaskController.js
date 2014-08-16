@@ -23,7 +23,7 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 
 		$location.path('/projects/' + ProjectService.getId() + '/tasklists/' + task.tasks_lists_id + '/tasks/' + task.id, false);
 
-		 TaskCommmentService.fetchComments(task).then(function(comments) {
+		 TaskCommentService.fetchComments(task).then(function(comments) {
 		 	task.comments = comments;
 		 });
 	}
