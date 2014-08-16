@@ -14,7 +14,7 @@
 					</div>
 				</div>
 				<accordion>
-					<accordion-group index="{{ $index }}" ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="tasklist.open">
+					<accordion-group index="{{ $index }}" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="tasklist.open">
 						<accordion-heading>
 							<i class="tasklistToggle fa"  ng-class="{'fa-chevron-down': tasklist.open, 'fa-chevron-right': !tasklist.open}"></i>
 							<div class="tasklistTitle">{{tasklist.title}}</div>
@@ -40,7 +40,7 @@
 						</li>
 						<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
 							<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
-							<a class="openTask" ng-click="openTask(task)">
+							<a class="openTask" ng-click="openTask(task, $parent.$index)">
 								{{ task.title }}
 							</a>
 						</li>
@@ -88,7 +88,7 @@
 				<div class="clearfix"></div>
 				<div class="taskHeader">
 					<i class="fa fa-check taskDone"></i>
-					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTask()">{{ task.title }}</a></span>
+					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTaskTitle($data)">{{ task.title }}</a></span>
 					<span class="pull-right btn-group">
 						<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
@@ -101,7 +101,7 @@
 				</div>
 				<div class="taskCrumbs">
 					<small>
-						{{ tasklist.title }} 
+						{{ task.tasklist.title }} 
 							<i class="fa fa-angle-double-right"></i> 
 						{{task.title}}
 					</small>
@@ -111,14 +111,14 @@
 						<i class="fa fa-pencil"></i> Add a description			
 					</a>
 					<div class="showTaskDescEdit" ng-if="task.description">
-						<span editable-textarea="task.description" e-form="editTaskDescBtn" onaftersave="updateTask()">{{task.description}}</span>
+						<span editable-textarea="task.description" e-form="editTaskDescBtn" onaftersave="updateTaskDescription()">{{task.description}}</span>
 						<button class="pull-right btn btn-xs btn-default" ng-click="editTaskDescBtn.$show()" ng-hide="editTaskDescBtn.$visible"><i class="fa fa-pencil"></i></button>
 					</div>
 					
 				</div>
 				<div class="taskByline" ng-if="task.description">
 					<small>
-						Edited by {{task.author.username}} on <span>{{task.updated_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> 
+						Edited by {{ task.author.username }} on <span>{{task.updated_at | amDateFormat:'MMMM Do YYYY \\a\\t h:mm a'}}</span> 
 					</small>
 				</div>
 				<div class="subTasks">

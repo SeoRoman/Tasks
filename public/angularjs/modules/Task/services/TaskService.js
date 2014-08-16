@@ -1,23 +1,25 @@
-angular.module('Task').service('TaskService', function(ProjectService, TaskListService, Task, TaskComment, Dialog) {
+angular.module('Task').service('TaskService', function(ProjectService, TaskListService, TaskCommentService, Task, TaskComment, Dialog) {
 
-	var _task = null;
+	var _task =null;
+	var _tasks = {};
+
+	this.fetchTasks = function(project, tasklist)
+	{
+        Dialog.wait('tasks-load', 'Loading Tasks for Tasklist: ' + tasklist.title);
+		
+		return Task.query( { ProjectID: project.id, TaskListID: tasklist.id } , function(tasks) {
+
+			_tasks = tasks;
+
+			Dialog.close('tasks-load');
+
+		});
+	}	
 
 	var addComment = function(task, comment)
 	{
-		Dialog.wait('task-comment-create', 'Adding Comment to Task: ' + task.title);
-
-		return TaskComment.save( comment, { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, function(response) {
-			Dialog.close('task-comment-create');
-
-			user = {};
-			user.id = "1";
-			user.username = "roman";
-			response.comment.author = user;
-
-
-			task.comments.unshift(response.comment);
-		}).$promise;
-	}
+		
+	}	
 
 	this.setActiveTask = function(task)
 	{
@@ -29,80 +31,107 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		return _task;
 	}
 
-	this.create = function(tasklistIndex)
+	this.setTaskTitle = function(title)
 	{
-		Dialog.create('angularjs/modules/Task/views/dialogs/create.html', 'TaskDialogController', { task: {}, index: tasklistIndex }, {} );		
+		_task.title = title;
 	}
 
-	this.storeComment = function(task, comment)
+	this.getTaskTitle = function()
 	{
-		comment.class_type = "comment";
-		comment.commentable_type = 'Task';
-		comment.commentable_id = task.id;
-		comment.created_by = 1;
-
-		return addComment(task, comment);
+		return _task.title;
 	}
 
-	this.store = function(task, tasklistIndex)
+	this.setTaskDescription = function(description)
 	{
+		_task.description = description;
+	}	
+
+	this.getTaskDescription = function()
+	{
+		return _task.description;
+	}
+
+	this.create = function()
+	{
+		Dialog.create('angularjs/modules/Task/views/dialogs/create.html', 'TaskDialogController', { task: {} }, {} );		
+	}
+
+	this.store = function(task)
+	{
+		var project = ProjectService.getProject();
+		var tasklist = TaskListService.getActiveTaskList();
+
 		Dialog.wait('task-create', 'Creating Task: ' + task.title);
-
-		var tasklist = TaskListService.getTaskList(tasklistIndex);
 
 		task.created_by = 1;
 		task.tasks_lists_id = tasklist.id;
 
-
 		// tasklist = the object we are storing...
-		return Task.save( task, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function(response) {
+		return Task.save( task, { ProjectID: project.id, TaskListID: tasklist.id }, function(task) {
 
 			task.comments = [];
 
-			var comment = {};
-			comment.created_by = 1;
-			comment.commentable_id = response.task.id;
-			comment.class_type = 'system';
-			comment.commentable_type = 'Task';
-			comment.body = '{Roman Lopez} created this task - ' + response.task.created_at
+			var comment = new TaskComment(
+				{
+					created_by: 1,
+					commentable_id: task.id,
+					commentable_type: 'Task',
+					class_type: 'system',
+				 	body: ' created task '
+				}
+			);
 
-			addComment(response.task, comment);
+			TaskCommentService.store(task, comment).$promise.then(function(comment) {
 
-			Dialog.close('task-create');		
+				task.comments.push(comment);
 
-			TaskListService.addTask(tasklistIndex, response.task);
+				Dialog.close('task-create');		
 
-		}).$promise;
+				TaskListService.addTask(tasklist, task);
+			});
+
+		});
 	}
 
-	this.update = function(task)
+	this.updateTitle = function(task)
 	{
 		Dialog.wait('task-update', 'Updating Task');
 
 		task.updated_by = 1;
 
 		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
+
+			var comment = {};
+			comment.created_by = 1;
+			comment.commentable_id = task.id;
+			comment.commentable_type = 'Task';
+			comment.class_type = 'system';
+			comment.body = '{Roman Lopez} Updated Task Title: ' + task.title;
+
+			addComment(task, comment);
+
 			Dialog.close('task-update');
 		}).$promise;
 	}
 
-	this.loadTask = function(ProjectID, TaskListID, TaskID)
+	this.updateDescription = function(task)
 	{
-		Dialog.wait('task-load', 'Loading Task');
+		Dialog.wait('task-update', 'Updating Task');
 
-		var data = { ProjectID: ProjectID, TaskListID: TaskListID, TaskID: TaskID };
-		return Task.get(data, function() {
-			Dialog.close('task-load');
-		}).$promise;
-	}
+		task.updated_by = 1;
 
-	this.loadTasks = function(tasklist)
-	{
-		Dialog.wait('tasks-load', 'Loading Tasks for Tasklist: ' + tasklist.title);
+		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
 
-		var data = { ProjectID: ProjectService.getId(), TaskListID: tasklist.id };
-		return Task.query( data , function() {
-			Dialog.close('tasks-load');
+			var comment = {};
+			comment.created_by = 1;
+			comment.commentable_id = task.id;
+			comment.commentable_type = 'Task';
+			comment.class_type = 'system';
+			comment.body = '{Roman Lopez} Updated Task Desciption: ' + task.description;
+
+			addComment(task, comment);
+
+			Dialog.close('task-update');
 		}).$promise;
 	}
 
@@ -114,6 +143,16 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		return TaskComment.query( data, function() {
 			Dialog.close('task-comments-load');
 		}).$promise;
+	}	
+
+	this.storeComment = function(task, comment)
+	{
+		comment.class_type = "comment";
+		comment.commentable_type = 'Task';
+		comment.commentable_id = task.id;
+		comment.created_by = 1;
+
+		return addComment(task, comment);
 	}
 
 });

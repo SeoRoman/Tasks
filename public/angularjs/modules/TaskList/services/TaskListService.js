@@ -1,6 +1,44 @@
 angular.module('TaskList').service('TaskListService', function($http, $resource, Dialog, TaskList, ProjectService) {
 
 	var _tasklists = {};
+	var _tasklist = {};
+
+	this.fetchTaskLists = function(project)
+	{
+			
+		Dialog.wait('tasklists-loader', 'Loading TaskLists for ' + project.title);
+
+		return TaskList.query( { ProjectID: project.id }, function(tasklists) {
+
+			_tasklists = tasklists;
+
+			// TaskList Loading Complete
+			Dialog.close('tasklists-loader');
+
+			console.log('TaskLists Loaded Successfully');
+
+		});
+	}
+
+	this.setActiveTaskList = function(index)
+	{
+		_tasklist = _tasklists[index];
+	}
+
+	this.getActiveTaskList = function()
+	{
+		return _tasklist;
+	}
+
+	this.getTaskList = function(index)
+	{
+		return _tasklists[index];
+	}
+
+	this.getTaskLists = function()
+	{
+		return _tasklists;
+	}	
 
 	var addTaskList = function(tasklist)
 	{
@@ -12,34 +50,9 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		_tasklists.splice(index, 1);
 	}
 
-	this.addTask = function(index, task)
+	this.addTask = function(tasklist, task)
 	{
-		var tasklist = _tasklists[index];
-		
-		tasklist.taskCount += 1;
 		tasklist.tasks.push(task);
-	}
-
-	this.getTaskList = function(index) {
-		return _tasklists[index];
-	}
-
-	this.loadTaskLists = function(project)
-	{
-		return ProjectService.getProject().$promise.then(function() {
-			// Loading TaskList Dialog
-			Dialog.wait('tasklist-loader', 'Loading TaskLists for ' + ProjectService.getTitle());
-
-			// Once Project is Received Load the TaskLists...
-			_tasklists = TaskList.query( { ProjectID: ProjectService.getId() }, function() {
-
-				// TaskList Loading Complete
-				Dialog.close('tasklist-loader');
-
-			});
-
-			return _tasklists;
-		});
 	}
 
 	this.showTasks = function(tasks, index)
@@ -73,19 +86,20 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 	this.store = function(tasklist)
 	{
+		var project = ProjectService.getProject();
 
 		Dialog.wait('tasklist-create', 'Creating Tasklist: ' + tasklist.title);
 
 		// tasklist = the object we are storing...
-		return TaskList.save( tasklist, { ProjectID: ProjectService.getId() }, function(response) {
+		return TaskList.save( tasklist, { ProjectID: project.id }, function(tasklist) {
 
 			Dialog.close('tasklist-create');
 
 			tasklist.taskCount = 0;
 
-			addTaskList(response.tasklist);
+			addTaskList(tasklist);
 
-		}).$promise;
+		});
 	}
 
 	this.update = function(tasklist, index)

@@ -1,17 +1,12 @@
-angular.module('Task').controller('TaskController', function($scope, $routeParams, $location, Dialog, TaskService, ProjectService) {
+angular.module('Task').controller('TaskController', function($scope, $routeParams, $location, Dialog, TaskList, TaskService, ProjectService, TaskListService) {
 
 	$scope.task = null;
 
-	if ($routeParams.TaskID !== 'undefined')
-	{
-		TaskService.loadTask($routeParams.ProjectID, $routeParams.TaskListID, $routeParams.TaskID).then(function(response) {
-			$scope.openTask(response.task);
-		});
-	}	
-
 	$scope.createTask = function(index)
 	{
-		TaskService.create(index);
+		TaskListService.setActiveTaskList(index);
+
+		TaskService.create();
 	}
 
 	$scope.closeTaskPane = function()
@@ -20,9 +15,14 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 		$scope.task = null;
 	}	
 
-	$scope.openTask = function(task)
+	$scope.openTask = function(task, index)
 	{
 		$scope.task = task;
+
+		if (index !== 'undefined') {
+			$scope.task.tasklist = TaskListService.getTaskList(index);
+		}
+
 
 		$location.path('/projects/' + ProjectService.getId() + '/tasklists/' + task.tasks_lists_id + '/tasks/' + task.id, false);
 
@@ -31,9 +31,18 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 		 });
 	}
 
-	$scope.updateTask = function()
+	$scope.updateTaskTitle = function(data)
 	{	
-		return TaskService.update($scope.task).then(function(response) {
+		TaskService.setTaskTitle(data);
+
+		//return TaskService.updateTitle($scope.task).then(function(response) {
+		//	$scope.task = response.task;
+		//});
+	}
+
+	$scope.updateTaskDescription = function()
+	{
+		return TaskService.updateDescription($scope.task).then(function(response) {
 			$scope.task = response.task;
 		});
 	}

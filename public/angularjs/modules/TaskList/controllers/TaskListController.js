@@ -1,10 +1,4 @@
-angular.module('TaskList').controller('TaskListController', function($scope, TaskListService, TaskService) {
-
-	$scope.tasklists = {};
-
-	TaskListService.loadTaskLists().then(function(tasklists) {
-		$scope.tasklists = tasklists;
-	});
+angular.module('TaskList').controller('TaskListController', function($scope, ProjectService, TaskListService, TaskService) {
 
 	$scope.createTaskList = function()
 	{

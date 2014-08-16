@@ -62,7 +62,8 @@ class TaskController extends \BaseController {
 			$task = new Task();
 			$task->fill($data);
 			$task->save();
-			return Response::json([ 'task' => $task ], 200);
+			
+			return $task;
 		}
 		catch(\Exception $e) {
 			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage() ], 500);

@@ -101,16 +101,21 @@
   <% angularjs('modules/Task/controllers/TaskDisplayController.js') %>
   <% angularjs('modules/Task/controllers/TaskDialogController.js') %>
   <% angularjs('modules/Task/services/Task.js') %>
-  <% angularjs('modules/Task/services/TaskComment.js') %>
   <% angularjs('modules/Task/services/TaskService.js') %>
+  <% angularjs('modules/Task/services/TaskComment.js') %>
+  <% angularjs('modules/Task/services/TaskCommentService.js') %>
   <% angularjs('modules/Task/Config.js') %>
 
   <!-- Module: Auth -->
   <% angularjs('modules/Auth/controllers/AuthLoginController.js') %>
   <% angularjs('modules/Auth/controllers/AuthLogoutController.js') %>
   <% angularjs('modules/Auth/services/Auth.js') %>
-  <% angularjs('modules/Auth/services/User.js') %>
   <% angularjs('modules/Auth/Config.js') %>
+
+  <!-- Module: User -->
+  <% angularjs('modules/User/controllers/UserController.js') %>
+  <% angularjs('modules/User/services/User.js') %>
+  <% angularjs('modules/User/Config.js') %>
 
   <!-- Module: Dashboard -->
   <% angularjs('modules/Dashboard/controllers/DashboardController.js') %>

@@ -11,7 +11,7 @@ angular.module('TaskList').controller('TaskListDialogController', function($scop
 
 	$scope.store = function()
 	{
-		TaskListService.store($scope.tasklist).then(function() {
+		TaskListService.store($scope.tasklist).$promise.then(function() {
 			$modalInstance.close();
 		});
 	}

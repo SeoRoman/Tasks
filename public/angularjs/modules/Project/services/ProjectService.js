@@ -1,12 +1,17 @@
+// Fetch = Retrieve from DB
+// Get   = Retrieve from Javascript
+
 angular.module('Project').service('ProjectService', function($http, $resource, Dialog, Project) {
 
 	var _project;
 		
-	this.loadProject = function(id) {
+	this.fetchProject = function(ProjectID) {
 
 		Dialog.wait('project-loader', 'Loading Project');
 
-		_project = Project.get( { ProjectID: id } , function() {
+		return Project.get( { ProjectID: ProjectID } , function(project) {
+
+			_project = project;
 
 			Dialog.close('project-loader');
 
@@ -16,13 +21,18 @@ angular.module('Project').service('ProjectService', function($http, $resource, D
 
 		});
 
-		return _project;
+		//return _project;
 
 	}
 
 	this.getProject = function()
 	{
 		return _project;
+	}
+
+	this.setTitle = function(title)
+	{
+		_project.title = title;
 	}
 
 	this.getTitle = function()

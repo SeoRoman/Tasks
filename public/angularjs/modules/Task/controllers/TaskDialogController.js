@@ -12,10 +12,7 @@ angular.module('Task').controller('TaskDialogController', function($scope, $moda
 
 	$scope.store = function()
 	{
-		console.log('Store Function');
-		console.log($scope.task);
-
-		TaskService.store($scope.task, data.index).then(function() {
+		TaskService.store($scope.task).$promise.then(function() {
 			$modalInstance.close();
 		});
 	}

@@ -16,13 +16,24 @@ class TaskListController extends \BaseController {
 	 */
 	public function index()
 	{
-		$tasklists = $this->tasklist->all();
+		try {
+			//return $this->tasklist->all();
 
-		$tasklists = $tasklists->each(function($tasklist) {
-			$tasklist->taskCount = $tasklist->tasks()->count();
-		});
+			$tasklists = $this->tasklist->all();
 
-		return Response::json($tasklists, 200);
+			$tasklists = $tasklists->each(function($tasklist) {
+				$tasklist->taskCount = $tasklist->tasks()->count();
+			});			
+
+			return $tasklists;
+
+			return Response::json([ 'tasklists' => $tasklists ], 200);
+		}
+		catch(\Exception $e)
+		{	
+			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage() ], 500);
+		}
+
 	}
 
 
@@ -66,7 +77,8 @@ class TaskListController extends \BaseController {
 			$tasklist->fill($data);
 			$tasklist->save();
 			$tasklist->load('tasks');
-			return Response::json([ 'tasklist' => $tasklist ], 200);
+			
+			return $tasklist;
 		}
 		catch(\Exception $e) {
 			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage() ], 500);
@@ -83,8 +95,13 @@ class TaskListController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-		return $this->tasklist->find($id);
+		try {
+			$tasklist = $this->tasklist->find($id);
+			return Response::json([ 'tasklist' => $tasklist ], 200);
+		}
+		catch (\Exception $e) {
+			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage() ], 500);
+		}
 	}
 
 
