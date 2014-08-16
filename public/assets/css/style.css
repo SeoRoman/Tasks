@@ -36,18 +36,30 @@ body {
  * LEFT PANEL STYLES
  * -----------------------
  */
-#left-panel {
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
   display: block;
-  overflow-y: auto; }
-  @media screen and (min-width: 992px) {
-    #left-panel {
-      min-height: 100%; } }
+  padding: 10px 20px 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: transparent;
+  border-right: 1px solid #eee; }
+  .sidebar .header {
+    font-size: 24px;
+    margin: 0 0 10px -6px; }
 
-.left-panel {
-  z-index: 2; }
-  .left-panel .header {
-    font-size: 30px;
-    padding: 10px; }
+.org-header {
+  color: #888;
+  margin: 0 0 0 -6px; }
+
+.nav-sidebar {
+  margin-right: -21px;
+  margin-bottom: 20px;
+  margin-left: -20px; }
 
 /* 
  * -----------------------
@@ -60,7 +72,7 @@ body {
 .content {
   z-index: 3; }
 
-.content.col-md-9,
+.content.col-md-10,
 .main-content.col-xs-12 {
   padding-left: 0px;
   padding-right: 0px; }
@@ -97,7 +109,11 @@ body {
   .panel-heading {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px; }
+  .panel > .list-group:last-child .list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px; }
 
+.panel > .list-group:last-child .list-group-item:last-child
 .panel-custom-color > .panel-heading {
   font-weight: bold; }
 
@@ -184,6 +200,70 @@ a.openTask {
   background: #509d51;
   width: 40%; }
 
+.task-item:hover {
+  background: #dddddd;
+  cursor: pointer; }
+
+input[type="checkbox"] {
+  visibility: hidden; }
+
+div[class*='squaredOne-'] {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  margin: auto;
+  position: relative;
+  display: inline-block; }
+
+div[class*='squaredOne-'] label {
+  cursor: pointer;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  top: 0;
+  border: 1px solid #ddd;
+  font-weight: normal; }
+
+div[class*='squaredOne-'] label:after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #dddddd;
+  line-height: 16px;
+  top: 0;
+  left: 0; }
+
+div[class*='squaredOne-'] label:hover::after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1.0;
+  background: transparent;
+  font-family: 'FontAwesome';
+  content: '\f00c';
+  line-height: 16px;
+  padding: 0 0 0 2px;
+  vertical-align: middle;
+  color: #b0b0b0; }
+
+div[class*='squaredOne-'] input[type=checkbox]:checked + label {
+  border-color: #75a76d; }
+
+div[class*='squaredOne-'] input[type=checkbox]:checked + label:after {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+  background: #8fcd86;
+  color: #ffffff;
+  font-family: 'FontAwesome';
+  content: '\f00c';
+  padding: 0 0 0 2px;
+  vertical-align: middle; }
+
 /* 
  * -----------------------
  * RIGHT CONTENT STYLES
@@ -192,7 +272,8 @@ a.openTask {
 @media screen and (min-width: 992px) {
   #tasks {
     height: 100%;
-    overflow-y: scroll; } }
+    overflow-y: scroll;
+    border-left: 1px solid #dddddd; } }
 
 span.editTitle > .smbtn:hover {
   cursor: pointer; }
@@ -206,9 +287,11 @@ span.editTitle > .smbtn:hover {
 
 .taskDesc,
 .subTasks,
-.addComment,
-.commentList {
+.addComment {
   margin: 20px 0 0; }
+
+.addComment {
+  margin-bottom: 20px; }
 
 .showTaskDescEdit button {
   display: none; }
@@ -223,16 +306,24 @@ span.editTitle > .smbtn:hover {
 .commentspacer {
   height: 20px; }
 
-.commentList {
+.commentsList {
   border-top: 1px solid #ddd;
-  padding: 15px 20px 15px 40px; }
+  padding: 15px 15px 15px 40px; }
 
-.commentFrom {
+.commentFrom,
+.systemFrom {
   font-weight: bold; }
 
-.commentTime {
+.commentTime,
+.systemTime {
   color: #b0b0b0;
   font-size: 12px; }
+
+.systemFrom,
+.systemBody,
+.systemTime {
+  display: inline-block;
+  color: #b0b0b0; }
 
 /* 
  * -----------------------

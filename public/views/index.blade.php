@@ -134,9 +134,19 @@
 <body ng-controller="ApplicationController">
   <div class="container-fluid">
     <div class="row">
-      <div id="left-panel" class="left-panel col-md-3">
+      <div class="col-sm-3 col-md-2 sidebar">
         <div class="header">
           <span>Worth Tasks</span>
+        </div>
+        <div class="main-nav-sidebar" ng-controller="NavigationController">
+          <div ng-repeat="org in orgs">
+            <div class="org-header">
+              {{org.title}}
+            </div>
+            <ul class="nav nav-sidebar">
+              <li ng-repeat="project in org.projects"><a href="#/projects/{{project.id}}">{{project.title}}</a></li>
+            </ul>
+          </div>
         </div>
         <!--
         <navigation>
@@ -151,7 +161,7 @@
           </navigation>
           -->
       </div>
-      <div id="content" class="content col-md-9">
+      <div id="content" class="content col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <div class="main-content col-xs-12">
           <div class="ngview" ng-view></div>
         </div>

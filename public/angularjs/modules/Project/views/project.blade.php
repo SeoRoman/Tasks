@@ -1,6 +1,6 @@
 <div class="pcontroller" ng-controller="ProjectController" ng-model="project">
 	<div class="pcontroller" ng-controller="TaskController">
-		<div id="main" class="tasklist col-md-5">
+		<div id="main" class="tasklist col-md-4">
 			<h2 class="section-title">{{ project.title }}</h2>
 
 			<div ng-controller="TaskListController">
@@ -40,44 +40,22 @@
 						</li>
 						<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
 							<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
-							<a class="openTask" ng-click="openTask(task, $parent.$index)">
-								{{ task.title }}
-							</a>
+
+							<div class="squaredOne-{{task.id}}">
+								<input type="checkbox" value="None" id="squaredOne-{{task.id}}" ng-model="task.id" name="check" />
+								<label for="squaredOne-{{task.id}}"></label>
+							</div>
+							<a class="task-item" ng-click="openTask(task)">{{ task.title }}</a>
+
 						</li>
 					</accordion-group>
 				</accordion>
 						<!--<li data-tasklist-id="{{ tasklist.id }}" data-drag="true" jqyoui-draggable="{ index: $index, onStart: 'startCallBack(tasklist)', animate: true }" data-jqyoui-options="{revert: 'invalid' }" ng-model="$parent.droppables[tasklist.id]" jqyoui-draggable="{index: {{ $index }}, animate:true}" class="list-group-item" ng-repeat="task in tasklist.tasks">-->
-				<!-- <accordion>
-					<accordion-group ng-repeat="tasklist in tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="status.open">
-						<accordion-heading>
-							<div class="tasklistTitle">{{ tasklist.title }}</div>
-							<div class="tasklistBadge badge">{{ tasklist.taskCount }}</div>
-							<i class="pull-right fa"  ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></i>
-							<div class="pull-right buttons">
-								<div class="btn-group">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-										<i class="fa fa-pencil"></i>
-									</button>
-									<ul class="editTaskList dropdown-menu dropdown-menu-right" role="menu">
-										<li><a href="" ng-click="editTaskList(tasklist, $index)">Edit</a></li>
-										<li><a href="" ng-click="deleteTaskList(tasklist, $index)"><span class="delete">Delete</span></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-						</accordion-heading>
-						<div class="panelProgress">
-							<div class="pprogress sampleprog"></div>
-						</div>
-						<ul class="list-group panel-collapse collapse collapse{{$index}}">
-							
-						</ul>
-					</accordion-group>
-				</accordion> -->	
+				
 			</div>
 		</div>
 
-		<div id="tasks" class="tasks col-md-7">
+		<div id="tasks" class="tasks col-md-8">
 			<div ng-if="task">
 				<div>
 					<span class="closeTask pull-right">
@@ -87,8 +65,13 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="taskHeader">
-					<i class="fa fa-check taskDone"></i>
-					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTaskTitle($data)">{{ task.title }}</a></span>
+
+					<div class="squaredOne-{{task.id}}">
+						<input type="checkbox" value="None" id="squaredOne-{{task.id}}" ng-model="task.id" name="check" />
+						<label for="squaredOne-{{task.id}}"></label>
+					</div>
+					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTask()">{{ task.title }}</a></span>
+					
 					<span class="pull-right btn-group">
 						<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
@@ -134,7 +117,7 @@
 						<div class="clearfix"></div>
 					</div>
 
-					<div class="commentList" ng-repeat="comment in task.comments">
+					<div class="commentsList" ng-repeat="comment in task.comments">
 
 						<div ng-switch="comment.class_type">
 
@@ -151,15 +134,20 @@
 								<div class="commentspacer"></div>
 								<div class="commentTime">
 									<span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
-									<!--<span>
-										{{ comment.created_at }}
-									</span>-->
 								</div>
 							</div>
 
 							<div ng-switch-when="system">
-								<div class="commentTime">
-									<span>{{ comment.author.username }} {{ comment.body }} - {{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
+							<div class="systemFrom">
+									<span>{{ comment.author.username }}</span>
+								</div>
+								<div class="systemBody">
+									<span>
+										{{ comment.body }}
+									</span> &#8226; 
+								</div>
+								<div class="systemTime">
+									<span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> <!--(<span am-time-ago="comment.created_at"></span>)-->
 								</div>	
 							</div>
 						</div>
