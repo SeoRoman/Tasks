@@ -322,7 +322,6 @@ span.editTitle > .smbtn:hover {
 .systemFrom,
 .systemBody,
 .systemTime {
-  display: inline-block;
   color: #b0b0b0; }
 
 /* 

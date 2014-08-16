@@ -138,14 +138,16 @@
 							</div>
 
 							<div ng-switch-when="system">
-							<div class="systemFrom">
+								<div class="systemFrom">
 									<span>{{ comment.author.username }}</span>
 								</div>
+								<div class="commentspacer"></div>
 								<div class="systemBody">
 									<span>
 										{{ comment.body }}
-									</span> &#8226; 
+									</span> 
 								</div>
+								<div class="commentspacer"></div>
 								<div class="systemTime">
 									<span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> <!--(<span am-time-ago="comment.created_at"></span>)-->
 								</div>	
