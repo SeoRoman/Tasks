@@ -1,4 +1,4 @@
-angular.module('Task').controller('TaskController', function($scope, $routeParams, $location, Dialog, TaskList, TaskService, ProjectService, TaskListService) {
+angular.module('Task').controller('TaskController', function($scope, $routeParams, $location, Dialog, TaskList, TaskService, ProjectService, TaskListService, TaskCommentService) {
 
 	$scope.task = null;
 	$scope.tasklist = null;
@@ -23,7 +23,7 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 
 		$location.path('/projects/' + ProjectService.getId() + '/tasklists/' + task.tasks_lists_id + '/tasks/' + task.id, false);
 
-		 TaskService.loadComments(task).then(function(comments) {
+		 TaskCommmentService.fetchComments(task).then(function(comments) {
 		 	task.comments = comments;
 		 });
 	}
