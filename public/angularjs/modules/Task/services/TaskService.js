@@ -138,16 +138,6 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		updateTask(task, 'Updated Task Desciption: ' + task.description);
 	}
 
-	this.loadComments = function(task)
-	{
-		Dialog.wait('task-comments-load', 'Loading Comments for Task: ' + task.title);
-
-		var data = { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id };
-		return TaskComment.query( data, function() {
-			Dialog.close('task-comments-load');
-		}).$promise;
-	}	
-
 	this.storeComment = function(task, comment)
 	{
 		comment.class_type = "comment";
@@ -156,7 +146,7 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		comment.created_by = 1;
 
 		return addComment(task, comment);
-	}
+	}		
 
 });
 
