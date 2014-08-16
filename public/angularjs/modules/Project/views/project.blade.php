@@ -141,13 +141,13 @@
 								<div class="systemFrom">
 									<span>{{ comment.author.username }}</span>
 								</div>
-								<div class="commentspacer"></div>
+								<div class="systemspacer"></div>
 								<div class="systemBody">
 									<span>
 										{{ comment.body }}
 									</span> 
 								</div>
-								<div class="commentspacer"></div>
+								<div class="systemspacer"></div>
 								<div class="systemTime">
 									<span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> <!--(<span am-time-ago="comment.created_at"></span>)-->
 								</div>	
