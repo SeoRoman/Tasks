@@ -4,7 +4,7 @@ angular.module('TaskList').controller('TaskListDialogController', function($scop
 
 	$scope.update = function()
 	{
-		TaskListService.update(data.tasklist, data.index).then(function() {
+		TaskListService.update(data.tasklist, data.index).$promise.then(function() {
 			$modalInstance.close();
 		});
 	}

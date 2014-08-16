@@ -3,13 +3,15 @@ angular.module('Task').service('TaskCommentService', function(Dialog, ProjectSer
 	this.store = function(task, comment)
 	{
 		project = ProjectService.getProject();
-		tasklist = TaskListService.getActiveTaskList();
 
 		Dialog.wait('task-comment-create', 'Adding Comment to Task: ' + task.title);
 
-		var data = { ProjectID: project.id, TaskListID: tasklist.id, TaskID: task.id };
+		var data = { ProjectID: project.id, TaskListID: task.tasks_lists_id, TaskID: task.id };
 
 		return TaskComment.save( comment, data, function(comment) {
+
+			console.log(task.comments);
+			console.log(comment);
 
 			task.comments.unshift(comment);
 

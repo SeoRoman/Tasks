@@ -44,6 +44,7 @@ class TaskCommentController extends \BaseController {
 			'commentable_id' => Input::get('commentable_id'),
 			'commentable_type' => Input::get('commentable_type'),
 			'created_by'=>Input::get('created_by'),
+			'class_type'=>Input::get('class_type'),
 			'body' => Input::get('body')
 		];
 
@@ -62,7 +63,11 @@ class TaskCommentController extends \BaseController {
 			$comment = new Comment();
 			$comment->fill($data);
 			$comment->save();
-			return Response::json([ 'comment' => $comment ], 200);
+			
+			// Lazy Eager Load
+			$comment->load('author');
+
+			return $comment;
 		}
 		catch(\Exception $e) {
 			return Response::json([ 'status' => $e->getCode(), 'message' => $e->getMessage() ], 500);

@@ -19,15 +19,13 @@ class TaskListController extends \BaseController {
 		try {
 			//return $this->tasklist->all();
 
-			$tasklists = $this->tasklist->all();
+			$tasklists = $this->tasklist->orderBy('created_at', 'ASC')->get();
 
 			$tasklists = $tasklists->each(function($tasklist) {
 				$tasklist->taskCount = $tasklist->tasks()->count();
 			});			
 
 			return $tasklists;
-
-			return Response::json([ 'tasklists' => $tasklists ], 200);
 		}
 		catch(\Exception $e)
 		{	

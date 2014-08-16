@@ -93,46 +93,49 @@ angular.module('Task').service('TaskService', function(ProjectService, TaskListS
 		});
 	}
 
-	this.updateTitle = function(task)
+	var updateTask = function(task, commentBody)
 	{
+		var project = ProjectService.getProject();
+
+		console.log(task);
+
 		Dialog.wait('task-update', 'Updating Task');
 
 		task.updated_by = 1;
 
-		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
+		var data = { ProjectID: project.id, TaskListID: task.tasks_lists_id, TaskID: task.id }
 
-			var comment = {};
-			comment.created_by = 1;
-			comment.commentable_id = task.id;
-			comment.commentable_type = 'Task';
-			comment.class_type = 'system';
-			comment.body = '{Roman Lopez} Updated Task Title: ' + task.title;
+		return Task.update( data, task, function() {
 
-			addComment(task, comment);
+			var comment = new TaskComment(
+				{
+					created_by: 1,
+					commentable_id: task.id,
+					commentable_type: 'Task',
+					class_type: 'system',
+				 	body: commentBody
+				}
+			);
 
-			Dialog.close('task-update');
-		}).$promise;
+			TaskCommentService.store(task, comment).$promise.then(function(comment) {
+
+				//task.comments.push(comment);
+
+				Dialog.close('task-update');		
+
+			});			
+
+		});
+	}
+
+	this.updateTitle = function(task)
+	{
+		updateTask(task, ' updated title: ' + task.title);
 	}
 
 	this.updateDescription = function(task)
 	{
-		Dialog.wait('task-update', 'Updating Task');
-
-		task.updated_by = 1;
-
-		return Task.update( { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id }, task, function() {
-
-			var comment = {};
-			comment.created_by = 1;
-			comment.commentable_id = task.id;
-			comment.commentable_type = 'Task';
-			comment.class_type = 'system';
-			comment.body = '{Roman Lopez} Updated Task Desciption: ' + task.description;
-
-			addComment(task, comment);
-
-			Dialog.close('task-update');
-		}).$promise;
+		updateTask(task, 'Updated Task Desciption: ' + task.description);
 	}
 
 	this.loadComments = function(task)

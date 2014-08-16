@@ -1,6 +1,7 @@
 angular.module('Task').controller('TaskController', function($scope, $routeParams, $location, Dialog, TaskList, TaskService, ProjectService, TaskListService) {
 
 	$scope.task = null;
+	$scope.tasklist = null;
 
 	$scope.createTask = function(index)
 	{
@@ -15,14 +16,10 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 		$scope.task = null;
 	}	
 
-	$scope.openTask = function(task, index)
+	$scope.openTask = function(task, tasklist)
 	{
 		$scope.task = task;
-
-		if (index !== 'undefined') {
-			$scope.task.tasklist = TaskListService.getTaskList(index);
-		}
-
+		$scope.tasklist = tasklist;
 
 		$location.path('/projects/' + ProjectService.getId() + '/tasklists/' + task.tasks_lists_id + '/tasks/' + task.id, false);
 
@@ -31,20 +28,14 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 		 });
 	}
 
-	$scope.updateTaskTitle = function(data)
+	$scope.updateTaskTitle = function()
 	{	
-		TaskService.setTaskTitle(data);
-
-		//return TaskService.updateTitle($scope.task).then(function(response) {
-		//	$scope.task = response.task;
-		//});
+		return TaskService.updateTitle($scope.task);
 	}
 
 	$scope.updateTaskDescription = function()
 	{
-		return TaskService.updateDescription($scope.task).then(function(response) {
-			$scope.task = response.task;
-		});
+		return TaskService.updateDescription($scope.task);
 	}
 
 });

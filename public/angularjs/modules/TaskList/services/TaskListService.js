@@ -52,6 +52,7 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 	this.addTask = function(tasklist, task)
 	{
+		tasklist.taskCount += 1;
 		tasklist.tasks.push(task);
 	}
 
@@ -73,15 +74,31 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 	this.delete = function(tasklist, index)
 	{
 
-		Dialog.wait('tasklist-delete', 'Deleting Tasklist: ' + tasklist.title);
+		var project = ProjectService.getProject();
 
-		TaskList.delete( { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function() {
+		var confirm = Dialog.confirm('Delete TaskList', 'Are you sure you want to delete TaskList: ' + tasklist.title);
 
-			Dialog.close('tasklist-delete');
+		confirm.result.then(function() {
 
-			removeTaskList(index);
-			
+			// Yes, delete it...
+			Dialog.wait('tasklist-delete', 'Deleting Tasklist: ' + tasklist.title);
+
+			TaskList.delete( { ProjectID: project.id, TaskListID: tasklist.id }, function() {
+
+				removeTaskList(index);
+
+				Dialog.close('tasklist-delete');
+
+				confirm.close();
+				
+			});
+
+		}, function() {
+
+			// No, Please don't....
+			confirm.close();
 		});
+
 	}
 
 	this.store = function(tasklist)
@@ -104,15 +121,17 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 	this.update = function(tasklist, index)
 	{
+		var project = ProjectService.getProject();
+
 		Dialog.wait('tasklist-update', 'Updating Tasklist');
 
-		return TaskList.update(tasklist, { ProjectID: ProjectService.getId(), TaskListID: tasklist.id }, function() {
+		return TaskList.update(tasklist, { ProjectID: project.id, TaskListID: tasklist.id }, function() {
 
 			Dialog.close('tasklist-update');
 			
 			_tasklists[index] = tasklist;
 
-		}).$promise;
+		});
 	}
 
 });

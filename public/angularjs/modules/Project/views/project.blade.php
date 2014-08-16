@@ -42,10 +42,10 @@
 							<a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 
 							<div class="squaredOne-{{task.id}}">
-								<input type="checkbox" value="None" id="squaredOne-{{task.id}}" ng-model="task.id" name="check" />
+								<input type="checkbox" value="task.id" id="squaredOne-{{task.id}}" ng-model="task.completed" name="check" />
 								<label for="squaredOne-{{task.id}}"></label>
 							</div>
-							<a class="task-item" ng-click="openTask(task)">{{ task.title }}</a>
+							<a class="task-item" ng-click="openTask(task, tasklist)">{{ task.title }}</a>
 
 						</li>
 					</accordion-group>
@@ -67,11 +67,11 @@
 				<div class="taskHeader">
 
 					<div class="squaredOne-{{task.id}}">
-						<input type="checkbox" value="None" id="squaredOne-{{task.id}}" ng-model="task.id" name="check" />
+						<input type="checkbox" value="task.id" id="squaredOne-{{task.id}}" ng-model="task.completed" name="check" />
 						<label for="squaredOne-{{task.id}}"></label>
 					</div>
-					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTask()">{{ task.title }}</a></span>
-					
+					<span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTaskTitle()">{{ task.title }}</a></span>
+
 					<span class="pull-right btn-group">
 						<button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
@@ -84,13 +84,13 @@
 				</div>
 				<div class="taskCrumbs">
 					<small>
-						{{ task.tasklist.title }} 
+						{{ tasklist.title }} 
 							<i class="fa fa-angle-double-right"></i> 
 						{{task.title}}
 					</small>
 				</div>
 				<div class="taskDesc">
-					<a href="" ng-if="!task.description" editable-textarea="task.description" onaftersave="updateTask()">
+					<a href="" ng-if="!task.description" editable-textarea="task.description" onaftersave="updateTaskDescription()">
 						<i class="fa fa-pencil"></i> Add a description			
 					</a>
 					<div class="showTaskDescEdit" ng-if="task.description">
