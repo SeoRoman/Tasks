@@ -89,6 +89,46 @@
 						{{task.title}}
 					</small>
 				</div>
+				<div class="taskOptions">
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+							<span><i class="fa fa-user"></i></span>
+							&nbsp;&nbsp;Unassigned&nbsp;&nbsp;
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<div class="taskAssignment dropdown-menu" role="menu">
+							<div class="search">
+								<div class="input-group">
+						      <input type="text" placeholder="Search or invite" class="form-control">
+						      <span class="input-group-btn">
+						        <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+						      </span>
+						    </div>
+						  </div>
+							<ul class="list-group">
+								<!--<li class="list-group-item" ng-repeat=""><a href="" ng-click="assignTask()">Nathon Shultz</a></li>-->
+								<li class="list-group-item"><a href="" ng-click="assignTask()">Nathon Shultz</a></li>
+								<li class="list-group-item"><a href="" ng-click="assignTask()">Roman Lopez</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+							<span><i class="fa fa-calendar"></i></span>
+							&nbsp;&nbsp;Due Date&nbsp;&nbsp;
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<div class="taskDue dropdown-menu" role="menu">
+							<datepicker ng-model="dt" min-date="minDate" show-weeks="false" class=""></datepicker>
+							<div class="taskDueBtns">
+								<button type="button" class="btn btn-default">Button</button>
+								<button type="button" class="btn btn-primary">Button</button>
+								<button type="button" class="btn btn-danger">Button</button>
+						</div>
+					</div>
+				</div>
 				<div class="taskDesc">
 					<a href="" ng-if="!task.description" editable-textarea="task.description" onaftersave="updateTaskDescription()">
 						<i class="fa fa-pencil"></i> Add a description			

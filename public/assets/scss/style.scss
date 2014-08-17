@@ -344,10 +344,27 @@ span.editTitle>.smbtn:hover {
   color: #b0b0b0;
 }
 
+.taskOptions,
 .taskDesc,
 .subTasks,
 .addComment, {
   margin: 20px 0 0;
+}
+
+.taskOptions .btn-group {
+  display: inline-block;
+}
+
+.taskAssignment.dropdown-menu {
+  min-width: 300px;
+  padding: 10px;
+  .search {
+    margin-bottom: 10px;
+  }
+}
+
+.taskDue.dropdown-menu {
+  padding: 10px;
 }
 
 .addComment {
