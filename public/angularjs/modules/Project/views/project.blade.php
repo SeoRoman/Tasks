@@ -6,7 +6,16 @@
 				<a class="projectSettings" ng-show="project.title" tooltip-placement="bottom" tooltip="Project Settings"><i class="fa fa-cog"></i></a>
 			</h4>
 		</span>
-		<span class="pull-right">Search</span>
+		<span class="pull-right roundOne">
+			<form class="form-inline">
+				<div class="input-group">
+		      <input type="text" class="searchbox form-control">
+		      <span class="input-group-btn">
+		        <button class="searchbox_submit btn btn-default" type="button"><i class="fa fa-search"></i></button>
+		      </span>
+		    </div>
+			</form>
+		</span>
 		<div class="clearfix"></div>
 	</div>
 	<tabset>
@@ -26,13 +35,13 @@
 			<tab-heading><i class="rotate90 fa fa-file-text"></i> Notes</tab-heading>
     	<!--<ng-include
 			  src="'angularjs/modules/Project/views/project.tasks.php'">
-			</ng-include>-->Conversations
+			</ng-include>-->Notes
 		</tab>
 		<tab>
 			<tab-heading><i class="fa fa-clock-o"></i> History</tab-heading>
     	<!--<ng-include
 			  src="'angularjs/modules/Project/views/project.tasks.php'">
-			</ng-include>-->Conversations
+			</ng-include>-->History
 		</tab>
   </tabset>
 </div>

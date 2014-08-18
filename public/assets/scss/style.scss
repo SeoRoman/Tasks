@@ -108,16 +108,40 @@ body {
   }
 }
 
-.projectSettings {
-  margin: 0 0 0 5px;
-  font-size: 14px;
+.roundOne {
+  width:260px;
+  height:40px;
+  padding:0px;
+  margin:0px;
+  position:relative;
+  .form-inline {
+    width: auto;
+    position: absolute;
+    right: 0;
+  }
+  .searchbox {
+    border:1px solid #b0b0b0;
+    background-color:#b0b0b0;
+    width:206px;
+    height:28px;
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+  }
+  .searchbox_submit {
+    border:1px solid #b0b0b0;
+    background: #b0b0b0;
+    width:30px;
+    height:28px;
+    border-radius: 28px;
+    &.btn {
+      padding: 0!important;
+    }
+    i {
+      color: #555;
+    }
+  }/**/
 }
 
-/* 
- * -----------------------
- * MIDDLE CONTENT STYLES
- * -----------------------
- */
 .tabbable {
   height: 93%;
 }
@@ -132,10 +156,16 @@ body {
 
 .nav-tabs {
   padding: 0 0 0 5px;
-}
-
-.nav-tabs i {
-  font-size: 14px;
+  i {
+    font-size: 14px;
+  }
+  > li {
+    margin-right: 8px;
+    > a {
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+  }
 }
 
 .rotate90 {
@@ -144,14 +174,16 @@ body {
   transform: rotateX(180deg);
 }
 
-.nav-tabs > li {
-  margin-right: 8px;
+.projectSettings {
+  margin: 0 0 0 5px;
+  font-size: 14px;
 }
 
-.nav-tabs > li > a {
-  font-size: 12px;
-  padding: 8px 10px;
-}
+/* 
+ * -----------------------
+ * MIDDLE CONTENT STYLES
+ * -----------------------
+ */
 
 #main {
   height: 100%;
@@ -273,61 +305,56 @@ a.openTask {
   cursor: pointer;
 }
 
-input[type="checkbox"] {
-  visibility: hidden;
-}
-
 div[class*='squaredOne-'] {
   width: 20px;
   height: 20px;
   margin: auto;
   position: relative;
   display: inline-block;
-}
-
-div[class*='squaredOne-'] label {
-  cursor: pointer;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 0;
-  top: 0;
-  border: 1px solid;
-  font-weight: normal;
-}
-
-div[class*='squaredOne-'] label:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  line-height: 16px;
-  top: 0;
-  left: 0;
-}
-
-div[class*='squaredOne-'] label:hover::after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=100);
-  opacity: 1.0;
-  font-family: 'FontAwesome';
-  content: '\f00c';
-  line-height: 16px;
-  padding: 0 0 0 2px;
-  vertical-align: middle;
-}
-
-div[class*='squaredOne-'] input[type=checkbox]:checked + label:after {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=100);
-  opacity: 1;
-  font-family: 'FontAwesome';
-  content: '\f00c';
-  padding: 0 0 0 2px;
-  vertical-align: middle;
+  label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    top: 0;
+    border: 1px solid;
+    font-weight: normal;
+    &:after {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: alpha(opacity=0);
+      opacity: 0;
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      line-height: 16px;
+      top: 0;
+      left: 0;
+    }
+    &:hover::after {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: alpha(opacity=100);
+      opacity: 1.0;
+      font-family: 'FontAwesome';
+      content: '\f00c';
+      line-height: 16px;
+      padding: 0 0 0 2px;
+      vertical-align: middle;
+    }
+  }
+  input[type=checkbox] {
+    visibility: hidden;
+    &:checked + label:after {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: alpha(opacity=100);
+      opacity: 1;
+      font-family: 'FontAwesome';
+      content: '\f00c';
+      padding: 0 0 0 2px;
+      vertical-align: middle;
+    }
+  }
 }
 
 /* 
