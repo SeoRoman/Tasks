@@ -19,29 +19,21 @@
 		<div class="clearfix"></div>
 	</div>
 	<tabset>
-    <tab>
-    	<tab-heading><i class="fa fa-check-circle"></i> Tasks</tab-heading>
-    	<ng-include
-			  src="'angularjs/modules/Project/views/project.tasks.php'">
-			</ng-include>
+    	<tab>
+    		<tab-heading><i class="fa fa-check-circle"></i> Tasks</tab-heading>
+    		<ng-include src="'angularjs/modules/Project/views/project.tasks.php'"></ng-include>
 		</tab>
 		<tab>
 			<tab-heading><i class="fa fa-comments-o"></i> Conversations</tab-heading>
-    	<!--<ng-include
-			  src="'angularjs/modules/Project/views/project.tasks.php'">
-			</ng-include>-->Conversations
+    		<ng-include src="'angularjs/modules/Project/views/project.conversations.php'"></ng-include>
 		</tab>
 		<tab>
 			<tab-heading><i class="rotate90 fa fa-file-text"></i> Notes</tab-heading>
-    	<!--<ng-include
-			  src="'angularjs/modules/Project/views/project.tasks.php'">
-			</ng-include>-->Notes
+    		<ng-include src="'angularjs/modules/Project/views/project.notes.php'"></ng-include>
 		</tab>
 		<tab>
 			<tab-heading><i class="fa fa-clock-o"></i> History</tab-heading>
-    	<!--<ng-include
-			  src="'angularjs/modules/Project/views/project.tasks.php'">
-			</ng-include>-->History
+			<ng-include src="'angularjs/modules/Project/views/project.history.php'"></ng-include>
 		</tab>
   </tabset>
 </div>

@@ -18,6 +18,11 @@ angular.module('Task').service('TaskCommentService', function(Dialog, ProjectSer
 
 		var data = { ProjectID: project.id, TaskListID: task.tasks_lists_id, TaskID: task.id };
 
+		comment.commentable_type = 'Task';
+		comment.commentable_id = task.id;
+		comment.created_by = 1;
+		comment.class_type = 'comment';	
+
 		return TaskComment.save( comment, data, function(comment) {
 
 			console.log(task.comments);

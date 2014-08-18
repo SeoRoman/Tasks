@@ -193,9 +193,8 @@
           </div>
         </div>
       </div>
-
-      <div ng-if="!task">
-        <h3>No Task Loaded</h3>
-      </div>
+    </div>
+    <div ng-if="!task">
+      <h3>No Task Loaded</h3>
     </div>
   </div>

@@ -135,7 +135,7 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 
 	this.updateDescription = function(task)
 	{
-		updateTask(task, 'Updated Task Desciption: ' + task.description);
+		updateTask(task, 'Updated Task Description: ' + task.description);
 	}
 
 	this.storeComment = function(task, comment)

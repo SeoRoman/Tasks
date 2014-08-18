@@ -6,7 +6,6 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 	$scope.createTask = function(index)
 	{
 		TaskListService.setActiveTaskList(index);
-
 		TaskService.create();
 	}
 
@@ -18,14 +17,12 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 
 	$scope.openTask = function(task, tasklist)
 	{
-		var project = ProjectService.getProject();
-		$scope.task = task;
-		$scope.tasklist = tasklist;
+		$location.path('/projects/' + $scope.project.id + '/tasklists/' + tasklist.id + '/tasks/' + task.id, false);
 
-		$location.path('/projects/' + project.id + '/tasklists/' + task.tasks_lists_id + '/tasks/' + task.id, false);
+		$scope.task = task;
 
 		 TaskCommentService.fetchComments(task).then(function(comments) {
-		 	task.comments = comments;
+		 	$scope.task.comments = comments;		 	
 		 });
 	}
 
