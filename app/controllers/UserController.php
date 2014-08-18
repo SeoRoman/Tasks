@@ -17,7 +17,7 @@ class UserController extends \BaseController {
 	public function index()
 	{
 		$users = $this->user->get();
-		return Response::json(array('users'=>$users), 200);
+		return Response::json($users, 200);
 	}
 
 

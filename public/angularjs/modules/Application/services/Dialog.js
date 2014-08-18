@@ -1,6 +1,6 @@
 angular.module('Application').service('Dialog', function(dialogs) {
 
-	var _dialogs = Object();
+	var _dialogs = {};
 
 	this.wait = function(name, title, message) 
 	{
@@ -64,14 +64,20 @@ angular.module('Application').service('Dialog', function(dialogs) {
 	}
 
 	this.close = function(name) {
-		var dialog = _dialogs[name];
-		dialog.close();
-	}
+		if (name == undefined)
+		{
+			angular.forEach(_dialogs, function(dialog, index) {
+				dialog.close();
+				delete _dialogs[index];
+			});
 
-	this.closeAll = function() {
-		_dialogs.forEach(function(dialog, index) {
+		}
+		else {
+			// Close Single
+			var dialog = _dialogs[name];
 			dialog.close();
-		});
+			delete _dialogs[name];
+		}
 	}
 
 });

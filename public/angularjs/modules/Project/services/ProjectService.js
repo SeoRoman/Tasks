@@ -5,24 +5,15 @@ angular.module('Project').service('ProjectService', function($http, $resource, D
 
 	var _project;
 		
-	this.fetchProject = function(ProjectID) {
-
-		Dialog.wait('project-loader', 'Loading Project');
-
-		return Project.get( { ProjectID: ProjectID } , function(project) {
-
+	this.fetchProject = function(id) {
+		return Project.get( { ProjectID: id } , function(project) {
 			_project = project;
-
-			Dialog.close('project-loader');
-
-		}, function() {
-
-			Dialog.errorMessage('fuck');
-
 		});
+	}
 
-		//return _project;
-
+	this.setProject = function(project)
+	{
+		_project = project;
 	}
 
 	this.getProject = function()

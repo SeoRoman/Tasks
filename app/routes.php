@@ -28,6 +28,7 @@ Route::group(array('prefix'=>'api/v1'), function() {
 
 	Route::get('tasks/count/{TaskListID}', 'TaskListController@getTaskCount');
 
+	Route::resource('users','UserController');	
 	Route::resource('organizations','OrganizationController');	
 	Route::resource('projects','ProjectController');	
 	Route::resource('projects.tasklists', 'TaskListController');

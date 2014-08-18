@@ -5,18 +5,8 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 	this.fetchTaskLists = function(project)
 	{
-			
-		Dialog.wait('tasklists-loader', 'Loading TaskLists for ' + project.title);
-
 		return TaskList.query( { ProjectID: project.id }, function(tasklists) {
-
 			_tasklists = tasklists;
-
-			// TaskList Loading Complete
-			Dialog.close('tasklists-loader');
-
-			console.log('TaskLists Loaded Successfully');
-
 		});
 	}
 
@@ -62,11 +52,6 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		tasklist.tasks.splice(index, 1);
 	}
 
-	this.showTasks = function(tasks, index)
-	{	
-
-	}
-
 	this.create = function()
 	{
 		Dialog.create('angularjs/modules/TaskList/views/dialogs/create.html', 'TaskListDialogController', { tasklist: {} }, {} );
@@ -77,67 +62,38 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		Dialog.create('angularjs/modules/TaskList/views/dialogs/update.html', 'TaskListDialogController', { tasklist: tasklist, index: index }, {});
 	}
 
-	this.delete = function(tasklist, index)
+	this.delete = function(project, tasklist)
 	{
-
-		var project = ProjectService.getProject();
-
-		var confirm = Dialog.confirm('Delete TaskList', 'Are you sure you want to delete TaskList: ' + tasklist.title);
-
-		confirm.result.then(function() {
-
-			// Yes, delete it...
-			Dialog.wait('tasklist-delete', 'Deleting Tasklist: ' + tasklist.title);
-
-			TaskList.delete( { ProjectID: project.id, TaskListID: tasklist.id }, function() {
-
-				removeTaskList(index);
-
-				Dialog.close('tasklist-delete');
-
-				confirm.close();
-				
-			});
-
-		}, function() {
-
-			// No, Please don't....
-			confirm.close();
-		});
-
+		return TaskList.delete( { ProjectID: project.id, TaskListID: tasklist.id } );
 	}
 
-	this.store = function(tasklist)
+	this.store = function(project, tasklist)
 	{
-		var project = ProjectService.getProject();
-
-		Dialog.wait('tasklist-create', 'Creating Tasklist: ' + tasklist.title);
-
-		// tasklist = the object we are storing...
 		return TaskList.save( tasklist, { ProjectID: project.id }, function(tasklist) {
-
-			Dialog.close('tasklist-create');
 
 			tasklist.taskCount = 0;
 
-			addTaskList(tasklist);
-
 		});
 	}
 
-	this.update = function(tasklist, index)
+	this.update = function(project, tasklist, index)
 	{
-		var project = ProjectService.getProject();
-
-		Dialog.wait('tasklist-update', 'Updating Tasklist');
-
 		return TaskList.update(tasklist, { ProjectID: project.id, TaskListID: tasklist.id }, function() {
-
-			Dialog.close('tasklist-update');
 			
 			_tasklists[index] = tasklist;
 
 		});
+	}	
+
+	this.add = function(tasklist)
+	{
+		_tasklists.push(tasklist);
+	}
+
+	this.remove = function(tasklist)
+	{
+		var index = _tasklists.indexOf(tasklist);
+		_tasklists.splice(index, 1);
 	}
 
 });

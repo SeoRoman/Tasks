@@ -1,4 +1,4 @@
-angular.module('TaskList').controller('TaskListController', function($scope, ProjectService, TaskListService, TaskService) {
+angular.module('TaskList').controller('TaskListController', function($scope, Dialog, ProjectService, TaskListService, TaskService) {
 
 	$scope.createTaskList = function()
 	{
@@ -10,23 +10,31 @@ angular.module('TaskList').controller('TaskListController', function($scope, Pro
 		TaskListService.edit(tasklist, index);
 	}
 
-	$scope.deleteTaskList = function(tasklist, index)
+	$scope.deleteTaskList = function(tasklist)
 	{
-		TaskListService.delete(tasklist, index);
-	}
+		var project = ProjectService.getProject();
 
-	$scope.loadTasks = function(index)
-	{
-		var tasklist = TaskListService.getTaskList(index);
+		var confirm = Dialog.confirm('Delete TaskList', 'Are you sure you want to delete TaskList: ' + tasklist.title);
 
-		tasklist.opened = !tasklist.opened;
+		confirm.result.then(function() {
 
-		if (tasklist.opened)
-		{
-			TaskService.loadTasks(tasklist).then(function(tasks) {
-				tasklist.tasks = tasks;
-			});			
-		}
+			Dialog.wait('tasklist-delete', 'Deleting Tasklist: ' + tasklist.title);
+
+			TaskListService.delete(project, tasklist).$promise.then(function() {
+
+				Dialog.close('tasklist-delete');
+
+				TaskListService.remove(tasklist);
+
+				confirm.close();
+
+			});
+
+		}, function() {
+
+			confirm.close();
+
+		});
 	}
 
 });
