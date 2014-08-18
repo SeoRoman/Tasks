@@ -5,15 +5,13 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 
 	$scope.completeTask = function(task, tasklist)
 	{
-		console.log('yo');
-
 		var push = true;
 
 		if ($scope.task !== task) { 
 			push = false;
 		}
 
-		if (task.completed) {
+		if (task.completed == '1') {
 			TaskService.complete(task, tasklist, push);
 		}
 		else {
