@@ -75,6 +75,7 @@
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="editTask dropdown-menu dropdown-menu-right" role="menu">
+              <li><a href="" ng-click="moveTask()">Move to...</a></li>
               <li><a href="" ng-click="deleteTask()"><span class="delete">Delete</span></a></li>
             </ul>
           </span>
