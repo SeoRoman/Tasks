@@ -19,16 +19,13 @@ body {
  * -----------------------
  */
 .sidebar {
-  background: #3a3633;
-  background: -moz-linear-gradient(left, #3a3633 93%, #2a2725 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(93%, #3a3633), color-stop(100%, #2a2725));
-  background: -webkit-linear-gradient(left, #3a3633 93%, #2a2725 100%);
-  background: -o-linear-gradient(left, #3a3633 93%, #2a2725 100%);
-  background: -ms-linear-gradient(left, #3a3633 93%, #2a2725 100%);
-  background: linear-gradient(to right, #3a3633 93%, #2a2725 100%); }
+  background: #222; }
 
 .sidebar .header {
   color: #fff; }
+
+.org-header {
+  color: #888; }
 
 /* 
  * -----------------------
@@ -41,8 +38,52 @@ body {
 .content {
   color: #444444; }
 
+.main-heading {
+  background: #555555;
+  color: #ffffff; }
+
+.projectSettings,
+.projectSettings:hover {
+  color: #b0b0b0; }
+
+.projectSettings:hover i {
+  cursor: pointer; }
+
+.nav-tabs {
+  background: #555555; }
+
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent; }
+
+.nav-tabs > li.active > a {
+  color: #555;
+  cursor: default;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent; }
+
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+  text-decoration: none;
+  background-color: #707070;
+  color: #ffffff;
+  border-color: #707070 #707070 #ddd; }
+
+.nav-tabs > li > a {
+  color: #b0b0b0; }
+
+/* 
+* -----------------------
+* MIDDLE CONTENT STYLES
+* -----------------------
+*/
 .section-title {
-  color: #848484; }
+  color: #ffffff; }
 
 .panel-custom-color {
   border-color: #dddddd;
@@ -60,6 +101,63 @@ body {
   .panel-custom-color > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ddd; }
 
+.editTaskList.dropdown-menu,
+.editTask.dropdown-menu {
+  background-color: #f5f5f5;
+  border: 1px solid #858585;
+  padding: 0;
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.45); }
+  .editTaskList.dropdown-menu > li,
+  .editTask.dropdown-menu > li {
+    border-top-color: #858585; }
+    .editTaskList.dropdown-menu > li > a,
+    .editTask.dropdown-menu > li > a {
+      color: #333; }
+      .editTaskList.dropdown-menu > li > a:hover, .editTaskList.dropdown-menu > li > a:focus,
+      .editTask.dropdown-menu > li > a:hover,
+      .editTask.dropdown-menu > li > a:focus {
+        color: #222;
+        background-color: #ddd; }
+
+.delete {
+  color: #ee6d73; }
+
+.addNew {
+  background: #f5f5f5; }
+
+.fa-ellipsis-v {
+  color: #b0b0b0; }
+
+.panelProgress {
+  background: #ddd; }
+
+.sampleprog {
+  background: #509d51; }
+
+.task-item:hover {
+  background: #dddddd; }
+
+div[class*='squaredOne-'] {
+  background: #ffffff; }
+
+div[class*='squaredOne-'] label {
+  border-color: #dddddd; }
+
+div[class*='squaredOne-'] label:after {
+  background: #dddddd; }
+
+div[class*='squaredOne-'] label:hover::after {
+  background: transparent;
+  color: #b0b0b0; }
+
+div[class*='squaredOne-'] input[type=checkbox]:checked + label {
+  border-color: #75a76d; }
+
+div[class*='squaredOne-'] input[type=checkbox]:checked + label:after {
+  background: #8fcd86;
+  color: #ffffff; }
+
 /* 
  * -----------------------
  * RIGHT CONTENT STYLES
@@ -67,6 +165,20 @@ body {
  */
 #tasks {
   background: #f5f5f5; }
+  @media screen and (min-width: 992px) {
+    #tasks {
+      border-left-color: #dddddd; } }
+
+.taskCrumbs,
+.taskByline,
+.commentTime,
+.systemFrom,
+.systemBody,
+.systemTime {
+  color: #b0b0b0; }
+
+.commentsList {
+  border-top-color: #dddddd; }
 
 /* 
  * -----------------------

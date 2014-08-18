@@ -53,16 +53,13 @@ body {
   padding: 10px 20px 20px;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: transparent;
-  border-right: 1px solid #eee;
   .header {
     font-size: 24px;
-    margin: 0 0 10px -6px;
+    margin: 0 0 30px -6px;
   }
 }
 
 .org-header {
-  color: #888;
   margin: 0 0 0 -6px;
 }
 
@@ -99,11 +96,62 @@ body {
   }
 }
 
+.main-heading {
+  height: 7%;
+  padding: 10px;
+  h4 {
+    display: inline-block;
+    &.section-title {
+      margin: 0 0 10px;
+      width: 400px;
+    }
+  }
+}
+
+.projectSettings {
+  margin: 0 0 0 5px;
+  font-size: 14px;
+}
+
 /* 
  * -----------------------
  * MIDDLE CONTENT STYLES
  * -----------------------
  */
+.tabbable {
+  height: 93%;
+}
+
+.tab-content {
+  height: 93%;
+}
+
+.tab-pane {
+  height: 100%;
+}
+
+.nav-tabs {
+  padding: 0 0 0 5px;
+}
+
+.nav-tabs i {
+  font-size: 14px;
+}
+
+.rotate90 {
+  -ms-transform: rotateX(180deg); /* IE 9 */
+  -webkit-transform: rotateX(180deg); /* Chrome, Safari, Opera */
+  transform: rotateX(180deg);
+}
+
+.nav-tabs > li {
+  margin-right: 8px;
+}
+
+.nav-tabs > li > a {
+  font-size: 12px;
+  padding: 8px 10px;
+}
 
 #main {
   height: 100%;
@@ -116,10 +164,8 @@ body {
   }
 }
 
-.section-title {
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 10px 0 15px;
+.panel:first-child {
+  margin-top: 10px;
 }
 
 .panel {
@@ -171,13 +217,8 @@ body {
 .editTaskList,
 .editTask {
   &.dropdown-menu {
-    background-color: #f5f5f5;
-    border: 1px solid #858585;
-    padding: 0;
-    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, .45);
-            box-shadow: 0 0 12px rgba(0, 0, 0, .45);
     & > li {
-      border-top: 1px solid #858585;
+      border-top: 1px solid;
       &:first-child {
         border-top: none;
         & > a:hover {
@@ -190,13 +231,7 @@ body {
         border-bottom-left-radius: 4px;
       }
       & > a {
-        color: #333;
         padding: 8px 20px;
-        &:hover,
-        &:focus {
-          color: #222;
-          background-color: #ddd;
-        }
       }
     }
   }
@@ -209,21 +244,12 @@ body {
   }
 }
 
-.delete {
-  color: #ee6d73;
-}
-
-.addNew {
-  background: #f5f5f5;
-}
-
 .moveTask {
   cursor: move;
 }
 
 .fa-ellipsis-v {
   margin: 0 1px 0 0;
-  color: #b0b0b0;
 }
 
 a.openTask {
@@ -232,7 +258,6 @@ a.openTask {
 
 .panelProgress {
   height: 3px;
-  background: #ddd;
 }
 
 .pProgress {
@@ -241,12 +266,10 @@ a.openTask {
 
 .sampleprog {
   height: 3px;
-  background: #509d51;
   width: 40%;
 }
 
 .task-item:hover {
-  background: #dddddd;
   cursor: pointer;
 }
 
@@ -257,7 +280,6 @@ input[type="checkbox"] {
 div[class*='squaredOne-'] {
   width: 20px;
   height: 20px;
-  background: #ffffff;
   margin: auto;
   position: relative;
   display: inline-block;
@@ -270,7 +292,7 @@ div[class*='squaredOne-'] label {
   height: 20px;
   left: 0;
   top: 0;
-  border: 1px solid #ddd;
+  border: 1px solid;
   font-weight: normal;
 }
 
@@ -282,7 +304,6 @@ div[class*='squaredOne-'] label:after {
   position: absolute;
   width: 18px;
   height: 18px;
-  background: #dddddd;
   line-height: 16px;
   top: 0;
   left: 0;
@@ -292,25 +313,17 @@ div[class*='squaredOne-'] label:hover::after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100);
   opacity: 1.0;
-  background: transparent;
   font-family: 'FontAwesome';
   content: '\f00c';
   line-height: 16px;
   padding: 0 0 0 2px;
   vertical-align: middle;
-  color: #b0b0b0;
-}
-
-div[class*='squaredOne-'] input[type=checkbox]:checked + label {
-  border-color: #75a76d;
 }
 
 div[class*='squaredOne-'] input[type=checkbox]:checked + label:after {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100);
   opacity: 1;
-  background: #8fcd86;
-  color: #ffffff;
   font-family: 'FontAwesome';
   content: '\f00c';
   padding: 0 0 0 2px;
@@ -327,7 +340,7 @@ div[class*='squaredOne-'] input[type=checkbox]:checked + label:after {
   @media screen and (min-width: 992px) {
     height: 100%;
     overflow-y: scroll;
-    border-left: 1px solid #dddddd;
+    border-left: 1px solid;
   }
 }
 
@@ -337,11 +350,6 @@ span.editTitle>.smbtn:hover {
 
 .closeTask {
   margin: 0 -15px 10px 0;
-}
-
-.taskCrumbs,
-.taskByline {
-  color: #b0b0b0;
 }
 
 .taskOptions,
@@ -398,7 +406,7 @@ span.editTitle>.smbtn:hover {
 }
 
 .commentsList {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid;
   padding: 15px 15px 15px 40px;
 }
 
@@ -413,15 +421,9 @@ span.editTitle>.smbtn:hover {
   font-size: 12px;
 }
 
-.systemFrom,
-.systemBody,
-.systemTime {
-  color: #b0b0b0;
-}
-
 /* 
  * -----------------------
- * MODAL/DIALOG STYLES
+ * MODAL/DIALOG/TOOLTIP STYLES
  * -----------------------
  */
 
@@ -433,4 +435,14 @@ span.editTitle>.smbtn:hover {
   &-footer {
     text-align: left !important;
   }
+}
+
+.tooltip-inner {
+  width: 200px;
+  padding: 8px 20px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 4px;
 }
