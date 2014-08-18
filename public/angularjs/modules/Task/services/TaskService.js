@@ -3,6 +3,20 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 	var _task =null;
 	var _tasks = {};
 
+	this.complete = function(task, tasklist, push)
+	{
+		var project = ProjectService.getProject();
+
+		updateTask(task, 'Marked Task as Complete', push);
+	}
+
+	this.reopen = function(task, tasklist, push)
+	{
+		var project = ProjectService.getProject();
+
+		updateTask(task, 'Reopened Task', push);
+	}
+
 	this.fetchTasks = function(project, tasklist)
 	{
         Dialog.wait('tasks-load', 'Loading Tasks for Tasklist: ' + tasklist.title);
@@ -93,7 +107,7 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 		});
 	}
 
-	var updateTask = function(task, commentBody)
+	var updateTask = function(task, commentBody, push)
 	{
 		var project = ProjectService.getProject();
 
@@ -117,7 +131,7 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 				}
 			);
 
-			TaskCommentService.store(task, comment).$promise.then(function(comment) {
+			TaskCommentService.store(task, comment, push).$promise.then(function(comment) {
 
 				//task.comments.push(comment);
 

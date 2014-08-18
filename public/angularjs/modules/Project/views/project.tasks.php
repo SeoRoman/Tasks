@@ -39,7 +39,7 @@
               <a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 
               <div class="squaredOne-{{task.id}}">
-                <input type="checkbox" value="task.id" id="squaredOne-{{task.id}}" ng-model="task.completed" name="check" />
+                <input type="checkbox" value="task.completed" id="squaredOne-{{task.id}}" ng-model="task.completed" ng-click="completeTask(task, tasklist)" name="check" />
                 <label for="squaredOne-{{task.id}}"></label>
               </div>
               <a class="task-item" ng-click="openTask(task, tasklist)">{{ task.title }}</a>
@@ -64,7 +64,7 @@
         <div class="taskHeader">
 
           <div class="squaredOne-{{task.id}}">
-            <input type="checkbox" value="task.id" id="squaredOne-{{task.id}}" ng-model="task.completed" name="check" />
+            <input type="checkbox" value="completed" id="squaredOne-{{task.id}}" ng-model="task.completed" ng-click="completeTask(task, tasklist)" name="check" />
             <label for="squaredOne-{{task.id}}"></label>
           </div>
           <span class="taskSubject"><a href="javascript:void(0)" editable-text="task.title" onaftersave="updateTaskTitle()">{{ task.title }}</a></span>

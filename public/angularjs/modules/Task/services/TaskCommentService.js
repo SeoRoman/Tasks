@@ -10,7 +10,7 @@ angular.module('Task').service('TaskCommentService', function(Dialog, ProjectSer
 		}).$promise;
 	}	
 
-	this.store = function(task, comment)
+	this.store = function(task, comment, push)
 	{
 		project = ProjectService.getProject();
 
@@ -28,7 +28,9 @@ angular.module('Task').service('TaskCommentService', function(Dialog, ProjectSer
 			console.log(task.comments);
 			console.log(comment);
 
-			task.comments.unshift(comment);
+			if (push !== false ) {
+				task.comments.unshift(comment);
+			}
 
 			Dialog.close('task-comment-create');
 

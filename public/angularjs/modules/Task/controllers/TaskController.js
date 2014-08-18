@@ -3,6 +3,25 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 	$scope.task = null;
 	$scope.tasklist = null;
 
+	$scope.completeTask = function(task, tasklist)
+	{
+		var push = true;
+
+		if ($scope.task !== task) { 
+			push = false;
+		}
+
+		task.completed = task.completed == 1 ? 0 : 1;
+
+		if (task.completed) {
+			TaskService.complete(task, tasklist, push);
+		}
+		else {
+			TaskService.reopen(task, tasklist, push);
+		}
+
+	}
+
 	$scope.createTask = function(index)
 	{
 		TaskListService.setActiveTaskList(index);
