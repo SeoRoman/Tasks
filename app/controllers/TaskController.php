@@ -44,7 +44,8 @@ class TaskController extends \BaseController {
 			'created_by' => Input::get('created_by'),
 			'tasks_lists_id' => Input::get('tasks_lists_id'),
 			'title' => Input::get('title'),
-			'description' => Input::get('description')
+			'description' => Input::get('description'),
+			'completed' => 0
 		];
 
 		$rules = array('title'=>'required');
@@ -117,7 +118,8 @@ class TaskController extends \BaseController {
 			'created_by' => Input::get('created_by'),
 			'tasks_lists_id' => Input::get('tasks_lists_id'),
 			'title' => Input::get('title'),
-			'description' => Input::get('description')
+			'description' => Input::get('description'),
+			'completed' => Input::get('completed')
 		);
 		
 		//dd('ProjectID: ' . $ProjectID . ' TaskListID: ' . $TaskListID . ' TaskID: ' . $TaskID);

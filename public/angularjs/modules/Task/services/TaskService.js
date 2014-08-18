@@ -111,6 +111,7 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 	{
 		var project = ProjectService.getProject();
 
+		console.log('Task to Update');
 		console.log(task);
 
 		Dialog.wait('task-update', 'Updating Task');
@@ -132,8 +133,6 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 			);
 
 			TaskCommentService.store(task, comment, push).$promise.then(function(comment) {
-
-				//task.comments.push(comment);
 
 				Dialog.close('task-update');		
 
