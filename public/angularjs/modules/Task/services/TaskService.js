@@ -132,7 +132,7 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 				}
 			);
 
-			TaskCommentService.store(task, comment, push).$promise.then(function(comment) {
+			TaskCommentService.storeComment(task, comment, push).$promise.then(function(comment) {
 
 				Dialog.close('task-update');		
 

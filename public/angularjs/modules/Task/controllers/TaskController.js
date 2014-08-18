@@ -37,6 +37,7 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 		$location.path('/projects/' + $scope.project.id + '/tasklists/' + tasklist.id + '/tasks/' + task.id, false);
 
 		$scope.task = task;
+		$scope.tasklist = tasklist;
 
 		 TaskCommentService.fetchComments(task).then(function(comments) {
 		 	$scope.task.comments = comments;		 	
