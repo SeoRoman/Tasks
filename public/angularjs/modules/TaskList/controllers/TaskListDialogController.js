@@ -1,17 +1,36 @@
-angular.module('TaskList').controller('TaskListDialogController', function($scope, $modalInstance, TaskListService, Dialog, data) {
+angular.module('TaskList').controller('TaskListDialogController', function($scope, $modalInstance, TaskListService, ProjectService, Dialog, data) {
 
 	$scope.tasklist = data.tasklist;
 
 	$scope.update = function()
 	{
-		TaskListService.update(data.tasklist, data.index).$promise.then(function() {
+		var project = ProjectService.getProject();
+		var tasklist = data.tasklist;
+		var index = data.index;
+
+		Dialog.wait('tasklist-update', 'Updating Tasklist');
+
+		TaskListService.update(project, tasklist, index).$promise.then(function(tasklist) {
+			
+			Dialog.close('tasklist-update');
+
 			$modalInstance.close();
 		});
 	}
 
 	$scope.store = function()
 	{
-		TaskListService.store($scope.tasklist).$promise.then(function() {
+		var project = ProjectService.getProject();
+		var tasklist = $scope.tasklist;
+
+		Dialog.wait('tasklist-create', 'Creating Tasklist: ' + tasklist.title);
+
+		TaskListService.store(project, tasklist).$promise.then(function(tasklist) {
+			
+			Dialog.close('tasklist-create');
+
+			TaskListService.add(tasklist);
+
 			$modalInstance.close();
 		});
 	}

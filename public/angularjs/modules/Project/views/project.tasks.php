@@ -105,8 +105,9 @@
               </div>
               <ul class="list-group">
                 <!--<li class="list-group-item" ng-repeat=""><a href="" ng-click="assignTask()">Nathon Shultz</a></li>-->
-                <li class="list-group-item"><a href="" ng-click="assignTask()">Nathon Shultz</a></li>
-                <li class="list-group-item"><a href="" ng-click="assignTask()">Roman Lopez</a></li>
+                <li class="list-group-item" ng-repeat="user in users">
+                  <a href="" ng-click="assignTask()">{{ user.username }}</a>
+                </li>
               </ul>
             </div>
           </div>

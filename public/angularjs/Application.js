@@ -1,4 +1,4 @@
-angular.module('Application', ['ngDragDrop', 'ngRoute', 'ngAnimate', 'ngResource', 'ngStorage', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'xeditable', 'dialogs.main', 'dialogs.default-translations', 'pascalprecht.translate', 'angularMoment', 'Auth', 'Navigation', 'Dashboard', 'Project', 'Task']);
+angular.module('Application', ['ngDragDrop', 'ngRoute', 'ngAnimate', 'ngResource', 'ngStorage', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'xeditable', 'dialogs.main', 'dialogs.default-translations', 'pascalprecht.translate', 'angularMoment', 'Auth', 'Navigation', 'Dashboard', 'Project', 'Task', 'User']);
 
 angular.module('Auth', []);
 

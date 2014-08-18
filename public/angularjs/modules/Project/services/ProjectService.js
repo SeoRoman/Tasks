@@ -11,8 +11,6 @@ angular.module('Project').service('ProjectService', function($http, $resource, D
 
 		return Project.get( { ProjectID: ProjectID } , function(project) {
 
-			_project = project;
-
 			Dialog.close('project-loader');
 
 		}, function() {
@@ -23,6 +21,11 @@ angular.module('Project').service('ProjectService', function($http, $resource, D
 
 		//return _project;
 
+	}
+
+	this.setProject = function(project)
+	{
+		_project = project;
 	}
 
 	this.getProject = function()

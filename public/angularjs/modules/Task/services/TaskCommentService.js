@@ -7,7 +7,7 @@ angular.module('Task').service('TaskCommentService', function(Dialog, ProjectSer
 		var data = { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id };
 		return TaskComment.query( data, function() {
 			Dialog.close('task-comments-load');
-		}).$promise;
+		});
 	}	
 
 	this.store = function(task, comment, push)

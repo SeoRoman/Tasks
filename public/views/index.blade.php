@@ -115,6 +115,7 @@
   <!-- Module: User -->
   <% angularjs('modules/User/controllers/UserController.js') %>
   <% angularjs('modules/User/services/User.js') %>
+  <% angularjs('modules/User/services/UserService.js') %>
   <% angularjs('modules/User/Config.js') %>
 
   <!-- Module: Dashboard -->

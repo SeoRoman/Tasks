@@ -1,6 +1,6 @@
 angular.module('Task').service('TaskService', function($location, ProjectService, TaskListService, TaskCommentService, Task, TaskComment, Dialog) {
 
-	var _task =null;
+	var _task = null;
 	var _tasks = {};
 
 	this.complete = function(task, tasklist, push)
@@ -95,7 +95,7 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 				}
 			);
 
-			TaskCommentService.store(task, comment).$promise.then(function(comment) {
+			TaskCommentService.storeComment(task, comment).$promise.then(function(comment) {
 
 				task.comments.push(comment);
 
