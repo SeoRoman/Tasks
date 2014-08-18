@@ -83,7 +83,7 @@ class TaskController extends \BaseController {
 	{
 		try {
 			$task = $this->task->with('author')->where('id', $taskId)->first();	
-			return Response::json([ 'task' => $task ], 200);
+			return Response::json($task, 200);
 		}
 		catch(\Exception $e)
 		{

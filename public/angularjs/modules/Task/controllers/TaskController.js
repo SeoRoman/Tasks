@@ -1,14 +1,5 @@
 angular.module('Task').controller('TaskController', function($scope, $routeParams, $location, Dialog, TaskList, TaskService, ProjectService, TaskListService, TaskCommentService, UserService) {
 
-	// Check If URL Contains a Task
-	if ($routeParams.TaskID !== 'undefined')
-	{
-			
-	}
-
-	$scope.task = null;
-	$scope.tasklist = null;
-
 	// CREATE
 	$scope.createTask = function(index)
 	{

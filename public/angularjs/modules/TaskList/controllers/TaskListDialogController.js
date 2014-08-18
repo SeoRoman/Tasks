@@ -6,11 +6,10 @@ angular.module('TaskList').controller('TaskListDialogController', function($scop
 	{
 		var project = ProjectService.getProject();
 		var tasklist = data.tasklist;
-		var index = data.index;
 
 		Dialog.wait('tasklist-update', 'Updating Tasklist');
 
-		TaskListService.update(project, tasklist, index).$promise.then(function(tasklist) {
+		TaskListService.update(project, tasklist).$promise.then(function(tasklist) {
 			
 			Dialog.close('tasklist-update');
 

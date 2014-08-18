@@ -6,11 +6,80 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 	this.fetchTaskLists = function(project)
 	{
 		return TaskList.query( { ProjectID: project.id }, function(tasklists) {
-			_tasklists = tasklists;
+			angular.forEach(tasklists, function(tasklist) {
+				_tasklists[tasklist.id] = tasklist;
+			});
 		});
 	}
 
-	this.setActiveTaskList = function(index)
+	this.belongsTo = function(tasklist, project)
+	{
+		console.log('--- TASKLIST BELONGS TO');
+
+		console.log(tasklist);
+		console.log(project);
+
+		console.log('--- END');
+
+		return tasklist.tasks_projects_id == project.id;
+	}
+
+	this.getTaskList = function(id)
+	{
+		if (_tasklists[id] !== 'undefined')
+		{
+			_tasklist = _tasklists[id];
+			return _tasklists[id];	
+		}
+		
+		return {};
+	}
+
+	this.create = function()
+	{
+		Dialog.create('angularjs/modules/TaskList/views/dialogs/create.html', 'TaskListDialogController', { tasklist: {} }, {} );
+	}
+
+	this.edit = function(tasklist)
+	{
+		Dialog.create('angularjs/modules/TaskList/views/dialogs/update.html', 'TaskListDialogController', { tasklist: tasklist }, {});
+	}
+
+	this.delete = function(project, tasklist)
+	{
+		return TaskList.delete( { ProjectID: project.id, TaskListID: tasklist.id } );
+	}
+
+	this.store = function(project, tasklist)
+	{
+		return TaskList.save( tasklist, { ProjectID: project.id }, function(tasklist) {
+
+			tasklist.taskCount = 0;
+
+		});
+	}
+
+	this.update = function(project, tasklist, index)
+	{
+		return TaskList.update(tasklist, { ProjectID: project.id, TaskListID: tasklist.id }, function() {
+			
+			_tasklists[tasklist.id] = tasklist;
+
+		});
+	}	
+
+	this.add = function(tasklist)
+	{
+		_tasklists[tasklist.id] = tasklist;
+	}
+
+	this.remove = function(tasklist)
+	{
+		_tasklists.splice(tasklist.id, 1);
+	}
+
+// OLD
+this.setActiveTaskList = function(index)
 	{
 		_tasklist = _tasklists[index];
 	}
@@ -40,6 +109,7 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		_tasklists.splice(index, 1);
 	}
 
+
 	this.addTask = function(tasklist, task)
 	{
 		tasklist.taskCount += 1;
@@ -50,50 +120,6 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 	{
 		var index = tasklist.tasks.indexOf(task);
 		tasklist.tasks.splice(index, 1);
-	}
-
-	this.create = function()
-	{
-		Dialog.create('angularjs/modules/TaskList/views/dialogs/create.html', 'TaskListDialogController', { tasklist: {} }, {} );
-	}
-
-	this.edit = function(tasklist, index)
-	{
-		Dialog.create('angularjs/modules/TaskList/views/dialogs/update.html', 'TaskListDialogController', { tasklist: tasklist, index: index }, {});
-	}
-
-	this.delete = function(project, tasklist)
-	{
-		return TaskList.delete( { ProjectID: project.id, TaskListID: tasklist.id } );
-	}
-
-	this.store = function(project, tasklist)
-	{
-		return TaskList.save( tasklist, { ProjectID: project.id }, function(tasklist) {
-
-			tasklist.taskCount = 0;
-
-		});
-	}
-
-	this.update = function(project, tasklist, index)
-	{
-		return TaskList.update(tasklist, { ProjectID: project.id, TaskListID: tasklist.id }, function() {
-			
-			_tasklists[index] = tasklist;
-
-		});
-	}	
-
-	this.add = function(tasklist)
-	{
-		_tasklists.push(tasklist);
-	}
-
-	this.remove = function(tasklist)
-	{
-		var index = _tasklists.indexOf(tasklist);
-		_tasklists.splice(index, 1);
 	}
 
 });

@@ -3,6 +3,16 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 	var _task = null;
 	var _tasks = {};
 
+	this.fetchTask = function(project, tasklist, id)
+	{
+		return Task.get( { ProjectID: project.id, TaskListID: tasklist.id, TaskID: id } );
+	}
+
+	this.belongsTo = function(task, tasklist)
+	{
+		return task.tasks_lists_id == tasklist.id;
+	}
+
 	this.complete = function(task, tasklist, push)
 	{
 		var project = ProjectService.getProject();
