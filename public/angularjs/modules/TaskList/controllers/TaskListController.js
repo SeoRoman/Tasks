@@ -37,18 +37,4 @@ angular.module('TaskList').controller('TaskListController', function($scope, Dia
 		});
 	}
 
-	$scope.loadTasks = function(index)
-	{
-		var tasklist = TaskListService.getTaskList(index);
-
-		tasklist.opened = !tasklist.opened;
-
-		if (tasklist.opened)
-		{
-			TaskService.loadTasks(tasklist).then(function(tasks) {
-				tasklist.tasks = tasks;
-			});			
-		}
-	}
-
 });
