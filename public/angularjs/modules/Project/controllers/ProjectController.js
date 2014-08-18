@@ -14,7 +14,7 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 		// Assign the Project to the Scope
 		$scope.project = project;
 
-		Dialog.wait('tasklists-loader', 'Loading Tasks');
+		Dialog.wait('tasklists-loader', 'Loading TaskLists');
 
 		// Fetch the Tasks for the Project
 		TaskListService.fetchTaskLists(project).$promise.then(function(tasklists) {
@@ -26,6 +26,12 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 			if ($routeParams.TaskListID !== undefined)
 			{
 				$scope.tasklist = TaskListService.getTaskList($routeParams.TaskListID);
+
+				if ($scope.tasklist === undefined)
+				{
+					Dialog.close();
+					Dialog.errorMessage('TaskList Not Found', 'TaskList does not exist (REDIRECT)');
+				}
 
 				if (!TaskListService.belongsTo($scope.tasklist, $scope.project))
 				{
@@ -51,6 +57,11 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 						Dialog.close();
 
 						$scope.task = task;
+
+						if ($scope.task === undefined)
+						{
+							Dialog.errorMessage('Task Not Found', 'Task does not exist');
+						}
 
 						if (!TaskService.belongsTo($scope.task, $scope.tasklist))
 						{
