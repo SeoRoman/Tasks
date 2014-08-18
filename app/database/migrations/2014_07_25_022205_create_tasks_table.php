@@ -25,7 +25,7 @@ class CreateTasksTable extends Migration {
 
 			$table->integer('assigned_to');
 
-			$table->dateTime('due_date');
+			$table->date('due_date')->nullable();
 
 			$table->string('title');
 

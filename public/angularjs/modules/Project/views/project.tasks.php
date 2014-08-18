@@ -87,42 +87,29 @@
           </small>
         </div>
         <div class="taskOptions">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
-              <span><i class="fa fa-user"></i></span>
-              &nbsp;&nbsp;Unassigned&nbsp;&nbsp;
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="taskAssignment dropdown-menu" role="menu">
-              <div class="search">
-                <div class="input-group">
-                  <input type="text" placeholder="Search or invite" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
-                  </span>
-                </div>
+          <div class="assignmentSelection">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                <span><i class="fa fa-user"></i></span>
+                &nbsp;&nbsp;Unassigned&nbsp;&nbsp;
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="taskAssignment dropdown-menu" role="menu">
+                <ul class="list-group">
+                  <!--<li class="list-group-item" ng-repeat=""><a href="" ng-click="assignTask()">Nathon Shultz</a></li>-->
+                  <li class="list-group-item"><a href="" ng-click="assignTask()">Nathon Shultz</a></li>
+                  <li class="list-group-item"><a href="" ng-click="assignTask()">Roman Lopez</a></li>
+                </ul>
               </div>
-              <ul class="list-group">
-                <!--<li class="list-group-item" ng-repeat=""><a href="" ng-click="assignTask()">Nathon Shultz</a></li>-->
-                <li class="list-group-item"><a href="" ng-click="assignTask()">Nathon Shultz</a></li>
-                <li class="list-group-item"><a href="" ng-click="assignTask()">Roman Lopez</a></li>
-              </ul>
             </div>
           </div>
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
-              <span><i class="fa fa-calendar"></i></span>
-              &nbsp;&nbsp;Due Date&nbsp;&nbsp;
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="taskDue dropdown-menu" role="menu">
-              <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class=""></datepicker>
-              <div class="taskDueBtns">
-                <button type="button" class="btn btn-default">Button</button>
-                <button type="button" class="btn btn-primary">Button</button>
-                <button type="button" class="btn btn-danger">Button</button>
+          <div class="dueDateSelection">
+            <div class="input-group form-inline">
+              <input type="text" class="form-control" datepicker-popup="MMM dd" show-weeks="false" ng-model="task.due_date" is-open="openedCal" min-date="minDate" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="fa fa-calendar"></i></button>
+              </span>
             </div>
           </div>
         </div>
@@ -193,8 +180,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div ng-if="!task">
-      <h3>No Task Loaded</h3>
+      <div ng-if="!task">
+        <h3>No Task Loaded</h3>
+      </div>
     </div>
   </div>

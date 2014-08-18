@@ -386,8 +386,13 @@ span.editTitle>.smbtn:hover {
   margin: 20px 0 0;
 }
 
-.taskOptions .btn-group {
+.taskOptions .assignmentSelection,
+.taskOptions .dueDateSelection {
   display: inline-block;
+}
+.taskOptions .dueDateSelection {
+  width: 150px;
+  vertical-align: middle;
 }
 
 .taskAssignment.dropdown-menu {

@@ -61,4 +61,11 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 		});
 	}
 
+	$scope.openCalendar = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.openedCal = true;
+  };
+
 });
