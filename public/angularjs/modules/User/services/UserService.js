@@ -5,18 +5,8 @@ angular.module('User').service('UserService', function($http, $resource, Dialog,
 
 	this.fetchUsers = function()
 	{
-	
-		Dialog.wait('users-loader', 'Loading Users');
-
 		return User.query( { }, function(users) {
-
 			_users = users;
-
-			// TaskList Loading Complete
-			Dialog.close('users-loader');
-
-			console.log('Users Loaded Successfully');
-
 		});		
 	}
 

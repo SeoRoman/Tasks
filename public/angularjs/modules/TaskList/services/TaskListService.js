@@ -3,29 +3,10 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 	var _tasklists = {};
 	var _tasklist = {};
 
-	this.update = function(project, tasklist, index)
-	{
-		return TaskList.update(tasklist, { ProjectID: project.id, TaskListID: tasklist.id }, function() {
-			
-			_tasklists[index] = tasklist;
-
-		});
-	}
-
 	this.fetchTaskLists = function(project)
 	{
-			
-		Dialog.wait('tasklists-loader', 'Loading TaskLists for ' + project.title);
-
 		return TaskList.query( { ProjectID: project.id }, function(tasklists) {
-
 			_tasklists = tasklists;
-
-			// TaskList Loading Complete
-			Dialog.close('tasklists-loader');
-
-			console.log('TaskLists Loaded Successfully');
-
 		});
 	}
 
@@ -71,11 +52,6 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		tasklist.tasks.splice(index, 1);
 	}
 
-	this.showTasks = function(tasks, index)
-	{	
-
-	}
-
 	this.create = function()
 	{
 		Dialog.create('angularjs/modules/TaskList/views/dialogs/create.html', 'TaskListDialogController', { tasklist: {} }, {} );
@@ -99,6 +75,15 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 		});
 	}
+
+	this.update = function(project, tasklist, index)
+	{
+		return TaskList.update(tasklist, { ProjectID: project.id, TaskListID: tasklist.id }, function() {
+			
+			_tasklists[index] = tasklist;
+
+		});
+	}	
 
 	this.add = function(tasklist)
 	{

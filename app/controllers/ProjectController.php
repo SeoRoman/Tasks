@@ -75,7 +75,11 @@ class ProjectController extends \BaseController {
 	public function show($id)
 	{
 		//
-		return $this->project->where('id', $id)->first();
+		$project = $this->project->where('id', $id)->first();
+
+		if (!$project) Return Response::json([], 400);
+		
+		return $project;
 	}
 
 
