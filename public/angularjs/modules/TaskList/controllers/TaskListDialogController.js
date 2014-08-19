@@ -22,13 +22,15 @@ angular.module('TaskList').controller('TaskListDialogController', function($scop
 		var project = ProjectService.getProject();
 		var tasklist = $scope.tasklist;
 
+		console.log($scope.tasklist);
+
 		Dialog.wait('tasklist-create', 'Creating Tasklist: ' + tasklist.title);
 
 		TaskListService.store(project, tasklist).$promise.then(function(tasklist) {
 			
 			Dialog.close('tasklist-create');
 
-			TaskListService.add(tasklist);
+			TaskListService.add(tasklist, project);
 
 			$modalInstance.close();
 		});

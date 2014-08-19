@@ -25,19 +25,24 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 			// If a TaskList Exists
 			if ($routeParams.TaskListID !== undefined)
 			{
-				$scope.tasklist = TaskListService.getTaskList($routeParams.TaskListID);
+				tasklist = TaskListService.getTaskList($routeParams.TaskListID);
 
-				if ($scope.tasklist === undefined)
+				if (tasklist === undefined)
 				{
 					Dialog.close();
-					Dialog.errorMessage('TaskList Not Found', 'TaskList does not exist (REDIRECT)');
+					Dialog.errorMessage('TaskList Not Found', 'TaskList does not exist (NEED REDIRECT)');
 				}
 
-				if (!TaskListService.belongsTo($scope.tasklist, $scope.project))
+				else if (!TaskListService.belongsTo(tasklist, $scope.project))
 				{
 					Dialog.close();
-					Dialog.errorMessage('TaskList Error', 'TaskList does not belong to this Project. (Need an Error Redirect)');
-				};
+					Dialog.errorMessage('TaskList Error', 'TaskList does not belong to this Project. (NEED REDIRECT)');
+				}
+
+				else 
+				{
+					$scope.tasklist = tasklist;
+				}
 			}
 
 			Dialog.wait('users-loader', 'Loading Users');
@@ -54,22 +59,29 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 
 					TaskService.fetchTask($scope.project, $scope.tasklist, $routeParams.TaskID).$promise.then(function(task) {
 
+						if (task === undefined)
+						{
+							Dialog.errorMessage('Task Not Found', 'Task does not exist (NEED REDIRECT)');
+						}
+
+						else if (!TaskService.belongsTo(task, $scope.tasklist))
+						{
+							Dialog.errorMessage('Task Error', 'Task does not belongs to this TaskList (NEED REDIRECT)');
+						}
+
+						else
+						{
+							$scope.task = task;
+						} 
+
 						Dialog.close();
 
-						$scope.task = task;
-
-						if ($scope.task === undefined)
-						{
-							Dialog.errorMessage('Task Not Found', 'Task does not exist');
-						}
-
-						if (!TaskService.belongsTo($scope.task, $scope.tasklist))
-						{
-							Dialog.errorMessage('Task Error', 'Task does not belongs to this TaskList (Need an Error Redirect)');
-						}
-
 					});
-				}		 
+				}	
+				else
+				{
+					Dialog.close();
+				}	 
 
 		 	});					
 
@@ -77,7 +89,7 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 
 	}, function() {
 
-		Dialog.errorMessage('Invalid Project Found', 'Please Add a Redirect to Error Page Here');
+		Dialog.errorMessage('Invalid Project Found', 'Project not found in Database. (NEED REDIRECT)');
 
 	});
 
