@@ -10,9 +10,9 @@
             </a>
           </div>
         </div>
+        <span ng-hide="project.tasklists"><i class="fa fa-cog fa-spin"></i> Loading Tasklists...</span>
         <accordion>
-          <accordion-group index="{{ $index }}" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="tasklist.open">
-            <span ng-hide="tasklist.title"><i class="fa fa-cog fa-spin"></i> Loading...</span>
+          <accordion-group tasklist="{{tasklist.id}}" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="tasklist.open">
             <accordion-heading>
               <i class="tasklistToggle fa"  ng-class="{'fa-chevron-down': tasklist.open, 'fa-chevron-right': !tasklist.open}"></i>
               <div class="tasklistTitle">{{tasklist.title}}</div>
@@ -36,6 +36,7 @@
                 <span>Add New Task</span>
               </a>
             </li>
+            <li ng-hide="tasklist.tasks" class="list-group-item"><i class="fa fa-cog fa-spin"></i> Loading Tasks...</li>
             <li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
               <a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 
