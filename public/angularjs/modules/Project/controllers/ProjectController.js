@@ -1,4 +1,4 @@
-angular.module('Project').controller('ProjectController', function($scope, $routeParams, $location, Dialog, ProjectService, TaskListService, TaskService, UserService) {
+angular.module('Project').controller('ProjectController', function($scope, $routeParams, $location, Dialog, ProjectService, TaskListService, TaskService, TaskCommentService, UserService) {
 
 	// Init Variables to be Used
 	$scope.project = null;
@@ -72,9 +72,16 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 						else
 						{
 							$scope.task = task;
-						} 
 
-						Dialog.close();
+							Dialog.wait('comments-loader', 'Loading Comments');
+
+							TaskCommentService.fetchComments(project, tasklist, task).$promise.then(function(comments) {
+
+								$scope.task.comments = comments;
+
+								Dialog.close();
+							});							
+						} 
 
 					});
 				}	

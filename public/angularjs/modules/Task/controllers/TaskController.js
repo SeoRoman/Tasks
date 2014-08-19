@@ -10,16 +10,20 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 	// READ
 	$scope.openTask = function(task, tasklist)
 	{
-		$location.path('/projects/' + $scope.project.id + '/tasklists/' + tasklist.id + '/tasks/' + task.id, false);
+		var project = ProjectService.getProject();
 
-		$scope.task = task;
-		$scope.tasklist = tasklist;
+		$location.path('/projects/' + project.id + '/tasklists/' + tasklist.id + '/tasks/' + task.id, false);
 
-		TaskService.setActiveTask(task);
+		Dialog.wait('task-comments-load', 'Loading Comments for Task: ' + task.title);
 
-		 TaskCommentService.fetchComments(task).$promise.then(function(comments) {
-		 	$scope.task.comments = comments;
-		 });
+		TaskCommentService.fetchComments(project, tasklist, task).$promise.then(function(comments) {
+
+			$scope.task = task;
+			$scope.tasklist = tasklist;			
+			$scope.task.comments = comments;
+
+			Dialog.close('task-comments-load');
+		});
 	}
 
 
