@@ -1,13 +1,8 @@
 angular.module('Task').service('TaskCommentService', function(Dialog, ProjectService, TaskListService, TaskComment) {
 
-	this.fetchComments = function(task)
+	this.fetchComments = function(project, tasklist, task)
 	{
-		Dialog.wait('task-comments-load', 'Loading Comments for Task: ' + task.title);
-
-		var data = { ProjectID: ProjectService.getId(), TaskListID: task.tasks_lists_id, TaskID: task.id };
-		return TaskComment.query( data, function() {
-			Dialog.close('task-comments-load');
-		});
+		return TaskComment.query( { ProjectID: project.id, TaskListID: tasklist.id, TaskID: task.id } );
 	}	
 
 	this.store = function(task, comment, push)
