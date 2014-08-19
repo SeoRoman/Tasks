@@ -144,44 +144,46 @@
             </form>
             <div class="clearfix"></div>
           </div>
+          <span ng-hide="task.comments"><i class="fa fa-cog fa-spin"></i>Loading Task Comments...</span>
+          <span ng-show="task.comments">
+            <div class="commentsList" ng-repeat="comment in task.comments">
 
-          <div class="commentsList" ng-repeat="comment in task.comments">
+              <div ng-switch="comment.class_type">
 
-            <div ng-switch="comment.class_type">
+                <div ng-switch-when="comment">
+                  <div class="commentFrom">
+                    <span>{{ comment.author.username }}</span>
+                  </div>
+                  <div class="commentspacer"></div>
+                  <div class="commentBody">
+                    <span>
+                      {{ comment.body }}
+                    </span>
+                  </div>
+                  <div class="commentspacer"></div>
+                  <div class="commentTime">
+                    <span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
+                  </div>
+                </div>
 
-              <div ng-switch-when="comment">
-                <div class="commentFrom">
-                  <span>{{ comment.author.username }}</span>
+                <div ng-switch-when="system">
+                  <div class="systemFrom">
+                    <span>{{ comment.author.username }}</span>
+                  </div>
+                  <div class="systemspacer"></div>
+                  <div class="systemBody">
+                    <span>
+                      {{ comment.body }}
+                    </span> 
+                  </div>
+                  <div class="systemspacer"></div>
+                  <div class="systemTime">
+                    <span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> <!--(<span am-time-ago="comment.created_at"></span>)-->
+                  </div>  
                 </div>
-                <div class="commentspacer"></div>
-                <div class="commentBody">
-                  <span>
-                    {{ comment.body }}
-                  </span>
-                </div>
-                <div class="commentspacer"></div>
-                <div class="commentTime">
-                  <span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> (<span am-time-ago="comment.created_at"></span>)
-                </div>
-              </div>
-
-              <div ng-switch-when="system">
-                <div class="systemFrom">
-                  <span>{{ comment.author.username }}</span>
-                </div>
-                <div class="systemspacer"></div>
-                <div class="systemBody">
-                  <span>
-                    {{ comment.body }}
-                  </span> 
-                </div>
-                <div class="systemspacer"></div>
-                <div class="systemTime">
-                  <span>{{comment.created_at | amDateFormat:'MMM Do, YYYY \\a\\t h:mm a'}}</span> <!--(<span am-time-ago="comment.created_at"></span>)-->
-                </div>  
               </div>
             </div>
-          </div>
+          </span>
         </div>
       </div>
       <div ng-if="!task">
