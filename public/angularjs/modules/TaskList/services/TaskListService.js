@@ -21,7 +21,7 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 		console.log('--- END');
 
-		return tasklist.tasks_lists_id == project.id;
+		return tasklist.tasks_projects_id == project.id;
 	}
 
 	this.getTaskList = function(id)
