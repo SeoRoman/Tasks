@@ -2,7 +2,8 @@
 	<div class="main-heading">
 		<span>
 			<h4 class="section-title">
-				{{ project.title }}
+				<span ng-hide="project.title"><i class="fa fa-cog fa-spin"></i> Loading...</span>
+				<span ng-show="project.title">{{ project.title }}</span>
 				<a class="projectSettings" ng-show="project.title" tooltip-placement="bottom" tooltip="Project Settings"><i class="fa fa-cog"></i></a>
 			</h4>
 		</span>

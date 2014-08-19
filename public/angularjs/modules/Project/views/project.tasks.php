@@ -12,6 +12,7 @@
         </div>
         <accordion>
           <accordion-group index="{{ $index }}" ng-repeat="tasklist in project.tasklists" ng-controller="TaskListDroppableController" data-drop="true" ng-model="droppables[tasklist.id]" data-jqyoui-options="tasklist.opts" jqyoui-droppable="{multiple: true, onDrop: 'dropCallBack($index, tasklist.id, tasklist)'}"  is-open="tasklist.open">
+            <span ng-hide="tasklist.title"><i class="fa fa-cog fa-spin"></i> Loading...</span>
             <accordion-heading>
               <i class="tasklistToggle fa"  ng-class="{'fa-chevron-down': tasklist.open, 'fa-chevron-right': !tasklist.open}"></i>
               <div class="tasklistTitle">{{tasklist.title}}</div>
