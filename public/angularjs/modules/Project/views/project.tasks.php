@@ -55,7 +55,11 @@
     </div>
 
     <div id="tasks" class="tasks col-md-8">
-      <div ng-if="task">
+      
+      <span ng-if="task">
+        <span ng-hide="task.title"><i class="fa fa-cog fa-spin"></i>Loading Task...</span>
+      </span>
+      <div ng-show="task.title">
         <div>
           <span class="closeTask pull-right">
             <button ng-click="closeTaskPane()" title="Close the Task" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close Task</button>

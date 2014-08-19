@@ -3,7 +3,7 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 	// Init Variables to be Used
 	$scope.project = null;
 	$scope.tasklist = null;
-	$scope.task = null;     
+	$scope.task = {};
 	$scope.users = {};
 	
 	//Dialog.wait('project-loader', 'Loading Project');
@@ -87,6 +87,7 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 				}	
 				else
 				{
+					$scope.task = null;
 					Dialog.close();
 				}	 
 

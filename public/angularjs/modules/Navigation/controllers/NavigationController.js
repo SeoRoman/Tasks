@@ -1,9 +1,11 @@
 angular.module('Navigation')
   .controller('NavigationController', function($scope, Organization) {
 
-  	o = Organization.resource();
-  	$scope.orgs = o.query();
+    $scope.orgs = null;
 
+  	Organization.query().$promise.then(function(organizations) {
+      $scope.orgs = organizations;
+    });
 
     /*$scope.orgs = [
       {

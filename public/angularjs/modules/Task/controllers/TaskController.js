@@ -14,7 +14,9 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 
 		$location.path('/projects/' + project.id + '/tasklists/' + tasklist.id + '/tasks/' + task.id, false);
 
-		Dialog.wait('task-comments-load', 'Loading Comments for Task: ' + task.title);
+		//Dialog.wait('task-comments-load', 'Loading Comments for Task: ' + task.title);
+
+		$scope.task.comments = null;
 
 		TaskCommentService.fetchComments(project, tasklist, task).$promise.then(function(comments) {
 
@@ -22,7 +24,7 @@ angular.module('Task').controller('TaskController', function($scope, $routeParam
 			$scope.tasklist = tasklist;			
 			$scope.task.comments = comments;
 
-			Dialog.close('task-comments-load');
+			//Dialog.close('task-comments-load');
 		});
 	}
 
