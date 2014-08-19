@@ -140,14 +140,17 @@
           <span>Worth Tasks</span>
         </div>
         <div class="main-nav-sidebar" ng-controller="NavigationController">
-          <div ng-repeat="org in orgs">
-            <div class="org-header">
-              {{org.title}}
+          <span ng-hide="orgs" class="org-header"><i class="fa fa-cog fa-spin">Loading Organizations...</i></span>
+          <span ng-show="orgs">
+            <div ng-repeat="org in orgs">
+              <div class="org-header">
+                {{org.title}}
+              </div>
+              <ul class="nav nav-sidebar">
+                <li ng-repeat="project in org.projects"><a href="#/projects/{{project.id}}">{{project.title}}</a></li>
+              </ul>
             </div>
-            <ul class="nav nav-sidebar">
-              <li ng-repeat="project in org.projects"><a href="#/projects/{{project.id}}">{{project.title}}</a></li>
-            </ul>
-          </div>
+          </span>
         </div>
         <!--
         <navigation>
