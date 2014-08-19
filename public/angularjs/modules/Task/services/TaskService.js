@@ -5,6 +5,8 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 
 	this.fetchTask = function(project, tasklist, id)
 	{
+		console.log(project, tasklist, id);
+
 		return Task.get( { ProjectID: project.id, TaskListID: tasklist.id, TaskID: id } );
 	}
 

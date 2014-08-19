@@ -19,6 +19,8 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 		// Fetch the Tasks for the Project
 		TaskListService.fetchTaskLists(project).$promise.then(function(tasklists) {
 
+			console.log(tasklists);
+
 			// Assign the TaskLists to the Project
 			$scope.project.tasklists = tasklists;
 
@@ -66,7 +68,7 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 
 						else if (!TaskService.belongsTo(task, $scope.tasklist))
 						{
-							Dialog.errorMessage('Task Error', 'Task does not belongs to this TaskList (NEED REDIRECT)');
+							Dialog.errorMessage('Task Error', 'Task does not belong to this TaskList (NEED REDIRECT)');
 						}
 
 						else
