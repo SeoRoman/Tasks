@@ -140,7 +140,7 @@
           <span>Worth Tasks</span>
         </div>
         <div class="main-nav-sidebar" ng-controller="NavigationController">
-          <span ng-hide="orgs" class="org-header"><i class="fa fa-cog fa-spin"></i>Loading Organizations...</span>
+          <span ng-hide="orgs" class="org-header"><i class="fa fa-cog fa-spin"></i> Loading Organizations...</span>
           <span ng-show="orgs">
             <div ng-repeat="org in orgs">
               <div class="org-header">
