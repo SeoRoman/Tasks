@@ -3,13 +3,25 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 	var _tasklists = {};
 	var _tasklist = {};
 
+	// DEBUG
+	this.retrieveTasklists = function()
+	{
+		return _tasklists;
+	}
+
 	this.fetchTaskLists = function(project)
 	{
-		return TaskList.query( { ProjectID: project.id }, function(tasklists) {
+		console.log(project);
+
+		var a = TaskList.query( { ProjectID: project.id }, function(tasklists) {
 			angular.forEach(tasklists, function(tasklist) {
 				_tasklists[tasklist.id] = tasklist;
 			});
 		});
+
+		console.log(a);
+
+		return a;
 	}
 
 	this.belongsTo = function(tasklist, project)
@@ -21,11 +33,13 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 
 		console.log('--- END');
 
-		return tasklist.tasks_lists_id == project.id;
+		return tasklist.tasks_projects_id == project.id;
 	}
 
 	this.getTaskList = function(id)
 	{
+		console.log('TaskList ID: ' + id);
+
 		if (_tasklists[id] !== 'undefined')
 		{
 			_tasklist = _tasklists[id];
@@ -68,9 +82,9 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 		});
 	}	
 
-	this.add = function(tasklist)
+	this.add = function(tasklist, project)
 	{
-		_tasklists[tasklist.id] = tasklist;
+		project.tasklists[tasklist.id] = tasklist;
 	}
 
 	this.remove = function(tasklist)
@@ -79,7 +93,7 @@ angular.module('TaskList').service('TaskListService', function($http, $resource,
 	}
 
 // OLD
-this.setActiveTaskList = function(index)
+	this.setActiveTaskList = function(index)
 	{
 		_tasklist = _tasklists[index];
 	}
@@ -87,11 +101,6 @@ this.setActiveTaskList = function(index)
 	this.getActiveTaskList = function()
 	{
 		return _tasklist;
-	}
-
-	this.getTaskList = function(index)
-	{
-		return _tasklists[index];
 	}
 
 	this.getTaskLists = function()

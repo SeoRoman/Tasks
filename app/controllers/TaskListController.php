@@ -14,12 +14,12 @@ class TaskListController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($ProjectID)
 	{
 		try {
 			//return $this->tasklist->all();
 
-			$tasklists = $this->tasklist->orderBy('created_at', 'ASC')->get();
+			$tasklists = $this->tasklist->where('tasks_projects_id', $ProjectID)->orderBy('created_at', 'ASC')->get();
 
 			$tasklists = $tasklists->each(function($tasklist) {
 				$tasklist->taskCount = $tasklist->tasks()->count();
