@@ -3,9 +3,9 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 	// Init Variables to be Used
 	$scope.project = null;
 	$scope.tasklist = null;
-	$scope.task = null;
+	$scope.task = null;     
 	$scope.users = {};
-
+	
 	//Dialog.wait('project-loader', 'Loading Project');
 
 	// Load the Project
@@ -55,7 +55,7 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 
 				if ($routeParams.TaskID !== undefined)
 				{
-					Dialog.wait('task-loader', 'Loading Task');
+					//Dialog.wait('task-loader', 'Loading Task');
 
 					TaskService.fetchTask($scope.project, $scope.tasklist, $routeParams.TaskID).$promise.then(function(task) {
 
@@ -73,7 +73,7 @@ angular.module('Project').controller('ProjectController', function($scope, $rout
 						{
 							$scope.task = task;
 
-							Dialog.wait('comments-loader', 'Loading Comments');
+							//Dialog.wait('comments-loader', 'Loading Comments');
 
 							TaskCommentService.fetchComments(project, tasklist, task).$promise.then(function(comments) {
 

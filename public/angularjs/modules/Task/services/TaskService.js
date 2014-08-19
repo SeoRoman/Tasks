@@ -28,15 +28,11 @@ angular.module('Task').service('TaskService', function($location, ProjectService
 	}
 
 	this.fetchTasks = function(project, tasklist)
-	{
-        Dialog.wait('tasks-load', 'Loading Tasks for Tasklist: ' + tasklist.title);
-		
+	{	
+		_tasks = null;
+
 		return Task.query( { ProjectID: project.id, TaskListID: tasklist.id } , function(tasks) {
-
 			_tasks = tasks;
-
-			Dialog.close('tasks-load');
-
 		});
 	}	
 
