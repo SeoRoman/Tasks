@@ -150,7 +150,7 @@
           </div>
           <span ng-hide="task.comments"><i class="fa fa-cog fa-spin"></i>Loading Task Comments...</span>
           <span ng-show="task.comments">
-            <div class="commentsList animated fadeInUp" ng-repeat="comment in task.comments">
+            <div class="commentsList animated fadeInDown" ng-repeat="comment in task.comments">
 
               <div ng-switch="comment.class_type">
 
