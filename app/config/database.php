@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'nlocal-mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -70,6 +70,17 @@ return array(
 			'database'  => 'tasks',
 			'username'  => 'root',
 			'password'  => 'root',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+
+		'nlocal-mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'tasks',
+			'username'  => 'root',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

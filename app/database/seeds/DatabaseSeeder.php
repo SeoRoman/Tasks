@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('TaskSeeder');
         $this->command->info('Task table seeded!');
+        
+        $this->call('CommentSeeder');
+        $this->command->info('Task Comment table seeded!');
     }
 
 }

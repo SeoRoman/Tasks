@@ -37,7 +37,7 @@
               </a>
             </li>
             <li ng-hide="tasklist.tasks" class="list-group-item"><i class="fa fa-cog fa-spin"></i> Loading Tasks...</li>
-            <li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item" ng-repeat="task in tasklist.tasks">
+            <li data-tasklist-id="{{ tasklist.id }}" data-drag="true" class="list-group-item animated fadeInDown" ng-repeat="task in tasklist.tasks">
               <a class="smbtn moveTask"><i class="fa fa-ellipsis-v"></i><i class="fa fa-ellipsis-v"></i></a>
 
               <div class="squaredOne-{{task.id}}">
@@ -59,7 +59,7 @@
       <span ng-if="task">
         <span ng-hide="task.title"><i class="fa fa-cog fa-spin"></i>Loading Task...</span>
       </span>
-      <div ng-show="task.title">
+      <div ng-show="task.title" class="animated fadeInRight">
         <div>
           <span class="closeTask pull-right">
             <button ng-click="closeTaskPane()" title="Close the Task" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close Task</button>
@@ -150,7 +150,7 @@
           </div>
           <span ng-hide="task.comments"><i class="fa fa-cog fa-spin"></i>Loading Task Comments...</span>
           <span ng-show="task.comments">
-            <div class="commentsList" ng-repeat="comment in task.comments">
+            <div class="commentsList animated fadeInUp" ng-repeat="comment in task.comments">
 
               <div ng-switch="comment.class_type">
 

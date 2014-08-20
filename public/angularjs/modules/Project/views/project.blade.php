@@ -3,7 +3,7 @@
 		<span>
 			<h4 class="section-title">
 				<span ng-hide="project.title"><i class="fa fa-cog fa-spin"></i> Loading Project...</span>
-				<span ng-show="project.title">{{ project.title }}</span>
+				<span ng-show="project.title" class="animated bounce">{{ project.title }}</span>
 				<a class="projectSettings" ng-show="project.title" tooltip-placement="bottom" tooltip="Project Settings"><i class="fa fa-cog"></i></a>
 			</h4>
 		</span>

@@ -142,7 +142,7 @@
         <div class="main-nav-sidebar" ng-controller="NavigationController">
           <span ng-hide="orgs" class="org-header"><i class="fa fa-cog fa-spin"></i> Loading Organizations...</span>
           <span ng-show="orgs">
-            <div ng-repeat="org in orgs">
+            <div ng-repeat="org in orgs" class="animated fadeInDown">
               <div class="org-header">
                 {{org.title}}
               </div>

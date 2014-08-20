@@ -19,7 +19,9 @@ class CreateTasksCommentsTable extends Migration {
 
 			$table->morphs('commentable');
 
-			$table->integer('creator');
+			$table->string('class_type');
+
+			$table->integer('created_by');
 
 			$table->text('body');
 

@@ -12,7 +12,7 @@ class TaskSeeder extends BaseSeeder {
         		'user_id' => 1,
                 'assigned_to' => 1,
                 'due_date' => '2014-08-04 23:00:00',
-        		'subject' => 'Task #1',
+        		'title' => 'Task #1',
         	)
         );
 
@@ -22,7 +22,7 @@ class TaskSeeder extends BaseSeeder {
                 'user_id' => 1,
                 'assigned_to' => 1,
                 'due_date' => '2014-08-04 23:00:00',
-                'subject' => 'Task #2',
+                'title' => 'Task #2',
             )
         );
 
@@ -32,7 +32,7 @@ class TaskSeeder extends BaseSeeder {
                 'user_id' => 1,
                 'assigned_to' => 1,
                 'due_date' => '2014-08-04 23:00:00',
-                'subject' => 'Task #1',
+                'title' => 'Task #1',
             )
         );
 
@@ -42,7 +42,7 @@ class TaskSeeder extends BaseSeeder {
                 'user_id' => 1,
                 'assigned_to' => 1,
                 'due_date' => '2014-08-04 23:00:00',
-                'subject' => 'Task #2',
+                'title' => 'Task #2',
             )
         );
 
@@ -52,7 +52,7 @@ class TaskSeeder extends BaseSeeder {
                 'user_id' => 1,
                 'assigned_to' => 1,
                 'due_date' => '2014-08-04 23:00:00',
-                'subject' => 'Task #1',
+                'title' => 'Task #1',
             )
         );
 
@@ -62,7 +62,7 @@ class TaskSeeder extends BaseSeeder {
                 'user_id' => 1,
                 'assigned_to' => 1,
                 'due_date' => '2014-08-04 23:00:00',
-                'subject' => 'Task #1',
+                'title' => 'Task #1',
             )
         );
     }
